@@ -20,9 +20,9 @@
   - utvikle nye løsninger på praktiske algoritmiske problemstillinger
 - Ved hver algoritme skal man kunne
   - kjenne til den formelle definisjonen av det generelle problemet algoritmen løser
-  - kjenne til eventuelle tillegskrav den stiller for å være korrekt
+  - kjenne til eventuelle tilleggskrav den stiller for å være korrekt
   - vite hvordan den oppfører seg, kunne utføre den, trinn for trinn
-  - Forstå korrekthetsbeviset; hvordan og hvorfor virker den egentlig?
+  - forstå korrekthetsbeviset; hvordan og hvorfor virker det egentlig?
   - kjenne til eventuelle styrker og svakheter sammenlignet med andre
   - kjenne til kjøretiden under ulike omstendigheter, og forstå utregningen
 - Ved hver datastruktur skal man kunne
@@ -147,12 +147,16 @@ En lenket liste er en lineær datastruktur som representerer elementer i sekvens
 #### Kjøretider
 
 Handling | Kjøretid
----------|---------
+---------|--------
 Innsetting på starten | $O(1)$
 Innsetting på slutten | $O(n)$
 Oppslag | $O(n)$
-Slette element | oppslagstid + $O(1)$
+Slette element | oppslagstid $+\ O(1)$
 
 ### Hashtabeller
+
+I stedet for å lete gjennom en liste, som kan ta $O(n)$ i verste fall, eller en sortert liste på $O(\log n)$, vil letetiden i en hashtabell være konstant, $O(1)$, fordi lagerstedet til en hashtabell er vanligvis i maskinens hurtigminne hvor man har $O(1)$ tilgang til alle plassene.
+
+Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vil flere ulike faktiske nøkler gi samme hashverdi.
 
 ### Dynamiske tabeller
