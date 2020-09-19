@@ -77,6 +77,7 @@ Det blir som om jeg sier «Emnet har minst 1000 studenter og så maks 200 studen
 $$\Theta(n^2)+O(n^4)+\Omega(\log n)$$
 
 *TBA*! <!-- Sjekk øving 1 oppgave 9. Hvorfor er ikke lille omega rett? -->
+ω(n2)+o(n4)ω(n2)+o(n4)
 
 #### Noen vanlige kjøretider
 
