@@ -92,6 +92,33 @@ Kompleksitet | Navn | Type
  $\Theta(\lg n)$ | Logaritmisk | Generell
  $\Theta(1)$ | Konstant | Generell
 
+#### Masterteoremet
+
+Kontekst: Finne kjøretid, ofte for splitt og hersk algoritmer
+
+$$T(n)=aT(^n/_b) + f(n)$$
+$$a\ge1,\  b>1$$
+
+1. Identifiser $a, b, f(n)$
+2. Regn ut $\log_b(a)$
+3. Konsulter tabellen under for å finne ut hvilket tilfelle som gjelder
+
+Tilfelle | Krav | Løsning
+:----:|:----:|:----:
+1 | $f(n)\in O(n^{\log_b a-\epsilon})$ | $T(n) \in \Theta(n^{\log_b a})$
+2 | $f(n)\in \Theta(n^{\log_b a} \log^k n)$ | $T(n) \in \Theta(n^{\log_b a}\log^{k+1} n)$
+3 | $f(n)\in \Omega(n^{\log_b a+\epsilon})$ | $T(n) \in \Theta(f(n))$
+
+##### Eksempel
+
+$$T(n)=64\cdot T(n/4)+3n^3+7n$$
+
+1. $a = 64$  
+  $b=4$  
+  $f(n)=3n^3+7n$
+2. $\log_4(64) = 3$
+3. _TBA_
+
 ### Klasser av input
 
 - **Best, verst og forventet**
