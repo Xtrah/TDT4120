@@ -114,11 +114,15 @@ Tilfelle | Krav | Løsning
 
 $$T(n)=64\cdot T(n/4)+3n^3+7n$$
 
-1. $a = 64$  
-  $b=4$  
-  $f(n)=3n^3+7n$
-2. $\log_4(64) = 3$
-3. _TBA_
+1. $a = 64$, $b=4$, $f(n)=3n^3+7n$
+2. $\log_4(64) = 3 = d$
+3. Finn graden av $f(n)$ som her er $3=c$.
+4. Vurder forholdet mellom $c$ og $d$. I vårt tilfelle er $d=c$ og dermed er det tilfelle 2 med $\Theta$. Hvis $d>c$, hadde det vært tilfelle 1 med $O$. Hvis $d<c$ hadde det vært tilfelle 3 med $\Omega$.
+5. Hvordan vi da finner løsningen baserer seg på tilfellet. Formatet på kjøretiden vår kommer dermed til å være på formatet til løsningen på tilfelle 2.
+
+$$T(n) \in \Theta(n^{\log_b a}\log^{k+1}(n))$$
+$$T(n) \in \Theta(n^{\log_4 64}\log^{0+1}(n))$$
+$$T(n) \in \Theta(n^{3}\log^{}(n))$$
 
 ### Klasser av input
 
