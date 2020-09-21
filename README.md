@@ -1,44 +1,42 @@
 # TDT4120 Algoritmer og datastrukturer
 
-## Hovedbudskap
+## Overordnede læringsmål i faget
 
-- Bruke force er ofte helt ubrukelig
-- Dekomponer til mindre instanser og bruk de til å finne en løsning
-
-### Overordnede læringsmål i faget
-
-- Kunnskap om
+- Ha kunnskap om
   - et bredt spekter av etablerte algoritmer og datastruktuer
   - klassiske algoritmiske problemer med kjente effektive løsninger
   - komplekse algoritmer uten kjente effektive løsninger
-- Kunne
+- Ha ferdigheter for å
   - analysere algoritmers korrekthet og kjøretid
   - formulere problemer som kan løses av algoritmer
   - konstruere nye effektive algoritmer
-- Være i stand til
-  - å bruke eksisterende algoritmer og programvare på nye problemer
+- Være i stand til å
+  - bruke eksisterende algoritmer og programvare på nye problemer
   - utvikle nye løsninger på praktiske algoritmiske problemstillinger
-- Ved hver algoritme skal man kunne
+- Ved hver algoritme skal man
   - kjenne til den formelle definisjonen av det generelle problemet algoritmen løser
   - kjenne til eventuelle tilleggskrav den stiller for å være korrekt
   - vite hvordan den oppfører seg, kunne utføre den, trinn for trinn
   - forstå korrekthetsbeviset; hvordan og hvorfor virker det egentlig?
   - kjenne til eventuelle styrker og svakheter sammenlignet med andre
   - kjenne til kjøretiden under ulike omstendigheter, og forstå utregningen
-- Ved hver datastruktur skal man kunne
+- Ved hver datastruktur skal man
   - Forstå algoritmene for de ulike operasjonene på strukturen
   - Forstå hvordan strukturen representeres i minnet
 - Ved hvert problem skal man kunne
   - angi presist hva input er
   - angi presist hva output er og hvilke egenskaper det må ha
 
-## Problemer og algoritmer
+## Hva er algoritmer?
+
+- Bruke force er ofte helt ubrukelig
+- Dekomponer til mindre instanser og bruk de til å finne en løsning
+
+En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp flere **instanser**.
 
 ### Kjøretid
 
-Et mål på hvor effektiv algoritmen er og det viktigste når man skal analysere alle algoritmer. Vi trenger å beregne kjøretider fordi vi har en begrensning på hvor raske og hvor mye lagringsplass en datamaskin har tilgjengelig. Kjøretiden er det *asymptotiske forholdet mellom størrelsen på problemet og hvor lang tid det vil ta å løse det*.  
-
-#### Hva er $n$?
+Et mål på hvor effektiv algoritmen er det viktigste når man skal analysere alle algoritmer. Vi trenger å beregne kjøretider fordi vi har en begrensning på hvor raske og hvor mye lagringsplass en datamaskin har tilgjengelig. Kjøretiden er det *asymptotiske forholdet mellom størrelsen på problemet og hvor lang tid det vil ta å løse det*.
 
 - Problem: Relasjon mellom input og output
 - Instans: En bestemt input
@@ -50,8 +48,12 @@ Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en **g
 
 #### Asymptotisk notasjon
 
+<!--
+Markdown symboler: 
+<https://gist.github.com/LKS90/252ac41bd4a173be35b0> 
+-->
+
 - Dropp konstanter og lavere ordens ledd
-- Markdown symboler: <https://gist.github.com/LKS90/252ac41bd4a173be35b0>
 - $\omega$ $\leftrightarrow$ $>$ (lille omega)
 - $\Omega$  $\leftrightarrow$ $\ge$ (store omega, nedre grense)
 - $\Theta$  $\leftrightarrow$ $=$ (store theta, øvre og nedre grense)
@@ -161,7 +163,7 @@ Syntese: Bygg løsning av hypotetiske delløsninger
 
 ## Datastrukturer
 
-For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig.
+For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig. En **datastruktur** er en måte å organisere og organisere data for å muliggjøre tilgang og modifikasjon. Det er ingen universal datastruktur som fungerer godt for alle formål.
 
 ### Stakker og køer (stacks and queues)
 
@@ -174,9 +176,7 @@ Stakker og køer er dynamiske sett med 2 viktige metoder, `PUSH` og `POP`, som h
 
 ### Lenkede lister
 
-En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element peker videre på det neste elementet. I en dobbel-lenket liste peker det også på det forrige elementet.
-
-#### Kjøretider
+En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element peker videre på det neste elementet. I en dobbel-lenket liste peker hvert element også på det forrige elementet.
 
 Handling | Kjøretid
 ---------|--------
