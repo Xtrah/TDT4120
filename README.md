@@ -106,10 +106,10 @@ $$a\ge1,\  b>1$$
 Tilfelle | Krav | Løsning
 :----:|:----:|:----:
 1 | $f(n)\in O(n^{\log_b a-\epsilon})$ | $T(n) \in \Theta(n^{\log_b a})$
-2 | $f(n)\in \Theta(n^{\log_b a} \log^k n)$ | $T(n) \in \Theta(n^{\log_b a}\log^{k+1} n)$
+2 | $f(n)\in \Theta(n^{\log_b a} \log^k n)$ | $T(n) \in \Theta(n^{\log_b a}\log n)$
 3 | $f(n)\in \Omega(n^{\log_b a+\epsilon})$ | $T(n) \in \Theta(f(n))$
 
-##### Eksempel
+##### Eksempel masterteorem 1
 
 $$T(n)=64\cdot T(n/4)+3n^3+7n$$
 
@@ -122,6 +122,50 @@ $$T(n)=64\cdot T(n/4)+3n^3+7n$$
 $$T(n) \in \Theta(n^{\log_b a}\log^{k+1}(n))$$
 $$T(n) \in \Theta(n^{\log_4 64}\log^{0+1}(n))$$
 $$T(n) \in \Theta(n^{3}\log^{}(n))$$
+
+##### Eksempel masterteorem 2
+
+```python
+def FUNCTION-A(n):
+  FUNCTION-C(n)
+  if n > 1:
+    FUNCTION-A(n/3)
+    FUNCTION-B(n-2)
+
+def FUNCTION-B(n):
+  FUNCTION-C(n)
+  if n > 1:
+    FUNCTION-A(n/3)
+```
+
+Funksjonen $FUNCTION-C$ har kjøretid $\theta(\sqrt(n))$. Hva blir kjøretiden til funksjonen $FUNCTION-A$, som funksjon av $n$?
+
+Vi gjenkjenner rekurrensen på følgende måte:
+
+1. Prøv å formulere funksjon A som en rekurrens ved å ta en operasjon av gangen:
+    - `FUNCTION-C(n)`: Legg til Funksjon-C(n)
+    - `if n > 1`: If-statements med en sjekk ansees som 1 steg.
+    - `FUNCTION-A(n/3)`: For rekursive kall, i dette tilfellet der funksjon A kaller seg selv, vil vi sette inn $T_a(n/3)$.
+    - `FUNCTION-B(n-2)`: Hva med parameteren $n-2$? Dette er en konstant endring og trenger dermed ikke å vurderes her. Sett inn funksjon C og A for B.
+
+    Dette gir oss: $$T_A(n) = T_C(n)+1+T_A(n/3)+T_C(n)+1+T_A(n/3)$$
+
+    Bytt så ut $T_C(n) = \theta(\sqrt(n))$
+
+    $$T_A(n) = \sqrt(n)+1+T_A(n/3)+\sqrt(n)+1+T_A(n/3)$$
+    $$T_A(n) = 2*T_A(n/3)+2*\sqrt(n)+2$$
+
+2. Bruk deretter masterteoremet:
+    - $a = 2$, $b=3$, $f(n)=2*sqrt(n)+2$
+    - $\log_3(2) \approx 0.95 = d$
+    - Finn graden av $f(n)$ som her er $1/2=c$. (*Merk:* $\sqrt(n) = n^(1/2)$).
+    - Vurder forholdet mellom $c$ og $d$. I vårt tilfelle er $d>c$ og dermed er det tilfelle 1 med $\Omega$.
+    - Hvordan vi da finner løsningen baserer seg på tilfellet. Formatet på kjøretiden vår kommer dermed til å være på formatet til løsningen på tilfelle 2.
+
+Dette gir oss følgende
+
+$$T(n) \in \Theta(n^{\log_b a})$$
+$$T(n) \in \Theta(n^{\log_3 2})$$
 
 ### Klasser av input
 
@@ -158,6 +202,10 @@ Syntese: Bygg løsning av hypotetiske delløsninger
 - Initialisering: inv. er sann ved start
 - Vedlikehold i hver iterasjon
 
+### In-place begrepet
+
+En in-place algoritme vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.
+
 ## Datastrukturer
 
 For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig. En **datastruktur** er en måte å organisere og organisere data for å muliggjøre tilgang og modifikasjon. Det er ingen universal datastruktur som fungerer godt for alle formål.
@@ -189,3 +237,4 @@ I stedet for å lete gjennom en liste, som kan ta $O(n)$ i verste fall, eller en
 Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vil flere ulike faktiske nøkler gi samme hashverdi.
 
 ### Dynamiske tabeller
+
