@@ -70,7 +70,7 @@ $$O(n)+\Omega(n)=\Omega(n)$$
 
 Uansett hvilken funksjon vi har fra $O(n)$ og $\Omega(n)$, om vi legger dem sammen vil den resulterende funksjonen tilhøre klassen $\Omega(n)$. Det vil ikke påvirke resultatet å legge til flere øvre grenser $O(anything)$.
 
-Uformelt kan man si "Funksjonen er minst $n$". Da kan man like gjerne si "Funksjonen er minst $n$ pluss maks $n^2$". Det endrer ingenting. Det blir som om jeg sier «Emnet har minst 1000 studenter og så maks 200 studenter til». Det eneste jeg vet da er at det er minst 1000 studenter. Og jeg kan like gjerne uttrykke det som «Emnet har minst 1000 studenter og så maks 2.000.000 studenter til». Det er fortsatt korrekt. Jeg vet fortsatt bare at emnet har minst 1000 studenter. _[(Piazza H20)](https://piazza.com/class/kdptcutti24r?cid=21_f1)_
+Uformelt kan man si "Funksjonen er minst $n$". Da kan man like gjerne si "Funksjonen er minst $n$ pluss maks $n^2$". Det endrer ingenting. Det blir som om vi sier «Emnet har minst 1000 studenter og så maks 200 studenter til». Det eneste vi vet da er at det er minst 1000 studenter. Og vi kan like gjerne uttrykke det som «Emnet har minst 1000 studenter og så maks 2.000.000 studenter til». Det er fortsatt korrekt. Vi vet fortsatt bare at emnet har minst 1000 studenter. _[(Piazza H20)](https://piazza.com/class/kdptcutti24r?cid=21_f1)_
 
 ###### Eksempel 2
 
@@ -100,8 +100,9 @@ $$T(n)=aT(^n/_b) + f(n)$$
 $$a\ge1,\  b>1$$
 
 1. Identifiser $a, b, f(n)$
-2. Regn ut $\log_b(a)$
-3. Konsulter tabellen under for å finne ut hvilket tilfelle som gjelder
+2. Regn ut $\log_b(a) = d$ og finn graden av $f(n) = c$
+3. Vurder forholdet mellom $c$ og $d$. Hvis $d>c$ gjelder tilfelle 1 med $O$. Hvis $c=d$ gjelder tilfelle 2 med $\Theta$. Hvis $d<c$ gjelder tilfelle 3 med $\Omega$.
+4. Konsulter tabellen under med tilfeller
 
 Tilfelle | Krav | Løsning
 :----:|:----:|:----:
@@ -116,7 +117,7 @@ $$T(n)=64\cdot T(n/4)+3n^3+7n$$
 1. $a = 64$, $b=4$, $f(n)=3n^3+7n$
 2. $\log_4(64) = 3 = d$
 3. Finn graden av $f(n)$ som her er $3=c$.
-4. Vurder forholdet mellom $c$ og $d$. I vårt tilfelle er $d=c$ og dermed er det tilfelle 2 med $\Theta$. Hvis $d>c$, hadde det vært tilfelle 1 med $O$. Hvis $d<c$ hadde det vært tilfelle 3 med $\Omega$.
+4. I vårt tilfelle er $d=c$ og dermed er det tilfelle 2 med $\Theta$.
 5. Hvordan vi da finner løsningen baserer seg på tilfellet. Formatet på kjøretiden vår kommer dermed til å være på formatet til løsningen på tilfelle 2.
 
 $$T(n) \in \Theta(n^{\log_b a}\log^{k+1}(n))$$
@@ -215,8 +216,39 @@ For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere o
 
 Stakker og køer er dynamiske sett med 2 viktige metoder, `PUSH` og `POP`, som hvv. legger til og fjerner elementer.
 
-- En **stack** har en "Last In First Out" (LIFO) struktur. `POP` returnerer elementet som **sist** ble satt inn.
-- En **kø** har en "First In First Out" (FIFO) struktur. `POP` returnerer elementet som **først** ble satt inn.
+En **stack** har en "Last In First Out" (LIFO) struktur. `POP` returnerer elementet som **sist** ble satt inn.
+
+```python
+class Stack:
+     def __init__(self):
+         self.l = []
+
+     def isEmpty(self):
+         return self.l == []
+
+     def push(self, item):
+         self.l.append(item)
+
+     def pop(self):
+         return self.l.pop()
+```
+
+En **kø** har en "First In First Out" (FIFO) struktur. `POP` returnerer elementet som **først** ble satt inn med $O(1)$.
+
+```python
+class Queue:
+    def __init__(self):
+        self.l = []
+
+    def isEmpty(self):
+        return self.l == []
+
+    def enqueue(self, item):
+        self.l.insert(0,item)
+
+    def dequeue(self):
+        return self.l.pop()
+```
 
 ![Illustrasjon stakker og køer](https://i.imgur.com/phsBXVL.png)
 
@@ -224,12 +256,14 @@ Stakker og køer er dynamiske sett med 2 viktige metoder, `PUSH` og `POP`, som h
 
 En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element peker videre på det neste elementet. I en dobbel-lenket liste peker hvert element også på det forrige elementet.
 
-Handling | Kjøretid
+Handling | Kjøretid enkel liste
 ---------|--------
 Innsetting på starten | $O(1)$
 Innsetting på slutten | $O(n)$
 Oppslag | $O(n)$
-Slette element | oppslagstid $+\ O(1)$
+Slette element | oppslagstid $+\ O(1) = O(n)$
+
+I en dobbel lenket liste gjøres innsetting på $O(1)$ da man kun trenger å endre `.prev` og `.next` til de nye naboene.
 
 ### Hashtabeller
 
