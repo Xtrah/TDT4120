@@ -138,12 +138,12 @@ def FUNCTION-B(n):
     FUNCTION-A(n/3)
 ```
 
-Funksjonen $FUNCTION-C$ har kjøretid $\theta(\sqrt(n))$. Hva blir kjøretiden til funksjonen $FUNCTION-A$, som funksjon av $n$?
+Funksjonen `FUNCTION-C` har kjøretid $\theta(\sqrt(n))$. Hva blir kjøretiden til funksjonen `FUNCTION-A`, som funksjon av $n$?
 
 Vi gjenkjenner rekurrensen på følgende måte:
 
-1. Prøv å formulere funksjon A som en rekurrens ved å ta en operasjon av gangen:
-    - `FUNCTION-C(n)`: Legg til Funksjon-C(n)
+1. Prøv å formulere funksjon A som en rekurrens ved å vurdere en operasjon av gangen:
+    - `FUNCTION-C(n)`: Legg til `FUNCTION-C(n)`
     - `if n > 1`: If-statements med en sjekk ansees som 1 steg.
     - `FUNCTION-A(n/3)`: For rekursive kall, i dette tilfellet der funksjon A kaller seg selv, vil vi sette inn $T_a(n/3)$.
     - `FUNCTION-B(n-2)`: Hva med parameteren $n-2$? Dette er en konstant endring og trenger dermed ikke å vurderes her. Sett inn funksjon C og A for B.
@@ -153,12 +153,13 @@ Vi gjenkjenner rekurrensen på følgende måte:
     Bytt så ut $T_C(n) = \theta(\sqrt(n))$
 
     $$T_A(n) = \sqrt(n)+1+T_A(n/3)+\sqrt(n)+1+T_A(n/3)$$
-    $$T_A(n) = 2*T_A(n/3)+2*\sqrt(n)+2$$
+
+    $$T_A(n) = 2\cdot T_A(n/3)+2\cdot \sqrt(n)+2$$
 
 2. Bruk deretter masterteoremet:
-    - $a = 2$, $b=3$, $f(n)=2*sqrt(n)+2$
+    - $a = 2$, $b=3$, $f(n)=2\cdot sqrt(n)+2$
     - $\log_3(2) \approx 0.95 = d$
-    - Finn graden av $f(n)$ som her er $1/2=c$. (*Merk:* $\sqrt(n) = n^(1/2)$).
+    - Finn graden av $f(n)$ som her er $1/2=c$. *Merk:* $\sqrt(n) = n^{1/2}$.
     - Vurder forholdet mellom $c$ og $d$. I vårt tilfelle er $d>c$ og dermed er det tilfelle 1 med $\Omega$.
     - Hvordan vi da finner løsningen baserer seg på tilfellet. Formatet på kjøretiden vår kommer dermed til å være på formatet til løsningen på tilfelle 2.
 
@@ -237,4 +238,3 @@ I stedet for å lete gjennom en liste, som kan ta $O(n)$ i verste fall, eller en
 Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vil flere ulike faktiske nøkler gi samme hashverdi.
 
 ### Dynamiske tabeller
-
