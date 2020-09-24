@@ -171,7 +171,7 @@ $$T(n) \in \Theta(n^{\log_3 2})$$
 
 ### Klasser av input
 
-- **Best, verst og forventet**
+- <span style="color: green; font-weight: bold;"> Best </span>, <span style="color: red; font-weight: bold;"> verst </span> og <span style="color: yellow; "> forventet </span>
 - Kjøretid: Funksjon av problemstørrelse
 - Best-case: Beste mulige kjøretid for en gitt størrelse
 - Average-case: Forventet, gitt en sannsynlighetsfordeling
