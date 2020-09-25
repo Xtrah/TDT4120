@@ -272,3 +272,9 @@ I stedet for å lete gjennom en liste, som kan ta $O(n)$ i verste fall, eller en
 Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vil flere ulike faktiske nøkler gi samme hashverdi.
 
 ### Dynamiske tabeller
+
+### Tre
+
+#### Hauger (heaps)
+
+#### Binære søketrær
