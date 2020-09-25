@@ -171,7 +171,7 @@ $$T(n) \in \Theta(n^{\log_3 2})$$
 
 ### Klasser av input
 
-- <span style="color: green; font-weight: bold;"> Best </span>, <span style="color: red; font-weight: bold;"> verst </span> og <span style="color: yellow; "> forventet </span>
+- Best, verst og forventet_
 - Kjøretid: Funksjon av problemstørrelse
 - Best-case: Beste mulige kjøretid for en gitt størrelse
 - Average-case: Forventet, gitt en sannsynlighetsfordeling
@@ -254,7 +254,7 @@ class Queue:
 
 ### Lenkede lister
 
-En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element peker videre på det neste elementet. I en dobbel-lenket liste peker hvert element også på det forrige elementet.
+En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element i lista er en node med en verdi og en peker som peker videre på det neste elementet. I en dobbel-lenket liste peker hver node/element også på det forrige elementet.
 
 Handling | Kjøretid enkel liste
 ---------|--------
@@ -273,8 +273,56 @@ Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vi
 
 ### Dynamiske tabeller
 
-### Tre
+### Grafer og trær
+
+En graf er en matematisk modell over parvise relasjoner mellom objekter, altså flere små relasjoner.
+
+Et tre er en begrenset form av en graf. Trær har en retning (forelder-/barn-forhold) og inneholder ikke kretser.
+
+#### Indeksering
+
+Indekseringen av elementer går fra topp-til-bunn, fra venstre til høyre. Det betyr at topp-elementet alltid har indeks 0, mens det mest høyrestående elementet på det laveste nivået har høyest indeks.
+
+Det øverste elementet (med index 0) er rot-noden.
+
+De midterste elementene (som har både foreldere og barn) regnes som **interne noder**.
+
+De mest dyptstående elementene er **løv-noder**. De har ingen barn.
+
+#### Dybde og høyde
+
+Når man snakker om trær er det vanlig å bruke terminologi som beskriver avstanden fra roten:
+
+- Avstanden mellom roten og et vilkårlig element kalles **dybde**.
+- Avstanden mellom roten og det dypeste elementet kalles **høyden** til treet.
 
 #### Hauger (heaps)
 
-#### Binære søketrær
+![Illustrasjon heaps](https://i.imgur.com/0yYXmiC.png)
+
+En heap er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node. Avhengig av om heapen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert. Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i haugen.
+
+![Illustrasjon av sortering](https://i.imgur.com/zhgXzNZ.jpg)
+
+1. Den originale haugen
+2. Element legges til
+3. Elementet bytter plass med forelder-noden
+
+#### Binære trær og søketrær
+
+Et tre er binærtre dersom hver node har 0-2 barn. I et binært søketre har hvert element en spesifikk orden. Barnet til venstre vil alltid være mindre enn rotelementet, og barnet til høyre vil være større.
+
+Denne ordenen gjør traversering/søking svært effektivt.
+
+##### Søking i et binært søketre i forhold til i en array
+
+![Illustrasjon søking](https://i.imgur.com/PnplIZP.gif)  
+_Det binære søketreet finner elementet fortere ved at algoritmen kan eliminere elementer som ligger langt unna mål-elementet. Man kan sammenligne denne strategien med binærsøk hvor man halverer antall elementer man vurderer for hver iterasjon._
+
+##### Hvordan en sortert array kan bli omgjort til et søketre
+
+![Illustrajon liste til binært søketre](https://i.imgur.com/bDAYNEz.gif)
+
+#### Binære hauger (binary heaps)
+
+_En binær haug kan aldri være et binært søketre._ Dette er fordi en binær haug sorterer alle elementene sine slik at forelderen alltid er større/mindre enn barne-noden. I et binært søketre er alltid venstre barne-node mindre, mens høyre barne-node alltid er større. Dermed, siden sorteringsstrukturen er så vidt forskjellig, vil det aldri være mulig at du får et tre som kan være begge samtidig.
