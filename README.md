@@ -1,5 +1,7 @@
 # TDT4120 Algoritmer og datastrukturer
 
+<!-- TODO: Innholdsfortegnelse -->
+
 ## Overordnede læringsmål i faget
 
 - Ha kunnskap om
@@ -48,11 +50,6 @@ Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en **g
 
 #### Asymptotisk notasjon
 
-<!--
-Markdown symboler: 
-<https://gist.github.com/LKS90/252ac41bd4a173be35b0> 
--->
-
 - Dropp konstanter og lavere ordens ledd
 - $\omega$ $\leftrightarrow$ $>$ (lille omega)
 - $\Omega$  $\leftrightarrow$ $\ge$ (store omega, nedre grense)
@@ -62,7 +59,7 @@ Markdown symboler:
 
 ##### Forenkling av asymptotisk notasjon
 
-Generelt er ideen at et uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$. Forenkling bør medføre minst mulig tap av presisjon. Med _enklere_ menes kortere/færre tegn e.l. I asymptotisk notasjon er sum det samme som maksimum, og man må velge uttrykk til høyre som ikke har strengere øvre og/eller nedre grenser enn venstresiden. Summer som inneholder et ledd med kun en nedre grense kan ikke ha noen øvre grense totalt sett. Ledd som blir beskrevet kun med nedre grense f.eks  $\Omega(n)$ kan ha en ukjent øvre grense. Denne ukjente øvre grensen kan være uendelig stor. Vi må derfor ha dette i bakhodet når vi skal forenkle sammensatte uttrykk slik vi gjør i eksempel 1 og 2.
+Generelt er ideen at et uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$. Forenkling bør medføre minst mulig tap av presisjon. Med _enklere_ menes kortere/færre tegn eller lignende. I asymptotisk notasjon er sum det samme som maksimum, og man må velge uttrykk til høyre som ikke har strengere øvre og/eller nedre grenser enn venstresiden. Summer som inneholder et ledd med kun en nedre grense kan ikke ha noen øvre grense totalt sett. Ledd som blir beskrevet kun med nedre grense f.eks  $\Omega(n)$ kan ha en ukjent øvre grense. Denne ukjente øvre grensen kan være uendelig stor. Vi må derfor ha dette i bakhodet når vi skal forenkle sammensatte uttrykk slik vi gjør i eksempel 1 og 2.
 
 ###### Eksempel 1
 
@@ -139,7 +136,7 @@ def FUNCTION-B(n):
     FUNCTION-A(n/3)
 ```
 
-Funksjonen `FUNCTION-C` har kjøretid $\theta(\sqrt(n))$. Hva blir kjøretiden til funksjonen `FUNCTION-A`, som funksjon av $n$?
+Funksjonen `FUNCTION-C` har kjøretid $\Theta(\sqrt(n))$. Hva blir kjøretiden til funksjonen `FUNCTION-A`, som funksjon av $n$?
 
 Vi gjenkjenner rekurrensen på følgende måte:
 
@@ -151,7 +148,7 @@ Vi gjenkjenner rekurrensen på følgende måte:
 
     Dette gir oss: $$T_A(n) = T_C(n)+1+T_A(n/3)+T_C(n)+1+T_A(n/3)$$
 
-    Bytt så ut $T_C(n) = \theta(\sqrt(n))$
+    Bytt så ut $T_C(n) = \Theta(\sqrt(n))$
 
     $$T_A(n) = \sqrt(n)+1+T_A(n/3)+\sqrt(n)+1+T_A(n/3)$$
 
@@ -309,7 +306,7 @@ Når man snakker om trær er det vanlig å bruke terminologi som beskriver avsta
 
 ![Illustrasjon heaps](https://i.imgur.com/0yYXmiC.png)
 
-En heap er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node. Avhengig av om heapen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert. Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i haugen.
+En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node (parent). Avhengig av om haugen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert. Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i haugen.
 
 ![Illustrasjon av sortering](https://i.imgur.com/zhgXzNZ.jpg)
 
