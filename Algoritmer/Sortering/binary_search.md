@@ -9,12 +9,14 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+Binary search er en av de mest effektive metodene å søke igjennom en sortert liste.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
-<!-- Eks: Binary search må ha en sortert liste -->
+Binary search krever en sortert liste.
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
@@ -25,6 +27,26 @@
 ## Styrker og svakheter sammenlignet med andre
 
 ## Kjøretid og utregning
-<!-- Under ulike omstendigheter -->
+
+Best case | Average case | Worst case
+---------|----------|---------
+ $O(1)$ | $O(\log n)$ | $O(\log n)$
 
 ## Python kodeeksempel
+
+```python
+def binary_search(li, value, start=0):
+    # Dersom lista er tom, kan vi ikke finne elementet
+    if not li:
+        return -1
+    middle = len(li) // 2
+    middle_value = li[middle]
+    if value == middle_value:
+        return start + middle
+    elif value < middle_value:
+        # Første halvdel
+        return binary_search(li[:middle], value, start)
+    elif value > middle_value:
+        # Siste halvdel
+        return binary_search(li[middle + 1:], value, start + middle + 1)
+```

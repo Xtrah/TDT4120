@@ -32,3 +32,13 @@
 <!-- Under ulike omstendigheter -->
 
 ## Python kodeeksempel
+
+```python
+def quicksort(li):
+    if len(li) < 2:
+        return li
+    pivot = li[0]
+    lo = [x for x in li if x < pivot]
+    hi = [x for x in li if x > pivot]
+    return quicksort(lo) + pivot + quicksort(hi)
+```
