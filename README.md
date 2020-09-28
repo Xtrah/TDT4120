@@ -208,9 +208,18 @@ Syntese: Bygg løsning av hypotetiske delløsninger
 
 En in-place algoritme vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.
 
+### Stabile sorteringsalgoritmer
+
+En sorteringsalgoritme kan sies å være stabil om rekkefølgen av like elementer i listen blir bevart etter sortering. For eksempel om vi har lista  
+$$[B1, C1, C2, A1]$$
+og sorterer den, får vi  
+$$[A1, B1, C1, C2]$$.
+
+
 ## Datastrukturer
 
 For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig. En **datastruktur** er en måte å organisere og organisere data for å muliggjøre tilgang og modifikasjon. Det er ingen universal datastruktur som fungerer godt for alle formål.
+
 
 ### Stakker og køer (stacks and queues)
 
@@ -327,9 +336,3 @@ _Det binære søketreet finner elementet fortere ved at algoritmen kan eliminere
 
 _En binær haug kan aldri være et binært søketre._ Dette er fordi en binær haug sorterer alle elementene sine slik at forelderen alltid er større/mindre enn barne-noden. I et binært søketre er alltid venstre barne-node mindre, mens høyre barne-node alltid er større. Dermed, siden sorteringsstrukturen er så vidt forskjellig, vil det aldri være mulig at du får et tre som kan være begge samtidig.
 
-### Stabile sorteringsalgoritmer
-
-En sorteringsalgoritme kan sies å være stabil om rekkefølgen av like elementer i listen blir bevart etter sortering. For eksempel om vi har lista  
-$$[B1, C1, C2, A1]$$
-og sorterer den, får vi  
-$$[A1, B1, C1, C2]$$.
