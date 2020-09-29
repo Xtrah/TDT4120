@@ -2,6 +2,10 @@
 
 <!-- TODO: Innholdsfortegnelse -->
 
+- [Hva er algoritmer?](#hva-er-algoritmer)
+- [Datastrukturer](#datastrukturer)
+- [Algoritmer](algoritmer/)
+
 ## Overordnede læringsmål i faget
 
 - Ha kunnskap om
