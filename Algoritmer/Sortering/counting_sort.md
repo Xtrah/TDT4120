@@ -9,11 +9,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-## Quick-facts:
-
-* Stabil
-* Sorterer basert på at alle input-elementene *n* er heltall med en range mellom 0 og *k*.
-* Er mest effektiv når nøkkelvariasjonen ikke er særlig større enn mengden verdier (*k* < *n*)
+Counting sort er en effektiv sorteringsalgoritme om det er mange elementer, men få forskjellige elementer.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -33,7 +29,8 @@
 ## Styrker og svakheter sammenlignet med andre
 
 * Stabil
-* **Counting sort** slår **Radix sort** hvis *n* >> *k*. (_Dette er også det tilfellet hvor algoritmen er mest effektiv._)
+* **Counting sort** slår **radix sort** hvis antallet elementer $n \gg k$ forskjellige elementer. (_Dette er også det tilfellet hvor algoritmen er mest effektiv._)
+* Sorterer basert på at alle input-elementene $n$ er heltall med en range mellom $0$ og $k$.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->

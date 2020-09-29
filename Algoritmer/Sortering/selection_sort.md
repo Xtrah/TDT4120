@@ -1,4 +1,4 @@
-# Radix sort
+# Selection sort
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
@@ -9,14 +9,14 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+En tidkrevende sorteringsalgoritme som søker gjennom hele lista og flytter det minste elementet hver gang.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
 <!-- Eks: Binary search må ha en sortert liste -->
-
-* Må ha en stabil sub-algoritme for å fungere. Dvs at algoritmen som sorterer underlistene er stabil.
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
@@ -26,9 +26,11 @@
 
 ## Styrker og svakheter sammenlignet med andre
 
-* **Radix sort** slår **counting sort** hvis antallet elementer $n \ll k$ forskjellige elementer.
-
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+Best case | Average case | Worst case
+---------|----------|---------
+ $\Omega(n^2)$ | $\Theta(n^2)$ | $O(n^2)$
 
 ## Python kodeeksempel

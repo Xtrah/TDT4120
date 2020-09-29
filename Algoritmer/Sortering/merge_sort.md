@@ -22,23 +22,31 @@ Output: En permutasjon (omorganisering) av input sekvensen slik at $(a'_1 \leq a
 
 ## Trinn for trinn
 
-1. Del den usorterte listen inn i $n$ del-lister, som alle inneholder ett element. En liste med ett element er definert som sortert.
-2. Parvis slå sammen de sorterte del-listene til nye sorterte del-lister til det er bare en liste igjen, som vil da være den sorterte listen.
+1. Splitt den $n$ lange sekvensen til to subsekvenser med $n/2$ elementer hver.
+2. Sorter subsekvensene rekursivt ved bruk av merge sort.
+3. Kombiner (merge) de to sorterte subsekvensene parvis sammen for å produsere en sortert output.
 
 ## Korrekthetsbevis
 <!-- TBA -->
 
 ## Styrker og svakheter sammenlignet med andre
 
+Merge sort lager en kopi av hele sekvensen som skal sorteres, med en øvre og en nedre halvdel. Da den kopierer mer enn et konstant nummer av elementer på en gang, merge sort er **ikke in-place**.
+
 ## Kjøretid og utregning
 
 Kilde: side 36, Introduction to Algorithms
 
-I utgangspunktet vil merge sort fungere for både partalls- og oddetallslister, men for enkelhets skyld tar kun utregningen hvor vi antar listen kan deles på 2, slik at hver påfølgende liste er $n/2$ stor.
+<!-- Utregning for Merge? -->
+Det er gitt at `Merge` bruker $\Theta(n)$ for å slå sammen $n$ elementer.
 
-1. Splitt: Finn midten av av inneværende liste, $O(1)$  
+I utgangspunktet vil merge sort fungere for både partalls- og oddetallslister, men for enkelhets skyld tar kun utregningen hvor vi antar listen kan deles på 2, slik at hver påfølgende liste er $n/2$ stor. Rekurrensen $T(n)$, worst-case for merge sort hvor $n > 1$, blir da:
+
+1. Splitt: Finn midten av av inneværende liste tar konstant tid uansett størrelse, $O(1)$  
 2. Hersk: Rekursivt løs 2 underproblemer, hver av størrelse $n/2$, som legger på $2T(n/2)$.
-3. _TBA_
+3. Kombiner: `Merge` prosedyren slår sammen $n$ elementer, og bruker $\Theta(n)$.
+4. Dermed har vi rekurrensen $T(n)=2T(n/2)+n$
+5. Ved å bruke masterteoremet finner vi kjøretiden $O(n \log n)$
 
 Best case | Average case | Worst case
 ---------|----------|---------

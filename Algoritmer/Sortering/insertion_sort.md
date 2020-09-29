@@ -26,6 +26,8 @@ En effektiv algoritme for å sortere et lavt antall elementer.
 
 ## Styrker og svakheter sammenlignet med andre
 
+Insertion sort er in-place da den aldri lager en kopi av sekvensen under kjøringen, så den er lite plasskrevende.
+
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 | Best case | Average case | Worst case | Space Complexity Worst Case | Stable |
