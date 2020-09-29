@@ -4,9 +4,10 @@
 
 - [Hva er algoritmer?](#hva-er-algoritmer)
 - [Datastrukturer](#datastrukturer)
-- [Algoritmer](algoritmer/)
+- [Algoritmer](Algoritmer/)
 
-## Overordnede læringsmål i faget
+<details>
+<summary>Overordnede læringsmål i faget</summary>
 
 - Ha kunnskap om
   - et bredt spekter av etablerte algoritmer og datastruktuer
@@ -32,6 +33,8 @@
 - Ved hvert problem skal man kunne
   - angi presist hva input er
   - angi presist hva output er og hvilke egenskaper det må ha
+
+</details>
 
 ## Hva er algoritmer?
 
