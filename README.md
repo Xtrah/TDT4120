@@ -309,12 +309,11 @@ Når man snakker om trær er det vanlig å bruke terminologi som beskriver avsta
 
 En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node (parent). Avhengig av om haugen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert. Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i haugen.
 
-En haug er **komplett** dersom alle interne noder har to barn og alle løvnoder er på samme nivå. Om antallet noder er $2^k-1$, for en eller annen $k$, så er treet som haugen representerer komplett.
-<!-- TODO: Hva er k her? -->
+En haug er **komplett** dersom alle interne noder har to barn og alle løvnoder er på samme nivå. Om antallet noder er $2^h-1$, for en eller annen høyde $h$, så er treet som haugen representerer komplett.
 
-<img src="https://i.imgur.com/zhgXzNZ.jpg" alt="Illustrasjon av sortering" width="250"/>
+<img src="https://i.imgur.com/zhgXzNZ.jpg" alt="Illustrasjon av sortering" width="200" style="float:right; margin:1em"/>
 
-1. Den originale haugen
+1. Den originale haugeng
 2. Element legges til
 3. Elementet bytter plass med forelder-noden
 
