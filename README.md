@@ -53,7 +53,15 @@ Et mål på hvor effektiv algoritmen er det viktigste når man skal analysere al
 - Kjøretid: En funksjon av problemstørrelsen; større problemer krever mer tid (men hvor mye?)
 - Eksempel: Hvis vi teller operasjoner, og hver operasjon tar ett mikrosekund, hvor mye rekker vi på ett år?
 
-Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en **grov størrelsesorden**.
+Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en grov størrelsesorden.
+
+#### Klasser av input
+
+- Best, verst og forventet
+- Kjøretid: Funksjon av problemstørrelse
+- Best-case: Beste mulige kjøretid for en gitt størrelse
+- Average-case: Forventet, gitt en sannsynlighetsfordeling
+- **Worst-case: Verste mulige (brukes mest)**
 
 #### Asymptotisk notasjon
 
@@ -149,7 +157,7 @@ Vi gjenkjenner rekurrensen på følgende måte:
 
 1. Prøv å formulere funksjon A som en rekurrens ved å vurdere en operasjon av gangen:
     - `FUNCTION-C(n)`: Legg til `FUNCTION-C(n)`
-    - `if n > 1`: If-statements med en sjekk ansees som 1 steg.
+    - `if n > 1`: If-statements med en sjekk anses som ett steg.
     - `FUNCTION-A(n/3)`: For rekursive kall, i dette tilfellet der funksjon A kaller seg selv, vil vi sette inn $T_a(n/3)$.
     - `FUNCTION-B(n-2)`: Hva med parameteren $n-2$? Dette er en konstant endring og trenger dermed ikke å vurderes her. Sett inn funksjon C og A for B.
 
@@ -162,10 +170,10 @@ Vi gjenkjenner rekurrensen på følgende måte:
     $$T_A(n) = 2\cdot T_A(n/3)+2\cdot \sqrt(n)+2$$
 
 2. Bruk deretter masterteoremet:
-    - $a = 2$, $b=3$, $f(n)=2\cdot sqrt(n)+2$
+    - $a = 2$, $b=3$, $f(n)=2\cdot \sqrt(n)+2$
     - $\log_3(2) \approx 0.95 = d$
     - Finn graden av $f(n)$ som her er $1/2=c$. *Merk:* $\sqrt(n) = n^{1/2}$.
-    - Vurder forholdet mellom $c$ og $d$. I vårt tilfelle er $d>c$ og dermed er det tilfelle 1 med $\Omega$.
+    - Vurder forholdet mellom $c$ og $d$. Her er $d>c$ og dermed er det Masterteorem-tilfelle 1 med $\Omega$.
     - Hvordan vi da finner løsningen baserer seg på tilfellet. Formatet på kjøretiden vår kommer dermed til å være på formatet til løsningen på tilfelle 2.
 
 Dette gir oss følgende
@@ -173,15 +181,8 @@ Dette gir oss følgende
 $$T(n) \in \Theta(n^{\log_b a})$$
 $$T(n) \in \Theta(n^{\log_3 2})$$
 
-### Klasser av input
-
-- Best, verst og forventet_
-- Kjøretid: Funksjon av problemstørrelse
-- Best-case: Beste mulige kjøretid for en gitt størrelse
-- Average-case: Forventet, gitt en sannsynlighetsfordeling
-- **Worst-case: Verste mulige (brukes mest)**
-
 ### Dekomponering/rekursiv dekomponering
+<!-- TODO: Utdyp -->
 
 - Eks: summere elementene i en tabell
 - Rekursjon: summer alle unntatt siste
@@ -196,7 +197,7 @@ $$T(n) \in \Theta(n^{\log_3 2})$$
 - Induksjonstrinn: konstruer fullstendig løsning ut fra del-løsningene
 
 1. Velge vilkårlig heltall å vise for det, da kan det vises for alle (eksempel)
-2. Midlertidig anta P og vis deretter Q - da kan P implisere Q
+2. Midlertidig anta $P$ og vis deretter $Q$ - da kan $P$ implisere $Q$
 
 Tolkning: Hva er relasjonen mellom input og output?  
 Analyse: Del en vilkårlig instans i delinstanser  
@@ -210,14 +211,14 @@ Syntese: Bygg løsning av hypotetiske delløsninger
 
 ### In-place begrepet
 
-En in-place algoritme vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.
+En **in-place algoritme** vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.
 
 ### Stabile sorteringsalgoritmer
 
-En sorteringsalgoritme kan sies å være stabil om rekkefølgen av like elementer i listen blir bevart etter sortering. For eksempel om vi har lista  
-$$[B1, C1, C2, A1]$$
-og sorterer den, får vi  
-$$[A1, B1, C1, C2]$$.
+En sorteringsalgoritme kan sies å være **stabil** om rekkefølgen av like elementer i listen blir bevart etter sortering. For eksempel om vi har lista  
+$$[B1, C2, C1, A1]$$
+og sorterer den kun etter bokstaver, vil rekkefølgen for $C$ forbli uforandret:
+$$[A1, B1, C2, C1]$$
 
 ## Datastrukturer
 
