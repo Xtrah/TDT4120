@@ -1,7 +1,8 @@
 {
-    "markdownlint.config": {
-        "MD013": false,
-        "MD026": false,
-        "MD033": false
-    }
+  "markdownlint.config": {
+    "MD013": false, // ignore line length warnings
+    "MD026": false, // ignore trailing punctuations in headings
+    "MD033": false // ignore inline HTML 
+  },
+  "editor.tabSize": 2 // standard Markdown indentation
 }
