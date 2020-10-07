@@ -9,7 +9,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Quick sort er en splitt og hersk algoritme som velger et pivot-element og sorterer resten av elementene basert på om de er høyere eller lavere enn pivot-elementet.
+Quick sort er en sammenligningsbasert splitt og hersk algoritme som velger et pivot-element, og sorterer resten av elementene basert på om de er høyere eller lavere enn pivot-elementet.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -36,9 +36,11 @@ Quick sort er en splitt og hersk algoritme som velger et pivot-element og sorter
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
+Kjøretiden avhenger i stor grad av hvilket element som blir valgt som pivot. Den absolutt verste kjøretiden $n^2$ vil være en revers sortert liste hvor det første (høyeste) elementet blir valgt som pivot. Løsningen her er å velge tilfeldig pivot-element hver gang.
+
 Best case | Average case | Worst case
 ---------|----------|---------
- TBA | TBA | TBA
+ $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$
 
 ## Python kodeeksempel
 
