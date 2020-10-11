@@ -13,6 +13,8 @@ En effektiv algoritme for å sortere et lavt antall elementer.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
+Input: En sekvens med $n$ nummer $(a_1,a_2,...\space a_n)$  
+Output: En permutasjon (omorganisering) av input sekvensen slik at $(a'_1 \leq a'_2 \leq ... a'_n)$
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
@@ -26,7 +28,8 @@ En effektiv algoritme for å sortere et lavt antall elementer.
 
 ## Styrker og svakheter sammenlignet med andre
 
-Insertion sort er in-place da den aldri lager en kopi av sekvensen under kjøringen, så den er lite plasskrevende.
+- In-place: Insertion sort lager aldri en kopi av sekvensen under kjøringen, så den er lite plasskrevende.
+- Stabil: den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->

@@ -18,7 +18,7 @@ Counting sort er en effektiv sorteringsalgoritme om det er mange elementer, men 
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
 <!-- Eks: Binary search må ha en sortert liste -->
 
-* Listen må bestå av heltall-verdier
+- Listen må bestå av heltall-verdier
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
@@ -28,9 +28,9 @@ Counting sort er en effektiv sorteringsalgoritme om det er mange elementer, men 
 
 ## Styrker og svakheter sammenlignet med andre
 
-* Stabil
-* **Counting sort** slår **radix sort** hvis antallet elementer $n \gg k$ forskjellige elementer. (_Dette er også det tilfellet hvor algoritmen er mest effektiv._)
-* Sorterer basert på at alle input-elementene $n$ er heltall med en range mellom $0$ og $k$.
+- **Counting sort** slår **radix sort** hvis antallet elementer $n \gg k$ forskjellige elementer. (_Dette er også det tilfellet hvor algoritmen er mest effektiv._)
+- Sorterer basert på at alle input-elementene $n$ er heltall med en range mellom $0$ og $k$.
+- Stabil: den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->

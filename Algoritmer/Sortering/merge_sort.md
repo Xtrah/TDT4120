@@ -31,7 +31,8 @@ Output: En permutasjon (omorganisering) av input sekvensen slik at $(a'_1 \leq a
 
 ## Styrker og svakheter sammenlignet med andre
 
-Merge sort lager en kopi av hele sekvensen som skal sorteres, med en øvre og en nedre halvdel. Da den kopierer mer enn et konstant nummer av elementer på en gang, merge sort er **ikke in-place**.
+- Ikke in-place: Merge sort lager en kopi av hele sekvensen som skal sorteres, med en øvre og en nedre halvdel. Da den kopierer mer enn et konstant nummer av elementer på en gang, merge sort er **ikke in-place**
+- Stabil: den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
 
 ## Kjøretid og utregning
 

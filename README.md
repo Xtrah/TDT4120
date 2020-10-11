@@ -204,7 +204,7 @@ $$T(n) \in \Theta(n^{\log_3 2})$$
 <!-- TODO: Utdyp -->
 
 - Eks: summere elementene i en tabell
-- Rekursjon: summer alle unntatt siste
+- Rekursjon: summer alle unntatt siste - en funksjon kaller seg selv
 - Grunntilfelle: tom sum er null
 - Induktivt premiss: summen er rett
 - Induksjonstrinn: legg til siste element
@@ -225,6 +225,9 @@ Syntese: Bygg løsning av hypotetiske delløsninger
 #### Induksjon: iterativ utgave
 
 - Invariant: egenskap som ikke endres
+  - Initialize: før start
+  - Vedlikehold: Holder den før/etter interasjon
+  - Terminering: Løkken sier noe nyttig
 - Initialisering: inv. er sann ved start
 - Vedlikehold i hver iterasjon
 
