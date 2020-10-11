@@ -104,6 +104,25 @@ Kompleksitet | Navn | Type
  $\Theta(\lg n)$ | Logaritmisk | Generell
  $\Theta(1)$ | Konstant | Generell
 
+#### Rekurrenser
+
+En type likning - Rekursive likninger
+
+Eksempel på en rekurrens: $T(n)=4T(^n/_2) + n^2$ 
+
+De beskriver f.eks. kjøretiden til rekursive algoritmer. Man *trenger* ikke bruke rekurrenser om det ikke er rekursjon!
+
+Metoder for å regne ut rekurrenser:
+
+- Iterasjonsmetoden (induksjon):
+  - Gjentatt ekspandering av den rekursive forekomsten av funksjonen - det gir oss en sum som vi kan regne ut
+  - Gjør at vi kan "se" et mønster
+- Rekurrenstrær <!--TBA-->
+- Substitusjon:
+  - Bytte ut inputargumenter til noe som gjør rekurrensen enklere å løse.
+- [Masterteoremet](#masterteoremet):
+  - Rekurrensen må være på formen $T(n)=aT(^n/_b) + f(n)$
+
 #### Masterteoremet
 
 Kontekst: Finne kjøretid, ofte for splitt og hersk algoritmer
