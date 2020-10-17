@@ -242,6 +242,25 @@ $$[B1, C2, C1, A1]$$
 og sorterer den kun etter bokstaver, vil rekkefølgen for $C$ forbli uforandret:
 $$[A1, B1, C2, C1]$$
 
+### Dynamisk programmering
+
+Dynamisk programmering, som splitt og hersk algoritmer, løser problemer ved å kombinere løsninger på delproblemer, ofte rekursivt. Hvis delproblemene overlapper kan man lagre svaret fra et delproblem for å løse problemet i andre. Dynamisk programmering gjelder når delproblemenes delproblem er like. Det er i slike tilfeller splitt og hersk algoritmer gjør mer arbeid enn nødvendig, da de vil løse disse problemene på nytt og på nytt, imens dynamisk programmering sørger for at svar fra like del-delproblemer er lagret i en tabell.
+
+Dynamisk programmering skjer typisk i optimaliseringsproblemer.
+
+### Grådige algoritmer
+
+Grådige algoritmer er motpælen til dynamisk programmering. I stedet for å velge forskjellige valg underveis, vil en grådig algoritme velge den løsningen som ser mest lovende ut der og da. For å bruke grådige algoritmer må vi ha:
+
+- Grådighetsegenskapen: vi kan finne en global optimal løsning ved å ta lokalt optimale valg
+- Optimal delstruktur: kan fortsette på samme måte. Opt. løsning bygger på opt. delløsninger. Hvis ikke må vi løse ting på en helt annen måte etter første valg.
+
+Disse egenskapene sammen gir en optimal løsning.
+
+#### Huffmans algoritme
+
+Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på frekvensene.
+
 ## Datastrukturer
 
 For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig. En **datastruktur** er en måte å organisere og organisere data for å muliggjøre tilgang og modifikasjon. Det er ingen universal datastruktur som fungerer godt for alle formål.
