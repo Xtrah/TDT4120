@@ -108,7 +108,7 @@ Kompleksitet | Navn | Type
 
 En type likning - Rekursive likninger
 
-Eksempel på en rekurrens: $T(n)=4T(^n/_2) + n^2$ 
+Eksempel på en rekurrens: $T(n)=4T(^n/_2) + n^2$
 
 De beskriver f.eks. kjøretiden til rekursive algoritmer. Man *trenger* ikke bruke rekurrenser om det ikke er rekursjon!
 
@@ -191,7 +191,7 @@ Vi gjenkjenner rekurrensen på følgende måte:
 2. Bruk deretter masterteoremet:
     - $a = 2$, $b=3$, $f(n)=2\cdot \sqrt(n)+2$
     - $\log_3(2) \approx 0.95 = d$
-    - Finn graden av $f(n)$ som her er $1/2=c$. *Merk:* $\sqrt(n) = n^{1/2}$.
+    - Finn graden av $f(n)$ som her er $1/2=c$. **Merk:** $\sqrt{n} = n^{1/2}$
     - Vurder forholdet mellom $c$ og $d$. Her er $d>c$ og dermed er det Masterteorem-tilfelle 1 med $\Omega$.
     - Hvordan vi da finner løsningen baserer seg på tilfellet. Formatet på kjøretiden vår kommer dermed til å være på formatet til løsningen på tilfelle 2.
 
