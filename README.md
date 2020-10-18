@@ -72,6 +72,19 @@ Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en gro
 - $O$  $\leftrightarrow$ $\le$ (store o, øvre grense)
 - $o$  $\leftrightarrow$ $>$ (lille o)
 
+##### Asymptotisk optimal
+
+> Det betyr at den asymotiske kjøretiden er lik den beste mulige kjøretiden for det gitte problemet. Det er fortsatt rom for noen nyanseforskjeller her, avhengig av om man snakker om beste eller verste tilfelle, etc. Vanligvis er det vel verste tilfelle man mener, men det kan nok variere – greit å være sikker på hva som sies, eller ev. ha i bakhodet at det kan være litt tvetydig.
+>
+> F.eks. sier vi at Merge sort er asymptotisk optimal, fordi den har verste kjøretid $O(n\lg n)$, og vi vet at verste kjøretid for sortering generelt er $\Omega(n\lg n)$. Dermed går det ikke an å bli bedre … i verste tilfelle. Men i beste tilfelle er jo f.eks. Insertion sort bedre, så den har en asymptotisk optimal best-case (som ofte ikke er så interessant; det er jo lett å legge til en optimal best-case, f.eks ved å bare sjekke om input allerede er sortert før vi setter igang sorteringen).
+>
+> «Optimal» betyr «best» (altså det du kaller «mest optimal»). Om man vil ha mange aktiviteter, så vil de optimale løsningene være de løsningene som har flest aktiviteter. Ingen andre vil være bedre, men det kan være flere optimale løsninger (som altså har nøyaktig like mange aktiviteter/som er nøyaktig like bra).
+>
+> En optimal løsning er så bra som det er mulig å være – ingen løsninger kan være bedre – men det kan være flere optimale løsninger, som er nøyaktig like bra.
+>
+> _[(Piazza H20 @158)](https://piazza.com/class/kdptcutti24r?cid=158)_  
+> _[(Piazza H20 @240)](https://piazza.com/class/kdptcutti24r?cid=240)_
+
 ##### Forenkling av asymptotisk notasjon
 
 Generelt er ideen at et uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$. Forenkling bør medføre minst mulig tap av presisjon. Med _enklere_ menes kortere/færre tegn eller lignende. I asymptotisk notasjon er sum det samme som maksimum, og man må velge uttrykk til høyre som ikke har strengere øvre og/eller nedre grenser enn venstresiden. Summer som inneholder et ledd med kun en nedre grense kan ikke ha noen øvre grense totalt sett. Ledd som blir beskrevet kun med nedre grense f.eks  $\Omega(n)$ kan ha en ukjent øvre grense. Denne ukjente øvre grensen kan være uendelig stor. Vi må derfor ha dette i bakhodet når vi skal forenkle sammensatte uttrykk slik vi gjør i eksempel 1 og 2.
@@ -82,7 +95,7 @@ $$O(n)+\Omega(n)=\Omega(n)$$
 
 Uansett hvilken funksjon vi har fra $O(n)$ og $\Omega(n)$, om vi legger dem sammen vil den resulterende funksjonen tilhøre klassen $\Omega(n)$. Det vil ikke påvirke resultatet å legge til flere øvre grenser $O(anything)$.
 
-Uformelt kan man si "Funksjonen er minst $n$". Da kan man like gjerne si "Funksjonen er minst $n$ pluss maks $n^2$". Det endrer ingenting. Det blir som om vi sier «Emnet har minst 1000 studenter og så maks 200 studenter til». Det eneste vi vet da er at det er minst 1000 studenter. Og vi kan like gjerne uttrykke det som «Emnet har minst 1000 studenter og så maks 2.000.000 studenter til». Det er fortsatt korrekt. Vi vet fortsatt bare at emnet har minst 1000 studenter. _[(Piazza H20)](https://piazza.com/class/kdptcutti24r?cid=21_f1)_
+> Uformelt kan man si "Funksjonen er minst $n$". Da kan man like gjerne si "Funksjonen er minst $n$ pluss maks $n^2$". Det endrer ingenting. Det blir som om vi sier «Emnet har minst 1000 studenter og så maks 200 studenter til». Det eneste vi vet da er at det er minst 1000 studenter. Og vi kan like gjerne uttrykke det som «Emnet har minst 1000 studenter og så maks 2.000.000 studenter til». Det er fortsatt korrekt. Vi vet fortsatt bare at emnet har minst 1000 studenter. _[(Piazza H20 @21)](https://piazza.com/class/kdptcutti24r?cid=21_f1)_
 
 ###### Eksempel 2
 
@@ -117,13 +130,28 @@ Metoder for å regne ut rekurrenser:
 - Iterasjonsmetoden (induksjon):
   - Gjentatt ekspandering av den rekursive forekomsten av funksjonen - det gir oss en sum som vi kan regne ut
   - Gjør at vi kan "se" et mønster
-- Rekurrenstrær <!--TBA-->
+- Rekursjonstre
 - Substitusjon:
   - Bytte ut inputargumenter til noe som gjør rekurrensen enklere å løse.
 - [Masterteoremet](#masterteoremet):
   - Rekurrensen må være på formen $T(n)=aT(^n/_b) + f(n)$
+- Variabelskifte
 
-#### Masterteoremet
+##### Iterasjonsmetoden
+
+##### Rekursjonstre
+<!-- TODO: Utdyp -->
+
+Iterasjonsmetoden med flere grener. Fin måte å visualisere arbeidet, men kan være overveldende i starten.
+
+- Vi itererer gjennom hva algoritmen koster for hvert nivå i treet, og legger det sammen. Da får vi en sum (kostnad løvnivå + $\sum_{h-1}^{i=0}$ pris for nivå $i$).
+- Høyden til treet, er hvor lang tid det tar å komme seg til grunntilfellet. Kjøretiden blir kostnaden til hvert nivå.
+- Kan ofte bruke masterteoremet istedet, men det bevises via rekurrenstrær.
+- Eks: $T(n)=3T(n/4)+cn^2=3T(n/4)+\Theta(n^2)$. (s. 88 i boka)
+
+##### Substitusjon
+
+##### Masterteoremet
 
 Kontekst: Finne kjøretid, ofte for splitt og hersk algoritmer
 
@@ -141,7 +169,7 @@ Tilfelle | Krav | Løsning
 2 | $f(n)\in \Theta(n^{\log_b a} \log^k n)$ | $T(n) \in \Theta(n^{\log_b a}\log n)$
 3 | $f(n)\in \Omega(n^{\log_b a+\epsilon})$ | $T(n) \in \Theta(f(n))$
 
-##### Eksempel masterteorem 1
+###### Eksempel masterteorem 1
 
 $$T(n)=64\cdot T(n/4)+3n^3+7n$$
 
@@ -155,7 +183,7 @@ $$T(n) \in \Theta(n^{\log_b a}\log^{k+1}(n))$$
 $$T(n) \in \Theta(n^{\log_4 64}\log^{0+1}(n))$$
 $$T(n) \in \Theta(n^{3}\log^{}(n))$$
 
-##### Eksempel masterteorem 2
+###### Eksempel masterteorem 2
 
 ```python
 def FUNCTION-A(n):
@@ -200,6 +228,19 @@ Dette gir oss følgende
 $$T(n) \in \Theta(n^{\log_b a})$$
 $$T(n) \in \Theta(n^{\log_3 2})$$
 
+##### Variabelskifte
+
+Bytt ut vanskelige uttrykk
+
+1. Sett opp ny rekurrens av en annen variabel, f.eks. $T(n)=T(2^k)=S(k)$
+2. Løs den, f.eks. med masterteoremet
+3. Bytt tilbake til $T(n)$
+
+###### Eksempel variabelskifte
+
+Løs rekurrensen $T(n) = T(\sqrt{n})+\lg n$.
+<!-- TODO -->
+
 ### Dekomponering/rekursiv dekomponering
 <!-- TODO: Utdyp -->
 
@@ -241,6 +282,14 @@ En sorteringsalgoritme kan sies å være **stabil** om rekkefølgen av like elem
 $$[B1, C2, C1, A1]$$
 og sorterer den kun etter bokstaver, vil rekkefølgen for $C$ forbli uforandret:
 $$[A1, B1, C2, C1]$$
+
+### Sorteringsgrensen
+
+> Any comparison sort algorithm requires $\Omega(n\lg n)$ comparisons in the worst case.
+
+Du må ha sett på hvert element for å sammenligne, derav første $n$. Videre må hvert element ... <!-- TODO -->
+
+Det er umulig å sortere raskere uten å anta egenskaper ved problemet.
 
 ### Dynamisk programmering
 
@@ -286,7 +335,7 @@ class Stack:
          return self.l.pop()
 ```
 
-En **kø** har en "First In First Out" (FIFO) struktur. `POP` returnerer elementet som **først** ble satt inn med $O(1)$.
+En **kø** har en "First In First Out" (FIFO) struktur. `POP` eller `DEQUEUE` returnerer elementet som **først** ble satt inn med $O(1)$.
 
 ```python
 class Queue:
@@ -304,6 +353,13 @@ class Queue:
 ```
 
 ![Illustrasjon stakker og køer](https://i.imgur.com/phsBXVL.png)
+
+#### Prioritetskø
+
+Er en type kø som _ikke_ er "First In First Out" (FIFO) strukturert. Alle elementer i køen har en verdi som angir prioritet, og det er alltid elementet med størst _eller_ minst som _først_ tas ut av køen.
+
+- `DEQUEUE` vil ta ut elementet med størst/minst prioritet
+- `ENQUEUE` vil sette inn et element med en gitt prioritet
 
 ### Lenkede lister
 
