@@ -59,7 +59,7 @@ def counting_sort(A, B):
     for i in range(1,k):
         AmountCount[i] += AmountCount[i-1]
     for n in range(len(A),0,-1): # Går baklengs for å gjøre algoritmen stabil
-        num = A[n-1] 
+        num = A[n-1]
         B[AmountCount[num]-1] = num
         AmountCount[num] -= 1
     return B
