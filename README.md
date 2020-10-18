@@ -297,6 +297,20 @@ Dynamisk programmering, som splitt og hersk algoritmer, løser problemer ved å 
 
 Dynamisk programmering skjer typisk i optimaliseringsproblemer.
 
+Krav til DP:
+
+- Optimal substruktur (løsningen er en kombinasjon av delproblemer)
+- Overlappende subproblemer
+
+Hvordan gjøre det i praksis?
+
+- Memoisering
+- Bottom-up problemløsning
+
+#### Rod cutting
+
+#### Ryggsekkproblemet (0-1 knapsack)
+
 ### Grådige algoritmer
 
 Grådige algoritmer er motpælen til dynamisk programmering. I stedet for å velge forskjellige valg underveis, vil en grådig algoritme velge den løsningen som ser mest lovende ut der og da. For å bruke grådige algoritmer må vi ha:
@@ -309,6 +323,8 @@ Disse egenskapene sammen gir en optimal løsning.
 #### Huffmans algoritme
 
 Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på frekvensene.
+
+#### Aktivitetsutvalgproblemet
 
 ## Datastrukturer
 
