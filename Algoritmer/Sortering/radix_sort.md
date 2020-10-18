@@ -9,6 +9,8 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+Radix sort antar at input er $n$ elementer med $d$ siffer, der hvert siffer kan ha opp til $k$ forskjellige verdier. Algoritmen ser som regel på det minst signifikante sifferet, sorterer med hensyn på dette sifferet, og gjentar så med det nest minst signifikante sifferet, osv. Sorterer stabilt på hvert siffer. Kan bruke bl.a. counting sort eller insertion sort som underalgoritme. Utnytter at det er et begrenset antall siffer.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
@@ -16,7 +18,7 @@
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
 <!-- Eks: Binary search må ha en sortert liste -->
 
-* Må ha en stabil sub-algoritme for å fungere. Dvs at algoritmen som sorterer underlistene er stabil.
+- Må ha en stabil sub-algoritme for å fungere. Dvs at den underliggende algoritmen som sorterer underlistene må være stabil.
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
@@ -26,9 +28,17 @@
 
 ## Styrker og svakheter sammenlignet med andre
 
-* **Radix sort** slår **counting sort** hvis antallet elementer $n \ll k$ forskjellige elementer.
+- **Radix sort** slår **counting sort** hvis antallet elementer $n \ll k$ forskjellige elementer.
+- In-place: Nei
+- Stabil: Ja
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+Best case | Average case | Worst case | Minne
+---------|----------|---------|---------
+$\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $O(n+k)$
+
+der $d$ er antallet siffer i maksimum, $n$ er antall elementer og $k$ er antallet unike elementer.
 
 ## Python kodeeksempel

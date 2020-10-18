@@ -51,7 +51,7 @@ I utgangspunktet vil merge sort fungere for både partalls- og oddetallslister, 
 
 Best case | Average case | Worst case
 ---------|----------|---------
- $O(\log n)$ | $O(\log n)$ | $O(\log n)$
+ $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$
 
 ## Python kodeeksempel
 

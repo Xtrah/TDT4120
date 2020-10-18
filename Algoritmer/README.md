@@ -20,11 +20,14 @@
 <!-- Pseudokode med forklaring -->
 
 ## Korrekthetsbevis
-<!-- TBA -->
 
 ## Styrker og svakheter sammenlignet med andre
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+Best case | Average case | Worst case | Minne
+---------|----------|---------|---------
+ TODO | TODO | TODO | TODO
 
 ## Python kodeeksempel

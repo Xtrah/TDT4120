@@ -36,7 +36,7 @@ Binary search krever en sortert input liste.
 
 ## Styrker og svakheter sammenlignet med andre
 
-Binary search er en utrolig god algoritme for store, sorterte lister, i forhold til lineært søk.
+Binary search er en utrolig god algoritme for store, sorterte lister, i forhold til lineært søk (brute force).
 
 Hvis `array` har 10 elementer, trenger vi kun å sjekke 3 elementer for å finne `target` eller konkludere med at `target` ikke eksisterer (33%).
 
@@ -48,7 +48,7 @@ Best case er `target` på midten av lista og algoritmen returnerer umiddelbart. 
 
 Best case | Average case | Worst case
 ---------|----------|---------
- $O(1)$ | $O(\log n)$ | $O(\log n)$
+$O(1)$ | $O(\log n)$ | $O(\log n)$
 
 ## Python kodeeksempel
 

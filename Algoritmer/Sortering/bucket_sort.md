@@ -9,7 +9,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Bucket sort antar at input-listen er generert tilfeldig og er uniformt fordelt over et intervall. Bucket sort deler elementene inn i $k$ like store intervaller/bøtter, og så fordeles de $n$ input-tallene i bøttene.
+Bucket sort antar at input-listen er generert tilfeldig og er uniformt fordelt over et intervall. Bucket sort deler elementene inn i $k$ like store intervaller/bøtter, og så fordeles de $n$ input-tallene i bøttene. Deretter sorteres elementene i bøttene med en annen algoritme, som f.eks. insertion sort.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -29,11 +29,16 @@ Bucket sort antar at input-listen er generert tilfeldig og er uniformt fordelt o
 <!-- TBA -->
 
 ## Styrker og svakheter sammenlignet med andre
+<!-- TODO <https://en.wikipedia.org/wiki/Bucket_sort#Comparison_with_other_sorting_algorithms> -->
 
-TBA  
-<https://en.wikipedia.org/wiki/Bucket_sort#Comparison_with_other_sorting_algorithms>
+- In-place: Nei, bucket sort oppretter mange underlister
+- Stabil: Ja dersom den underliggende algoritmen er det.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+Best case | Average case | Worst case | Minne
+---------|----------|---------|---------
+$\Theta(n)$ | $\Theta(n)$ | $\Theta(n^2)$ | $O(n)$
 
 ## Python kodeeksempel
