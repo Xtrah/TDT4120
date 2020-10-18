@@ -44,3 +44,23 @@ Best case | Average case | Worst case | Minne
 TODO | TODO | TODO | TODO
 
 ## Python kodeeksempel
+
+Ved universitetet på Pluto har hvert emne sin egen karakterskala. For et gitt emne består karakterskalaen av alle heltall ii, slik at 0⩽i⩽k0⩽i⩽k. Administrasjonen ved universitetet ønsker å sortere karakterene i emnene, slik at de lettere kan utføre statistiske utregninger. Dessverre kjenner ikke administrasjonen til verdien for kk for hvert enkelt emne, de vet kun at denne verdien alltid er slik at k<2048k<2048.
+
+Implementer en variant av COUNTING-SORTCOUNTING-SORT som ikke tar inn kk, men som alltid vil kunne sortere en liste av karakterer i et emne ved universitetet på Pluto. Metoden skal skrive resultatet til BB, som har lik lengde som AA.
+
+```python
+def counting_sort(A, B):
+    AmountCount = []
+    k = 2048
+    AmountCount = [0]*k # Genererer array på lengde k
+    for grade in A:
+        AmountCount[grade] += 1 # Teller instanser av hvert tall
+    for i in range(1,k):
+        AmountCount[i] += AmountCount[i-1]
+    for n in range(len(A),0,-1): # Går baklengs for å gjøre algoritmen stabil
+        num = A[n-1] 
+        B[AmountCount[num]-1] = num
+        AmountCount[num] -= 1
+    return B
+```
