@@ -32,10 +32,10 @@ Output: En permutasjon (omorganisering) av input sekvensen slik at $(a'_1 \leq a
 - Stabil: den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
 
 ## Kjøretid og utregning
-<!-- Under ulike omstendigheter -->
-| Best case | Average case | Worst case | Space Complexity Worst Case | Stable |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| $\Omega(n)$ | $\Theta(n^2)$ | $O(n^2)$ | $O(1)$ | Ja |
+
+Best case | Average case | Worst case | Minne
+---------|----------|---------|---------
+| $\Theta(n)$ | $\Theta(n^2)$ | $O(n^2)$ | $O(1)$
 
 ## Python kodeeksempel
 
