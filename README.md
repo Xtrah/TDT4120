@@ -451,3 +451,45 @@ _Det binære søketreet finner elementet raskere ved at algoritmen kan eliminere
 En haug er et binærhaug dersom det er 0-2 barn.
 
 _En binær haug kan aldri være et binært søketre._ Dette er fordi en binær haug sorterer alle elementene sine slik at forelderen alltid er større/mindre enn barne-noden. I et binært søketre er alltid venstre barne-node mindre, mens høyre barne-node alltid er større. Dermed, siden sorteringsstrukturen er så vidt forskjellig, vil det aldri være mulig at du får et tre som kan være begge samtidig.
+
+### Traversering av grafer
+
+Vi traverserer en graf ved å besøke noder vi vet om. I utganspunktet kjenner vi kun startnoden, men oppdager naboene til dem vi besøker. Traversering er viktig i seg selv, men danner også ryggraden til flere mer avanserte algoritmer.
+
+Traversering har matching som motivasjon:
+
+- Vi husker hvor vi kom fra.
+- Vi besøker ikke samme node mer enn en gang
+  - Vi lager et traverseringstre. Finner stier fra startnoeden til alle noder vi når fram til.
+- Vi besøker noder, oppdager noder langst kanter og vedlikeholder en huskeliste.
+
+#### Grafrepresentasjoner:
+
+- Nabomatriser
+- Nabolister
+
+**Nabomatriser:**
+
+Viser forholdet mellom noder ved hjelp av en matrise og verdier for eksistens av forhold.
+
+![Illustrasjon nabomatrise](https://i.postimg.cc/vHsGRZ33/image.png)
+
+*Spørsmål:* Er 5 nabo med 4?
+
+**Svar:** Sjekk rad 5 kolonne 4. Hvis det står "1", ja, da er de naboer med et forhold fra 5 til 4 (5->4). I figuren er det vist et symmetrisk forhold. Det innebærer at 5 er nabo med 4 og 4 er nabo med 5. Grafen er urettet.
+
+Godt egnet til raske oppslag, ikke så mye til traversering: For oppslag trenger du kun å sjekke rad for så å sjekke respektiv kolonne for å finne ut om et forhold eksisterer. For traversering må man gå over flere ruter som ikke har noe innhold for å sjekke en hel rad. I tillegg kan nabomatriser fort ta mye plass.
+
+De fleste algoritmer bruker $\Omega(V^{2})$ operasjoner med nabomatriser. Der V er antallet noder (vertices). Det finnes unntak! (Se kjendisproblemet fra forelesning 8)
+
+**Nabolister:**
+
+Liste (eller tabell) med ut-naboer for hver node
+
+![Illustrasjon nabolister](https://i.postimg.cc/XvpttRFV/image.png)
+
+*Spørsmål:* Hvem er naboen til 5?
+
+**Svar:** Sjekk indeks 5, se igjennom listen. Naboene til 5 er 3 og 4.
+
+Godt egnet til traversering, men dårligere til oppslag: For traversering er nabolister en kompakt metode der vi ikke trenger å gå innom noder som ikke har noe forhold. For oppslag må vi derimot gå igjennom lenger lister dersom det er mange pekere på forskjellige noder. Dersom grafen har få kanter vil nabolister også ta mindre plass enn nabomatriser.
