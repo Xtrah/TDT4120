@@ -1,4 +1,5 @@
 # Counting sort
+<!-- [D3] Forstå Counting-Sort, og hvorfor den er stabil -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser

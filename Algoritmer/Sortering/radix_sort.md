@@ -1,4 +1,5 @@
 # Radix sort
+<!-- ![D4] Forstå Radix-Sort, og hvorfor den trenger en stabil subrutine -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser

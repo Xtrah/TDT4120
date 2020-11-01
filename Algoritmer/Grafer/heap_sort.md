@@ -1,4 +1,5 @@
 # Heap sort
+<!-- [E2] Forstå Heapsort -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser

@@ -1,4 +1,5 @@
 # Bucket sort
+<!-- [D5] Forstå Bucket-Sort -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser

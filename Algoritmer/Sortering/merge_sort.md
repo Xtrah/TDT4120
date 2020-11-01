@@ -1,4 +1,5 @@
 # Merge sort
+<!-- [C4] Forstå Merge-Sort -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
