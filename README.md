@@ -571,6 +571,66 @@ Her har vi en graf med vekter på kantene, og ønsker å bare beholde akkurat de
 <!-- [I5] Forstå MST-Kruskal -->
 <!-- [I6] Forstå MST-Prim -->
 
+### Generisk-MST:
+
+Vi har en graf:
+
+![Hovedgraf](https://i.imgur.com/58kEmgN.png)
+
+**Delgrafer**: Delmengder av nodene. Vi kan ikke ha kanter som ikke er koblet til noder.
+
+![Delgrafer](https://i.imgur.com/bACEqyO.png)
+
+**Spenngrafer**: Delgrafer som spenner over hele den opprinnelige grafen. Den inneholder alle de opprinnelige nodemengdene og en delmengde av den opprinnelige kantmengden.
+
+![Spenngrafer](https://i.imgur.com/m1D6tI7.png)
+
+**Spennskoger**: Asykliske spenngrafer.
+
+![Spennskoger](https://i.imgur.com/qxKyJSg.png)
+
+**Spenntrær**: Sammenhengende spennskoger.
+
+![Spenntrær](https://i.imgur.com/hyxxFdn.png)
+
+Vi innfører **vekter** på kantene. Disse kan tolkes som **lengder** eller **kostnader**.
+
+- Vi vil knytte sammen nodene billigst mulig.
+- Det kan være flere minimale spenntrær. F.eks. om vi har flere kanter som har samme vekt.
+
+Problemet:
+
+![Minimal spenntrær problem](https://i.imgur.com/2NSL4Rt.png)
+
+Hvordan løse dette?
+
+- Grådig: Vi utvider en asyklisk kantmengde (partiell løsning) gradvis.
+- Invariant: Kantmengden utgjør en del av et minimalt spenntre.
+
+Hvordan skal vi utvide kantmengden som er en del av et minimalt spenntre, og beholde invarianten?
+
+- Ved å finne en såkalt "trygg kant" som er en kant som bevarer invarianten.
+
+Algoritme for generisk-MST:
+
+![Generisk MST](https://i.imgur.com/0PitzPz.png)
+
+Hva er trygt å legge til? Hvilken form for grådighet?
+
+Snitt/Cut: Et snitt over en graf. Vi klipper grafen i to. (Figuren under)
+
+- **Det respekterer kantmengden**: Det er ikke klippet noen kanter mellom noder som er svarte og noen som er hvite. Det er ingen kanter som går mellom hvite og svarte noder.
+- **Lett kant**: Kanten (4,3) er en (unik) lett kant over snittet (verdi 7): Det er den kanten med lavest vekt av de som er over snittet. (Kantene over snittet på grafen under har verdiene 8, 11, 7, 14 og 10)
+
+![Snitt](https://i.imgur.com/siVErEc.png)
+
+Et vekslingsargument: For å vise at det er trygt å velge en lett kant over et snitt som respekterer løsningen vår. Hvis ikke risikerer vi å få en sykel. Vi må kunne dele kantmengdene våre i to separate mengder.
+
+Fremgangsmåte:
+
+1. Ta en optimal (eller vilkålig) løsning som ikke har valgt grådig. (Som ikke har valgt den lette kanten over det snittet).
+2. Vist at vi kan endre til det grådge valget uten å få en dårligere løsning.
+
 ## Korteste vei fra én til alle
 
 Bredde-først-søk kan finne stier med færrest mulig kanter, men hva om kantene har ulik lengde? Det generelle problemet er uløst, men vi kan løse problemet med gradvis bedre kjøretid for grafer (1) uten negative sykler; (2) uten negative kanter; og (3) uten sykler. Og vi bruker samme prinsipp for alle tre!
