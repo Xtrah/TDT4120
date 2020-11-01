@@ -46,9 +46,9 @@ TODO | TODO | TODO | TODO
 
 ## Python kodeeksempel
 
-Ved universitetet på Pluto har hvert emne sin egen karakterskala. For et gitt emne består karakterskalaen av alle heltall i, slik at 0⩽i⩽k. Administrasjonen ved universitetet ønsker å sortere karakterene i emnene, slik at de lettere kan utføre statistiske utregninger. Dessverre kjenner ikke administrasjonen til verdien for k for hvert enkelt emne, de vet kun at denne verdien alltid er slik at k<2048.
+Ved universitetet på Pluto har hvert emne sin egen karakterskala. For et gitt emne består karakterskalaen av alle heltall i, slik at $0 \leq i \leq k$. Administrasjonen ved universitetet ønsker å sortere karakterene i emnene, slik at de lettere kan utføre statistiske utregninger. Dessverre kjenner ikke administrasjonen til verdien for $k$ for hvert enkelt emne, de vet kun at denne verdien alltid er slik at $k<2048$.
 
-Implementer en variant av COUNTING-SORT&trade; som ikke tar inn k, men som alltid vil kunne sortere en liste av karakterer i et emne ved universitetet på Pluto. Metoden skal skrive resultatet til B, som har lik lengde som A.
+Implementer en variant av COUNTING-SORT&trade; som ikke tar inn $k$, men som alltid vil kunne sortere en liste av karakterer i et emne ved universitetet på Pluto. Metoden skal skrive resultatet til B, som har lik lengde som A.
 
 ```python
 def counting_sort(A, B):

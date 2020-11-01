@@ -546,7 +546,7 @@ Viser forholdet mellom noder ved hjelp av en matrise og verdier for eksistens av
 
 Godt egnet til raske oppslag, ikke så mye til traversering: For oppslag trenger du kun å sjekke rad for så å sjekke respektiv kolonne for å finne ut om et forhold eksisterer. For traversering må man gå over flere ruter som ikke har noe innhold for å sjekke en hel rad. I tillegg kan nabomatriser fort ta mye plass.
 
-De fleste algoritmer bruker $\Omega(V^{2})$ operasjoner med nabomatriser. Der V er antallet noder (vertices). Det finnes unntak! (Se kjendisproblemet fra forelesning 8)
+De fleste algoritmer bruker $\Omega(V^{2})$ operasjoner med nabomatriser. Der $V$ er antallet noder (vertices). Det finnes unntak! (Se kjendisproblemet fra forelesning 8)
 
 **Nabolister:**
 
