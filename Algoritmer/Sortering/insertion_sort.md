@@ -1,4 +1,5 @@
 # Insertion sort
+<!-- [A8] Forstå Insertion-Sort -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser

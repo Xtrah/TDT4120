@@ -156,6 +156,10 @@ Syntese: Bygg løsning av hypotetiske delløsninger
 - Initialisering: inv. er sann ved start
 - Vedlikehold i hver iterasjon
 
+### Insertion sort
+<!-- [A8] Forstå Insertion-Sort -->
+[Link til insertion sort](Algoritmer/Sortering/insertion_sort.md)
+
 ## Datastrukturer
 
 For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig. En **datastruktur** er en måte å organisere og organisere data for å muliggjøre tilgang og modifikasjon. Det er ingen universal datastruktur som fungerer godt for alle formål.
@@ -249,8 +253,17 @@ Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vi
 ### Maximum subarray problemet
 <!-- [C2] Forstå maximum-subarray-problemet med løsninger -->
 
-### Bisect og Bisect0
+### Bisect og Bisect'
 <!-- [C3] Forstå Bisect og Bisect' (se appendiks C i pensumhefte) -->
+[Link til binary search (bisect)](Algoritmer/Sortering/binary_search_(bisect).md)
+
+### Merge sort
+<!-- [C4] Forstå Merge-Sort -->
+[Link til merge sort](Algoritmer/Sortering/merge_sort.md)
+
+### Quick sort
+<!-- [C5] Forstå Quicksort og Randomized-Quicksort -->
+[Link til quick sort](Algoritmer/Sortering/quick_sort.md)
 
 ### Rekurrenser
 <!-- ![C6] Kunne løse rekurrenser med substitusjon, rekursjonstrær og masterteoremet -->
@@ -396,9 +409,22 @@ $$[B1, C2, C1, A1]$$
 og sorterer den kun etter bokstaver, vil rekkefølgen for $C$ forbli uforandret:
 $$[A1, B1, C2, C1]$$
 
+### Counting sort
+<!-- [D3] Forstå Counting-Sort, og hvorfor den er stabil -->
+[Link til counting sort](Algoritmer/Sortering/counting_sort.md)
+
+### Radix sort
+<!-- ![D4] Forstå Radix-Sort, og hvorfor den trenger en stabil subrutine -->
+[Link til radix sort](Algoritmer/Sortering/radix_sort.md)
+
+### Bucket sort
+<!-- [D5] Forstå Bucket-Sort -->
+[Link til bucket sort](Algoritmer/Sortering/bucket_sort.md)
+
 ### Randomized-Select og Select
 <!-- [D6] Forstå Randomized-Select -->
 <!-- [D7] Kjenne til Select - merk: Det kreves ikke grundig forståelse av virkemåten til Select. -->
+<!-- TODO -->
 
 ## Rotfaste trestrukturer
 
@@ -419,7 +445,6 @@ Når man snakker om trær er det vanlig å bruke terminologi som beskriver avsta
 
 ### Heaps
 <!-- ! [E1] Forstå hvordan heaps fungerer, og hvordan de kan brukes som prioritetskøer (Parent, Left, Right, Max-Heapify, Build-Max-Heap, Heapsort, Max-Heap-Insert, Heap-Extract-Max, Heap-Increase-Key, Heap-Maximum. Også tilsvarende for minheaps, f.eks., Build-Min-Heap og Heap-Extract-Min.) -->
-<!-- [E3] Forstå hvordan rotfaste trær kan implementeres -->
 
 En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node (parent). Avhengig av om haugen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert.
 
@@ -435,13 +460,21 @@ Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i
 2. Element legges til
 3. Elementet bytter plass med forelder-noden
 
-#### Binære trær og søketrær
+### Heap sort
+<!-- [E2] Forstå Heapsort -->
+[Link til heap sort](Algoritmer/Grafer/heap_sort.md)
+
+### Implementasjon av rotfaste trær
+<!-- [E3] Forstå hvordan rotfaste trær kan implementeres -->
+<!-- TODO -->
+
+### Binære trær og søketrær
 <!-- ![E4] Forstå hvordan binære søketrær fungerer (Inorder-Tree-Walk, Tree-Search, Iterative-Tree-Search, Tree-Minimum, TreeMaximum, Tree-Successor, Tree-Predecessor, Tree-Insert, Transplant, Tree-Delete) - merk: det kreves ikke grundig forståelse av Transplant og Tree-Delete. -->
 <!-- [E5] Vite at forventet høyde for et tilfeldig binært søketre er Θ(lg n) -->
 <!-- [E6] Vite at det finnes søketrær med garantert høyde på Θ(lg n) -->
 Et tre er et binærtre dersom hver node har 0-2 barn. I et binært søketre har hvert element en spesifikk orden. Barnet til venstre vil alltid være mindre enn rotelementet, og barnet til høyre vil være større.
 
-##### Søking i et binært søketre i forhold til i en array
+#### Søking i et binært søketre i forhold til i en array
 
 ![Illustrasjon søking](https://i.imgur.com/PnplIZP.gif)  
 _Det binære søketreet finner elementet raskere ved at algoritmen kan eliminere elementer som ligger langt unna mål-elementet. Man kan sammenligne denne strategien med binærsøk hvor man halverer antall elementer man vurderer for hver iterasjon._
@@ -569,15 +602,14 @@ Godt egnet til traversering, men dårligere til oppslag: For traversering er nab
 
 Her har vi en graf med vekter på kantene, og ønsker å bare beholde akkurat de kantene vi må for å koble sammen alle nodene, med en så lav vektsum som mulig. Erke-eksempel på grådighet: Velg én og én kant, alltid den billigste lovlige.
 
+### Disjunkte mengder
 <!-- [I1] Forstå skog-implementasjonen av disjunkte mengder (Connected-Components, Same-Component, Make-Set, Union, Link, Find-Set) -->
+
+### Spenntrær og minimale spenntrær
 <!-- [I2] Vite hva spenntrær og minimale spenntrær er -->
+
+### Generisk-MST (Generic-MST):
 <!-- ![I3] Forstå Generic-MST -->
-<!-- [I4] Forstå hvorfor lette kanter er trygge kanter -->
-<!-- [I5] Forstå MST-Kruskal -->
-<!-- [I6] Forstå MST-Prim -->
-
-### Generisk-MST:
-
 Vi har en graf:
 
 ![Hovedgraf](https://i.imgur.com/58kEmgN.png)
@@ -635,6 +667,17 @@ Fremgangsmåte:
 
 1. Ta en optimal (eller vilkålig) løsning som ikke har valgt grådig. (Som ikke har valgt den lette kanten over det snittet).
 2. Vist at vi kan endre til det grådge valget uten å få en dårligere løsning.
+
+### Lette kanter er trygge kanter
+<!-- [I4] Forstå hvorfor lette kanter er trygge kanter -->
+
+### MST-Kruksal
+<!-- [I5] Forstå MST-Kruskal -->
+[Link til MST-Kruksal](Algoritmer/Grafer/MST-Kruksal.md)
+
+### MST-Prim
+<!-- [I6] Forstå MST-Prim -->
+[Link til MST-Prim](Algoritmer/Grafer/MST-Prim.md)
 
 ## Korteste vei fra én til alle
 

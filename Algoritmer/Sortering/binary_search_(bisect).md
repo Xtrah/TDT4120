@@ -1,4 +1,5 @@
 # Binary search (bisect)
+<!-- [C3] Forstå Bisect og Bisect' (se appendiks C i pensumhefte) -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
