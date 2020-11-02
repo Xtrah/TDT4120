@@ -1,8 +1,7 @@
 # TDT4120 Algoritmer og datastrukturer
 
-- [Hva er algoritmer?](#hva-er-algoritmer)
-- [Datastrukturer](#datastrukturer)
 - [Algoritmer](Algoritmer/)
+- [Eksterne ressurser](Ressurser/)
 
 <details>
 <summary>Overordnede læringsmål i faget</summary>
