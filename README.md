@@ -36,12 +36,14 @@
 
 ## Problemer og algoritmer
 <!-- [A1] Forstå bokas pseudokode-konvensjoner -->
-<!-- [A2] Kjenne egenskapene til random-access machine-modellen (RAM) -->
 
 - Bruke force er ofte helt ubrukelig
 - Dekomponer til mindre instanser og bruk de til å finne en løsning
 
 En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp flere **instanser**.
+
+### Random-access machine modellen (RAM)
+<!-- [A2] Kjenne egenskapene til random-access machine-modellen (RAM) -->
 
 ### Kjøretid
 <!-- [A3] Kunne definere problem, instans og problemstørrelse -->
@@ -54,15 +56,6 @@ Et mål på hvor effektiv algoritmen er det viktigste når man skal analysere al
 - Eksempel: Hvis vi teller operasjoner, og hver operasjon tar ett mikrosekund, hvor mye rekker vi på ett år?
 
 Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en grov størrelsesorden.
-
-### Asymptotisk notasjon
-<!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
-- Dropp konstanter og lavere ordens ledd
-- $\omega$ $\leftrightarrow$ $>$ (lille omega)
-- $\Omega$  $\leftrightarrow$ $\ge$ (store omega, nedre grense)
-- $\Theta$  $\leftrightarrow$ $=$ (store theta, øvre og nedre grense)
-- $O$  $\leftrightarrow$ $\le$ (store o, øvre grense)
-- $o$  $\leftrightarrow$ $>$ (lille o)
 
 #### Noen vanlige kjøretider
 
@@ -77,6 +70,15 @@ Kompleksitet | Navn | Type
  $\Theta(n)$ | Lineær | Generell
  $\Theta(\lg n)$ | Logaritmisk | Generell
  $\Theta(1)$ | Konstant | Generell
+
+### Asymptotisk notasjon
+<!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
+- Dropp konstanter og lavere ordens ledd
+- $\omega$ $\leftrightarrow$ $>$ (lille omega)
+- $\Omega$  $\leftrightarrow$ $\ge$ (store omega, nedre grense)
+- $\Theta$  $\leftrightarrow$ $=$ (store theta, øvre og nedre grense)
+- $O$  $\leftrightarrow$ $\le$ (store o, øvre grense)
+- $o$  $\leftrightarrow$ $<$ (lille o)
 
 #### Asymptotisk optimal
 
@@ -109,7 +111,7 @@ $$\Theta(n^2)+O(n^4)+\Omega(\log n)$$
 
 Vi kan forenkle eksempel 2 ved å skrive $\Omega(n^2)+O(n^4)$ som vil være en mer generell notasjon og derfor ok. Samtidig vil $\omega(n^2)+o(n^4)$ være feil fordi lille omega er en strengere notasjon, og utelukker leddet som inneholder $\Theta (n^2)$.
 
-#### Klasser av input
+### Klasser av input
 <!-- ![A5] Kunne definere best-case, average-case og worst-case -->
 - Best, verst og forventet
 - Kjøretid: Funksjon av problemstørrelse
@@ -117,7 +119,7 @@ Vi kan forenkle eksempel 2 ved å skrive $\Omega(n^2)+O(n^4)$ som vil være en m
 - Average-case: Forventet, gitt en sannsynlighetsfordeling
 - **Worst-case: Verste mulige (brukes mest)**
 
-#### In-place begrepet
+### In-place begrepet
 
 En **in-place algoritme** vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.
 
@@ -200,7 +202,7 @@ class Queue:
 
 #### Prioritetskø
 
-Er en type kø som _ikke_ er "First In First Out" (FIFO) strukturert. Alle elementer i køen har en verdi som angir prioritet, og det er alltid elementet med størst _eller_ minst som _først_ tas ut av køen.
+En prioritetskø er en type kø som _ikke_ er "First In First Out" (FIFO) strukturert. Alle elementer i køen har en verdi som angir prioritet, og det er alltid elementet med størst _eller_ minst som _først_ tas ut av køen.
 
 - `DEQUEUE` vil ta ut elementet med størst/minst prioritet
 - `ENQUEUE` vil sette inn et element med en gitt prioritet
@@ -219,6 +221,7 @@ Slette element | oppslagstid $+\ O(1) = O(n)$
 I en dobbel lenket liste gjøres innsetting på $O(1)$ da man kun trenger å endre `.prev` og `.next` til de nye naboene.
 
 <!-- TODO: Sentinels (NIL objekter) -->
+<!-- TODO: List-Search, List-Insert, List-Delete, List-Delete', List-Search', List-Insert'-->
 
 ### Pekere og objekter
 <!-- [B3] Forstå hvordan pekere og objekter kan implementeres -->
@@ -260,14 +263,14 @@ De beskriver f.eks. kjøretiden til rekursive algoritmer. Man *trenger* ikke bru
 
 Metoder for å regne ut rekurrenser:
 
+- Substitusjon:
+  - Bytte ut inputargumenter til noe som gjør rekurrensen enklere å løse.
+- Rekursjonstre
+- [Masterteoremet](#masterteoremet):
+  - Rekurrensen må være på formen $T(n)=aT(^n/_b) + f(n)$
 - Iterasjonsmetoden (induksjon):
   - Gjentatt ekspandering av den rekursive forekomsten av funksjonen - det gir oss en sum som vi kan regne ut
   - Gjør at vi kan "se" et mønster
-- Rekursjonstre
-- Substitusjon:
-  - Bytte ut inputargumenter til noe som gjør rekurrensen enklere å løse.
-- [Masterteoremet](#masterteoremet):
-  - Rekurrensen må være på formen $T(n)=aT(^n/_b) + f(n)$
 - Variabelskifte
 
 #### Substitusjon
@@ -418,11 +421,13 @@ Når man snakker om trær er det vanlig å bruke terminologi som beskriver avsta
 <!-- ! [E1] Forstå hvordan heaps fungerer, og hvordan de kan brukes som prioritetskøer (Parent, Left, Right, Max-Heapify, Build-Max-Heap, Heapsort, Max-Heap-Insert, Heap-Extract-Max, Heap-Increase-Key, Heap-Maximum. Også tilsvarende for minheaps, f.eks., Build-Min-Heap og Heap-Extract-Min.) -->
 <!-- [E3] Forstå hvordan rotfaste trær kan implementeres -->
 
+En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node (parent). Avhengig av om haugen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert.
+
 ![Illustrasjon heaps](https://i.imgur.com/0yYXmiC.png)
 
-En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node (parent). Avhengig av om haugen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert. Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i haugen.
-
 En haug er **komplett** dersom alle interne noder har to barn og alle løvnoder er på samme nivå. Om antallet noder er $2^h-1$, for en eller annen høyde $h$, så er treet som haugen representerer komplett.
+
+Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i haugen.
 
 <img src="https://i.imgur.com/zhgXzNZ.jpg" alt="Illustrasjon av sortering" width="200" style="float:right; margin:1em"/>
 
@@ -542,7 +547,7 @@ Viser forholdet mellom noder ved hjelp av en matrise og verdier for eksistens av
 
 *Spørsmål:* Er 5 nabo med 4?
 
-**Svar:** Sjekk rad 5 kolonne 4. Hvis det står "1", ja, da er de naboer med et forhold fra 5 til 4 (5->4). I figuren er det vist et symmetrisk forhold. Det innebærer at 5 er nabo med 4 og 4 er nabo med 5. Grafen er urettet.
+**Svar:** Sjekk rad 5 kolonne 4. Hvis det står "1", ja, da er de naboer med et forhold fra 5 til 4 $(5 \rightarrow 4)$. I figuren er det vist et symmetrisk forhold. Det innebærer at 5 er nabo med 4 og 4 er nabo med 5. Grafen er urettet.
 
 Godt egnet til raske oppslag, ikke så mye til traversering: For oppslag trenger du kun å sjekke rad for så å sjekke respektiv kolonne for å finne ut om et forhold eksisterer. For traversering må man gå over flere ruter som ikke har noe innhold for å sjekke en hel rad. I tillegg kan nabomatriser fort ta mye plass.
 
