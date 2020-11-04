@@ -34,15 +34,26 @@
 </details>
 
 ## Problemer og algoritmer
-<!-- [A1] Forstå bokas pseudokode-konvensjoner -->
 
-- Bruke force er ofte helt ubrukelig
+- Brute force er ofte helt ubrukelig
 - Dekomponer til mindre instanser og bruk de til å finne en løsning
 
 En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp flere **instanser**.
 
+Å **analysere en algoritme** har fått betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse.
+
+<!-- [A1] Forstå bokas pseudokode-konvensjoner (den starter på index 1) -->
+
 ### Random-access machine modellen (RAM)
 <!-- [A2] Kjenne egenskapene til random-access machine-modellen (RAM) -->
+En abstrakt maskin som har følgende egenskaper:
+
+- Aritmetikk: $+$ $-$ $*$ $/$ $\bmod$, $\lfloor x \rfloor$, $\lceil x \rceil$  (enkle instruksjoner)
+- Flytting av data og programkontroll
+- Instruksjoner kjøres sekvensielt og ikke samtidig
+- Håndterer heltall og flyttall
+
+Alle disse operasjonene tar **konstant** tid.
 
 ### Kjøretid
 <!-- [A3] Kunne definere problem, instans og problemstørrelse -->
@@ -81,20 +92,22 @@ Kompleksitet | Navn | Type
 
 #### Asymptotisk optimal
 
-> Det betyr at den asymotiske kjøretiden er lik den beste mulige kjøretiden for det gitte problemet. Det er fortsatt rom for noen nyanseforskjeller her, avhengig av om man snakker om beste eller verste tilfelle, etc. Vanligvis er det vel verste tilfelle man mener, men det kan nok variere – greit å være sikker på hva som sies, eller ev. ha i bakhodet at det kan være litt tvetydig.
->
-> F.eks. sier vi at Merge sort er asymptotisk optimal, fordi den har verste kjøretid $O(n\lg n)$, og vi vet at verste kjøretid for sortering generelt er $\Omega(n\lg n)$. Dermed går det ikke an å bli bedre … i verste tilfelle. Men i beste tilfelle er jo f.eks. Insertion sort bedre, så den har en asymptotisk optimal best-case (som ofte ikke er så interessant; det er jo lett å legge til en optimal best-case, f.eks ved å bare sjekke om input allerede er sortert før vi setter igang sorteringen).
->
-> «Optimal» betyr «best» (altså det du kaller «mest optimal»). Om man vil ha mange aktiviteter, så vil de optimale løsningene være de løsningene som har flest aktiviteter. Ingen andre vil være bedre, men det kan være flere optimale løsninger (som altså har nøyaktig like mange aktiviteter/som er nøyaktig like bra).
->
-> En optimal løsning er så bra som det er mulig å være – ingen løsninger kan være bedre – men det kan være flere optimale løsninger, som er nøyaktig like bra.
->
-> _[(Piazza H20 @158)](https://piazza.com/class/kdptcutti24r?cid=158)_  
+Den asymotiske kjøretiden = den beste mulige kjøretiden for det gitte problemet.
+
+OBS: Vanligvis verste tilfelle, men kan variere.
+
+F.eks. sier vi at Merge sort er asymptotisk optimal, fordi den har verste kjøretid $O(n\lg n)$, og vi vet at verste kjøretid for sortering generelt er $\Omega(n\lg n)$. Dermed går det ikke an å bli bedre i verste tilfelle. Men i beste tilfelle er jo f.eks. Insertion sort bedre, så den har en asymptotisk optimal best-case (som ofte ikke er så interessant; det er jo lett å legge til en optimal best-case, f.eks ved å bare sjekke om input allerede er sortert før vi setter igang sorteringen).
+
+«Optimal» betyr «best» (altså det du kaller «mest optimal»). Om man vil ha mange aktiviteter, så vil de optimale løsningene være de løsningene som har flest aktiviteter. Ingen andre vil være bedre, men det kan være flere optimale løsninger (som altså har nøyaktig like mange aktiviteter/som er nøyaktig like bra).
+
+En optimal løsning er så bra som det er mulig å være – ingen løsninger kan være bedre – men det kan være flere optimale løsninger, som er nøyaktig like bra.
+
+> _[(Piazza H20 @158)](https://piazza.com/class/kdptcutti24r?cid=158)_
 > _[(Piazza H20 @240)](https://piazza.com/class/kdptcutti24r?cid=240)_
 
 #### Forenkling av asymptotisk notasjon
 
-Generelt er ideen at et uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$. Forenkling bør medføre minst mulig tap av presisjon. Med _enklere_ menes kortere/færre tegn eller lignende. I asymptotisk notasjon er sum det samme som maksimum, og man må velge uttrykk til høyre som ikke har strengere øvre og/eller nedre grenser enn venstresiden. Summer som inneholder et ledd med kun en nedre grense kan ikke ha noen øvre grense totalt sett. Ledd som blir beskrevet kun med nedre grense f.eks  $\Omega(n)$ kan ha en ukjent øvre grense. Denne ukjente øvre grensen kan være uendelig stor. Vi må derfor ha dette i bakhodet når vi skal forenkle sammensatte uttrykk slik vi gjør i eksempel 1 og 2.
+Generelt er ideen at et uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$. Forenkling bør medføre minst mulig tap av presisjon. Med _enklere_ menes kortere/færre tegn eller lignende. I asymptotisk notasjon er sum det samme som maksimum, og man må velge uttrykk til høyre som ikke har strengere øvre og/eller nedre grenser enn venstresiden. Summer som inneholder et ledd med kun en nedre grense kan ikke ha noen øvre grense totalt sett. Ledd som blir beskrevet kun med nedre grense f.eks  $\Omega(n)$ kan ha en ukjent øvre grense. Denne ukjente øvre grensen kan være uendelig stor. Vi må ha dette i bakhodet når vi skal forenkle sammensatte uttrykk slik vi gjør i eksempel 1 og 2.
 
 ##### Forenkling eksempel 1
 
@@ -108,7 +121,7 @@ Uansett hvilken funksjon vi har fra $O(n)$ og $\Omega(n)$, om vi legger dem samm
 
 $$\Theta(n^2)+O(n^4)+\Omega(\log n)$$
 
-Vi kan forenkle eksempel 2 ved å skrive $\Omega(n^2)+O(n^4)$ som vil være en mer generell notasjon og derfor ok. Samtidig vil $\omega(n^2)+o(n^4)$ være feil fordi lille omega er en strengere notasjon, og utelukker leddet som inneholder $\Theta (n^2)$.
+Vi kan forenkle ved å skrive $\Omega(n^2)+O(n^4)$ som vil være en mer generell notasjon og derfor OK. $\omega(n^2)+o(n^4)$ vil være feil fordi lille omega er en strengere notasjon, og utelukker leddet som inneholder $\Theta(n^2)$.
 
 ### Klasser av input
 <!-- ![A5] Kunne definere best-case, average-case og worst-case -->
@@ -116,16 +129,12 @@ Vi kan forenkle eksempel 2 ved å skrive $\Omega(n^2)+O(n^4)$ som vil være en m
 - Kjøretid: Funksjon av problemstørrelse
 - Best-case: Beste mulige kjøretid for en gitt størrelse
 - Average-case: Forventet, gitt en sannsynlighetsfordeling
-- **Worst-case: Verste mulige (brukes mest)**
-
-### In-place begrepet
-
-En **in-place algoritme** vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.
+  - Har vi ingen sannsynlighetsfordeling antas alle inputs like sannsynlige.
+- Worst-case: Verste mulige (brukes mest)
 
 ### Dekomponering/rekursiv dekomponering
 <!-- ![A6] Forstå løkkeinvarianter og induksjon -->
 <!-- ![A7] Forstå rekursiv dekomponering og induksjon over delinstanser -->
-<!-- TODO: Utdyp -->
 
 - Eks: summere elementene i en tabell
 - Rekursjon: summer alle unntatt siste - en funksjon kaller seg selv
@@ -137,22 +146,23 @@ En **in-place algoritme** vil ikke allokere mer minne under kjøring for å mani
 
 - Del opp i mindre problemer (trinn for trinn)
 - Induktivt premiss: anta at du kan løse de mindre problemene
-- Induksjonstrinn: konstruer fullstendig løsning ut fra del-løsningene
+- Induksjonstrinn: konstruer fullstendig løsning ut fra delløsningene
 
-1. Velge vilkårlig heltall å vise for det, da kan det vises for alle (eksempel)
+Eksempel:
+
+1. Velge vilkårlig heltall å vise for det, da kan det vises for alle
 2. Midlertidig anta $P$ og vis deretter $Q$ - da kan $P$ implisere $Q$
 
 Tolkning: Hva er relasjonen mellom input og output?  
 Analyse: Del en vilkårlig instans i delinstanser  
 Syntese: Bygg løsning av hypotetiske delløsninger  
 
-#### Induksjon: iterativ utgave
+##### Iterativ dekomponering: Induksjon - Iterativ utgave
 
-- Invariant: egenskap som ikke endres
-  - Initialize: før start
-  - Vedlikehold: Holder den før/etter interasjon
-  - Terminering: Løkken sier noe nyttig
-- Initialisering: inv. er sann ved start
+- (Løkke) Invariant: egenskap som ikke endres. Sann før og etter hver iterasjon
+  - Initialize: anta at invariant er sann før start
+  - Vedlikehold: holder den før/etter interasjon?
+  - Terminering: løkken sier noe nyttig
 - Vedlikehold i hver iterasjon
 
 ### Insertion sort
@@ -275,6 +285,8 @@ $$\sum^{h-1}_{i=0}2^i = 2^h-1$$
 ### Quick sort
 <!-- [C5] Forstå Quicksort og Randomized-Quicksort -->
 [Link til quick sort](Algoritmer/Sortering/quick_sort.md)
+
+Quick sort er [in-place](#In-place).
 
 ### Rekurrenser
 <!-- ![C6] Kunne løse rekurrenser med substitusjon, rekursjonstrær og masterteoremet -->
@@ -751,3 +763,9 @@ Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 <!-- [M12] Forstå at det binære ryggsekkproblemet er NP-hardt -->
 <!-- [M13] Forstå at lengste enkle-vei-problemet er NP-hardt -->
 <!-- [M14] Være i stand til å konstruere enkle NP-kompletthetsbevis -->
+
+## Definisjoner
+
+### In-place
+
+En **in-place algoritme** vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.

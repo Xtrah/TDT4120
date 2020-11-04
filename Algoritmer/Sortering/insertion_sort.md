@@ -10,7 +10,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-En effektiv algoritme for å sortere et lavt antall elementer.
+En effektiv algoritme for å sortere et lavt antall elementer, med en abstrakt subliste inne i lista imens den sorterer.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -24,13 +24,22 @@ Output: En permutasjon (omorganisering) av input sekvensen slik at $(a'_1 \leq a
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
 
+1. Ta inn liste med usorterte tall
+2. Start fra det andre tallet i listen
+3. Sammenlign tallet med alle tall til venstre for seg
+4. Flytt tallet til venstre om det er mindre
+5. Sjekk neste tall, gjenta 3. og 4. til listen er sortert
+
 ## Korrekthetsbevis
 <!-- TBA -->
+- **Initialisering:** Invarianten må holde for første iterasjon. Det gjelder det andre tallet i lista. Den sorterte sublisten til venstre er kun ett element, det originale første elementet i listen. Sublisten er sortert (ett element alene er alltid sortert), som viser at invarianten holder for første iterasjon.
+- **Vedlikehold:** Vi må bevise at hver iterasjon opprettholder invarianten. <!-- TODO -->
+- **Terminering:** Iterasjonen terminerer... <!-- TODO -->
 
 ## Styrker og svakheter sammenlignet med andre
 
-- In-place: Insertion sort lager aldri en kopi av sekvensen under kjøringen, så den er lite plasskrevende.
-- Stabil: den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
+- In-place: Ja, insertion sort lager aldri en kopi av sekvensen under kjøringen, så den er lite plasskrevende.
+- Stabil: Ja, den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
 
 ## Kjøretid og utregning
 
