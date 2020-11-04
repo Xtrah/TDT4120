@@ -242,6 +242,18 @@ Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vi
 
 ### Amortisert analyse
 <!-- [B8] Kunne definere amortisert analyse -->
+Amortisert analyse er en metode for å kunne analysere en gitt algoritmes kompleksitet.
+
+- Kjøretid for en enkelt operasjon: ikke alltid informativt
+- Se på gjennomsnitt per operasjon etter mange har blitt utført
+
+Amortisert analyse ser på gjennomsnittet av av worst case tilfellene ved forskjellige inputstørrelser, som i mange tilfeller er mye bedre enn det verste tilfellet. Det er derfor worst case ofte er mer pessimistisk enn amortisert analyse.
+
+Når du har en sekvens med en datastrukturs operasjoner, som du kjenner kjøretiden til, så kan man utføre amortisert analyse.
+
+Husk denne:
+$$\sum^{h-1}_{i=0}2^i = 2^h-1$$
+<!-- TODO: Utdyp -->
 
 ### Dynamiske tabeller
 <!-- [B9] Forstå hvordan dynamiske tabeller fungerer (Table-Insert) -->
