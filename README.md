@@ -573,13 +573,6 @@ Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt
 
 ## Traversering av grafer
 <!-- [H1] Forstå hvordan grafer kan implementeres -->
-<!-- [H2] Forstå BFS, også for å finne korteste vei uten vekter -->
-<!-- [H3] Forstå DFS og parentesteoremet -->
-<!-- [H4] Forstå hvordan DFS klassifiserer kanter -->
-<!-- [H5] Forstå Topological-Sort -->
-<!-- [H6] Forstå hvordan DFS kan implementeres med en stakk -->
-<!-- [H7] Forstå hva traverseringstrær (som bredde-først- og dybde-først-trær) er -->
-<!-- ![H8] Forstå traversering med vilkårlig prioritetskø -->
 
 Vi traverserer en graf ved å besøke noder vi vet om. Vi vet i utgangspunktet bare om startnoden, men oppdager naboene til dem vi besøker. Traversering er viktig i seg selv, men danner også ryggraden til flere mer avanserte algoritmer.
 
@@ -595,7 +588,9 @@ Traversering har matching som motivasjon:
 - Nabomatriser
 - Nabolister
 
-**Nabomatriser:**
+> Man sier ofte at det er raskere med nabomatriser men at de tar mer plass.
+
+#### Nabomatriser
 
 Viser forholdet mellom noder ved hjelp av en matrise og verdier for eksistens av forhold.
 
@@ -607,9 +602,9 @@ Viser forholdet mellom noder ved hjelp av en matrise og verdier for eksistens av
 
 Godt egnet til raske oppslag, ikke så mye til traversering: For oppslag trenger du kun å sjekke rad for så å sjekke respektiv kolonne for å finne ut om et forhold eksisterer. For traversering må man gå over flere ruter som ikke har noe innhold for å sjekke en hel rad. I tillegg kan nabomatriser fort ta mye plass.
 
-De fleste algoritmer bruker $\Omega(V^{2})$ operasjoner med nabomatriser. Der $V$ er antallet noder (vertices). Det finnes unntak! (Se kjendisproblemet fra forelesning 8)
+De fleste algoritmer bruker $\Omega(V^{2})$ operasjoner med nabomatriser, der $V$ er antallet noder (vertices). Det finnes unntak! (Se kjendisproblemet fra forelesning 8)
 
-**Nabolister:**
+#### Nabolister
 
 Liste (eller tabell) med ut-naboer for hver node
 
@@ -621,9 +616,40 @@ Liste (eller tabell) med ut-naboer for hver node
 
 Godt egnet til traversering, men dårligere til oppslag: For traversering er nabolister en kompakt metode der vi ikke trenger å gå innom noder som ikke har noe forhold. For oppslag må vi derimot gå igjennom lenger lister dersom det er mange pekere på forskjellige noder. Dersom grafen har få kanter vil nabolister også ta mindre plass enn nabomatriser.
 
+### Bredde-først-søk
+<!-- [H2] Forstå BFS, også for å finne korteste vei uten vekter -->
+
+Best case | Worst case
+---------|----------
+$\Theta(V)$ | $\Theta(V+E)$
+
+### Dybde-først-søk
+<!-- [H3] Forstå DFS og parentesteoremet -->
+<!-- [H4] Forstå hvordan DFS klassifiserer kanter -->
+
+Best case | Worst case
+---------|----------
+$\Theta(V+E)$ | $\Theta(V+E)$
+
+#### DFS med stakker
+<!-- [H6] Forstå hvordan DFS kan implementeres med en stakk -->
+
+### Topological sort
+<!-- [H5] Forstå Topological-Sort -->
+
+En ordning av nodene, som respekterer kantene. Gir nodene en rekkefølge. Samme som gjøres i delproblemgrafen i dynamisk programmering.
+
+I DP med memoisering utfører vi implisitt DFS på delproblemene. Vi får automatisk en topologisk sortering fordi problemer løses etter delproblemer. Samme som å sortere etter synkende finish tid.
+
+### Traverseringstrær
+<!-- [H7] Forstå hva traverseringstrær (som bredde-først- og dybde-først-trær) er -->
+
+### Traversering med vilkårlig prioritetskø
+<!-- ![H8] Forstå traversering med vilkårlig prioritetskø -->
+
 ## Minimale spenntrær
 
-Her har vi en graf med vekter på kantene, og ønsker å bare beholde akkurat de kantene vi må for å koble sammen alle nodene, med en så lav vektsum som mulig. Erke-eksempel på grådighet: Velg én og én kant, alltid den billigste lovlige.
+Her har vi en graf med vekter på kantene, og ønsker kun å beholde akkurat de kantene vi må for å koble sammen alle nodene, med en så lav vektsum som mulig. Erke-eksempel på grådighet: Velg én og én kant, alltid den billigste lovlige.
 
 ### Disjunkte mengder
 <!-- [I1] Forstå skog-implementasjonen av disjunkte mengder (Connected-Components, Same-Component, Make-Set, Union, Link, Find-Set) -->
