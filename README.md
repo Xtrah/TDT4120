@@ -67,7 +67,7 @@ Et mål på hvor effektiv algoritmen er det viktigste når man skal analysere al
 
 Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en grov størrelsesorden.
 
-#### Noen vanlige kjøretider
+#### Noen vanlige kjøretider rangert i synkende rekkefølge
 
 Kompleksitet | Navn | Type
 :-----------:|:----:|:-----:
@@ -222,51 +222,104 @@ En prioritetskø er en type kø som _ikke_ er "First In First Out" (FIFO) strukt
 
 ### Lenkede lister
 <!-- [B2] Forstå hvordan lenkede lister fungerer (List-Search, List-Insert, List-Delete, List-Delete', List-Search', List-Insert') -->
-En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element i lista er en node med en verdi og en peker som peker videre på det neste elementet. I en dobbel-lenket liste peker hver node/element også på det forrige elementet.
+En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element i lista er en _node_ med en _verdi_ og en _peker_ som peker videre på det neste elementet. I en dobbel-lenket liste peker også hver node/element på det forrige elementet.
 
-Handling | Kjøretid enkel liste
----------|--------
-Innsetting på starten | $O(1)$
-Innsetting på slutten | $O(n)$
-Oppslag | $O(n)$
-Slette element | oppslagstid $+\ O(1) = O(n)$
+En node er et datapunkt i en datastruktur. Noe som inneholder data.
+
+<!-- TODO: Sentinels (NIL objekter) -->
+**Sentinels:** NIL-objekter. Et dummy objekt som brukes for å lage avgrensninger, for eksempel i enden av en liste.
+
+![list-search](https://i.imgur.com/1XcFwJT.png)
+![list-search-nil](https://i.imgur.com/ImUvYhu.png)
+
+> **NB!** Vær bevisst på parameterne metodene får inn. Dersom det er en key (en verdi) vil kjøretiden i dobbelt-lenket lister være $\Theta(n)$ for `List-Delete`. Dersom du får inn en node som paramater vil kjøretiden være $O(1)$.
+
+Det finnes varianter av metodene som innebærer disse NIL-objektene. De kan forbedre kjøretiden og gjøre koden mer lesbar, men gir mer [overhead](#Overhead).
+
+Handling | Enkel-lenket liste | Dobbel-lenket liste
+---------|--------|--------
+Innsetting på starten | $O(1)$ | $O(1)$
+Innsetting på slutten | $O(n)$ | $O(1)$
+`List-Insert` | $O(n)$ | $O(n)$
+`List-Search` | $O(n)$ | $O(n)$
+`List-Delete` | `List-Search` $+\ O(1) = O(n)$ | $O(1)$
 
 I en dobbel lenket liste gjøres innsetting på $O(1)$ da man kun trenger å endre `.prev` og `.next` til de nye naboene.
 
-<!-- TODO: Sentinels (NIL objekter) -->
-<!-- TODO: List-Search, List-Insert, List-Delete, List-Delete', List-Search', List-Insert'-->
-
 ### Pekere og objekter
 <!-- [B3] Forstå hvordan pekere og objekter kan implementeres -->
+En peker peker til en minneadresse. På den minneadressen kan det være et objekt. Objekter kan ha pekere som peker til forskjellige minneadresser. Disse kan implementeres i form av lenkede lister.
+
+Objekter kan bli representert av flere arrays eller kun et array:
+
+- I en multiple-array situasjon vil de forskjellige arrayene tolkes som for eksempel elementer, pekere fram og tilbake og \ for NIL.
+- I en enkel array vil posisjonen til elementene relativt til hverandre indikere hvordan objektet skal representeres (igjen med pekere fram og tilbake).
+
+![array-representasjon](https://i.imgur.com/SM3N6lH.png)  
+_Eksempel på et objekt representert av en enkel array_
 
 ### Hashtabeller
-<!-- ![B4] Forstå hvordan direkte adressering og hashtabeller fungerer (Hash-Insert, Hash-Search) -->
-<!-- [B5] Forstå konfliktløsing ved kjeding (chaining) (Chained-Hash-Insert, Chained-Hash-Search, Chained-Hash-Delete) -->
-<!-- [B6] Kjenne til grunnleggende hashfunksjoner -->
-I stedet for å lete gjennom en liste, som kan ta $O(n)$ i verste fall, eller en sortert liste på $O(\log n)$, vil letetiden i en hashtabell være konstant, $O(1)$, fordi lagerstedet til en hashtabell er vanligvis i maskinens hurtigminne hvor man har $O(1)$ tilgang til alle plassene.
 
-Hvis flere nøkler kobles til samme plass i minnet oppstår **kollisjon**. Da vil flere ulike faktiske nøkler gi samme hashverdi.
+Bruksområde: I stedet for å lete gjennom en liste, som kan ta $O(n)$ i verste fall, eller en sortert liste på $O(\log n)$, vil letetiden i en hashtabell være konstant, $O(1)$, fordi lagerstedet til en hashtabell vanligvis er i maskinens hurtigminne hvor man har $O(1)$ tilgang til alle plassene.
+
+<!-- ![B4] Forstå hvordan direkte adressering og hashtabeller fungerer (Hash-Insert, Hash-Search) -->
+Begreper:
+
+- Direkte adressering: Du henter ut data direkte på $O(1)$. F.eks. ved å bruke nøkler (keys) for å hente ut data.
+- Nøkkel = indeks: Du gir en nøkkel for henting av data.
+- Hashing: Vi får inn en nøkkel og knøvler den så den blir en lovlig nøkkel. Knøvlingen $\rarr$ Hashing, den hakkes opp. En lovlig nøkkel er det som er tillat av hashfunksjonen.
+
+#### Kollisjoner
+
+Hvis en hashfunksjon gir samme lovlige nøkkel ved samme input. Blir verdiene satt i samme plass i minnet og det oppstår en kollisjon. Dette kan man løse med f.eks. chaining.
+
+#### Chaining - en teknikk for å løse kollisjoner
+<!-- [B5] Forstå konfliktløsing ved kjeding (chaining) (Chained-Hash-Insert, Chained-Hash-Search, Chained-Hash-Delete) -->
+
+Chaining vil si at man legger elementer i en lenket liste på samme nøkkel. Dersom man har en skikkelig dårlig hashfunksjon vil mange elementer ende på samme nøkkel. Det vil medføre verre kjøretid fordi man ikke kan hente ut verdien på konstant tid, men må traversere listen i tillegg (Ref: `List-Search` med key som parameter). Vi ønsker hashfunksjoner som gir en jevn distribusjon av nøkler uansett input.
+
+Kjøretiden for de ulike operasjonene `Chained-Hash-Insert`, `Chained-Hash-Search` og `Chained-Hash-Delete` vil variere fra hvilken datastruktur som brukes i chainingen. Det kan f.eks. være gunstig å bruke en dobbelt-lenket liste, men vær obs på hva som tas inn som parametere i metodene for å beregne kjøretid (key vs node).
+
+En annen løsning for å løse kollisjoner er å putte verdiene andre steder i tabellen. (Utenfor pensum)
+
+#### Grunnleggende hashfunksjoner
+<!-- [B6] Kjenne til grunnleggende hashfunksjoner -->
+Et krav for en hashfunksjon er at den må være deterministisk: Den må alltid gi samme output for samme input.
+
+$$h(k) = \lfloor km \rfloor, 0 \leq k < 1$$
+$$h(k) = k \space mod \space m$$
+$$h(k) = \lfloor m (kA \space mod \space 1) \rfloor, 0 < A < 1$$
+
+Hva karakteriserer en god hashfunksjon?
+
+- Den skal fordele input så jevnt utover hele hashtabellen på en måte som virker uniformt tilfeldig.
+- Dersom det er et homogent input, det er systematikk og mønster i input skal det ikke oppstå kollisjoner.
 
 ### Statiske datasett
 <!-- [B7] Vite at man for statiske datasett kan ha worst-case O(1) for søk -->
+Når man har statiske datasett kan man lage en skreddersydd hashfunksjon. Dette medfører at man kan **garantere worst-case $O(1)$** fordi man alt vet hva som skal inn i tabellen.
 
 ### Amortisert analyse
 <!-- [B8] Kunne definere amortisert analyse -->
 Amortisert analyse er en metode for å kunne analysere en gitt algoritmes kompleksitet.
 
-- Kjøretid for en enkelt operasjon: ikke alltid informativt
-- Se på gjennomsnitt per operasjon etter mange har blitt utført
+- Kjøretid for en enkeloperasjon: ikke alltid informativt
+- Se på gjennomsnitt per operasjon etter mange har blitt utført. Dersom det er noen _få_ "kostbare" operasjoner vil gjennomsnittet fortsatt bli lavt når man ser på helheten.
 
 Amortisert analyse ser på gjennomsnittet av av worst case tilfellene ved forskjellige inputstørrelser, som i mange tilfeller er mye bedre enn det verste tilfellet. Det er derfor worst case ofte er mer pessimistisk enn amortisert analyse.
 
-Når du har en sekvens med en datastrukturs operasjoner, som du kjenner kjøretiden til, så kan man utføre amortisert analyse.
+Når du har en sekvens med operasjoner, som du kjenner kjøretiden til, så kan man utføre amortisert analyse.
 
-Husk denne:
+Husk denne - summen av toerpotenser:
 $$\sum^{h-1}_{i=0}2^i = 2^h-1$$
-<!-- TODO: Utdyp -->
+<!-- TODO: Utdyp denne -->
+Ved bruk av summen av toerpotenser kan man regne ut den amortiserte kjøretiden for en algoritme som bruker f.eks. fordoblet allokering av plass.
 
 ### Dynamiske tabeller
 <!-- [B9] Forstå hvordan dynamiske tabeller fungerer (Table-Insert) -->
+Som nevnt i amortisert analyse ønsker vi å allokere minne sjeldent fordi det tar lineær tid å allokere nytt minne og kopiere elementer. Vi velger med dynamiske tabeller å heller allokere mye minne av gangen når det blir behov. Med amortisert arbeid blir kjøretiden akseptabel. Man øker størrelsen med en viss prosent. I eksempelet under øker den med x2 hver gang.
+
+![Table-Insert](https://i.imgur.com/wUEW9AW.png)
 
 ## Splitt og hersk
 <!-- ![C1] Forstå designmetoden divide-and-conquer (splitt og hersk) -->
@@ -304,7 +357,7 @@ Metoder for å regne ut rekurrenser:
 - Rekursjonstre
 - [Masterteoremet](#masterteoremet):
   - Rekurrensen må være på formen $T(n)=aT(^n/_b) + f(n)$
-- Iterasjonsmetoden (induksjon):
+- [Iterasjonsmetoden](#iterasjonsmetoden) (induksjon):
   - Gjentatt ekspandering av den rekursive forekomsten av funksjonen - det gir oss en sum som vi kan regne ut
   - Gjør at vi kan "se" et mønster
 - Variabelskifte
@@ -795,3 +848,7 @@ Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 ### In-place
 
 En **in-place algoritme** vil ikke allokere mer minne under kjøring for å manipulere input. Det gjelder derimot ikke for det ekstra minnet som blir allokert for variabler.
+
+### Overhead
+
+Generelt hvor mye minne som kreves for å utføre en operasjon. I dette emnet kvantifiseres det kun i form av at en algoritme har "mer" eller "mindre" overhead.

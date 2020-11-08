@@ -1,5 +1,6 @@
 # Quick sort
 <!-- [C5] Forstå Quicksort og Randomized-Quicksort -->
+<!-- TODO: Randomized-Quicksort -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
