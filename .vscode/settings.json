@@ -4,5 +4,10 @@
     "MD026": false, // ignore trailing punctuations in headings
     "MD033": false // ignore inline HTML 
   },
-  "editor.tabSize": 2 // standard Markdown indentation
+  "editor.tabSize": 2, // standard Markdown indentation
+
+  "workbench.colorTheme": "One Dark Pro",
+  "oneDarkPro.editorTheme": "oneDarkPro",
+  "oneDarkPro.vivid": true,
+  "oneDarkPro.bold": true
 }
