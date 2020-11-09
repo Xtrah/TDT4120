@@ -577,8 +577,9 @@ Dynamisk programmering skjer typisk i optimaliseringsproblemer.
 
 Krav til DP:
 
-- Optimal substruktur (løsningen er en kombinasjon av delproblemer)
-- Overlappende subproblemer
+- Optimal delstruktur (løsningen er en kombinasjon av optimale løsninger på delinstansene)
+- Overlappende delproblemer
+- Typisk rekursjon, men ikke alltid
 
 Hvordan gjøre det i praksis?
 
@@ -587,9 +588,40 @@ Hvordan gjøre det i praksis?
 
 ### Memoisering (top-down)
 <!-- ![F3] Forstå løsning ved memoisering (top-down) -->
+Memoisering innebærer at man cacher løsninger på delproblemer for så å kunne sette dem sammen for å finne den optimale løsningen på problemet.
+
+```python
+F = [-1]*50 #array to store fibonacci terms
+
+def dynamic_fibonacci(n):
+  if (F[n] < 0):
+    if (n==0):
+      F[n] = 0
+    elif (n == 1):
+      F[n] = 1
+    else:
+      F[n] = dynamic_fibonacci(n-1) + dynamic_fibonacci(n-2)
+  return F[n]
+
+print(dynamic_fibonacci(46))
+```
 
 ### Iterasjon (bottom-up)
 <!-- [F4] Forstå løsning ved iterasjon (bottom-up) -->
+
+```python
+F = [0]*50 #array to store fibonacci terms
+
+def fibonacci_bottom_up(n):
+  F[n] = 0
+  F[1] = 1
+
+  for i in range(2, n+1):
+    F[i] = F[i-1] + F[i-2]
+  return F[n]
+
+print(fibonacci_bottom_up(46))
+```
 
 ### Konstruere løsning fra lagrede beslutninger
 <!-- [F5] Forstå hvordan man rekonstruerer en løsning fra lagrede beslutninger -->
@@ -602,6 +634,13 @@ Hvordan gjøre det i praksis?
 
 ### Stavkutting (rod cutting) og LCS
 <!-- [F8] Forstå eksemplene stavkutting og LCS -->
+
+Stavkuttingsproblemet: du har en stav av størrelse $n$ som skal deles i biter og selges for størst fortjeneste. Forskjellige størrelser selges for forskjellige priser.
+
+La $n=7$ og $p=<1,4,3,6,8,5,9>$ være en instans av stavkuttingsproblemet. Hva blir den maksimale inntekten, $r_7$?
+
+$$4+4+4+1 = 13$$
+$$4+8 = 12$$
 
 ### Ryggsekkproblemet (0-1 knapsack)
 <!-- [F9] Forstå løsningen på det binære ryggsekkproblemet (se appendiks D i pensumhefte) (Knapsack, Knapsack') -->
