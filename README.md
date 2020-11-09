@@ -323,6 +323,9 @@ Som nevnt i amortisert analyse ønsker vi å allokere minne sjeldent fordi det t
 
 ## Splitt og hersk
 <!-- ![C1] Forstå designmetoden divide-and-conquer (splitt og hersk) -->
+1. **Splitt** problemet inn i delproblemer som er mindre instanser av originalproblemet.
+2. **Hersk** over delproblemene ved å løse dem rekursivt, eller hvis de er små nok løs delproblemene direkte.
+3. **Kombiner** løsningene til delproblemene til en løsning for originalproblemet.
 
 ### Maximum subarray problemet
 <!-- [C2] Forstå maximum-subarray-problemet med løsninger -->
