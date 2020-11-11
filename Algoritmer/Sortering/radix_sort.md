@@ -43,3 +43,25 @@ $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $O(n+k)$
 der $d$ er antallet siffer i maksimum, $n$ er antall elementer og $k$ er antallet unike elementer.
 
 ## Python kodeeksempel
+```python
+def modified_counting_sort(A, B, idx): # A = Usortert liste. B = Liste hvor resultatet skal puttes. idx = indeksen som sorteringen skal basere seg på
+    k = 10
+    C = [0]*(k+1)
+    for i in range(len(A)):
+        index = int(str(A[i])[idx])
+        C[index] += 1
+    for i in range(1, k+1):
+        C[i] += C[i-1]
+    for i in range(len(A)-1, -1, -1):
+        index = int(str(A[i])[idx])
+        B[C[index]-1] = A[i] 
+        C[index] -= 1 
+    return B
+
+
+def radix_sort(A, d):
+    for i in range(d-1, -1, -1):
+        B = [0]*len(A)
+        A = modified_counting_sort(A,B,i)
+    return A
+```
