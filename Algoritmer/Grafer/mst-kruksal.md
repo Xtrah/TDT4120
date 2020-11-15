@@ -10,6 +10,8 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+Kruksals algoritme finner en trygg kant ved å ta den letteste kanten som kobler sammen to trær i skogen av allerede valgte kanter. Den holder styr på skogen vha. disjoint-set. Når det ikke er flere trær å koble sammen betyr det at det er kun ett igjen som spenner grafen, og dette er det minimale spenntreet.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
@@ -19,6 +21,8 @@
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
+1. Finner en trygg kant: velg letteste kant
+2. ...
 
 ## Korrekthetsbevis
 

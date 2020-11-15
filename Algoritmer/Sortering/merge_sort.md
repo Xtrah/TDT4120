@@ -29,6 +29,7 @@ Output: En permutasjon (omorganisering) av input sekvensen slik at $(a'_1 \leq a
 
 ## Korrekthetsbevis
 <!-- TBA -->
+Hvis du slår sammen to sorterte lister med merge metoden, vil du til slutt få en sortert liste.
 
 ## Styrker og svakheter sammenlignet med andre
 

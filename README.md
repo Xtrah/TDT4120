@@ -33,6 +33,8 @@
 
 </details>
 
+<!-- [A1] Forstå bokas pseudokode-konvensjoner (den starter på index 1) -->
+
 ## Problemer og algoritmer
 
 - Brute force er ofte helt ubrukelig
@@ -40,20 +42,18 @@
 
 En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp flere **instanser**.
 
-Å **analysere en algoritme** har fått betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse.
-
-<!-- [A1] Forstå bokas pseudokode-konvensjoner (den starter på index 1) -->
+Å **analysere en algoritme** har fått betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse, i tillegg til å vise **korrekthet**. <!--Link til begrepet korrekthet-->
 
 ### Random-access machine modellen (RAM)
 <!-- [A2] Kjenne egenskapene til random-access machine-modellen (RAM) -->
-En abstrakt maskin som har følgende egenskaper:
+I dette faget bruker vi en abstrakt maskin som har følgende egenskaper:
 
 - Aritmetikk: $+$ $-$ $*$ $/$ $\bmod$, $\lfloor x \rfloor$, $\lceil x \rceil$  (enkle instruksjoner)
 - Flytting av data og programkontroll
-- Instruksjoner kjøres sekvensielt og ikke samtidig
+- Instruksjoner kjøres sekvensielt og ikke parallelt
 - Håndterer heltall og flyttall
 
-Alle disse operasjonene tar **konstant** tid.
+Alle disse operasjonene tar **konstant** tid. Maskinen modellerer **ikke** minnehierarki og caches, og den kan dermed ikke modellere parallell utførelse.
 
 ### Kjøretid
 <!-- [A3] Kunne definere problem, instans og problemstørrelse -->
@@ -83,6 +83,10 @@ Kompleksitet | Navn | Type
 
 ### Asymptotisk notasjon
 <!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
+Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor. I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
+
+Asymptotisk notiasjon gir oss ikke en presis beskrivelse av veksten til en funksjon, men den gir oss øvre og nedre grenser. Det gjør det enklere å beskrive og sammenligne ulike algoritmer.
+
 - Dropp konstanter og lavere ordens ledd
 - $\omega$ $\leftrightarrow$ $>$ (lille omega)
 - $\Omega$  $\leftrightarrow$ $\ge$ (store omega, nedre grense)
@@ -102,16 +106,19 @@ F.eks. sier vi at Merge sort er asymptotisk optimal, fordi den har verste kjøre
 
 En optimal løsning er så bra som det er mulig å være – ingen løsninger kan være bedre – men det kan være flere optimale løsninger, som er nøyaktig like bra.
 
-> _[(Piazza H20 @158)](https://piazza.com/class/kdptcutti24r?cid=158)_
+> _[(Piazza H20 @158)](https://piazza.com/class/kdptcutti24r?cid=158)_  
 > _[(Piazza H20 @240)](https://piazza.com/class/kdptcutti24r?cid=240)_
 
 #### Forenkling av asymptotisk notasjon
 
-Generelt er ideen at et uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$. Forenkling bør medføre minst mulig tap av presisjon. Med _enklere_ menes kortere/færre tegn eller lignende. I asymptotisk notasjon er sum det samme som maksimum, og man må velge uttrykk til høyre som ikke har strengere øvre og/eller nedre grenser enn venstresiden. Summer som inneholder et ledd med kun en nedre grense kan ikke ha noen øvre grense totalt sett. Ledd som blir beskrevet kun med nedre grense f.eks  $\Omega(n)$ kan ha en ukjent øvre grense. Denne ukjente øvre grensen kan være uendelig stor. Vi må ha dette i bakhodet når vi skal forenkle sammensatte uttrykk slik vi gjør i eksempel 1 og 2.
+- Uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$
+- Medføre minst mulig tap av presisjon; Høyre side må ikke utelukke noen alternativer på venstre side.
+
+Generelt er ideen at et uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$. Forenkling bør medføre minst mulig tap av presisjon. Med _enklere_ menes kortere/færre tegn eller lignende. I asymptotisk notasjon er sum det samme som maksimum, og man må velge uttrykk til høyre som ikke har strengere øvre og/eller nedre grenser enn venstresiden. Summer som inneholder et ledd med kun en nedre grense kan ikke ha noen øvre grense totalt sett. Ledd som blir beskrevet kun med nedre grense f.eks. $\Omega(n)$ kan ha en ukjent øvre grense. Denne ukjente øvre grensen kan være uendelig stor. Vi må ha dette i bakhodet når vi skal forenkle sammensatte uttrykk.
 
 ##### Forenkling eksempel 1
 
-$$O(n)+\Omega(n)=\Omega(n)$$
+$$O(n) + \Omega(n) = \Omega(n)$$
 
 Uansett hvilken funksjon vi har fra $O(n)$ og $\Omega(n)$, om vi legger dem sammen vil den resulterende funksjonen tilhøre klassen $\Omega(n)$. Det vil ikke påvirke resultatet å legge til flere øvre grenser $O(anything)$.
 
@@ -119,9 +126,9 @@ Uansett hvilken funksjon vi har fra $O(n)$ og $\Omega(n)$, om vi legger dem samm
 
 ##### Forenkling eksempel 2
 
-$$\Theta(n^2)+O(n^4)+\Omega(\log n)$$
+$$\Theta(n^2) +  O(n^4) + \Omega(\log n) = \Omega(n^2) + O(n^4)$$
 
-Vi kan forenkle ved å skrive $\Omega(n^2)+O(n^4)$ som vil være en mer generell notasjon og derfor OK. $\omega(n^2)+o(n^4)$ vil være feil fordi lille omega er en strengere notasjon, og utelukker leddet som inneholder $\Theta(n^2)$.
+ $\Omega(n^2)+O(n^4)$ vil være en mer generell notasjon og derfor OK. $\omega(n^2)+o(n^4)$ vil være feil fordi lille omega er en strengere notasjon, og utelukker leddet som inneholder $\Theta(n^2)$.
 
 ### Klasser av input
 <!-- ![A5] Kunne definere best-case, average-case og worst-case -->
@@ -363,15 +370,20 @@ Metoder for å regne ut rekurrenser:
 - [Iterasjonsmetoden](#iterasjonsmetoden) (induksjon):
   - Gjentatt ekspandering av den rekursive forekomsten av funksjonen - det gir oss en sum som vi kan regne ut
   - Gjør at vi kan "se" et mønster
-- Variabelskifte
+- [Variabelskifte](#variabelskifte)
 
 #### Substitusjon
-<!-- TODO -->
+
+Substutisjon innebærer mye manipulering av algebrauttrykk for å oppnå det man vil.
+
+1. Gjett en løsning.
+2. Anta at det holder for alle $m < n$.
+3. Sett inn og substituer
+4. Vis at det holder for ett grunntilfelle (vilkårlig valgt $n$)
 
 #### Rekursjonstre
-<!-- TODO: Utdyp -->
 
-Iterasjonsmetoden med flere grener. Fin måte å visualisere arbeidet, men kan være overveldende i starten.
+Iterasjonsmetoden med flere grener. Tegn ut hvert kall som noder i ett tre. Fin måte å visualisere arbeidet, men kan være overveldende i starten.
 
 - Vi itererer gjennom hva algoritmen koster for hvert nivå i treet, og legger det sammen. Da får vi en sum (kostnad løvnivå + $\sum_{h-1}^{i=0}$ pris for nivå $i$).
 - Høyden til treet, er hvor lang tid det tar å komme seg til grunntilfellet. Kjøretiden blir kostnaden til hvert nivå.
@@ -382,8 +394,10 @@ Iterasjonsmetoden med flere grener. Fin måte å visualisere arbeidet, men kan v
 
 Kontekst: Finne kjøretid, ofte for splitt og hersk algoritmer
 
-$$T(n)=aT(^n/_b) + f(n)$$
-$$a\ge1,\  b>1$$
+Dekker mange tilfeller av rekursiv dekomponering. Krever at betingelsene følges nøyaktig.
+
+$$T(n) = aT(^n/_b) + f(n)$$
+$$a \ge 1,\  b > 1$$
 
 1. Identifiser $a, b, f(n)$
 2. Regn ut $\log_b(a) = d$ og finn graden av $f(n) = c$
@@ -395,6 +409,8 @@ Tilfelle | Krav | Løsning
 1 | $f(n)\in O(n^{\log_b a-\epsilon})$ | $T(n) \in \Theta(n^{\log_b a})$
 2 | $f(n)\in \Theta(n^{\log_b a} \log^k n)$ | $T(n) \in \Theta(n^{\log_b a}\log n)$
 3 | $f(n)\in \Omega(n^{\log_b a+\epsilon})$ | $T(n) \in \Theta(f(n))$
+
+Fallgruve: Det holder ikke at arbeidet $f(n)$ i rotnoden av rekurrenstreet vokser større enn arbeidet $n^{\log_b(a)}$ i løvnodene. $f(n)$ må være større med polynomisk faktor.
 
 ##### Eksempel masterteorem 1
 
@@ -458,6 +474,17 @@ $$T(n) \in \Theta(n^{\log_3 2})$$
 #### Iterasjonsmetoden
 <!-- ![C7] Kunne løse rekurrenser med iterasjonsmetoden (se appendiks B i pensumhefte) -->
 
+Ta et rekursivt uttrykk, for eksempel  
+$$T(n) = T(n/2) + 1$$
+$$T(1) = 1$$
+
+Utvid opp i iterasjoner
+$$T(n) = T(n/2) + 1 = T(n/4) + 2 = T(n/2^i) + i$$
+
+Vi ønsker nå å få argumentet $T$ lik $1$ for å få grunntilfellet.
+$$n/i^2 = 1 => i^2 = n => i = lg(n)$$
+$$T(n) = T(1) + lg(n) = 1 + lg(n)$$
+
 #### Variabelskifte
 <!-- [C8] Forstå hvordan variabelskifte fungerer* -->
 
@@ -503,7 +530,6 @@ $$[A1, B1, C2, C1]$$
 ### Randomized-Select og Select
 <!-- [D6] Forstå Randomized-Select -->
 <!-- [D7] Kjenne til Select - merk: Det kreves ikke grundig forståelse av virkemåten til Select. -->
-<!-- TODO -->
 
 ## Rotfaste trestrukturer
 
@@ -652,18 +678,25 @@ $$4+8 = 12$$
 <!-- ![G1] Forstå designmetoden grådighet -->
 <!-- ![G2] Forstå grådighetsegenskapen (the greedy-choice property) -->
 
-Grådige algoritmer er motpælen til dynamisk programmering. I stedet for å velge forskjellige valg underveis, vil en grådig algoritme velge den løsningen som ser mest lovende ut der og da. For å bruke grådige algoritmer må vi ha:
+Grådige algoritmer er motpælen til dynamisk programmering. I stedet for å velge forskjellige valg underveis, vil en grådig algoritme velge den løsningen som ser mest lovende ut der og da. Grådige algoritmer er ofte enkle å implementere, men det kan være utfordrende å se hvilke problemer de løser optimalt. For å bruke grådige algoritmer må vi ha:
 
-- Grådighetsegenskapen: vi kan finne en global optimal løsning ved å ta lokalt optimale valg
-- Optimal delstruktur: kan fortsette på samme måte. Opt. løsning bygger på opt. delløsninger. Hvis ikke må vi løse ting på en helt annen måte etter første valg.
+- Grådighetsegenskapen: vi må garantert finne en global optimal løsning ved å ta lokalt optimale valg. Det grådige valget må velge et element som en annen optimal algoritme også hadde valgt.
+- Optimal delstruktur: Optimal løsning bygger på optimale delløsninger, så hvert valg må kun gi ett nytt delproblem. Hvis ikke må vi løse ting på en helt annen måte etter første valg.
 
 Disse egenskapene sammen gir en optimal løsning.
 
-### Aktivitetsutvalgproblemet
+### Nøkkeleksempler innen grådig programmering
 <!-- [G3] Forstå eksemplene aktivitet-utvelgelse og det kontinuerlige ryggsekkproblemet -->
 
-#### Huffmans algoritme
+#### Aktivitet-utvegelse
+
+#### Ryggsekkproblemet
+
+### Huffmankoder og huffmans algoritme
 <!-- [G4] Forstå Huffman og Huffman-koder -->
+
+Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for  kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
+
 Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på frekvensene.
 
 ## Traversering av grafer
@@ -680,18 +713,22 @@ Traversering har matching som motivasjon:
 
 ### Grafrepresentasjoner:
 
+En graf er en samling av noder og kanter (edges). Det finnes rettede elller urettede kanter. Kanter kan representeres ved:
+
 - Nabomatriser
 - Nabolister
 
-> Man sier ofte at det er raskere med nabomatriser men at de tar mer plass.
+Man sier ofte at det er raskere med nabomatriser men at de tar mer plass.
 
 #### Nabomatriser
+
+En nabomatrise leses fra rad til kolonne. Det går raskt å slå opp en spesifikk kant, men den er mindre praktisk for traversering.
 
 Viser forholdet mellom noder ved hjelp av en matrise og verdier for eksistens av forhold.
 
 ![Illustrasjon nabomatrise](https://i.postimg.cc/vHsGRZ33/image.png)
 
-*Spørsmål:* Er 5 nabo med 4?
+**Spørsmål:** Er 5 nabo med 4?
 
 **Svar:** Sjekk rad 5 kolonne 4. Hvis det står "1", ja, da er de naboer med et forhold fra 5 til 4 $(5 \rightarrow 4)$. I figuren er det vist et symmetrisk forhold. Det innebærer at 5 er nabo med 4 og 4 er nabo med 5. Grafen er urettet.
 
@@ -705,20 +742,36 @@ Liste (eller tabell) med ut-naboer for hver node
 
 ![Illustrasjon nabolister](https://i.postimg.cc/XvpttRFV/image.png)
 
-*Spørsmål:* Hvem er naboen til 5?
+**Spørsmål:** Hvem er naboen til 5?
 
 **Svar:** Sjekk indeks 5, se igjennom listen. Naboene til 5 er 3 og 4.
 
 Godt egnet til traversering, men dårligere til oppslag: For traversering er nabolister en kompakt metode der vi ikke trenger å gå innom noder som ikke har noe forhold. For oppslag må vi derimot gå igjennom lenger lister dersom det er mange pekere på forskjellige noder. Dersom grafen har få kanter vil nabolister også ta mindre plass enn nabomatriser.
 
-### Bredde-først-søk
+#### Valg av representasjon: Tommelfingerregel
+
+1. Har du en "sparse" graf, altså at antallet kanter er betydeligere mindre enn max $(m < n^2)$; Er naboliste bedre. (Dersom du hadde valgt nabomatriser hadde du ikke utnyttet hele matrisen og du hadde hatt kolonner og rader som kanskje bare er helt tomme)
+2. Har du en "dense" graf, altså at antallet kanter er $\approx n^2$ så er en nabomatrise gunstig. Den senker kjøretiden fordi den gjør oppslag uten for mye overhead.
+
+### Breadth first search (BFS)
 <!-- [H2] Forstå BFS, også for å finne korteste vei uten vekter -->
+En måte å tenke på BFS:
+> Si ifra til naboer at du kommer på besøk i **størrelsesorden**, besøk i samme rekkefølge som du sa ifra.
+
+Svært effektiv når man har en graf med kanter som er like lange.
+
+Baseres på farging av nodene ved traversering med en FIFO kø.
+Hvit: Ikke oppdaget.
+Grå: Oppdaget, men ikke besøkt.
+Svart: Besøkt og ferdig.
 
 Best case | Worst case
 ---------|----------
 $\Theta(V)$ | $\Theta(V+E)$
 
-### Dybde-først-søk
+Hver node & kant blir sjekket en gang.
+
+### Depth first search (DFS)
 <!-- [H3] Forstå DFS og parentesteoremet -->
 <!-- [H4] Forstå hvordan DFS klassifiserer kanter -->
 
@@ -731,6 +784,9 @@ $\Theta(V+E)$ | $\Theta(V+E)$
 
 ### Topological sort
 <!-- [H5] Forstå Topological-Sort -->
+Når man har en behov for rekkefølge på nodene: Gir en lineær sortering av noder i en DAG slik at for hver node kant $u,v$ kommer u før v.
+
+> En topologisk sortering er ikke nødvendigvis unik. Det kan altså finnes flere enn 1 topologisk sortering for en graf.
 
 En ordning av nodene, som respekterer kantene. Gir nodene en rekkefølge. Samme som gjøres i delproblemgrafen i dynamisk programmering.
 
@@ -817,51 +873,115 @@ Fremgangsmåte:
 
 ### MST-Kruksal
 <!-- [I5] Forstå MST-Kruskal -->
-[Link til MST-Kruksal](Algoritmer/Grafer/MST-Kruksal.md)
+[Link til MST-Kruksal](Algoritmer/Grafer/mst-kruksal.md)
+
+Hvis du utfører MST-Kruskal på grafen under, hvilken kant vil velges som den femte i rekken? Det vil si, hvilken kant vil være den femte som legges til i løsningen? Oppgi kanten på formen $(i, j)$, der $i < j$.
+
+![2016H - Oppgave 14](https://i.imgur.com/jycyoHZ.png)
+
+<details><summary>Løsningsforslag</summary>
+
+LF = ${(1,4),(2,5),(3,6),(4,5),(5,6)}$, hvor $(5,6)$ er svaret.
+</details>
 
 ### MST-Prim
 <!-- [I6] Forstå MST-Prim -->
-[Link til MST-Prim](Algoritmer/Grafer/MST-Prim.md)
+[Link til MST-Prim](Algoritmer/Grafer/mst-prim.md)
 
 ## Korteste vei fra én til alle
 
 Bredde-først-søk kan finne stier med færrest mulig kanter, men hva om kantene har ulik lengde? Det generelle problemet er uløst, men vi kan løse problemet med gradvis bedre kjøretid for grafer (1) uten negative sykler; (2) uten negative kanter; og (3) uten sykler. Og vi bruker samme prinsipp for alle tre!
 
+### Ulike varianter av korteste-vei- eller korteste-sti-problemet
 <!-- [J1] Forstå ulike varianter av korteste-vei- eller korteste-sti-problemet (Single-source, single-destination, single-pair, all-pairs) -->
 <!-- [J2] Forstå strukturen til korteste-vei-problemet -->
 <!-- [J3] Forstå at negative sykler gir mening for korteste enkle vei (simple path) -->
 <!-- [J4] Forstå at korteste enkle vei kan løses vha. lengste enkle vei og omvendt -->
+
+- Single source shortest path (SSSP): En til alle.
+- Single destination/target: Alle til en. Løses som SSSP i omvendt graf.
+- En til en: Har ikke noe bedre enn SSSP algoritmer.
+- All pairs shortest path: Alle til alle.
+
+### Representasjon av korteste-vei-tre
 <!-- [J5] Forstå hvordan man kan representere et korteste-vei-tre -->
+
+### Kantslakking: Relax
 <!-- ![J6] Forstå kant-slakking (edge relaxation) og Relax -->
 <!-- [J7] Forstå ulike egenskaper ved korteste veier og slakking (Triangle inequality, upper-bound property, no-path property, convergence property, pathrelaxation property, predecessor-subgraph property) -->
+Take it eeeeeeeeeasy. Brukes som subrutine i f.eks. DAG-Shortest-Path algoritmen(Directed asyclic graph).
+
+```python
+  RELAX(u,v,w):
+    if v.d > u.d + w(u,v):
+      v.d = u.d + w(u,v)
+      v.pi = u
+```
+
+Der $v.d$ er avstanden til etterfølgere, $u.d$ er avstanden fra forgjenger og $w(u,v)$ er vekten av kanten mellom forgjengernode v og etterfølgernode u. Forklart: Sjekk om avstand til etterfølgere er større enn summen av avstanden fra forgjenger + vekten av kanten mellom forgjengernode v & etterfølgernode u.
+
+### Bellman-Ford
 <!-- [J8] Forstå Bellman-Ford -->
+
+### DAG Shortest path
 <!-- [J9] Forstå DAG-Shortest-Path -->
 <!-- ![J10] Forstå kobling mellom DAG-Shortest-Path og dynamisk programmering -->
+
+### Dijkstras algoritme
 <!-- [J11] Forstå Dijkstra -->
+[Link til Dijkstra](Algoritmer/Grafer/dijkstra.md)
 
 ## Korteste vei fra alle til alle
 
 Vi kan finne de korteste veiene fra hver node etter tur, men mange av delinstansene vil overlappe – om vi har mange nok kanter lønner det seg å bruke dynamisk programmering med dekomponeringen «Skal vi innom k eller ikke?»
 
 <!-- [K1] Forstå forgjengerstrukturen for alle-til-alle-varianten av korteste vei-problemet (Print-All-Pairs-Shortest-Path) -->
+
+### Floyd-Warshall algoritmen
 <!-- [K2] Forstå Floyd-Warshall -->
+
+### Transitive closure
 <!-- [K3] Forstå Transitive-Closure -->
+
+### Johnsons algoritme
 <!-- [K4] Forstå Johnson -->
 
 ## Maksimal flyt
+<!-- [L1] Kunne definere flytnett, flyt og maks-flyt-problemet -->
 
 Et stort skritt i retning av generell lineær optimering (såkalt lineær programmering). Her ser vi på to tilsynelatende forskjellige problemer, som viser seg å være duale av hverandre, noe som hjelper oss med å finne en løsning.
 
-<!-- [L1] Kunne definere flytnett, flyt og maks-flyt-problemet -->
+Flyt-problemet spør rett og slett hvor mye vi kan sende fra en node til en annen.
+
+Noder A og B. Kanten i mellom har en kapasitet.
+
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
+
+### Restnettet til et flytnett med en gitt flyt
 <!-- ![L3] Kunne definere restnettet til et flytnett med en gitt flyt -->
+
+### Oppheve (cancel) flyt
 <!-- [L4] Forstå hvordan man kan oppheve (cancel) flyt -->
+
+### Forøkende sti (augmenting path)
 <!-- [L5] Forstå hva en forøkende sti (augmenting path) er -->
+
+### Snitt, snitt-kapasitet og minimalt snitt
 <!-- [L6] Forstå hva snitt, snitt-kapasitet og minimalt snitt er -->
+
+### Maks-flyt/min-snitt teoremet
 <!-- ![L7] Forstå maks-flyt/min-snitt-teoremet -->
+
+### Ford-Fulkerson
 <!-- [L8] Forstå Ford-Fulkerson-Method og Ford-Fulkerson -->
+Så lenge vi finner en sti som kan øke flyten kan vi endre flyten.
+
+### Edmond Karp algoritmen
 <!-- [L9] Vite at Ford-Fulkerson med BFS kalles Edmonds-Karp-algoritmen -->
+
 <!-- [L10] Forstå hvordan maks-flyt kan finne en maksimum bipartitt matching -->
+
+### Heltallsteoremet (integrality theorem)
 <!-- ![L11] Forstå heltallsteoremet (integrality theorem) -->
 
 ## NP-kompletthet
@@ -870,17 +990,49 @@ NP er den enorme klassen av ja-nei-problemer der ethvert ja-svar har et bevis so
 
 Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
+### Sammenhengen mellom optimerings- og beslutningsproblemer
 <!-- [M1] Forstå sammenhengen mellom optimerings- og beslutnings-problemer -->
+
+### Koding (encoding) av en instans
 <!-- [M2] Forstå koding (encoding) av en instans -->
+
+### Binære ryggsekkproblemet ikke polynomisk
 <!-- [M3] Forstå hvorfor løsningen vår på det binære ryggsekkproblemet ikke er polynomisk -->
+
+### Forskjellen på konkrete og abstrakte problemer
 <!-- [M4] Forstå forskjellen på konkrete og abstrakte problemer -->
+
+### Representasjon av beslutningsproblemer
 <!-- [M5] Forstå representasjonen av beslutningsproblemer som formelle språk -->
+
+### Definisjon av klassene P, NP og co-NP
 <!-- [M6] Forstå definisjonen av klassene P, NP og co-NP -->
+
+### Resubilitetsrelasjonen 6P
 <!-- [M7] Forstå redusibilitets-relasjonen 6P -->
+
+### NP-hardhet og NP-kompletthet
 <!-- ![M8] Forstå definisjonen av NP-hardhet og NP-kompletthet -->
+
+### Den konvensjonelle hypotesen
 <!-- [M9] Forstå den konvensjonelle hypotesen om forholdet mellom P, NP og NPC -->
+
+### Reduksjon
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
+X er lettere enn Y. Reduksjon er å vise at $X \leq Y$.
+
+> Krokodillemunnen spiser samme vei som pilen $\leq$
+
+Problem A er i P og problem B er i NP.
+
+For å vise at P = NP, hva må vi redusere fra og til?
+
+$B_{NP}$ -> $A_{P}$.
+
+### Kjente NP-komplette problemer
 <!-- ![M11] Kjenne de NP-komplette problemene CIRCUIT-SAT, SAT, 3-CNF-SAT, CLIQUE, VERTEX-COVER, HAM-CYCLE, TSP og SUBSET-SUM -->
+
+### Binære ryggsekkproblemet er NP-hardt
 <!-- [M12] Forstå at det binære ryggsekkproblemet er NP-hardt -->
 <!-- [M13] Forstå at lengste enkle-vei-problemet er NP-hardt -->
 <!-- [M14] Være i stand til å konstruere enkle NP-kompletthetsbevis -->
@@ -894,3 +1046,7 @@ En **in-place algoritme** vil ikke allokere mer minne under kjøring for å mani
 ### Overhead
 
 Generelt hvor mye minne som kreves for å utføre en operasjon. I dette emnet kvantifiseres det kun i form av at en algoritme har "mer" eller "mindre" overhead.
+
+### Korrekthet
+
+Å sjekke at løkkeinvarianten er riktig før løkka starter, etter hver iterasjon og når løkka er ferdig. Algoritmen gir korrekt output som følge av input.

@@ -10,6 +10,8 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+Prims algoritme vedlikeholder en løsningsmengde med noder, og legger til en node som deler kant med løsningsmengden ved hver iterasjon. Så lenge kanten som blir lagt til ikke skaper en sykel, og er den billigst mulige, så er den trygg.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
@@ -19,6 +21,9 @@
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
+1. Start et tre med en enkel node, valgt tilfeldig.
+2. Voks treet via billigste kant som ikke skaper en sykel
+3. Gjenta til det ikke er flere noder å vokse til
 
 ## Korrekthetsbevis
 
