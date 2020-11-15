@@ -1,4 +1,5 @@
 # Depth first search (DFS)
+<!-- [H3] Forstå DFS og parentesteoremet -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser

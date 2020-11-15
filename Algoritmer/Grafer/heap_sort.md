@@ -35,4 +35,6 @@ Heap sort er en sammenligningsbasert algoritme, lik selection sort, hvor vi før
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
+<!-- En heap bruker logaritmisk tid for å ta ut det største eller minste elementet i heapen (?) -->
+
 ## Python kodeeksempel

@@ -34,15 +34,15 @@ Anta at du kan kun ha $k$ distinkte elementer. Tell hvor mange instanser det er 
 - Ikke sammenligningsbasert
 - **Counting sort** slår **radix sort** hvis antallet elementer $n \gg k$ forskjellige elementer. (_Dette er også det tilfellet hvor algoritmen er mest effektiv._)
 - Sorterer basert på at alle input-elementene $n$ er heltall med en range mellom $0$ og $k$.
-- Ikke in-place da den lager en ny liste midlertidig for å telle antall forekomster av hvert element
-- Stabil: den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
+- In-place: Nei, da den lager en ny liste midlertidig for å telle antall forekomster av hvert element
+- Stabil: Ja, den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------
-TODO | TODO | TODO | TODO
+$\Theta(n+k)$ | $\Theta(n+k)$ | $\Theta(n+k)$ | $O(n+k)$
 
 ## Python kodeeksempel
 

@@ -18,6 +18,7 @@ Bucket sort antar at input-listen er generert tilfeldig og er uniformt fordelt o
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
 <!-- Eks: Binary search må ha en sortert liste -->
+For at bucket sort skal fungere må vi unngå at alle tallene havner i samme bøtte.
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->

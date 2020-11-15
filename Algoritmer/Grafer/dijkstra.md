@@ -44,6 +44,7 @@ Optimal substruktur. Gitt ingen negative kanter vil det umulig kunne være noen 
 
 Array: $O(V^2)$  
 Binary heap: $O((V+E)\log V)$
+<!-- TODO: Sjekk opp. Fra eksamensforelesning 2020 -->
 
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------

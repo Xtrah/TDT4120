@@ -31,8 +31,8 @@ En tidkrevende sorteringsalgoritme som søker gjennom en usortert liste og flytt
 
 ## Styrker og svakheter sammenlignet med andre
 
-- In-place: det blir ikke opprettet kopier av lista, elementer blir kun flyttet.
-- Ustabil: garanterer ikke at den relative rekkefølgen til like elementer er lik under sorteringen av listen.
+- In-place: Ja, det blir ikke opprettet kopier av lista, elementer blir kun flyttet.
+- Stabil: Nei, garanterer ikke at den relative rekkefølgen til like elementer er lik under sorteringen av listen.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->

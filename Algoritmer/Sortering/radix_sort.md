@@ -43,6 +43,7 @@ $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $O(n+k)$
 der $d$ er antallet siffer i maksimum, $n$ er antall elementer og $k$ er antallet unike elementer.
 
 ## Python kodeeksempel
+
 ```python
 def modified_counting_sort(A, B, idx): # A = Usortert liste. B = Liste hvor resultatet skal puttes. idx = indeksen som sorteringen skal basere seg på
     k = 10

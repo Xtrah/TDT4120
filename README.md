@@ -515,6 +515,8 @@ $$[B1, C2, C1, A1]$$
 og sorterer den kun etter bokstaver, vil rekkefølgen for $C$ forbli uforandret:
 $$[A1, B1, C2, C1]$$
 
+Vi sier ofte at _den relative rekkefølgen_ opprettholdes.
+
 ### Counting sort
 <!-- [D3] Forstå Counting-Sort, og hvorfor den er stabil -->
 [Link til counting sort](Algoritmer/Sortering/counting_sort.md)
@@ -622,17 +624,15 @@ Memoisering innebærer at man cacher løsninger på delproblemer for så å kunn
 ```python
 F = [-1]*50 #array to store fibonacci terms
 
-def dynamic_fibonacci(n):
+def fibonacci_top_down(n):
   if (F[n] < 0):
     if (n==0):
       F[n] = 0
     elif (n == 1):
       F[n] = 1
     else:
-      F[n] = dynamic_fibonacci(n-1) + dynamic_fibonacci(n-2)
+      F[n] = fibonacci_top_down(n-1) + fibonacci_top_down(n-2)
   return F[n]
-
-print(dynamic_fibonacci(46))
 ```
 
 ### Iterasjon (bottom-up)
@@ -648,8 +648,6 @@ def fibonacci_bottom_up(n):
   for i in range(2, n+1):
     F[i] = F[i-1] + F[i-2]
   return F[n]
-
-print(fibonacci_bottom_up(46))
 ```
 
 ### Konstruere løsning fra lagrede beslutninger
@@ -657,6 +655,9 @@ print(fibonacci_bottom_up(46))
 
 ### Optimal delstruktur
 <!-- [F6] Forstå hva optimal delstruktur er -->
+Optimal delstruktur vil si at løsningen er en kombinasjon av optimale løsninger på delinstansene.
+
+Hva om vi ikke har overlappende delproblemer? Da kan vi ikke bruke memoisering da det ikke er noe hensikt i å huske svarene.
 
 ### Overlappende delinstanser
 <!-- [F7] Forstå hva overlappende delinstanser er -->
@@ -666,7 +667,7 @@ print(fibonacci_bottom_up(46))
 
 Stavkuttingsproblemet: du har en stav av størrelse $n$ som skal deles i biter og selges for størst fortjeneste. Forskjellige størrelser selges for forskjellige priser.
 
-La $n=7$ og $p=<1,4,3,6,8,5,9>$ være en instans av stavkuttingsproblemet. Hva blir den maksimale inntekten, $r_7$?
+La $n=7$ og $p=[1,4,3,6,8,5,9]$ være en instans av stavkuttingsproblemet. Hva blir den maksimale inntekten, $r_7$?
 
 $$4+4+4+1 = 13$$
 $$4+8 = 12$$
@@ -771,7 +772,7 @@ $\Theta(V)$ | $\Theta(V+E)$
 
 Hver node & kant blir sjekket en gang.
 
-### Depth first search (DFS)
+### Depth first search (DFS) og parentesteoremet
 <!-- [H3] Forstå DFS og parentesteoremet -->
 <!-- [H4] Forstå hvordan DFS klassifiserer kanter -->
 
