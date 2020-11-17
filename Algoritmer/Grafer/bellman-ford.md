@@ -10,6 +10,8 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+Bellman-Ford algoritmen løser single-source shortest-path (SSSP) problemet i det generelle tilfellet hvor kanter kan ha negativ vekt.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
@@ -19,6 +21,22 @@
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
+
+Gitt en vektet rettet graf $G=(V,E)$ med kilde $s$ og en vektfunksjon $w : E -> \R$, vil Bellman-Ford returnere `True` hvis og bare hvis grafens startnode ikke finner noen ingen negativ-vekt sykler.
+
+G = graf | w = vekting | i = teller | u = fra-node | v = til-node
+
+```pseudo
+Bellman-Ford(G,w,s)
+  Initialize-Single-Source(G,s)
+for i=1 to |G.V| - 1
+    for each edge (u.v) ∈ G.E
+      Relax(u,v,w)
+for each edge (u.v) ∈ G.Ez
+  if v.d > u.d + w (u,v)
+    return False
+return True
+```
 
 ## Korrekthetsbevis
 

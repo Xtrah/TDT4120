@@ -709,7 +709,7 @@ Traversering har matching som motivasjon:
 
 - Vi husker hvor vi kom fra.
 - Vi besøker ikke samme node mer enn en gang
-  - Vi lager et traverseringstre. Finner stier fra startnoeden til alle noder vi når fram til.
+  - Vi lager et traverseringstre. Finner stier fra startnoden til alle noder vi når fram til.
 - Vi besøker noder, oppdager noder langst kanter og vedlikeholder en huskeliste.
 
 ### Grafrepresentasjoner:
@@ -899,18 +899,35 @@ Bredde-først-søk kan finne stier med færrest mulig kanter, men hva om kantene
 <!-- [J3] Forstå at negative sykler gir mening for korteste enkle vei (simple path) -->
 <!-- [J4] Forstå at korteste enkle vei kan løses vha. lengste enkle vei og omvendt -->
 
-- Single source shortest path (SSSP): En til alle.
-- Single destination/target: Alle til en. Løses som SSSP i omvendt graf.
-- En til en: Har ikke noe bedre enn SSSP algoritmer.
-- All pairs shortest path: Alle til alle.
+En **enkel sti** (simple path) er en sti uten sykler. Den **korteste veien** er alltid enkel.
+
+- Single source shortest path (SSSP): en startnode med korteste vei til alle andre
+- Single destination/target: alle til en. Løses som SSSP i omvendt graf
+- En til en: samme som SSSP  algoritmer da det ikke finnes noe asymptotisk bedre
+- All pairs shortest path: alle til alle
+
+DAG: Directed Asyclic Graph (rettet asyklisk graf)
+
+Om det finnes en negativ sykel er **ingen** sti kortest.
 
 ### Representasjon av korteste-vei-tre
 <!-- [J5] Forstå hvordan man kan representere et korteste-vei-tre -->
 
-### Kantslakking: Relax
+### Kantslakking
 <!-- ![J6] Forstå kant-slakking (edge relaxation) og Relax -->
 <!-- [J7] Forstå ulike egenskaper ved korteste veier og slakking (Triangle inequality, upper-bound property, no-path property, convergence property, pathrelaxation property, predecessor-subgraph property) -->
-Take it eeeeeeeeeasy. Brukes som subrutine i f.eks. DAG-Shortest-Path algoritmen(Directed asyclic graph).
+
+Kantslakking er en oppspalting av minimumsoperasjonen fra dekomponeringen.
+
+$$\delta(s,v) \leq v.d$$
+
+$\delta(s,v)$ er avstanden fra en node $s$ til en node $v$, altså lengden til korteste vei.
+
+$v.d$ er avstandsestimatet vårt, som starter som $\infin$ og blir alltid endret til den beste veien vi har funnet _så langt_. Denne vil alltid være en faktisk avstand da vi kun reduserer når vi faktisk finner en vei. Idéen er at denne _slakkes_ helt ned til optimum.
+
+#### Relax
+
+Take it eeeeeeeeeasy. Brukes som subrutine i f.eks. DAG-Shortest-Path algoritmen.
 
 ```python
   RELAX(u,v,w):
@@ -923,10 +940,12 @@ Der $v.d$ er avstanden til etterfølgere, $u.d$ er avstanden fra forgjenger og $
 
 ### Bellman-Ford
 <!-- [J8] Forstå Bellman-Ford -->
+[Link til Bellman-Ford](Algoritmer/Grafer/bellman-ford.md)
 
 ### DAG Shortest path
 <!-- [J9] Forstå DAG-Shortest-Path -->
 <!-- ![J10] Forstå kobling mellom DAG-Shortest-Path og dynamisk programmering -->
+Vi drar med oss info fra forgjengerne, såkalt "pulling".
 
 ### Dijkstras algoritme
 <!-- [J11] Forstå Dijkstra -->
@@ -991,8 +1010,19 @@ NP er den enorme klassen av ja-nei-problemer der ethvert ja-svar har et bevis so
 
 Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
+- Problem: binær relasjon mellom input og output.
+- Et _konkret problem_ er hvis input og output er bitstrenger
+- Verifikasjonsalgoritme: sjekker (sertifiserer) om en løsning stemmer (true/false) ved å sammenligne sertifikat og løsning
+- Sertifikat: En streng $y$ som brukes som "bevis" for ja-svar
+- NP (Non-deterministic Polynomial): Ja-svar har vitner som kan sjekkes i polynomisk tid  
+- Co-NP: Nei-svar har vitner som kan sjekkes i polynomisk tid
+
 ### Sammenhengen mellom optimerings- og beslutningsproblemer
 <!-- [M1] Forstå sammenhengen mellom optimerings- og beslutnings-problemer -->
+- Optimaliseringsproblem: finne den mest optimale løsningen
+  - NP-kompletthet gjelder ikke for optimaliseringsproblemer direkte
+  - Ikke nødvendigvis noe vitne
+- Beslutningsproblem: finnes det et vitne?
 
 ### Koding (encoding) av en instans
 <!-- [M2] Forstå koding (encoding) av en instans -->
@@ -1008,6 +1038,21 @@ Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
 ### Definisjon av klassene P, NP og co-NP
 <!-- [M6] Forstå definisjonen av klassene P, NP og co-NP -->
+Kompleksitetsklasse: en mengde språk.
+
+Kompleksitetsklasser:
+
+- P: klassen problemer som kan løses i polynomisk tid
+  - Språkene som kan **avgjøres** i polynomisk tid
+- NP: klassen problemer som kan løses _ikke-deterministisk_ i polynomisk tid
+  - Språkene som kan **verifiseres** i polynomisk tid
+  - HAM-Cycle $\in$ NP: språket for hamilton-sykel-problemet.
+- Co-NP: Språkene som kan **falsifiseres** i polynomisk tid
+  - $L \in$ co-NP $\leftrightarrow \bar{L} \in$ NP
+
+#### PS vs NP
+
+Om vi kan løse problemet, så kan vi verifsere det med samme algoritme, og bare ignorere sertifikatet. P er en delmengde av både NP og co-NP.
 
 ### Resubilitetsrelasjonen 6P
 <!-- [M7] Forstå redusibilitets-relasjonen 6P -->
@@ -1020,9 +1065,10 @@ Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
 ### Reduksjon
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
-X er lettere enn Y. Reduksjon er å vise at $X \leq Y$.
+A er lettere enn B. Reduksjon er å vise at $A \leq B$.
 
-> Krokodillemunnen spiser samme vei som pilen $\leq$
+> Krokodillemunnen spiser samme vei som pilen  
+> Altså vi må redusere A $\leq$ $\leftarrow$ B (altså B -> A)
 
 Problem A er i P og problem B er i NP.
 
