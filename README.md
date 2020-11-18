@@ -923,7 +923,7 @@ $$\delta(s,v) \leq v.d$$
 
 $\delta(s,v)$ er avstanden fra en node $s$ til en node $v$, altså lengden til korteste vei.
 
-$v.d$ er avstandsestimatet vårt, som starter som $\infin$ og blir alltid endret til den beste veien vi har funnet _så langt_. Denne vil alltid være en faktisk avstand da vi kun reduserer når vi faktisk finner en vei. Idéen er at denne _slakkes_ helt ned til optimum.
+$v.d$ er avstandsestimatet vårt, som starter som $\infty$ og blir alltid endret til den beste veien vi har funnet _så langt_. Denne vil alltid være en faktisk avstand da vi kun reduserer når vi faktisk finner en vei. Idéen er at denne _slakkes_ helt ned til optimum.
 
 #### Relax
 
@@ -1008,27 +1008,38 @@ Så lenge vi finner en sti som kan øke flyten kan vi endre flyten.
 
 NP er den enorme klassen av ja-nei-problemer der ethvert ja-svar har et bevis som kan sjekkes i polynomisk tid. Alle problemer i NP kan i polynomisk tid reduseres til de såkalt komplette problemene i NP. Dermed kan ikke disse løses i polynomisk tid, med mindre alt i NP kan det. Ingen har klart det så langt...
 
-Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
+> Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
-- Problem: binær relasjon mellom input og output.
-- Et _konkret problem_ er hvis input og output er bitstrenger
-- Verifikasjonsalgoritme: sjekker (sertifiserer) om en løsning stemmer (true/false) ved å sammenligne sertifikat og løsning
-- Sertifikat: En streng $y$ som brukes som "bevis" for ja-svar
-- NP (Non-deterministic Polynomial): Ja-svar har vitner som kan sjekkes i polynomisk tid  
-- Co-NP: Nei-svar har vitner som kan sjekkes i polynomisk tid
+- **Problem**: abstrakt, binær relasjon mellom input og output
+- **Konkret problem**: input og output er bitstrenger
+- **Verifikasjonsalgoritme**: sjekker (sertifiserer) om en løsning stemmer (true/false) ved å sammenligne sertifikat/vitne og løsning
+- **Sertifikat**: En (bit)streng $y$ som brukes som "bevis" for ja-svar
+- **NP (Non-deterministic Polynomial)**: Ja-svar har vitner som kan sjekkes i polynomisk tid
+- **Co-NP**: Nei-svar som har vitner som kan sjekkes i polynomisk tid
 
 ### Sammenhengen mellom optimerings- og beslutningsproblemer
 <!-- [M1] Forstå sammenhengen mellom optimerings- og beslutnings-problemer -->
-- Optimaliseringsproblem: finne den mest optimale løsningen
+- Optimaliseringsproblem: finne den mest optimale løsningen, eksempelvis Shortest-Path
   - NP-kompletthet gjelder ikke for optimaliseringsproblemer direkte
   - Ikke nødvendigvis noe vitne
-- Beslutningsproblem: finnes det et vitne?
+- Beslutningsproblem: ja/nei problemer (1/0)
+  - Finnes det et vitne?
 
-### Koding (encoding) av en instans
+Selv om NP-komplette problemer hovedsakelig gjelder beslutningsproblemer, er det et praktisk forhold mellom optimalisering- og beslutningsproblemer hvor de kan reformuleres som beslutningsproblemer. `Shortest-Path` er vanligvis et optimaliseringsproblem, men reformulert kan vi spørre om det finnes en sti _under_ et gitt antall kanter. Her kan algoritmen svare $1$ dersom det finnes, eller $0$ om det ikke finnes, altså et beslutningsproblem.
+
+Hvis vi kan bevise at et beslutningsproblem er vanskelig, gir vi også bevis for at det relaterte optimaliseringsproblemet er vanskelig.
+
+### Koding (encoding) av en instans av et problem
 <!-- [M2] Forstå koding (encoding) av en instans -->
+Om en datamaskin skal forstå et problem, må vi representere det binært, altså **konkretisere** problemet ved å kode det (encode) til en bitstreng.
+
+- Enkoding brukes for å mappe abstrakte problemer som konkrete problemer.
+- Et abstrakt beslutningsproblem kan mappes som et av instanser, som et relatert konkret beslutningsproblem.
+- **Polynomisk relaterte instanser**: Hvis to enkodinger $e1$ og $e2$...
 
 ### Binære ryggsekkproblemet ikke polynomisk
 <!-- [M3] Forstå hvorfor løsningen vår på det binære ryggsekkproblemet ikke er polynomisk -->
+- Ryggsekkproblemet: Fyll sekken med mest verdi uten å gå over vektgrensen.
 
 ### Forskjellen på konkrete og abstrakte problemer
 <!-- [M4] Forstå forskjellen på konkrete og abstrakte problemer -->
@@ -1038,24 +1049,33 @@ Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
 ### Definisjon av klassene P, NP og co-NP
 <!-- [M6] Forstå definisjonen av klassene P, NP og co-NP -->
-Kompleksitetsklasse: en mengde språk.
+Kompleksitetsklasse: en måte å klassifisere problemer basert på tiden som kreves for å finne en løsning. For å forenkle klassifiseringen omformuleres alle oppgaver slik at de kan avgjøres med _ja_ eller _nei_.
 
-Kompleksitetsklasser:
+Kompleksitetsklasser av problemer:
 
-- P: klassen problemer som kan løses i polynomisk tid
+- **P**: kan løses i polynomisk tid
   - Språkene som kan **avgjøres** i polynomisk tid
-- NP: klassen problemer som kan løses _ikke-deterministisk_ i polynomisk tid
+- **NP**: kan løses _ikke-deterministisk_ i polynomisk tid,
   - Språkene som kan **verifiseres** i polynomisk tid
   - HAM-Cycle $\in$ NP: språket for hamilton-sykel-problemet.
-- Co-NP: Språkene som kan **falsifiseres** i polynomisk tid
+- **Co-NP**: Språkene som kan **falsifiseres** i polynomisk tid
   - $L \in$ co-NP $\leftrightarrow \bar{L} \in$ NP
+
+Oppsummert, så er da:
+
+- P problemer raske å løse
+- NP problemer raske å verifisere men trege å løse
+- NP-komplette problemer er også raske å verifisere og trege å løse, men kan bli _redusert_ til hvilket som helst annet NP-komplett problem
+- NP-harde problemer er trege å verifisere, trege å løse, og kan bli _redusert_ til hvilket som helst annet NP-problem
 
 #### PS vs NP
 
 Om vi kan løse problemet, så kan vi verifsere det med samme algoritme, og bare ignorere sertifikatet. P er en delmengde av både NP og co-NP.
 
-### Resubilitetsrelasjonen 6P
-<!-- [M7] Forstå redusibilitets-relasjonen 6P -->
+![Diagram P vs NP](Figurer/p-np-diagram.svg)
+
+### Resubilitetsrelasjonen $\leq_P$
+<!-- [M7] Forstå redusibilitets-relasjonen <=_P -->
 
 ### NP-hardhet og NP-kompletthet
 <!-- ![M8] Forstå definisjonen av NP-hardhet og NP-kompletthet -->
@@ -1065,19 +1085,57 @@ Om vi kan løse problemet, så kan vi verifsere det med samme algoritme, og bare
 
 ### Reduksjon
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
-A er lettere enn B. Reduksjon er å vise at $A \leq B$.
+Definisjon **redusibilitet**: Hvis $A$ kan reduseres til $B$ i polynomisk tid, skriver vi $A \leq_P B$.
+
+Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$.
+
+- **Eksempel 1:**  
+  Anta at $B$ inneholder nøkkelen til $A$.  
+  Kan det nå være vanskeligere å åpne $A$ enn $B$?  
+  Nei! Om vi kan åpne $B$, så kan vi naturligvis åpne $A$.  
+  Vi har **redusert** problemet "åpne $A$" til problemet "åpne $B$".  
+  Da gir det ingen mening å si at $A$ er vanskeligere enn $B$.  
+  $A \leq B$
+
+- **Eksempel 2:**  
+  Problem $A$ er i P og problem $B$ er i NP.  
+  For å vise at P = NP, hva må vi redusere fra og til?  
+  $B_{NP}$ -> $A_{P}$.
 
 > Krokodillemunnen spiser samme vei som pilen  
-> Altså vi må redusere A $\leq$ $\leftarrow$ B (altså B -> A)
+> Altså vi må redusere $A \leq$ $\rightarrow B$
 
-Problem A er i P og problem B er i NP.
-
-For å vise at P = NP, hva må vi redusere fra og til?
-
-$B_{NP}$ -> $A_{P}$.
-
-### Kjente NP-komplette problemer
+### Eksempel på NP-komplette problemer
 <!-- ![M11] Kjenne de NP-komplette problemene CIRCUIT-SAT, SAT, 3-CNF-SAT, CLIQUE, VERTEX-COVER, HAM-CYCLE, TSP og SUBSET-SUM -->
+
+- **CIRCUIT-SAT**: Circuit satisfiability
+  - En krets med logiske porter og én utverdi
+  - Kan utverdien bli $1$?
+- **SAT**: Satisfiability
+  - En logisk formel (typ diskmat: $\wedge \vee \neg \to \iff$)
+  - Kan formelen være sann?
+- **3-CNF-SAT**
+  - En logisk formel på 3-CNF-form
+  - Kan formelen være sann?
+- **CLIQUE**: "Sosialt nettverk"
+  - En urettet graf $G$ og et heltall $k$
+  - Har $G$ en komplett delgraf med $k$ noder?
+- **VERTEX-COVER** <!-- TODO -->
+  - En urettet graf $G$ og et heltall $k$
+  - Har $G$ et nodedekke med $k$ noder? Dvs: $k$ noder som tilsammen ligger inntil alle kantene
+- **HAM-CYCLE**
+  - En urettet graf $G$
+  - Finnes det en sykel som inneholder alle nodene nøyaktig en gang?
+- **TSP**: Traveling Salesman Problem. Totalt korteste reise som er  innom hver by
+  - En komplett graf med heltallsvekter og et heltall $k$
+  - Finnes det en rundtur med kostnad $\leq k$?
+- **SUBSET-SUM**: Delmengde som summerer til en målverdi
+  - Mengde positive heltall $S$ og positivt heltall $t$
+  - Finnes en delmengde $S' \subseteq S$ så $\sum_{s\in S'} s = t$?
+
+#### Typiske reduksjoner for å bevise NP-kompletthet
+
+![Graf over reduksjoner](Figurer/p-np-reduksjoner-graf.svg)
 
 ### Binære ryggsekkproblemet er NP-hardt
 <!-- [M12] Forstå at det binære ryggsekkproblemet er NP-hardt -->
