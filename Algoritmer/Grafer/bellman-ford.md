@@ -22,7 +22,7 @@ Bellman-Ford algoritmen løser single-source shortest-path (SSSP) problemet i de
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
 
-Gitt en vektet rettet graf $G=(V,E)$ med kilde $s$ og en vektfunksjon $w : E -> \R$, vil Bellman-Ford returnere `True` hvis og bare hvis grafens startnode ikke finner noen ingen negativ-vekt sykler.
+Gitt en vektet rettet graf $G=(V,E)$ med kilde $s$ og en vektfunksjon $w : E -> \mathbb{R}$, vil Bellman-Ford returnere `True` hvis og bare hvis grafens startnode ikke finner noen ingen negativ-vekt sykler.
 
 G = graf | w = vekting | i = teller | u = fra-node | v = til-node
 

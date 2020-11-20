@@ -42,7 +42,7 @@
 
 En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp i flere **instanser**.
 
-Å **analysere en algoritme** har fått betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse, i tillegg til å vise **korrekthet**. <!--Link til begrepet korrekthet-->
+Å **analysere en algoritme** har betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse, i tillegg til å vise **korrekthet**. <!--Link til begrepet korrekthet-->
 
 ### Random-access machine modellen (RAM)
 <!-- [A2] Kjenne egenskapene til random-access machine-modellen (RAM) -->
@@ -324,9 +324,24 @@ Ved bruk av summen av toerpotenser kan man regne ut den amortiserte kjøretiden 
 
 ### Dynamiske tabeller
 <!-- [B9] Forstå hvordan dynamiske tabeller fungerer (Table-Insert) -->
-Som nevnt i amortisert analyse ønsker vi å allokere minne sjeldent fordi det tar lineær tid å allokere nytt minne og kopiere elementer. Vi velger med dynamiske tabeller å heller allokere mye minne av gangen når det blir behov. Med amortisert arbeid blir kjøretiden akseptabel. Man øker størrelsen med en viss prosent. I eksempelet under øker den med x2 hver gang.
+Som nevnt i amortisert analyse ønsker vi å allokere minne sjeldent fordi det tar lineær tid å allokere nytt minne og kopiere elementer. Vi velger med dynamiske tabeller å heller allokere mye minne av gangen når det blir behov.
 
-![Table-Insert](https://i.imgur.com/wUEW9AW.png)
+Med amortisert arbeid blir kjøretiden akseptabel. Man øker størrelsen med en viss prosent. I eksempelet under øker den med x2 hver gang.
+
+```pseudo
+TABLE-INSERT(T,x)
+  if T.size == 0
+    allocate T.table with 1 slot
+    T.size = 1
+  if T.num == T.size
+    allocate new-table with 2*T.size slots
+    insert all items in T.table into new-table
+    free T.table
+    T.table = new-table
+    T.size = 2*T.size
+  insert x into T.table
+  T.num = T.num+1
+```
 
 ## Splitt og hersk
 <!-- ![C1] Forstå designmetoden divide-and-conquer (splitt og hersk) -->
@@ -855,7 +870,7 @@ Vi innfører **vekter** på kantene. Disse kan tolkes som **lengder** eller **ko
 
 Problemet:
 
-> **Input:** En urettet graf $G = (V,E)$ og en vektfunksjon $w : E \rightarrow \R$.  
+> **Input:** En urettet graf $G = (V,E)$ og en vektfunksjon $w : E \rightarrow \mathbb{R}$.  
 > **Output:** En asyklisk delmengde $T \subseteq E$ som kobler sammen nodene i $V$ og som minimerer vektsummen:
 > $$w(T)=\sum_{(u,v)\in T}w(u,v)$$
 
@@ -979,14 +994,16 @@ Vi drar med oss info fra forgjengerne, såkalt "pulling".
 
 Vi kan finne de korteste veiene fra hver node etter tur, men mange av delinstansene vil overlappe – om vi har mange nok kanter lønner det seg å bruke dynamisk programmering med dekomponeringen «Skal vi innom k eller ikke?»
 
+### Forgjengerstrukturen for alle-til-alle varianten av korteste vei problemet (Print-All-Pairs-Shortest-Path)
 <!-- [K1] Forstå forgjengerstrukturen for alle-til-alle-varianten av korteste vei-problemet (Print-All-Pairs-Shortest-Path) -->
 
 ### Floyd-Warshall algoritmen
 <!-- [K2] Forstå Floyd-Warshall -->
 [Link til Floyd-Warshall](Algoritmer/Grafer/floyd-warshall.md)
 
-### Transitive closure
+### Transitive-Closure
 <!-- [K3] Forstå Transitive-Closure -->
+[Link til Transitive-Closure](Algoritmer/Grafer/transitive-closure.md)
 
 ### Johnsons algoritme
 <!-- [K4] Forstå Johnson -->
@@ -1001,6 +1018,7 @@ Flyt-problemet spør rett og slett hvor mye vi kan sende fra en node til en anne
 
 Noder A og B. Kanten i mellom har en kapasitet.
 
+### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
 
 ### Restnettet til et flytnett med en gitt flyt
@@ -1025,6 +1043,7 @@ Så lenge vi finner en sti som kan øke flyten kan vi endre flyten.
 ### Edmond Karp algoritmen
 <!-- [L9] Vite at Ford-Fulkerson med BFS kalles Edmonds-Karp-algoritmen -->
 
+### Maks-flyt kan finne en maksimum bipartitt matching
 <!-- [L10] Forstå hvordan maks-flyt kan finne en maksimum bipartitt matching -->
 
 ### Heltallsteoremet (integrality theorem)
@@ -1034,7 +1053,7 @@ Så lenge vi finner en sti som kan øke flyten kan vi endre flyten.
 
 NP er den enorme klassen av ja-nei-problemer der ethvert ja-svar har et bevis som kan sjekkes i polynomisk tid. Alle problemer i NP kan i polynomisk tid reduseres til de såkalt komplette problemene i NP. Dermed kan ikke disse løses i polynomisk tid, med mindre alt i NP kan det. Ingen har klart det så langt...
 
-> Merk: Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
+> Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
 - **Problem**: abstrakt, binær relasjon mellom input og output
 - **Konkret problem**: input og output er bitstrenger

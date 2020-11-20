@@ -37,7 +37,7 @@ En tidkrevende sorteringsalgoritme som søker gjennom en usortert liste og flytt
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
-I utgangspunktet kan vi se at algoritmen inneholder 2 løkker, som gir $n \sdot n = n^2$.
+I utgangspunktet kan vi se at algoritmen inneholder 2 løkker, som gir $n \cdot n = n^2$.
 
 Det å finne minimum i en liste krever at $n$ elementer sjekkes ($n-1$ sammenligninger), for så å flytte den til starten av lista. For å finne neste minste må man sjekke $n-1$ elementer, osv. Antall sammenligninger er dermed:
 $$(n-1)+(n-2) \space ...+1 = \sum_{i=1}^{n-1} i = \frac{1}{2}(n^2-n)$$
