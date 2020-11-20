@@ -40,7 +40,7 @@
 - Brute force er ofte helt ubrukelig
 - Dekomponer til mindre instanser og bruk de til å finne en løsning
 
-En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp flere **instanser**.
+En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp i flere **instanser**.
 
 Å **analysere en algoritme** har fått betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse, i tillegg til å vise **korrekthet**. <!--Link til begrepet korrekthet-->
 
@@ -274,7 +274,7 @@ Begreper:
 
 - Direkte adressering: Du henter ut data direkte på $O(1)$. F.eks. ved å bruke nøkler (keys) for å hente ut data.
 - Nøkkel = indeks: Du gir en nøkkel for henting av data.
-- Hashing: Vi får inn en nøkkel og knøvler den så den blir en lovlig nøkkel. Knøvlingen $\rarr$ Hashing, den hakkes opp. En lovlig nøkkel er det som er tillat av hashfunksjonen.
+- Hashing: Vi får inn en nøkkel og knøvler den så den blir en lovlig nøkkel. Knøvlingen $\rightarrow$ Hashing, den hakkes opp. En lovlig nøkkel er det som er tillat av hashfunksjonen.
 
 #### Kollisjoner
 
@@ -698,7 +698,7 @@ Disse egenskapene sammen gir en optimal løsning.
 
 Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for  kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
 
-Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på frekvensene.
+Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på **frekvensene**.
 
 ## Traversering av grafer
 <!-- [H1] Forstå hvordan grafer kan implementeres -->
@@ -785,13 +785,15 @@ $\Theta(V+E)$ | $\Theta(V+E)$
 
 ### Topological sort
 <!-- [H5] Forstå Topological-Sort -->
-Når man har en behov for rekkefølge på nodene: Gir en lineær sortering av noder i en DAG slik at for hver node kant $u,v$ kommer u før v.
+Når man har en behov for rekkefølge på nodene i en DAG (directed acyclic graph), kan vi utføre topological sort. Sorteringen legger foreldre før barn, evt sorterer alle  slik at de kommer etter sine avhengigheter.
 
-> En topologisk sortering er ikke nødvendigvis unik. Det kan altså finnes flere enn 1 topologisk sortering for en graf.
+Topologisk sortering gir en ordning av nodene, som **respekterer retningen på kantene**. Gir nodene en rekkefølge. Samme som gjøres i delproblemgrafen i dynamisk programmering.
 
-En ordning av nodene, som respekterer kantene. Gir nodene en rekkefølge. Samme som gjøres i delproblemgrafen i dynamisk programmering.
+> En topologisk sortering er ikke nødvendigvis unik. Det kan finnes flere enn en topologisk sortering for en graf.
 
 I DP med memoisering utfører vi implisitt DFS på delproblemene. Vi får automatisk en topologisk sortering fordi problemer løses etter delproblemer. Samme som å sortere etter synkende finish tid.
+
+Kjøretid: $O(V+E)$
 
 ### Traverseringstrær
 <!-- [H7] Forstå hva traverseringstrær (som bredde-først- og dybde-først-trær) er -->
@@ -801,10 +803,25 @@ I DP med memoisering utfører vi implisitt DFS på delproblemene. Vi får automa
 
 ## Minimale spenntrær
 
-Her har vi en graf med vekter på kantene, og ønsker kun å beholde akkurat de kantene vi må for å koble sammen alle nodene, med en så lav vektsum som mulig. Erke-eksempel på grådighet: Velg én og én kant, alltid den billigste lovlige.
+En graf med vekter på kantene. Et minimalt spenntre på en graf er innom alle nodene nøyaktig en gang og har den lavest mulige kombinerte kantvekten. Erke-eksempel på grådighet: Velg én og én kant, alltid den billigste lovlige.
 
 ### Disjunkte mengder
 <!-- [I1] Forstå skog-implementasjonen av disjunkte mengder (Connected-Components, Same-Component, Make-Set, Union, Link, Find-Set) -->
+En disjunkt mengde vedlikeholder en samling $S=[S_1,S_2 ...,S_k]$ av disjunkte dynamiske sett. Vi identifiserer hvert sett med en representant som ikke kan være i andre sett (_disjunkt_).
+
+- `MAKE-SET(x)` lager et nytt sett hvor $x$ er eneste medlem
+- `UNION(x, y)` forener to sett som inneholder $x$ og $y$ til et nytt sett med unionen av de to, og fjerner de fra samlingen
+- `LINK`
+- `FIND-SET(x)` returnerer peker til settet med $x$.
+
+En av bruksområdene til disjunkt mengde datastrukturen er å kunne definere de koblede komponentene i en urettet graf.
+
+- `CONNECTED-COMPONENTS(G)` bruker operasjonene over til å regne ut de koblede komponentene i grafen
+- `SAME-COMPONENT(u,v)` svarer på om to noder er i den samme koblede komponenten
+
+Disjunkte mengder kan representeres som rotfestede trær, der hver node inneholder ett medlem og hvert tre representerer ett sett. I en disjunkt-sett-skog peker hvert element kun til sin forelder, og roten til hvert tre inneholder representativen og sin egen forelder.
+
+Samlet kjøretid for disse operasjonene er $O(m \lg n)$, der $m$ er antall `MAKE-SET`/`UNION`/`FIND-SET` operasjoner og $n$ er antall `MAKE-SET` operasjoner. Antakelse om at de $n$ `MAKE-SET` er de første $n$ operasjonene.
 
 ### Spenntrær og minimale spenntrær
 <!-- [I2] Vite hva spenntrær og minimale spenntrær er -->
@@ -838,24 +855,31 @@ Vi innfører **vekter** på kantene. Disse kan tolkes som **lengder** eller **ko
 
 Problemet:
 
-![Minimal spenntrær problem](https://i.imgur.com/2NSL4Rt.png)
+> **Input:** En urettet graf $G = (V,E)$ og en vektfunksjon $w : E \rightarrow \R$.  
+> **Output:** En asyklisk delmengde $T \subseteq E$ som kobler sammen nodene i $V$ og som minimerer vektsummen:
+> $$w(T)=\sum_{(u,v)\in T}w(u,v)$$
 
 Hvordan løse dette?
 
 - Grådig: Vi utvider en asyklisk kantmengde (partiell løsning) gradvis.
 - Invariant: Kantmengden utgjør en del av et minimalt spenntre.
-
-Hvordan skal vi utvide kantmengden som er en del av et minimalt spenntre, og beholde invarianten?
-
-- Ved å finne en såkalt "trygg kant" som er en kant som bevarer invarianten.
+- Hvordan skal vi utvide kantmengden som er en del av et minimalt spenntre, og beholde invarianten?
+  - Ved å finne en såkalt "trygg kant" som er en kant som bevarer invarianten.
 
 Algoritme for generisk-MST:
 
-![Generisk MST](https://i.imgur.com/0PitzPz.png)
+```pseudo
+GENERIC-MST(G,w)
+1    A = Ø
+2    while A does not form a spanning tree
+3      find an edge (u,v) that is safe for A
+4      A = A ⋃ {(u,v)}
+5    return A
+```
 
 Hva er trygt å legge til? Hvilken form for grådighet?
 
-Snitt/Cut: Et snitt over en graf. Vi klipper grafen i to. (Figuren under)
+**Snitt/Cut:** Et snitt over en graf. Vi klipper grafen i to. (Figuren under)
 
 - **Det respekterer kantmengden**: Det er ikke klippet noen kanter mellom noder som er svarte og noen som er hvite. Det er ingen kanter som går mellom hvite og svarte noder.
 - **Lett kant**: Kanten (4,3) er en (unik) lett kant over snittet (verdi 7): Det er den kanten med lavest vekt av de som er over snittet. (Kantene over snittet på grafen under har verdiene 8, 11, 7, 14 og 10)
@@ -872,9 +896,9 @@ Fremgangsmåte:
 ### Lette kanter er trygge kanter
 <!-- [I4] Forstå hvorfor lette kanter er trygge kanter -->
 
-### MST-Kruksal
+### MST-Kruskal
 <!-- [I5] Forstå MST-Kruskal -->
-[Link til MST-Kruksal](Algoritmer/Grafer/mst-kruksal.md)
+[Link til MST-Kruskal](Algoritmer/Grafer/mst-kruskal.md)
 
 Hvis du utfører MST-Kruskal på grafen under, hvilken kant vil velges som den femte i rekken? Det vil si, hvilken kant vil være den femte som legges til i løsningen? Oppgi kanten på formen $(i, j)$, der $i < j$.
 
@@ -959,12 +983,14 @@ Vi kan finne de korteste veiene fra hver node etter tur, men mange av delinstans
 
 ### Floyd-Warshall algoritmen
 <!-- [K2] Forstå Floyd-Warshall -->
+[Link til Floyd-Warshall](Algoritmer/Grafer/floyd-warshall.md)
 
 ### Transitive closure
 <!-- [K3] Forstå Transitive-Closure -->
 
 ### Johnsons algoritme
 <!-- [K4] Forstå Johnson -->
+[Link til Johnsons algoritme](Algoritmer/Grafer/johnson.md)
 
 ## Maksimal flyt
 <!-- [L1] Kunne definere flytnett, flyt og maks-flyt-problemet -->
@@ -1025,7 +1051,7 @@ NP er den enorme klassen av ja-nei-problemer der ethvert ja-svar har et bevis so
 - Beslutningsproblem: ja/nei problemer (1/0)
   - Finnes det et vitne?
 
-Selv om NP-komplette problemer hovedsakelig gjelder beslutningsproblemer, er det et praktisk forhold mellom optimalisering- og beslutningsproblemer hvor de kan reformuleres som beslutningsproblemer. `Shortest-Path` er vanligvis et optimaliseringsproblem, men reformulert kan vi spørre om det finnes en sti _under_ et gitt antall kanter. Her kan algoritmen svare $1$ dersom det finnes, eller $0$ om det ikke finnes, altså et beslutningsproblem.
+Selv om NP-komplette problemer hovedsakelig gjelder beslutningsproblemer, er det et praktisk forhold mellom optimalisering- og beslutningsproblemer hvor de kan reformuleres som beslutningsproblemer. `Shortest-Path` er vanligvis et optimaliseringsproblem, men reformulert kan vi spørre om det finnes en sti _under_ et gitt antall kanter. Her kan algoritmen svare $1$ dersom det finnes, eller $0$ om det ikke finnes, altså et beslutningsproblem. Ved å svare på beslutningsproblemet om det finnes en sti under et gitt antall kanter gjentatte ganger kan vi til slutt finne den korteste stien.
 
 Hvis vi kan bevise at et beslutningsproblem er vanskelig, gir vi også bevis for at det relaterte optimaliseringsproblemet er vanskelig.
 
@@ -1068,7 +1094,7 @@ Oppsummert, så er da:
 - NP-komplette problemer er også raske å verifisere og trege å løse, men kan bli _redusert_ til hvilket som helst annet NP-komplett problem
 - NP-harde problemer er trege å verifisere, trege å løse, og kan bli _redusert_ til hvilket som helst annet NP-problem
 
-#### PS vs NP
+#### P vs NP
 
 Om vi kan løse problemet, så kan vi verifsere det med samme algoritme, og bare ignorere sertifikatet. P er en delmengde av både NP og co-NP.
 
@@ -1139,7 +1165,11 @@ Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$
 
 ### Binære ryggsekkproblemet er NP-hardt
 <!-- [M12] Forstå at det binære ryggsekkproblemet er NP-hardt -->
+
+### Simple-Path problemet er NP-hardt
 <!-- [M13] Forstå at lengste enkle-vei-problemet er NP-hardt -->
+
+### Konstruere enkle NP-kompletthetsbevis
 <!-- [M14] Være i stand til å konstruere enkle NP-kompletthetsbevis -->
 
 ## Definisjoner

@@ -1,4 +1,4 @@
-# MST-Kruksal
+# MST-Kruskal
 <!-- [I5] Forstå MST-Kruskal -->
 
 <!-- 
@@ -10,7 +10,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Kruksals algoritme finner en trygg kant ved å ta den letteste kanten som kobler sammen to trær i skogen av allerede valgte kanter. Den holder styr på skogen vha. disjoint-set. Når det ikke er flere trær å koble sammen betyr det at det er kun ett igjen som spenner grafen, og dette er det minimale spenntreet.
+Kruskals algoritme legger til alle kanter i en graf i en sortert liste basert på kantvekt. Deretter legger den til kantene i lista til en MST så lenge de ikke skaper sykler.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -21,8 +21,10 @@ Kruksals algoritme finner en trygg kant ved å ta den letteste kanten som kobler
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
-1. Finner en trygg kant: velg letteste kant
-2. ...
+1. Legg til alle kanter i en liste basert på kantvekt
+2. Start med invarianten, $T$ er et tomt MST
+3. Legg til den billigste kanten i treet til $T$, som opprettholder invarianten (ikke skaper sykler)
+4. Gjenta 3 til alle noder er dekket
 
 ## Korrekthetsbevis
 
