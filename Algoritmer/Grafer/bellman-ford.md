@@ -28,15 +28,27 @@ G = graf | w = vekting | i = teller | u = fra-node | v = til-node
 
 ```pseudo
 Bellman-Ford(G,w,s)
-  Initialize-Single-Source(G,s)
-for i=1 to |G.V| - 1
-    for each edge (u.v) ∈ G.E
-      Relax(u,v,w)
-for each edge (u.v) ∈ G.Ez
-  if v.d > u.d + w (u,v)
-    return False
-return True
+1 Initialize-Single-Source(G,s)
+2 for i=1 to |G.V| - 1
+3   for each edge (u.v) ∈ G.E
+4     Relax(u,v,w)
+5 for each edge (u.v) ∈ G.Ez
+6   if v.d > u.d + w (u,v)
+7     return False
+8 return True
 ```
+
+1: Avstand = uendelig, forgjengernoder = NIL, startnode avstand = 0
+
+2: Tell opp til V-1 ganger
+
+3-4: For hver kant, slakk kanten
+
+5-6: Er første del av relax!
+
+7: Dersom kanten ikke ble slakket helt etter 4, returner false. Det betyr at det er en negativ sykel i grafen!
+
+8: Hvis alle var korrekt slakket, returner true. Algoritmen fungerte!
 
 ## Korrekthetsbevis
 
