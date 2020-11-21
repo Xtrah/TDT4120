@@ -15,14 +15,15 @@ Binary search er en av de mest effektive metodene å søke igjennom en sortert l
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
+**Input:** En sortert liste `array`, antall elementer `n`, det vi søker etter `target`.  
+**Output:** Indeks for `target` i `array`
+
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
 Binary search krever en sortert input liste.
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
-**Input:** En sortert liste `array`, antall elementer `n`, det vi søker etter `target`.  
-**Output:** Indeks for `target` i `array`
 
 1. La `min = 0` og `max = n-1`
 2. Om `max < min`, stopp. `target` er ikke i `array`, så vi returnerer `-1`.

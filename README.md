@@ -704,7 +704,13 @@ Disse egenskapene sammen gir en optimal løsning.
 ### Nøkkeleksempler innen grådig programmering
 <!-- [G3] Forstå eksemplene aktivitet-utvelgelse og det kontinuerlige ryggsekkproblemet -->
 
-#### Aktivitet-utvegelse
+#### Aktivitetsutvalg
+
+Man har et sett aktiviteter som starter og slutter på forskjellige tider, og ønsker å gjennomføre flest mulig uten overlapp.
+
+1. Sorter aktivitetene etter slutt-tid
+2. Velg den første aktiviteten i den sorterte lista (som slutter først)
+3. For hver aktivitet gjenstående i den sorterte lista: om start-tid $\geq$ slutt-tid av forrige aktivitet, legg til aktiviteten. (Grådig valg)
 
 #### Ryggsekkproblemet
 
@@ -789,7 +795,21 @@ Hver node & kant blir sjekket en gang.
 
 ### Depth first search (DFS) og parentesteoremet
 <!-- [H3] Forstå DFS og parentesteoremet -->
+[Link til DFS](Algoritmer/Grafer/depth_first_search.md)
+
+DFS er ca det samme som BFS, men med en LIFO-kø. (Last in first out). BFS traverserer en gang fra startnoden; DFS får ikke inn noen startnode (i vårt emne), den traverserer hver node etter tur.
+
+DFS kan brukes som subrutine, blant annet i Topological sort.
+
+En måte å tenke på DFS:
+> Besøk oppdagede noder umiddelbart.
+
 <!-- [H4] Forstå hvordan DFS klassifiserer kanter -->
+Kantklassifiseringer:
+
+- Møter en hvit node: Tre-kant
+- Møter en grå node: Bakoverkant
+- Møter en svart node: Forover- eller krysskant.
 
 Best case | Worst case
 ---------|----------
@@ -910,10 +930,15 @@ Fremgangsmåte:
 
 ### Lette kanter er trygge kanter
 <!-- [I4] Forstå hvorfor lette kanter er trygge kanter -->
+I et minimalt spenntre må vi dekke alle nodene på den måten som når minst totalvekt uten sykler.
+
+Lette kanter er trygge fordi vi vet at den kanten med lavest vekt over et snitt i en graf **må** være med i det minimale spenntreet på grafen. Dermed er det trygt å si at denne kanten er den del av en løsning på problemet som en helhet.
 
 ### MST-Kruskal
 <!-- [I5] Forstå MST-Kruskal -->
 [Link til MST-Kruskal](Algoritmer/Grafer/mst-kruskal.md)
+
+Kruskal sier at en kant med minimal vekt blant de gjenværende er trygg så lenge den ikke danner sykler.
 
 Hvis du utfører MST-Kruskal på grafen under, hvilken kant vil velges som den femte i rekken? Det vil si, hvilken kant vil være den femte som legges til i løsningen? Oppgi kanten på formen $(i, j)$, der $i < j$.
 
@@ -966,7 +991,7 @@ $v.d$ er avstandsestimatet vårt, som starter som $\infty$ og blir alltid endret
 
 #### Relax
 
-Take it eeeeeeeeeasy. Brukes som subrutine i f.eks. DAG-Shortest-Path algoritmen.
+Take it eeeeeeeeeasy. Brukes som subrutine i f.eks. DAG-Shortest-Path og Bellman Ford. Bellman Ford er nesten kun basert på å slakke alle kantene til det "må" bli rett.
 
 ```python
   RELAX(u,v,w):
@@ -984,7 +1009,10 @@ Der $v.d$ er avstanden til etterfølgere, $u.d$ er avstanden fra forgjenger og $
 ### DAG Shortest path
 <!-- [J9] Forstå DAG-Shortest-Path -->
 <!-- ![J10] Forstå kobling mellom DAG-Shortest-Path og dynamisk programmering -->
-Vi drar med oss info fra forgjengerne, såkalt "pulling".
+
+Top-down: Delproblemer er avstander fra startnoden til inn-naboer; Velg den som gir best resultat.
+
+Bottom-up: "Pushing", kantslakking av inn-kanter i topologisk sortert rekkefølge, eller "Pulling", vi drar med oss info fra forgjengerne.
 
 ### Dijkstras algoritme
 <!-- [J11] Forstå Dijkstra -->
@@ -1036,12 +1064,15 @@ Noder A og B. Kanten i mellom har en kapasitet.
 ### Maks-flyt/min-snitt teoremet
 <!-- ![L7] Forstå maks-flyt/min-snitt-teoremet -->
 
-### Ford-Fulkerson
+### Ford-Fulkerson-Method og Ford-Fulkerson
 <!-- [L8] Forstå Ford-Fulkerson-Method og Ford-Fulkerson -->
+[Link til Ford-Fulkerson](Algoritmer/Grafer/ford-fulkerson.md)
+
 Så lenge vi finner en sti som kan øke flyten kan vi endre flyten.
 
-### Edmond Karp algoritmen
+### Edmonds-Karp algoritmen
 <!-- [L9] Vite at Ford-Fulkerson med BFS kalles Edmonds-Karp-algoritmen -->
+[Link til Edmonds-Karp algoritmen](Algoritmer/Grafer/edmonds-karp.md)
 
 ### Maks-flyt kan finne en maksimum bipartitt matching
 <!-- [L10] Forstå hvordan maks-flyt kan finne en maksimum bipartitt matching -->
@@ -1091,6 +1122,9 @@ Om en datamaskin skal forstå et problem, må vi representere det binært, alts�
 
 ### Representasjon av beslutningsproblemer
 <!-- [M5] Forstå representasjonen av beslutningsproblemer som formelle språk -->
+Konkrete beslutningsproblemer tilsvarer formelle språk (mengder av strenger). Ja-instanser er med, nei-instanser er ikke.
+
+Det "motsatte" er abstrakte beslutningsproblemer, som en datamaskin ikke kan løse direkte.
 
 ### Definisjon av klassene P, NP og co-NP
 <!-- [M6] Forstå definisjonen av klassene P, NP og co-NP -->
@@ -1124,6 +1158,7 @@ Om vi kan løse problemet, så kan vi verifsere det med samme algoritme, og bare
 
 ### NP-hardhet og NP-kompletthet
 <!-- ![M8] Forstå definisjonen av NP-hardhet og NP-kompletthet -->
+<!-- Newsflash: IT IS HARD ):< -->
 
 ### Den konvensjonelle hypotesen
 <!-- [M9] Forstå den konvensjonelle hypotesen om forholdet mellom P, NP og NPC -->
@@ -1149,6 +1184,10 @@ Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$
 
 > Krokodillemunnen spiser samme vei som pilen  
 > Altså vi må redusere $A \leq$ $\rightarrow B$
+
+#### Typiske reduksjoner for å bevise NP-kompletthet
+
+![Graf over reduksjoner](Figurer/p-np-reduksjoner-graf.svg)
 
 ### Eksempel på NP-komplette problemer
 <!-- ![M11] Kjenne de NP-komplette problemene CIRCUIT-SAT, SAT, 3-CNF-SAT, CLIQUE, VERTEX-COVER, HAM-CYCLE, TSP og SUBSET-SUM -->
@@ -1178,15 +1217,14 @@ Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$
   - Mengde positive heltall $S$ og positivt heltall $t$
   - Finnes en delmengde $S' \subseteq S$ så $\sum_{s\in S'} s = t$?
 
-#### Typiske reduksjoner for å bevise NP-kompletthet
-
-![Graf over reduksjoner](Figurer/p-np-reduksjoner-graf.svg)
-
-### Binære ryggsekkproblemet er NP-hardt
+### Det binære ryggsekkproblemet er NP-hardt
 <!-- [M12] Forstå at det binære ryggsekkproblemet er NP-hardt -->
 
-### Simple-Path problemet er NP-hardt
+### Lengste enkle-vei-problemet er NP-hardt
 <!-- [M13] Forstå at lengste enkle-vei-problemet er NP-hardt -->
+Lengste-vei kan reduseres fra `HAM-PATH` Hamilton Path problemet: en enkel sti/path som besøker hver node nøyaktig en gang. `HAM-PATH` er NP-hardt.
+
+Selv om `Shortest-Path` blir løst i polynomisk tid, så er **lengste** vei et NP-problem, da her ønsker vi å besøke **alle nodene** en gang, imens korteste vei krever ikke at vi besøker alle nodene.
 
 ### Konstruere enkle NP-kompletthetsbevis
 <!-- [M14] Være i stand til å konstruere enkle NP-kompletthetsbevis -->

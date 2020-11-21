@@ -10,7 +10,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Johnsons algoritme kjører en kombinasjon av Bellman Ford og Dijkstra.
+Johnsons algoritme kjører en kombinasjon av Bellman-Ford og Dijkstra.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->

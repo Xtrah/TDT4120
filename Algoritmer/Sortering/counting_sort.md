@@ -32,10 +32,11 @@ Anta at du kan kun ha $k$ distinkte elementer. Tell hvor mange instanser det er 
 ## Styrker og svakheter sammenlignet med andre
 
 - Ikke sammenligningsbasert
-- **Counting sort** slår **radix sort** hvis antallet elementer $n \gg k$ forskjellige elementer. (_Dette er også det tilfellet hvor algoritmen er mest effektiv._)
+- **Counting sort** slår **radix sort** hvis antallet elementer $n \gg k$ forskjellige elementer.
+  - Dette er også det tilfellet hvor algoritmen er mest effektiv.
 - Sorterer basert på at alle input-elementene $n$ er heltall med en range mellom $0$ og $k$.
 - In-place: Nei, da den lager en ny liste midlertidig for å telle antall forekomster av hvert element
-- Stabil: Ja, den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
+- Stabil: Ja, den relative rekkefølgen til elementene i listen opprettholdes under sorteringen. Dette skjer fordi den teller forekomster av hvert element, og for å sørge for at rett forekomst er relativt rett i output lista.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
@@ -52,16 +53,16 @@ Implementer en variant av COUNTING-SORT&trade; som ikke tar inn $k$, men som all
 
 ```python
 def counting_sort(A, B):
-    AmountCount = []
-    k = 2048
-    AmountCount = [0]*k # Genererer array på lengde k
-    for grade in A:
-        AmountCount[grade] += 1 # Teller instanser av hvert tall
-    for i in range(1,k):
-        AmountCount[i] += AmountCount[i-1]
-    for n in range(len(A),0,-1): # Går baklengs for å gjøre algoritmen stabil
-        num = A[n-1]
-        B[AmountCount[num]-1] = num
-        AmountCount[num] -= 1
-    return B
+  AmountCount = []
+  k = 2048
+  AmountCount = [0]*k # Genererer array på lengde k
+  for grade in A:
+    AmountCount[grade] += 1 # Teller instanser av hvert tall
+  for i in range(1,k):
+    AmountCount[i] += AmountCount[i-1]
+  for n in range(len(A),0,-1): # Går baklengs for å gjøre algoritmen stabil
+    num = A[n-1]
+    B[AmountCount[num]-1] = num
+    AmountCount[num] -= 1
+  return B
 ```

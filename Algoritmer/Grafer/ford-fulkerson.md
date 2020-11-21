@@ -1,5 +1,5 @@
-# Floyd-Warshall
-<!-- [K2] Forstå Floyd-Warshall -->
+# Ford-Fulkerson
+<!-- [L8] Forstå Ford-Fulkerson-Method og Ford-Fulkerson -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
@@ -10,15 +10,8 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av dynamisk programmering og matriser.
-
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
-
-Input: En vektet, rettet graf $G=(V,E)$ uten negative sykler, der $V=[1,...,n]$, og vektene er gitt av matrisen $W=(w_{ij})$  
-Output: En $n*n$ matrise $D=(d_{ij})$ med avstander, dvs. $d_{ij}=s(i,j)$
-
-Returnerer en forgjengermatrise $\Pi=(\pi_{ij})$
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
@@ -31,15 +24,11 @@ Returnerer en forgjengermatrise $\Pi=(\pi_{ij})$
 
 ## Styrker og svakheter sammenlignet med andre
 
-In-place: Ja, alt skjer inne i matrisen.
-
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
-$\Theta(V^3)$ da det er tre nøstede løkker i algoritmen.
-
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------
- $\Theta(V^3)$ | $\Theta(V^3)$ | $\Theta(V^3)$ | $\Theta(V^2)$
+ TODO | TODO | TODO | TODO
 
 ## Python kodeeksempel
