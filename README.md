@@ -310,6 +310,8 @@ Når man har statiske datasett kan man lage en skreddersydd hashfunksjon. Dette 
 <!-- [B8] Kunne definere amortisert analyse -->
 Amortisert analyse er en metode for å kunne analysere en gitt algoritmes kompleksitet.
 
+> *"It gives the average performance (over time) of each operation in the worst-case."*
+
 - Kjøretid for en enkeloperasjon: ikke alltid informativt
 - Se på gjennomsnitt per operasjon etter mange har blitt utført. Dersom det er noen _få_ "kostbare" operasjoner vil gjennomsnittet fortsatt bli lavt når man ser på helheten.
 
