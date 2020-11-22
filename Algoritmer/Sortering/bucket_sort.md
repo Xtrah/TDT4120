@@ -18,7 +18,7 @@ Bucket sort antar at input-listen er generert tilfeldig og er uniformt fordelt o
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
 <!-- Eks: Binary search må ha en sortert liste -->
-For at bucket sort skal fungere må vi unngå at alle tallene havner i samme bøtte.
+Krever uniform sannsynlighetsfordeling: For at bucket sort skal fungere må vi unngå at alle tallene havner i samme bøtte.
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
@@ -35,9 +35,15 @@ For at bucket sort skal fungere må vi unngå at alle tallene havner i samme bø
 
 - In-place: Nei, bucket sort oppretter mange underlister
 - Stabil: Ja dersom den underliggende algoritmen er det.
+- Bucket sort med hver bøtte med størrelse 1 er en generell counting sort.
+- Bucket sort med 2 bøtter er en generell quick sort som velger `mid` som pivot.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+Kjøretid baserer seg i stor grad på subrutinen som blir brukt i algoritmen. Om man bruker insertion sort for å sortere hver bøtte som har gjennomsnittlig kjøretid på $\Theta(n^2)$, vil den totale gjennomsnittlige kjøretiden til bucket sort være i samme størrelsesorden.
+
+Om man velger et konstant antall bøtter vil ikke dette påvirke den asymptotiske kjøretiden, da denne konstanten ikke vil ha noe å si når $n$ blir stor nok.
 
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------

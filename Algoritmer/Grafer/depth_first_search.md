@@ -22,9 +22,9 @@
 
 Fargeforklaringer:
 
-- Hvit - tre-kant: Sett, men ikke besøkt
-- Grå - bakoverkant: Besøkt, men ikke ferdig
-- Svart - foroverkanter eller krysskant: Ferdig
+- Hvit: Sett, men ikke besøkt
+- Grå: Besøkt, men ikke ferdig
+- Svart: Ferdig
 
 Bokstav- og forkortelsesforklaringer:
 

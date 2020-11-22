@@ -34,7 +34,7 @@ Hvis du slår sammen to sorterte lister med merge metoden, vil du til slutt få 
 ## Styrker og svakheter sammenlignet med andre
 
 - Ikke in-place: Merge sort lager en kopi av hele sekvensen som skal sorteres, med en øvre og en nedre halvdel. Da den kopierer mer enn et konstant nummer av elementer på en gang, merge sort er **ikke in-place**
-- Stabil: den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
+- Stabil: Ja, den relative rekkefølgen til elementene i listen opprettholdes under sorteringen
 
 ## Kjøretid og utregning
 
@@ -51,11 +51,13 @@ I utgangspunktet vil merge sort fungere for både partalls- og oddetallslister, 
 4. Dermed har vi rekurrensen $T(n)=2T(n/2)+n$
 5. Ved å bruke masterteoremet finner vi kjøretiden $O(n \log n)$
 
-Best case | Average case | Worst case
----------|----------|---------
- $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$
+Best case | Average case | Worst case | Minne
+---------|----------|---------|--------
+ $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$
 
 ## Python kodeeksempel
+
+![GIF LOL](https://i.imgur.com/R0JN21t.gif)
 
 ```python
 def merge_sort(li):

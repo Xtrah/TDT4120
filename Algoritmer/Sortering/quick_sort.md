@@ -38,7 +38,7 @@ Quick sort er en sammenligningsbasert splitt og hersk algoritme som velger et pi
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
-Kjøretiden avhenger i stor grad av hvilket element som blir valgt som pivot. Den absolutt verste kjøretiden $n^2$ vil være en revers sortert liste hvor det første (høyeste) elementet blir valgt som pivot. Løsningen her er å velge tilfeldig pivot-element hver gang.
+Kjøretiden avhenger i stor grad av hvilket element som blir valgt som pivot. Den absolutt verste kjøretiden $O(n^2)$ vil være en sortert liste i  stigende eller synkende rekkefølge hvor det første (høyeste eller minste) elementet blir valgt som pivot. Løsningen her er å velge tilfeldig pivot-element hver gang.
 
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------

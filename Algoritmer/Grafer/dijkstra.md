@@ -39,8 +39,15 @@ Optimal substruktur. Gitt ingen negative kanter vil det umulig kunne være noen 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
+$\space$ | Innsetting | Pop | Oppdater
+ -|----------|----------|---------
+ Array | 1 | V | 1
+ Binary Heap | $log(V)$ | $log(V)$ | log(V)
+
 |V| Innsettinger og pop'inger  
 |E| Relax
+
+Dijkstra kjøretid basert på tabellen over:
 
 Array: $O(V^2)$  
 Binary heap: $O((V+E)\log V)$

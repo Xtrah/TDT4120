@@ -43,7 +43,11 @@ Anta at du kan kun ha $k$ distinkte elementer. Tell hvor mange instanser det er 
 
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------
-$\Theta(n+k)$ | $\Theta(n+k)$ | $\Theta(n+k)$ | $O(n+k)$
+$\Omega(n+k)$ | $\Theta(n+k)$ | $O(n+k)$ | $O(n+k)$
+
+Dersom $k \gg n$, domineres $n$ av $k$ og derfor er $\Theta(k)$ også gyldig. I den sammenhengen vil det også være mer nøyaktig enn kjøretiden over, da vi fjerner unødvendige ledd.
+
+Det samme gjelder motsatt vei dersom $n \gg k$, da vil kjøretiden bli $\Theta(n)$.
 
 ## Python kodeeksempel
 

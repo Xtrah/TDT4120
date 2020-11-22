@@ -43,9 +43,9 @@ Det å finne minimum i en liste krever at $n$ elementer sjekkes ($n-1$ sammenlig
 $$(n-1)+(n-2) \space ...+1 = \sum_{i=1}^{n-1} i = \frac{1}{2}(n^2-n)$$
 Som gir kjøretiden $O(n^2)$ når vi dropper konstanter og lavere ordens ledd i svaret.
 
-Best case | Average case | Worst case
----------|----------|---------
- $O(n^2)$ | $O(n^2)$ | $O(n^2)$
+Best case | Average case | Worst case | Minne
+---------|----------|---------|------
+ $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$
 
  <!--
  Best case | Average case | Worst case

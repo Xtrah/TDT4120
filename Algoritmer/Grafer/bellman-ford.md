@@ -54,8 +54,13 @@ Bellman-Ford(G,w,s)
 
 ## Styrker og svakheter sammenlignet med andre
 
+\+ Kan oppdage negative sykler
+
+
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+$\Theta(V*E)$
 
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------

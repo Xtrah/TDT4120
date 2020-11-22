@@ -523,7 +523,7 @@ Vi kan ofte få bedre løsninger ved å styrke kravene til input eller ved å sv
 ### Worst case for sammenligningsbasert sortering (sorteringsgrensen)
 <!-- ![D1] Forstå hvorfor sammenligningsbasert sortering har en worst-case på Ω(n lg n) -->
 
-> **Enhver sammenlingingsbasert algoritme krever $\Omega(n\lg n)$ sammenligniger i worst-case.**
+> **Enhver sammenligningsbasert algoritme krever $\Omega(n\lg n)$ sammenligninger i worst-case.**
 
 Vi må vise at høyden til valgtreet er $n\lg n$. Vi har et valgtre med høyde $h$ og antall blader $l$ som kan nås fra roten. Da det er $n!$ permutasjoner som skal representeres av blad og et binært tre av høyde $h$ kan ikke ha mer enn $2^h$ blad, vil $n! \leq l \leq 2^h$, slik at $n! \leq 2^h$. Ved å ta logaritmen finner vi:
 
@@ -588,6 +588,22 @@ Når man snakker om trær er det vanlig å bruke terminologi som beskriver avsta
 <!-- ! [E1] Forstå hvordan heaps fungerer, og hvordan de kan brukes som prioritetskøer (Parent, Left, Right, Max-Heapify, Build-Max-Heap, Heapsort, Max-Heap-Insert, Heap-Extract-Max, Heap-Increase-Key, Heap-Maximum. Også tilsvarende for minheaps, f.eks., Build-Min-Heap og Heap-Extract-Min.) -->
 
 En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir først sammenlignet med sin forelder-node (parent). Avhengig av om haugen sorterer etter min eller max, blir verdiene byttet om i stien opp til roten helt til rekken er sortert.
+
+#### Operasjoner på Heaps
+
+Insert = $O(log n), O(h)$
+
+Delete = $O(log n), O(h)$
+
+Build = $O(n)$
+
+Max-heapify = $O(lg n)$
+
+Build-max-heap = Linear time
+
+Heapsort = $O(n lg (n))$
+
+Max-heap-insert, heap-extract-max, Heap-increase-key, Heap-maximum = $O(lg (n))$
 
 ![Illustrasjon heaps](https://i.imgur.com/0yYXmiC.png)
 
@@ -754,21 +770,24 @@ Ved bruk av memoisering, altså dynamisk programmering, har LCS en kjøretid på
 <!-- [F9] Forstå løsningen på det binære ryggsekkproblemet (se appendiks D i pensumhefte) (Knapsack, Knapsack') -->
 Ryggsekkproblemet handler om å finne maks verdi man kan ha i en begrenset kapasitet. Det binære ryggsekkproblemet er en variasjon hvor man enten kan legge til en ting eller ikke (til forskjell for det kontinuerlige ryggsekkproblemet, som kan løses grådig). Problemet kan representeres som en binærstreng, hvor 0 er å ikke ta med en ting, og 1 er å ta med en ting.
 
-Benyttes en brute-force metode på det binære ryggsekkproblemet, får løsningen en eksponensiell kjøretid $O(2^{n})$. Løses det med dynamisk programmering, får derimoten løsningen en kjøretid på O(n * w). n er her antall ting å velge blant og w er deres ryggsekkens vektskapasitet.
+Benyttes en brute-force metode på det binære ryggsekkproblemet, får løsningen en eksponentiell kjøretid $O(2^n)$. Løses det med dynamisk programmering, får derimot løsningen en kjøretid på $O(n\cdot w)$, hvor $n$ er antall ting å velge blant og $w$ er ryggsekkens vektskapasitet.
 
-Et eksempel på oppgave: Med en ryggsekk som tar vekt 8, hvilke av de fire tingene bør tas med for å få maks verdi?
-P = price = {1, 2, 5, 6}.
-W = Weight = {2, 3, 4, 5}.
+Et eksempel på oppgave: Med en ryggsekk som tar vekt $8$, hvilke av de fire tingene bør tas med for å få maks verdi?  
+
+> $P$ = price = $(1, 2, 5, 6)$.  
+> $W$ = weight = $(2, 3, 4, 5)$.
 
 Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av en tabell. Kolonnene representerer vekt fra 0 til 8. Radene representerer ting. For hver rad tar man kun hensyn til radene over.
 
-|       |       |       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+Øverste rad er vektkapasiteten til ryggsekken.
+
+|       |       |       | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
 |:-:    |:-:    |:-:    |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **Pi**| **Wi**| **0** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **1** | **2** | **1** | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
-| **2** | **3** | **2** | 0 | 0 | 1 | 2 | 2 | 3 | 3 | 3 | 3 |
-| **5** | **4** | **3** | 0 | 0 | 1 | 2 | 5 | 5 | 6 | 7 | 7 |
-| **6** | **5** | **4** | 0 | 0 | 1 | 2 | 5 | 6 | 6 | 7 | 8 |
+| **$P_i$**| **$W_i$**| # of **Item** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| **1** | **2** | **1** | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| **2** | **3** | **2** | 0 | 1 | 2 | 2 | 3 | 3 | 3 | 3 |
+| **5** | **4** | **3** | 0 | 1 | 2 | 5 | 5 | 6 | 7 | 7 |
+| **6** | **5** | **4** | 0 | 1 | 2 | 5 | 6 | 6 | 7 | 8 |
 
 0. Tabellen initieres med 0 verdier i kolonne 0 og rad 0, siden ingen ting er valgt ennå, og har dermed ingen verdi.
 1. I rad 1 vurderes første ting, som har en vekt på 2. Først ved kolonne 2 legges inn tingen, som har en verdi på 1. Ingen flere ting kan velges for denne kolonnen, siden det for denne raden kun er en ting tilgjengelig.
@@ -811,6 +830,9 @@ Man har et sett aktiviteter som starter og slutter på forskjellige tider, og ø
 Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for  kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
 
 Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på **frekvensene**.
+
+> Lage trær ut av Huffman frekvenser: "Stryk ut 2 og legg til en"
+> [Eksamensforelesning H19](https://mediasite.ntnu.no/Mediasite/Catalog/catalogs/eksamenskurs_tdt4120_h19), video 5, 6 min inn
 
 ## Traversering av grafer
 <!-- [H1] Forstå hvordan grafer kan implementeres -->
@@ -930,7 +952,7 @@ Et bredde-først-tre er et tre som blir lagd under bredde-først-søk. Søket ka
 
 #### Dybde-først-tre
 
-Dybde-først-søk søker så langt ned i grafen som mulig. Den gjør dette ved å velge en vilkårig barne-node som den videre søker nedover i. 
+Dybde-først-søk søker så langt ned i grafen som mulig. Den gjør dette ved å velge en vilkårig barne-node som den videre søker nedover i.
 
 Når den treffer bunnen (en løvnode), går den stegvis tilbake til den finner nye barne-node å besøke. Denne prosessen repeteres til alle noder som kan nås fra kilden har blitt utforsket.
 
@@ -1398,24 +1420,26 @@ De tre viktigste punktene for en god problemløsnings-strategi er:
 
 I følgende avsnitt blir disse punktene forklart.
 
-
 ### Tolkning
 
-> **Definer problemet eller problemene du står overfor. Klargjør hva din oppgave er: Hva skal du gjøre med problemene?**
+**Definer problemet eller problemene du står overfor. Klargjør hva din oppgave er: Hva skal du gjøre med problemene?**
 
 ### Analyse
 
-> **Plukk problemet fra hverandre og plasser det i en større kontekst. List opp alt du har av relevant kunnskap og relevante verktøy.**
+**Plukk problemet fra hverandre og plasser det i en større kontekst. List opp alt du har av relevant kunnskap og relevante verktøy.**
 
 ### Syntese
 
-> **Koble sammen bitene og fyll inn det som mangler av transformasjoner, mindre beregningstrinn og eventuelle korrekthetsbevis.**
-> 
-> > #### Distribuert kognisjon
-> > Benytt deg av såkalt distribuert kognisjon, og skriv ting ned. Tegn figurer og diagrammer. Lag lister med alle alternativer du kan komme på. Står du fast, bruk penn og papir, whiteboard eller din favoritt-editor for å prøve å komme videre.
->
-> > #### Forbedre løsningen trinnvis
-> > Prøv å komme på eksempler som gjør at du får galt svar. Prøv så å forbedreløsningen, så den håndterer disse eksemplene.
->
-> > #### Tenk logisk
-> > Er det noen ting på listene dine som umulig kan være relevante? Er det noe du vet må være sant, som begrenser løsningen? Gir ting mening fra et fugleperspektiv?
+**Koble sammen bitene og fyll inn det som mangler av transformasjoner, mindre beregningstrinn og eventuelle korrekthetsbevis.**
+
+#### Distribuert kognisjon
+
+Benytt deg av såkalt distribuert kognisjon, og skriv ting ned. Tegn figurer og diagrammer. Lag lister med alle alternativer du kan komme på. Står du fast, bruk penn og papir, whiteboard eller din favoritt-editor for å prøve å komme videre.
+
+#### Forbedre løsningen trinnvis
+
+Prøv å komme på eksempler som gjør at du får galt svar. Prøv så å forbedreløsningen, så den håndterer disse eksemplene.
+
+#### Tenk logisk
+
+Er det noen ting på listene dine som umulig kan være relevante? Er det noe du vet må være sant, som begrenser løsningen? Gir ting mening fra et fugleperspektiv?

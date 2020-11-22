@@ -10,7 +10,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av dynamisk programmering og matriser.
+Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av dynamisk programmering og vektmatriser.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -19,6 +19,8 @@ Input: En vektet, rettet graf $G=(V,E)$ uten negative sykler, der $V=[1,...,n]$,
 Output: En $n*n$ matrise $D=(d_{ij})$ med avstander, dvs. $d_{ij}=s(i,j)$
 
 Returnerer en forgjengermatrise $\Pi=(\pi_{ij})$
+
+$\pi^{(k)}_{ij}$ er forelderen til noden $j$ på den korteste veien (stien) fra noden $i$.
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
@@ -43,10 +45,12 @@ In-place: Ja, alt skjer inne i matrisen.
 |-----------------------------------|----------------|
 | Complexity                        | $O(v^3)$       |
 | Recommended graph size            | Small          |
-| Good for APSP                     | Yes            |
+| Good for APSP*                    | Yes            |
 | Can detect negative cycles        | Yes            |
 | SP on graph with weighted edges   | Bad in general |
 | SP on graph with unweighted edges | Bad in general |
+
+*APSP = All Pairs Shortest Path
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->

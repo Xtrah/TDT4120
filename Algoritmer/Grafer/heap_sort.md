@@ -29,12 +29,14 @@ Heap sort er en sammenligningsbasert algoritme, lik selection sort, hvor vi før
 
 ## Styrker og svakheter sammenlignet med andre
 
-- Heap sort er in-place.
-- Heap sort er typisk ustabil, men kan bli implementert som stabil. Den vil vanligvis endre den relative rekkefølgen ved duplikat-verdier.
+- In-place: Ja
+- Stabil: Nei, Heap sort er typisk ustabil, men kan bli implementert som stabil. Den vil vanligvis endre den relative rekkefølgen ved duplikat-verdier.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
-
+Best case | Average case | Worst case | Minne
+---------|----------|---------|--------
+ $O(n \log n)$ | ??? | $O(n \log n)$ | $O(1)$
 <!-- En heap bruker logaritmisk tid for å ta ut det største eller minste elementet i heapen (?) -->
 
 ## Python kodeeksempel
