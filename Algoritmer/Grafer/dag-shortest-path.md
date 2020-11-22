@@ -16,7 +16,7 @@
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
 <!-- Eks: Binary search må ha en sortert liste -->
-- Kan **IKKE** ha negative sykler i input.
+- Kan **IKKE** ha sykler i input.
 - Må ha topologisk sortering.
 
 Men:
