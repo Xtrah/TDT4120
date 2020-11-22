@@ -1160,6 +1160,7 @@ Noder A og B. Kanten i mellom har en kapasitet.
 
 ### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
+En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk. 
 
 ### Restnettet til et flytnett med en gitt flyt
 <!-- ![L3] Kunne definere restnettet til et flytnett med en gitt flyt -->
@@ -1172,9 +1173,11 @@ Noder A og B. Kanten i mellom har en kapasitet.
 
 ### Snitt, snitt-kapasitet og minimalt snitt
 <!-- [L6] Forstå hva snitt, snitt-kapasitet og minimalt snitt er -->
+Et snitt er en deling av kanter i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en snitt-kapasitet. Det minimale snittet er snittet med lavest snitt-kapasitet.
 
 ### Maks-flyt/min-snitt teoremet
 <!-- ![L7] Forstå maks-flyt/min-snitt-teoremet -->
+Teoremet sier at maks-flyt og min-snittet er det samme.
 
 ### Ford-Fulkerson-Method og Ford-Fulkerson
 <!-- [L8] Forstå Ford-Fulkerson-Method og Ford-Fulkerson -->
