@@ -313,7 +313,7 @@ Amortisert analyse er en metode for å kunne analysere en gitt algoritmes komple
 - Kjøretid for en enkeloperasjon: ikke alltid informativt
 - Se på gjennomsnitt per operasjon etter mange har blitt utført. Dersom det er noen _få_ "kostbare" operasjoner vil gjennomsnittet fortsatt bli lavt når man ser på helheten.
 
-Amortisert analyse ser på gjennomsnittet av av worst case tilfellene ved forskjellige inputstørrelser, som i mange tilfeller er mye bedre enn det verste tilfellet. Det er derfor worst case ofte er mer pessimistisk enn amortisert analyse.
+Amortisert analyse ser på gjennomsnittet av worst case tilfellene ved forskjellige inputstørrelser, som i mange tilfeller er mye bedre enn det verste tilfellet. Det er derfor worst case ofte er mer pessimistisk enn amortisert analyse.
 
 Når du har en sekvens med operasjoner, som du kjenner kjøretiden til, så kan man utføre amortisert analyse.
 
@@ -750,7 +750,7 @@ Ved bruk av memoisering, altså dynamisk programmering, har LCS en kjøretid på
 <!-- [F9] Forstå løsningen på det binære ryggsekkproblemet (se appendiks D i pensumhefte) (Knapsack, Knapsack') -->
 Ryggsekkproblemet handler om å finne maks verdi man kan ha i en begrenset kapasitet. Det binære ryggsekkproblemet er en variasjon hvor man enten kan legge til en ting eller ikke (til forskjell for det kontinuerlige ryggsekkproblemet, som kan løses grådig). Problemet kan representeres som en binærstreng, hvor 0 er å ikke ta med en ting, og 1 er å ta med en ting.
 
-Benyttes en brute-force metode på det binære ryggsekkproblemet, får løsningen en eksponensiell kjøretid O(2^n). Løses det med dynamisk programmering, får derimoten løsningen en kjøretid på O(n * w). n er her antall ting å velge blant og w er deres ryggsekkens vektskapasitet.
+Benyttes en brute-force metode på det binære ryggsekkproblemet, får løsningen en eksponensiell kjøretid $O(2^{n})$. Løses det med dynamisk programmering, får derimoten løsningen en kjøretid på O(n * w). n er her antall ting å velge blant og w er deres ryggsekkens vektskapasitet.
 
 Et eksempel på oppgave: Med en ryggsekk som tar vekt 8, hvilke av de fire tingene bør tas med for å få maks verdi?
 P = price = {1, 2, 5, 6}.
