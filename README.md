@@ -730,9 +730,13 @@ Ved bruk av memoisering, altså dynamisk programmering, har LCS en kjøretid på
 
 ### Ryggsekkproblemet (0-1 knapsack)
 <!-- [F9] Forstå løsningen på det binære ryggsekkproblemet (se appendiks D i pensumhefte) (Knapsack, Knapsack') -->
-Ryggsekkproblemet handler om å finne maks verdi man kan ha i en begrenset kapasitet. Det binære ryggsekkproblemet er en variasjon hvor man enten kan legge til en ting eller ikke (til forskjell for det kontinuerlige ryggsekkproblemet, som kan løses grådig).
+Ryggsekkproblemet handler om å finne maks verdi man kan ha i en begrenset kapasitet. Det binære ryggsekkproblemet er en variasjon hvor man enten kan legge til en ting eller ikke (til forskjell for det kontinuerlige ryggsekkproblemet, som kan løses grådig). Problemet kan representeres som en binærstreng, hvor 0 er å ikke ta med en ting, og 1 er å ta med en ting.
 
-Benyttes en brute-force metode på det binære ryggsekkproblemet, får løsningen en eksponensiell kjøretid. Løses det med dynamisk programmering, får derimoten løsningen en kjøretid på O(n * w). n er her antall ting å velge blant og w er deres ryggsekkens vektskapasitet.
+Benyttes en brute-force metode på det binære ryggsekkproblemet, får løsningen en eksponensiell kjøretid O(2^n). Løses det med dynamisk programmering, får derimoten løsningen en kjøretid på O(n * w). n er her antall ting å velge blant og w er deres ryggsekkens vektskapasitet.
+
+Et eksempel på oppgave: Med en ryggsekk som tar vekt 8, hvilke av de fire tingene bør tas med for å få maks verdi?
+P = price = {1, 2, 5, 6}.
+W = Weight = {2, 3, 4, 5}.
 
 Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av en tabell. For hver rad tar man kun hensyn til radene over.
 
@@ -750,10 +754,10 @@ Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av e
 3. I rad 3 har man en ting på vekt 4. Vi legger inn dens verdi på kolonne 4, altså verdien 5. Kolonnene før beholder sin verdi. Ting 3 kan kombineres med ting 1, og får en vekt på 6 med verdi 6. Ting 3 kan kombineres med ting 2 og får en vekt på 7 med verdi 7. Ting 3 kan ikke kombineres med ting 1 og 2 da det overstiger kapasiteten på 8. I vekt 5 legges inn 5; det som er maks av det over og til venstre.
 4. I rad 4 har man ting4 på vekt 5, og verdien 6 legges inn. Ting4 kombineres med ting1 til en vekt på 7 med verdi 7. Ting4 kombineres med ting2 til en vekt på 8 med verdi 8.
 5. Nå er alle tingene gjennomgått, og vi ønsker å finne hvilke ting som ble valgt.
-5a. Vi starter nederst til høyre, og finner maks på 8. Tallet 8 er ikke funnet i andre rader, så ting4 skal være med i maksfunnet. 0001.
-5b. Ting4 har verdi på 6. Maksverdi er 8. Det gjenstår å finne ting på verdi 2 (8-6). Første gang verdien 2 vises er i rad 2. Det betyr at ting2 skal være med. 0101.
+5a. Vi starter nederst til høyre, og finner maks på 8. Tallet 8 er ikke funnet i andre rader, så ting4 skal være med i maksfunnet.
+5b. Ting4 har verdi på 6. Maksverdi er 8. Det gjenstår å finne ting på verdi 2 (8-6). Første gang verdien 2 vises er i rad 2. Det betyr at ting2 skal være med.
 
-Vi har nå funnet tingene som skal være med i ryggsekken for å gi mest mulig verdi.
+Vi har nå funnet tingene som skal være med i ryggsekken for å gi mest mulig verdi. Løsningen kan representeres som en binærstreng: 0101, hvor ting2 og ting 4 tas med.
 
 ## Grådige algoritmer
 <!-- ![G1] Forstå designmetoden grådighet -->
