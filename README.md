@@ -722,9 +722,11 @@ Vi starter øverst til venstre (C3) og øker med 1 ved første match `s`, som f�
 | **n** | 4 | 0 | 1 | 2 | 2 | 2 | 2 | 2 |
 | **e** | 5 | 0 | 1 | 2 | 2 | 3 | 3 | 3 |
 
-Ut i fra denne tabellen vet vi at LCS sin lengde er **3**. Vi leser LCS'en på tabellen ved å se fra venstre til høyre at første gang vi ser 1 er `o`, 2 er `n`, og 3 er `e`.
+Ut i fra denne tabellen vet vi at LCS sin lengde er **3**, som vist nederst til høyre. Vi leser LCS'en på tabellen ved å se fra venstre til høyre at første gang vi ser 1 er `o`, 2 er `n`, og 3 er `e`.
 
 LCS = `o n e`.
+
+Ved bruk av memoisering, altså dynamisk programmering, har LCS en kjøretid på O(m*n), hvor m og n er størrelsene på substring M og substring N. Ved en brute-force metode har LCS en eksponensiell kjøretid.
 
 ### Ryggsekkproblemet (0-1 knapsack)
 <!-- [F9] Forstå løsningen på det binære ryggsekkproblemet (se appendiks D i pensumhefte) (Knapsack, Knapsack') -->
