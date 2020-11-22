@@ -738,7 +738,7 @@ Et eksempel på oppgave: Med en ryggsekk som tar vekt 8, hvilke av de fire tinge
 P = price = {1, 2, 5, 6}.
 W = Weight = {2, 3, 4, 5}.
 
-Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av en tabell. For hver rad tar man kun hensyn til radene over.
+Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av en tabell. Kolonnene representerer vekt fra 0 til 8. Radene representerer ting. For hver rad tar man kun hensyn til radene over.
 
 |       |       |       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
 |:-:    |:-:    |:-:    |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -1199,6 +1199,19 @@ Om en datamaskin skal forstå et problem, må vi representere det binært, alts�
 ### Binære ryggsekkproblemet ikke polynomisk
 <!-- [M3] Forstå hvorfor løsningen vår på det binære ryggsekkproblemet ikke er polynomisk -->
 - Ryggsekkproblemet: Fyll sekken med mest verdi uten å gå over vektgrensen.
+Ryggsekkproblemet kan løses med dynamisk programmering på en kjøretid på O(n*w), så hvorfor omtales ikke det binære ryggsekkproblemet som polynomisk?
+
+Svaret handler om forholdet mellom binærrepresentasjon av input og hvor lang tid programmet faktisk tar å kjøre. Gjerne se video om dette: <https://www.youtube.com/watch?v=9oI7fg-MIpE&ab_channel=AndrewDudley>
+
+Et eksempel som kan vise dette forholdet er en enkel for-løkke:
+En for-løkke går fra 1 til n. Datamaskinen forstår binærtall, så n må gjøres om fra tall til binærtall. 4 til 100, 8 til 1000, 16 til 10000. For hver økning av binærtall, dobles det faktiske tallet.
+
+Så over til det binære ryggsekkproblemet:
+Kjøretiden til ryggsekkproblemet omtales fortsatt som O(nw), selv om det er ubundet, hvor n representerer ting og w representerer kapasitet. n kan representeres som en liste, som stadig får flere ting i seg ettersom input øker. w derimot representeres som et tall, og ettersom w blir større, blir den flere bits lengre:
+
+F.eks. om W = 1.000.000.000.000, representeres dette med 40 bits. Inputstørrelsen er 40, men kjøretiden vil være $O(2^{40})$. Dermed blir kjøretiden eksponensiell.
+
+Kjøretiden omtales som pseudopolynomisk siden den ser polynomisk ut $O(nw)$, men ikke i virkeligheten er det $O(n * 2^{bits \ i \ w})$.
 
 ### Forskjellen på konkrete og abstrakte problemer
 <!-- [M4] Forstå forskjellen på konkrete og abstrakte problemer -->
