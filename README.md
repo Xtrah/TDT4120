@@ -81,6 +81,8 @@ Kompleksitet | Navn | Type
  $\Theta(\lg n)$ | Logaritmisk | Generell
  $\Theta(1)$ | Konstant | Generell
 
+Den **gjennomsnittlige kjøretiden** til en algoritme er kjøretiden man i gjennomsnitt vil få ved et tilfeldig input. Den kan indirekte si noe om at verste tilfelle ikke er bedre og beste tilfelle ikke er verre.
+
 ### Asymptotisk notasjon
 <!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
 Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor. I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
