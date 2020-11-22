@@ -1330,6 +1330,7 @@ Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$
 - **SAT**: Satisfiability
   - En logisk formel (typ diskmat: $\wedge \vee \neg \to \iff$)
   - Kan formelen være sann?
+  - Kan reduseres til binære ryggsekkproblemet, hvor i likhet med formelen som tar sannhetsverdier, så kan også om en ting skal legges i ryggsekken representeres som 1 og det å ikk legge til representeres som 0.
 - **3-CNF-SAT**
   - En logisk formel på 3-CNF-form
   - Kan formelen være sann?
@@ -1339,10 +1340,11 @@ Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$
 - **VERTEX-COVER** <!-- TODO -->
   - En urettet graf $G$ og et heltall $k$
   - Har $G$ et nodedekke med $k$ noder? Dvs: $k$ noder som tilsammen ligger inntil alle kantene
+  - Et nodedekke for en graf G har noder som forbinder alle kantene i G.
 - **HAM-CYCLE**
   - En urettet graf $G$
   - Finnes det en sykel som inneholder alle nodene nøyaktig en gang?
-- **TSP**: Traveling Salesman Problem. Totalt korteste reise som er  innom hver by
+- **TSP**: Traveling Salesman Problem. Totalt korteste reise som er innom hver by
   - En komplett graf med heltallsvekter og et heltall $k$
   - Finnes det en rundtur med kostnad $\leq k$?
 - **SUBSET-SUM**: Delmengde som summerer til en målverdi
