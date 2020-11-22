@@ -10,6 +10,10 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+DAG står for Directed Acyclic Graph (rettet asyklisk graf). Som navnet antyder har grafen rettede kanter og ingen sykler.
+
+Alle trær er DAGer fordi de er rettede og har ingen sykler.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
