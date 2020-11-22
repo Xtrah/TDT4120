@@ -1154,26 +1154,29 @@ Vi kan finne de korteste veiene fra hver node etter tur, men mange av delinstans
 
 Et stort skritt i retning av generell lineær optimering (såkalt lineær programmering). Her ser vi på to tilsynelatende forskjellige problemer, som viser seg å være duale av hverandre, noe som hjelper oss med å finne en løsning.
 
-Flyt-problemet spør rett og slett hvor mye vi kan sende fra en node til en annen.
-
-Noder A og B. Kanten i mellom har en kapasitet.
+Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og noder imellom som forbindes med kanter. Hver kant har en **kapasitet** som viser hvor mye **flyt** kanten kan motta. Flyt er enheten som blir sendt imellom nodene. **Maks-flyt-problemet** går ut på å sende mest mulig flyt fra S til T. Det fins algoritmer for å løse dette problemet, blant annet **Ford-Fulkerson**.
 
 ### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
-En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk. 
+En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk.
 
 ### Restnettet til et flytnett med en gitt flyt
 <!-- ![L3] Kunne definere restnettet til et flytnett med en gitt flyt -->
+Et **residualnettverk** indikerer hvor mye flyt som er tillatt i hver kant i nettverkgrafen.
 
 ### Oppheve (cancel) flyt
 <!-- [L4] Forstå hvordan man kan oppheve (cancel) flyt -->
+Når man forøker flyten langs den forøkende stien, må det også minskes flyt langs residualkantene med flaskehalsverdien. Residualkantene fungerer ved at de opphever dårlige forøkende stier som ikke leder til maksflyt.
 
 ### Forøkende sti (augmenting path)
 <!-- [L5] Forstå hva en forøkende sti (augmenting path) er -->
+En **forøkende sti** er en sti av kanter i restnettet med ubrukt kapasitet (mer enn 0) fra kilde s til t. Hvis det ikke er noen forøkende stier fra S til T, så har flyten nådd maksimum.
+
+Å forøke flyten betyr å oppdatere flytverdiene på kantene langs den forøkende stien. Dette innebærer å øke flyten med flaskehalsverdien (kanten med minst kapasitet).
 
 ### Snitt, snitt-kapasitet og minimalt snitt
 <!-- [L6] Forstå hva snitt, snitt-kapasitet og minimalt snitt er -->
-Et snitt er en deling av kanter i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en snitt-kapasitet. Det minimale snittet er snittet med lavest snitt-kapasitet.
+Et **snitt** er en deling av kanter i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en **snitt-kapasitet**. Det **minimale snittet** er snittet med lavest snitt-kapasitet.
 
 ### Maks-flyt/min-snitt teoremet
 <!-- ![L7] Forstå maks-flyt/min-snitt-teoremet -->
@@ -1184,6 +1187,8 @@ Teoremet sier at maks-flyt og min-snittet er det samme.
 [Link til Ford-Fulkerson](Algoritmer/Grafer/ford-fulkerson.md)
 
 Så lenge vi finner en sti som kan øke flyten kan vi endre flyten.
+
+Ford Fulkerson-metoden finner maks-flyt ved å stadig finne forøkende stier i restnettet og forøker flyten frem til ingen flere forøkende stier blir funnet.
 
 ### Edmonds-Karp algoritmen
 <!-- [L9] Vite at Ford-Fulkerson med BFS kalles Edmonds-Karp-algoritmen -->
