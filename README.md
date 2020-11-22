@@ -514,14 +514,19 @@ Bytt ut vanskelige uttrykk
 
 ## Rangering i lineær tid
 
+Vi kan ofte få bedre løsninger ved å styrke kravene til input eller ved å svekke kravene til output. Sortering basert på sammenligninger ($x\leq y$) er et klassisk eksempel: I verste tilfelle må vi bruke $\lg n!$ sammenligninger, men om vi _antar mer_ om elementene eller bare sorterer noen av dem så kan vi gjøre det bedre.
+
 ### Worst case for sammenligningsbasert sortering (sorteringsgrensen)
 <!-- ![D1] Forstå hvorfor sammenligningsbasert sortering har en worst-case på Ω(n lg n) -->
 
-> Any comparison sort algorithm requires $\Omega(n\lg n)$ comparisons in the worst case.
+> **Enhver sammenlingingsbasert algoritme krever $\Omega(n\lg n)$ sammenligniger i worst-case.**
 
-Du må ha sett på hvert element for å sammenligne, derav første $n$. Videre må hvert element ... <!-- TODO -->
+Vi må vise at høyden til valgtreet er $n\lg n$. Vi har et valgtre med høyde $h$ og antall blader $l$ som kan nås fra roten. Da det er $n!$ permutasjoner som skal representeres av blad og et binært tre av høyde $h$ kan ikke ha mer enn $2^h$ blad, vil $n! \leq l \leq 2^h$, slik at $n! \leq 2^h$. Ved å ta logaritmen finner vi:
 
-Det er umulig å sortere raskere uten å anta egenskaper ved problemet.
+$$h \geq \lg(n!) =^*\Omega(n \lg n)$$
+$$^*\lg(n!) = \Theta(n\lg n)$$
+
+Det er umulig å sortere raskere uten å anta egenskaper ved problemet. Dette gjør at heap sort og merge sort er asymptotiske optimale sammenligningsbaserte sorteringsalgoritmer da de har en øvre grense på $O(n\lg n)$, det samme som den nedre grensen for sorteringsalgoritmer.
 
 ### Stabile sorteringsalgoritmer
 <!-- [D2] Vite hva en stabil sorteringsalgoritme er -->
@@ -536,19 +541,29 @@ Vi sier ofte at _den relative rekkefølgen_ opprettholdes.
 <!-- [D3] Forstå Counting-Sort, og hvorfor den er stabil -->
 [Link til counting sort](Algoritmer/Sortering/counting_sort.md)
 
+Counting sort er en ikke-sammenligningsbasert sorteringsalgoritme som sorterer effektivt om det er mange like elementer i en liste.
+
+**Counting sort** slår **radix sort** hvis antallet elementer $n \gg k$ forskjellige elementer.
+
 ### Radix sort
 <!-- ![D4] Forstå Radix-Sort, og hvorfor den trenger en stabil subrutine -->
 [Link til radix sort](Algoritmer/Sortering/radix_sort.md)
 
+Radix sort er en stabil ikke-sammenligningsbasert sorteringsalgoritme som sorterer elementer basert på siffer. **Radix sort** slår **counting sort** hvis antallet elementer $n \ll k$ forskjellige elementer.
+
 ### Bucket sort
 <!-- [D5] Forstå Bucket-Sort -->
 [Link til bucket sort](Algoritmer/Sortering/bucket_sort.md)
+
+Bucket sort er en ikke-sammenligningsbasert sorteringsalgoritme som krever uniform sannsynlighetsfordeling. Den deler og flytter elementene inn i like store intervaller/bøtter, og sorterter internt i bøttene med en annen sorteringsalgoritme.
 
 ### Randomized-Select og Select
 <!-- [D6] Forstå Randomized-Select -->
 <!-- [D7] Kjenne til Select - merk: Det kreves ikke grundig forståelse av virkemåten til Select. -->
 
 ## Rotfaste trestrukturer
+
+Rotfaste trær gjenspeiler rekursiv dekomponering. I binære søketrær er alt i venstre deltre mindre enn rota, mens alt i høyre deltre er større, og det gjelder rekursivt for alle deltrær! Hauger er enklere: Alt er mindre enn rota. Det begrenser funksjonaliteten, men gjør dem billigere å bygge og balansere.
 
 Et tre er en begrenset form av en graf. Trær har en retning (forelder-/barn-forhold) og inneholder ikke kretser/sykler.
 
@@ -668,14 +683,15 @@ def fibonacci_bottom_up(n):
 ### Konstruere løsning fra lagrede beslutninger
 <!-- [F5] Forstå hvordan man rekonstruerer en løsning fra lagrede beslutninger -->
 
-### Optimal delstruktur
+### Optimal delstruktur og overlappende delinstanser
 <!-- [F6] Forstå hva optimal delstruktur er -->
-Optimal delstruktur vil si at løsningen er en kombinasjon av optimale løsninger på delinstansene.
+<!-- [F7] Forstå hva overlappende delinstanser er -->
+
+Optimal delstruktur vil si at løsningen er en kombinasjon av optimale løsninger på delinstansene (delproblemene).
+
+Overlappende delinstanser vil si at løsnmingene på delinstansene lagres og kan gjenbrukes flere ganger til å løse det overordnede problemet, i stedet for at de løses på nytt og på nytt.
 
 Hva om vi ikke har overlappende delproblemer? Da kan vi ikke bruke memoisering da det ikke er noe hensikt i å huske svarene.
-
-### Overlappende delinstanser
-<!-- [F7] Forstå hva overlappende delinstanser er -->
 
 ### Stavkutting og LCS
 <!-- [F8] Forstå eksemplene stavkutting og LCS -->
@@ -689,8 +705,10 @@ Du har en stav av størrelse $n$ som skal deles i biter og selges for størst fo
 
 La $n=7$ og $p=[1,4,3,6,8,5,9]$ være en instans av stavkuttingsproblemet. Hva blir den maksimale inntekten, $r_7$?
 
-$$4+4+4+1 = 13$$
 $$4+8 = 12$$
+$$4+4+4+1 = 13 \Rightarrow r_7$$
+
+For å løse dette med dynamisk
 
 #### Lengste felles subsekvens (LCS)
 
@@ -705,7 +723,7 @@ Vi vil finne hvilke sett med bokstaver som kommer i en sekvens, altså _lengste 
 > String1: `s t o n e`  
 > String2: `l o n g e s t`
 
-Vi løser med tabell slik `LCS-LENGTH` ville gjort. Kolonne A/B og Rad 1/2 er henholdvis strengene/indekser. Vi bruker ikke indeks 0 for enkelhets skyld.
+Vi løser med **memoisering til tabell** slik `LCS-LENGTH` ville gjort. Kolonne A/B og Rad 1/2 er henholdvis strengene/indekser. Vi bruker ikke indeks 0 for enkelhets skyld.
 
 Vi starter øverst til venstre (C3) og øker med 1 ved første match `s`, som følger oss helt til høyre selv om det ikke er flere matcher.
 
@@ -901,6 +919,20 @@ Kjøretid: $O(V+E)$
 
 ### Traverseringstrær
 <!-- [H7] Forstå hva traverseringstrær (som bredde-først- og dybde-først-trær) er -->
+
+#### Bredde-først-tre
+
+Et bredde-først-tre er et tre som blir lagd under bredde-først-søk. Søket kartlegger hver node i treet som kan nås fra kilde-noden på en uniform måte (bredde før dybde). I denne prosessen regner den ut korteste distanse fra kilden til hver node og lagrer den i et nytt tre. Dette treet er et bredde-først-tre.
+
+#### Dybde-først-tre
+
+Dybde-først-søk søker så langt ned i grafen som mulig. Den gjør dette ved å velge en vilkårig barne-node som den videre søker nedover i. 
+
+Når den treffer bunnen (en løvnode), går den stegvis tilbake til den finner nye barne-node å besøke. Denne prosessen repeteres til alle noder som kan nås fra kilden har blitt utforsket.
+
+Dybde-først-søket produserer ett eller flere trær (en skog) avhengig av hvor mange kilder den trenger for å nå alle nodene. Altså får vi en dybde-først-skog med flere under-dybde-først-trær. Teknikken som blir brukt garanterer at hver node finnes i nøyaktig ett dybde-først-tre i skogen. På den måten får man ikke overlapp mellom under-trærne.
+
+I tillegg til å lage skogen, lagrer også søket tidsstempler på nodene. Disse stemplene lagrer tiden noden ble først oppdaget og tiden når nodens undernoder ble ferdig utforsket. Dette kalles starttid (start-time) og slutttid (finish-time).
 
 ### Traversering med vilkårlig prioritetskø
 <!-- ![H8] Forstå traversering med vilkårlig prioritetskø -->

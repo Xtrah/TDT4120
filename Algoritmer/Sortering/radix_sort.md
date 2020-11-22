@@ -55,8 +55,8 @@ def modified_counting_sort(A, B, idx): # A = Usortert liste. B = Liste hvor resu
         C[i] += C[i-1]
     for i in range(len(A)-1, -1, -1):
         index = int(str(A[i])[idx])
-        B[C[index]-1] = A[i] 
-        C[index] -= 1 
+        B[C[index]-1] = A[i]
+        C[index] -= 1
     return B
 
 
