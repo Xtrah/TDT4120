@@ -1255,6 +1255,7 @@ Om vi kan løse problemet, så kan vi verifsere det med samme algoritme, og bare
 ### NP-hardhet og NP-kompletthet
 <!-- ![M8] Forstå definisjonen av NP-hardhet og NP-kompletthet -->
 <!-- Newsflash: IT IS HARD ):< -->
+NP-harde problemer er minst like vanskelige som alle NP-problemer, men ikke nødvendigvis en del av NP. Er de en del av NP, omtales de som NPC.
 
 ### Den konvensjonelle hypotesen
 <!-- [M9] Forstå den konvensjonelle hypotesen om forholdet mellom P, NP og NPC -->
