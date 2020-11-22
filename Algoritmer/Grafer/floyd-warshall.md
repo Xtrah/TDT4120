@@ -30,6 +30,8 @@ Returnerer en forgjengermatrise $\Pi=(\pi_{ij})$
 1. Takes in matrix $W$ ($n \times n$)
 2. For each row $k$ in matrix $W$: Get the matrix $D^{k}$
 3. For each vertex $i$: for each vertex $j$: find shortest path from $i$ to $j$
+4. Set point in matrix equal to that path
+5. Return altered matrix
 
 ## Korrekthetsbevis
 
