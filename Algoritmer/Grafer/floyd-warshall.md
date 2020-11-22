@@ -12,15 +12,6 @@
 
 Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av dynamisk programmering og matriser.
 
-|                                   | Floyd Warshall |
-|-----------------------------------|----------------|
-| Complexity                        | $O(v^3)$       |
-| Recommended graph size            | Small          |
-| Good for APSP                     | Yes            |
-| Can detect negative cycles        | Yes            |
-| SP on graph with weighted edges   | Bad in general |
-| SP on graph with unweighted edges | Bad in general |
-
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
@@ -41,6 +32,15 @@ Returnerer en forgjengermatrise $\Pi=(\pi_{ij})$
 ## Styrker og svakheter sammenlignet med andre
 
 In-place: Ja, alt skjer inne i matrisen.
+
+|                                   | Floyd Warshall |
+|-----------------------------------|----------------|
+| Complexity                        | $O(v^3)$       |
+| Recommended graph size            | Small          |
+| Good for APSP                     | Yes            |
+| Can detect negative cycles        | Yes            |
+| SP on graph with weighted edges   | Bad in general |
+| SP on graph with unweighted edges | Bad in general |
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
