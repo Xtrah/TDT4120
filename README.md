@@ -1383,3 +1383,37 @@ Generelt hvor mye minne som kreves for å utføre en operasjon. I dette emnet kv
 ### Korrekthet
 
 Å sjekke at løkkeinvarianten er riktig før løkka starter, etter hver iterasjon og når løkka er ferdig. Algoritmen gir korrekt output som følge av input.
+
+## Problemløsningsguide
+
+Dette er en oppsummering av problemløsningsguiden fra 2020.
+
+De tre viktigste punktene for en god problemløsnings-strategi er:
+
+1. Tolkning
+2. Analyse
+3. Syntese
+
+I følgende avsnitt blir disse punktene forklart.
+
+
+### Tolkning
+
+> **Definer problemet eller problemene du står overfor. Klargjør hva din oppgave er: Hva skal du gjøre med problemene?**
+
+### Analyse
+
+> **Plukk problemet fra hverandre og plasser det i en større kontekst. List opp alt du har av relevant kunnskap og relevante verktøy.**
+
+### Syntese
+
+> **Koble sammen bitene og fyll inn det som mangler av transformasjoner, mindre beregningstrinn og eventuelle korrekthetsbevis.**
+> 
+> > #### Distribuert kognisjon
+> > Benytt deg av såkalt distribuert kognisjon, og skriv ting ned. Tegn figurer og diagrammer. Lag lister med alle alternativer du kan komme på. Står du fast, bruk penn og papir, whiteboard eller din favoritt-editor for å prøve å komme videre.
+>
+> > #### Forbedre løsningen trinnvis
+> > Prøv å komme på eksempler som gjør at du får galt svar. Prøv så å forbedreløsningen, så den håndterer disse eksemplene.
+>
+> > #### Tenk logisk
+> > Er det noen ting på listene dine som umulig kan være relevante? Er det noe du vet må være sant, som begrenser løsningen? Gir ting mening fra et fugleperspektiv?
