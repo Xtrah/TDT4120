@@ -19,7 +19,11 @@ Install extensions manually searching the store or by using command line to run:
 
 ## How to Markdown with LaTeX
 
+Format inline using \$ like: \$\LaTeX\$ resulting in $\LaTeX$
+
+Format to blocks using \$\$ like: \$\$\LaTeX\$\$ resulting in $$\LaTeX$$
+
 - Mastering markdown  
   <https://guides.github.com/features/mastering-markdown/>
-- Cheatsheet for $\LaTeX$  
-  <https://gist.github.com/LKS90/252ac41bd4a173be35b0>
+- List of LaTeX commands
+  <https://en.wikipedia.org/wiki/Help:Displaying_a_formula#Formatting_using_TeX>

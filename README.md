@@ -609,9 +609,9 @@ Denne ordenen gjør traversering/søking svært effektivt.
 
 ##### Binære hauger (binary heaps)
 
-En haug er et binærhaug dersom det er 0-2 barn.
+En haug/heap er et binær heap dersom det er 0-2 barn.
 
-_En binær haug kan aldri være et binært søketre._ Dette er fordi en binær haug sorterer alle elementene sine slik at forelderen alltid er større/mindre enn barne-noden. I et binært søketre er alltid venstre barne-node mindre, mens høyre barne-node alltid er større. Dermed, siden sorteringsstrukturen er så vidt forskjellig, vil det aldri være mulig at du får et tre som kan være begge samtidig.
+_En binær heap kan aldri være et binært søketre._ Dette er fordi en binær heap sorterer alle elementene sine slik at forelderen alltid er større/mindre enn barne-noden. I et binært søketre er alltid venstre barne-node mindre, mens høyre barne-node alltid er større. Dermed, siden sorteringsstrukturen er så vidt forskjellig, vil det aldri være mulig at du får et tre som kan være begge samtidig.
 
 ## Dynamisk programmering
 <!-- ![F1] Forstå ideen om en delinstansgraf -->
@@ -637,7 +637,7 @@ Hvordan gjøre det i praksis?
 Memoisering innebærer at man cacher løsninger på delproblemer for så å kunne sette dem sammen for å finne den optimale løsningen på problemet.
 
 ```python
-F = [-1]*50 #array to store fibonacci terms
+F = [-1]*50 # array to store fibonacci terms
 
 def fibonacci_top_down(n):
   if (F[n] < 0):
@@ -654,7 +654,7 @@ def fibonacci_top_down(n):
 <!-- [F4] Forstå løsning ved iterasjon (bottom-up) -->
 
 ```python
-F = [0]*50 #array to store fibonacci terms
+F = [0]*50 # array to store fibonacci terms
 
 def fibonacci_bottom_up(n):
   F[n] = 0
@@ -677,15 +677,54 @@ Hva om vi ikke har overlappende delproblemer? Da kan vi ikke bruke memoisering d
 ### Overlappende delinstanser
 <!-- [F7] Forstå hva overlappende delinstanser er -->
 
-### Stavkutting (rod cutting) og LCS
+### Stavkutting og LCS
 <!-- [F8] Forstå eksemplene stavkutting og LCS -->
 
-Stavkuttingsproblemet: du har en stav av størrelse $n$ som skal deles i biter og selges for størst fortjeneste. Forskjellige størrelser selges for forskjellige priser.
+> Stavkutting: Rod cutting  
+> LCS: Longest Common Subsequence - lengste felles subsekvens
+
+#### Stavkuttingsproblemet
+
+Du har en stav av størrelse $n$ som skal deles i biter og selges for størst fortjeneste. Forskjellige størrelser selges for forskjellige priser.
 
 La $n=7$ og $p=[1,4,3,6,8,5,9]$ være en instans av stavkuttingsproblemet. Hva blir den maksimale inntekten, $r_7$?
 
 $$4+4+4+1 = 13$$
 $$4+8 = 12$$
+
+#### Lengste felles subsekvens (LCS)
+
+Vi vil finne hvilke sett med bokstaver som kommer i en sekvens, altså _lengste felles subsekvens_ mellom strengene.
+
+> String1: `a b c d e f g h i j`  
+> String2: `e c d g i`
+
+`e g i` er en subsekvens. `c d` er ikke med da de kommer før `e` i String1.  
+`c d g i` er også en subsekvens, og den lengste. `e` kan ikke være med da den er i en annen rekkefølge i String1.
+
+> String1: `s t o n e`  
+> String2: `l o n g e s t`
+
+Vi løser med tabell slik `LCS-LENGTH` ville gjort. Kolonne A/B og Rad 1/2 er henholdvis strengene/indekser. Vi bruker ikke indeks 0 for enkelhets skyld.
+
+Vi starter øverst til venstre (C3) og øker med 1 ved første match `s`, som følger oss helt til høyre selv om det ikke er flere matcher.
+
+1. Starter øverst til venstre (altså indeks 1-1) og beveger oss til høyre, og øker ved første match `s`, som følger oss resten av raden.
+2. Neste kolonne øker når kolonnen over har økt, eller ved match. Neste match her er `t` på indeks 2-7, som økes med en.
+3. Gjenta punktet over. Neste match er `o` på indeks 3-2, som følges hele veien til høyre.
+
+|       |   | l | o | n | g | e | s | t |
+|:-:    |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|       | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| **s** | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 1 |
+| **t** | 2 | 0 | 0 | 0 | 0 | 0 | 1 | 2 |
+| **o** | 3 | 0 | 1 | 1 | 1 | 1 | 1 | 2 |
+| **n** | 4 | 0 | 1 | 2 | 2 | 2 | 2 | 2 |
+| **e** | 5 | 0 | 1 | 2 | 2 | 3 | 3 | 3 |
+
+Ut i fra denne tabellen vet vi at LCS sin lengde er **3**. Vi leser LCS'en på tabellen ved å se fra venstre til høyre at første gang vi ser 1 er `o`, 2 er `n`, og 3 er `e`.
+
+LCS = `o n e`.
 
 ### Ryggsekkproblemet (0-1 knapsack)
 <!-- [F9] Forstå løsningen på det binære ryggsekkproblemet (se appendiks D i pensumhefte) (Knapsack, Knapsack') -->
@@ -960,8 +999,6 @@ Bredde-først-søk kan finne stier med færrest mulig kanter, men hva om kantene
 ### Ulike varianter av korteste-vei- eller korteste-sti-problemet
 <!-- [J1] Forstå ulike varianter av korteste-vei- eller korteste-sti-problemet (Single-source, single-destination, single-pair, all-pairs) -->
 <!-- [J2] Forstå strukturen til korteste-vei-problemet -->
-<!-- [J3] Forstå at negative sykler gir mening for korteste enkle vei (simple path) -->
-<!-- [J4] Forstå at korteste enkle vei kan løses vha. lengste enkle vei og omvendt -->
 
 En **enkel sti** (simple path) er en sti uten sykler. Den **korteste veien** er alltid enkel.
 
@@ -973,6 +1010,12 @@ En **enkel sti** (simple path) er en sti uten sykler. Den **korteste veien** er 
 DAG: Directed Asyclic Graph (rettet asyklisk graf)
 
 Om det finnes en negativ sykel er **ingen** sti kortest.
+
+### Negative sykler gir mening for korteste enkle vei
+<!-- [J3] Forstå at negative sykler gir mening for korteste enkle vei (simple path) -->
+
+### Korteste enkle vei kan løses vha. lengste enkle vei og omvendt
+<!-- [J4] Forstå at korteste enkle vei kan løses vha. lengste enkle vei og omvendt -->
 
 ### Representasjon av korteste-vei-tre
 <!-- [J5] Forstå hvordan man kan representere et korteste-vei-tre -->
@@ -1004,10 +1047,15 @@ Der $v.d$ er avstanden til etterfølgere, $u.d$ er avstanden fra forgjenger og $
 
 ### Bellman-Ford
 <!-- [J8] Forstå Bellman-Ford -->
+> Vi slakker alle kantene helt til det må bli rett
+
 [Link til Bellman-Ford](Algoritmer/Grafer/bellman-ford.md)
 
 ### DAG Shortest path
 <!-- [J9] Forstå DAG-Shortest-Path -->
+
+[Link til DAG-Shortest-Path](Algoritmer/Grafer/dag-shortest-path.md)
+
 <!-- ![J10] Forstå kobling mellom DAG-Shortest-Path og dynamisk programmering -->
 
 Top-down: Delproblemer er avstander fra startnoden til inn-naboer; Velg den som gir best resultat.
@@ -1031,6 +1079,8 @@ Vi kan finne de korteste veiene fra hver node etter tur, men mange av delinstans
 
 ### Transitive-Closure
 <!-- [K3] Forstå Transitive-Closure -->
+> Vi får en graf eller en binær relasjon. Hvis det finnes en sti fra $u$ til $v$ vil vi legge inn en kant fra $u$ til $v$ slik at vi kan gå direkte.
+
 [Link til Transitive-Closure](Algoritmer/Grafer/transitive-closure.md)
 
 ### Johnsons algoritme
@@ -1085,6 +1135,9 @@ Så lenge vi finner en sti som kan øke flyten kan vi endre flyten.
 NP er den enorme klassen av ja-nei-problemer der ethvert ja-svar har et bevis som kan sjekkes i polynomisk tid. Alle problemer i NP kan i polynomisk tid reduseres til de såkalt komplette problemene i NP. Dermed kan ikke disse løses i polynomisk tid, med mindre alt i NP kan det. Ingen har klart det så langt...
 
 > Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
+
+Bra intro til hva hele opplegget handler om:  
+<https://www.youtube.com/watch?v=EHp4FPyajKQ>
 
 - **Problem**: abstrakt, binær relasjon mellom input og output
 - **Konkret problem**: input og output er bitstrenger

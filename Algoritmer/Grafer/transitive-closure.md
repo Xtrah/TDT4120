@@ -12,11 +12,17 @@
 
 Transitive-Closure er lik som Floyd-Warshall, men sjekker kun om det finnes en sti eller ikke, og ignorerer kantvekter.
 
+Vi kjører en kunstig konstruering av delinstanser: Vi begrenser hvilke noder vi har lov til å gå igjennom.
+
+Vi kan først forsøke å gå gjennom k-1 noder og deretter først kun gå fra i til k-1 noder og k til j.
+
+![Notasjon](https://i.imgur.com/jP3joiR.png)
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
-Input: En rettet graf $G=(V,E)$  
-Output: En rettet graf $G*=(V,E*)$ der $(i,j)\in E*$ hvis og bare hvis det finnes en sti fra $i$ til $j$ i $G$
+Input: En rettet graf $G=(V,E)$.  
+Output: En rettet graf $G*=(V,E*)$ der $(i,j)\in E*$ hvis og bare hvis det finnes en sti fra $i$ til $j$ i $G$.
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
