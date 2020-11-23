@@ -56,9 +56,13 @@ Bellman-Ford(G,w,s)
 
 \+ Kan oppdage negative sykler
 
-
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+Operasjon | Antall | Kjøretid
+----------|----------|---------
+Initialisering | 1 | $\Theta(V)$
+RELAX | V-1 | $\Theta(E)$
+RELAX | 1 | $O(E)$
 
 $\Theta(V*E)$
 

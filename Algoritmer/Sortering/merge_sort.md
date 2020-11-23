@@ -10,7 +10,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Merge sort er en effektiv splitt og hersk algoritme som rekursivt deler listen i to flere ganger, før den sorterer de tilbake parvis.
+Merge sort er en effektiv splitt og hersk algoritme som rekursivt deler listen i to helt til alle elementene står alene. Deretter sorteres de tilbake parvis, først et og et element, dermed en og en liste, helt til man står igjen med en hel sortert liste.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -43,7 +43,7 @@ Kilde: side 36, Introduction to Algorithms
 <!-- Utregning for Merge? -->
 Det er gitt at `Merge` bruker $\Theta(n)$ for å slå sammen $n$ elementer.
 
-I utgangspunktet vil merge sort fungere for både partalls- og oddetallslister, men for enkelhets skyld tar kun utregningen hvor vi antar listen kan deles på 2, slik at hver påfølgende liste er $n/2$ stor. Rekurrensen $T(n)$, worst-case for merge sort hvor $n > 1$, blir da:
+I utgangspunktet vil merge sort fungere for både partalls- og oddetallslister, men for enkelhets skyld tar utregningen utgangspunkt i at listen kan deles på 2, slik at hver påfølgende liste er $n/2$ stor. Rekurrensen $T(n)$, worst-case for merge sort hvor $n > 1$, blir da:
 
 1. Splitt: Finn midten av av inneværende liste tar konstant tid uansett størrelse, $O(1)$  
 2. Hersk: Rekursivt løs 2 underproblemer, hver av størrelse $n/2$, som legger på $2T(n/2)$.

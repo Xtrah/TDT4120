@@ -25,6 +25,7 @@ Quick sort er en sammenligningsbasert splitt og hersk algoritme som velger et pi
 1. Velg et pivot-element.
 2. Sorter resten av elementene i 2 del-lister utifra om de er større eller mindre enn pivot-elementet.
 3. Sorter de 2 del-listene rekursivt til de bare inneholder 1 element.
+4. Sett sammen elementene til du har en hel sortert liste.
 
 ## Korrekthetsbevis
 <!-- TBA -->
@@ -43,6 +44,10 @@ Kjøretiden avhenger i stor grad av hvilket element som blir valgt som pivot. De
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------
  $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$ | $O(\lg n)$
+
+Grunnen til at worst-case er at første eller siste element i en sortert liste blir valgt er at man da må sjekke alle elementene. 
+
+Velger man det midterste elementet i den sorterte listen, må man sjekke logaritmisk færre elementer for hver følgende pivot.
 
 ## Python kodeeksempel
 

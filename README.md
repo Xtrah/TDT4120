@@ -57,7 +57,7 @@ Alle disse operasjonene tar **konstant** tid. Maskinen modellerer **ikke** minne
 
 ### Kjøretid
 <!-- [A3] Kunne definere problem, instans og problemstørrelse -->
-Et mål på hvor effektiv algoritmen er det viktigste når man skal analysere alle algoritmer. Vi trenger å beregne kjøretider fordi vi har en begrensning på hvor raske og hvor mye lagringsplass en datamaskin har tilgjengelig. Kjøretiden er det *asymptotiske forholdet mellom størrelsen på problemet og hvor lang tid det vil ta å løse det*.
+Et mål på effektiviteten til algoritmen er det viktigste når man skal analysere alle algoritmer. Vi trenger å beregne kjøretider fordi vi har en begrensning på hvor raskt vi kan løse problemer og hvor mye lagringsplass en datamaskin har tilgjengelig. Kjøretiden er det *asymptotiske forholdet mellom størrelsen på problemet og hvor lang tid det vil ta å løse det*.
 
 - Problem: Relasjon mellom input og output
 - Instans: En bestemt input
@@ -85,7 +85,7 @@ Den **gjennomsnittlige kjøretiden** til en algoritme er kjøretiden man i gjenn
 
 ### Asymptotisk notasjon
 <!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
-Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor. I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
+Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor (tenk grenseverdier). I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
 
 Asymptotisk notiasjon gir oss ikke en presis beskrivelse av veksten til en funksjon, men den gir oss øvre og nedre grenser. Det gjør det enklere å beskrive og sammenligne ulike algoritmer.
 
@@ -98,7 +98,7 @@ Asymptotisk notiasjon gir oss ikke en presis beskrivelse av veksten til en funks
 
 #### Asymptotisk optimal
 
-Den asymotiske kjøretiden = den beste mulige kjøretiden for det gitte problemet.
+Den asymtotiske optimale kjøretiden = den beste mulige kjøretiden for det gitte problemet.
 
 OBS: Vanligvis verste tilfelle, men kan variere.
 
@@ -112,6 +112,8 @@ En optimal løsning er så bra som det er mulig å være – ingen løsninger ka
 > _[(Piazza H20 @240)](https://piazza.com/class/kdptcutti24r?cid=240)_
 
 #### Forenkling av asymptotisk notasjon
+
+Grunnen til at man forenkler asymptotisk notasjon er at ikke alle beskrivelser er like presise. Noen deler av et uttrykk er altså så upresis at man kan fjerne dem helt uten at det påvirker den faktiske kjøretiden. Dette er nyttig når man har store, uoversiktlige uttrykk som man ønsker å forenkle uten tap av presisjon.
 
 - Uttrykk $B$ er en forenkling av uttrykk $A$ dersom $A=B$ og $B$ er enklere enn $A$
 - Medføre minst mulig tap av presisjon; Høyre side må ikke utelukke noen alternativer på venstre side.
@@ -180,13 +182,13 @@ Syntese: Bygg løsning av hypotetiske delløsninger
 
 ## Datastrukturer
 
-For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig. En **datastruktur** er en måte å organisere og organisere data for å muliggjøre tilgang og modifikasjon. Det er ingen universal datastruktur som fungerer godt for alle formål.
+For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere og strukturere data fornuftig. En **datastruktur** er en måte å organisere og strukturere data på for å muliggjøre tilgang og modifikasjon. Det er ingen universal datastruktur som fungerer godt for alle formål. Det er derfor viktig å betrakte egenskapene til datastrukturen du trenger for å løse problemet ditt.
 
 ### Stakker og køer (stacks and queues)
 <!-- [B1] Forstå hvordan stakker og køer fungerer (Stack-Empty, Push, Pop, Enqueue, Dequeue) -->
 Stakker og køer er dynamiske sett med 2 viktige metoder, `PUSH` og `POP`, som hvv. legger til og fjerner elementer.
 
-En **stack** har en "Last In First Out" (LIFO) struktur. `POP` returnerer elementet som **sist** ble satt inn.
+En **stack** har en "Last In First Out" (LIFO) struktur. En stakk er som en stabel med tallerkener. Man kan kun legge til og fjerne elementer på toppen. For å nå bunnen må man først fjerne alt på toppen. `POP` returnerer elementet som **sist** ble satt inn.
 
 ```python
 class Stack:
@@ -233,7 +235,7 @@ En prioritetskø er en type kø som _ikke_ er "First In First Out" (FIFO) strukt
 <!-- [B2] Forstå hvordan lenkede lister fungerer (List-Search, List-Insert, List-Delete, List-Delete', List-Search', List-Insert') -->
 En lenket liste er en lineær datastruktur som representerer elementer i sekvens. Hvert element i lista er en _node_ med en _verdi_ og en _peker_ som peker videre på det neste elementet. I en dobbel-lenket liste peker også hver node/element på det forrige elementet.
 
-En node er et datapunkt i en datastruktur. Noe som inneholder data.
+En node er et datapunkt i en datastruktur som inneholder data.
 
 <!-- TODO: Sentinels (NIL objekter) -->
 **Sentinels:** NIL-objekter. Et dummy objekt som brukes for å lage avgrensninger, for eksempel i enden av en liste.
@@ -255,6 +257,8 @@ Innsetting på slutten | $O(n)$ | $O(1)$
 
 I en dobbel lenket liste gjøres innsetting på $O(1)$ da man kun trenger å endre `.prev` og `.next` til de nye naboene.
 
+Enkel-lenkede lister kan ikke søke baklengs gjennom listen. Det betyr at for å sette inn et element på slutten av en liste, så må den bla seg gjennom fra første til siste element, derav $O(n)$. En dobbelt lenket liste kan bruke ``.prev`` til dette og får dermed kjøretiden $O(1)$ for samme operasjon.
+
 ### Pekere og objekter
 <!-- [B3] Forstå hvordan pekere og objekter kan implementeres -->
 En peker peker til en minneadresse. På den minneadressen kan det være et objekt. Objekter kan ha pekere som peker til forskjellige minneadresser. Disse kan implementeres i form av lenkede lister.
@@ -267,7 +271,13 @@ Objekter kan bli representert av flere arrays eller kun et array:
 ![array-representasjon](https://i.imgur.com/SM3N6lH.png)  
 _Eksempel på et objekt representert av en enkel array_
 
+Dette er nyttig for en datamaskin når den f.eks. ønsker å sortere en array. Isteden for å faktisk flytte på alle objektene kan den endre på pekerne til å peke i sortert rekkefølge.
+
 ### Hashtabeller
+
+Hashtabeller bruker en kombinasjon av tabeller, addressering og hashing (koding) til å lagre lokasjoner av data.
+
+En enkel måte å si det på er at den lagrer data på en lokasjon og gir den en nøkkel. Nøkkelen hasher den til å bli en unik kode som referer tilbake til den unike lokasjonen. Målet med dette er å fordele dataen jevnt over alle minnelokasjonene i tabellen og å kunne hente dem tilbake raskt.
 
 Bruksområde: I stedet for å lete gjennom en liste, som kan ta $O(n)$ i verste fall, eller en sortert liste på $O(\log n)$, vil letetiden i en hashtabell være konstant, $O(1)$, fordi lagerstedet til en hashtabell vanligvis er i maskinens hurtigminne hvor man har $O(1)$ tilgang til alle plassene.
 
@@ -591,15 +601,15 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 
 #### Operasjoner på Heaps
 
-Insert = $O(log n), O(h)$
+**Insert = $O(log n), O(h)$** $\newline$ *Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
 
-Delete = $O(log n), O(h)$
+**Delete = $O(log n), O(h)$** $\newline$ *Av samme grunn som **insert**.*
 
-Build = $O(n)$
+**Build = $O(n)$** $\newline$ *Å bygge en heap tar ikke lenger tid enn antallet elementer som skal settes inn. Dette er fordi en heap uten sortering ikke har noen krav til sortering (uten max eller min).*
 
-Max-heapify = $O(lg n)$
+**Max-heapify = $O(lg n)$** $\newline$ *Max-heapify sammenligner en gitt node med alle barnenodene sine for å sjekke om de er lavere eller høyere. Den er rekursiv og vil kjøre seg selv igjen dersom den ser flere barnenoder som den kan sammenligne noden med. På grunn av høyden på treet blir kjøretiden her $O(\log n)$.*
 
-Build-max-heap = Linear time
+Build-max-heap = Linear time $\newline$ *Build max heap kjører Max-heapify på alle nodene i treet.*
 
 Heapsort = $O(n lg (n))$
 

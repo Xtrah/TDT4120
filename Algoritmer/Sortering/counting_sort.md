@@ -26,6 +26,14 @@ Anta at du kan kun ha $k$ distinkte elementer. Tell hvor mange instanser det er 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
 
+Liste $A$ = [$a_1$, ... $n$], hvor tallene $a_i$ i $A$ ligger på intervallet $[0,k]$.
+
+1. Oppretter en telle-liste $C.length = k$.
+2. For hvert element $a$ i listen $A$ som skal sorteres : $C[a] \mathrel{{+}{=}} 1$
+3. Når alle tallene i $A$ har blitt telt, begynn å sortere ut ifra tellelisten inn i en ny liste $B$.
+4. For hver index i $C$ legger vi til $C[index]$-antall av hvert tall i en ny sortert liste $B$.
+5. $B$ er nå sortert.
+
 ## Korrekthetsbevis
 <!-- TBA -->
 
