@@ -10,6 +10,19 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+DFS er en algoritme som er nyttig for å traversere grafer.
+
+Klassifisering av kanter:
+
+1. Trekanter: Er kanter i dybde først skogen G. Kanten (u,v) er en tre kant hvis den først var oppdaget ved å utforske (u,v).
+2. Back edges are those edges (u,v) connecting a vertex u to an ancestor  in a
+depth-first tree. We consider self-loops, which may occur in directed graphs, to
+be back edges.
+3. Forward edges are those nontree edges (u,v) connecting a vertex u to a descendant in a depth-first tree.
+4. Cross edges are all other edges. They can go between vertices in the same
+depth-first tree, as long as one vertex is not an ancestor of the other, or they can
+go between vertices in different depth-first trees.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 

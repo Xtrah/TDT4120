@@ -10,7 +10,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Johnsons algoritme kjører en kombinasjon av Bellman-Ford og Dijkstra.
+Johnsons algoritme kjører en kombinasjon av Bellman-Ford og Dijkstra. Det som er spesielt med denne algoritmen er hvordan den justerer kantvekter, selv når de er negative.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -30,6 +30,10 @@ Bra for sparse graphs (altså få kanter i forhold til antall noder?)
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+Med Fibonacci-haug: $O(V^3)$
+
+Med binære min-heap: $O(V*E*lgV)$
 
 $O(V^2 \log V + VE)$
 
