@@ -601,19 +601,20 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 
 #### Operasjoner på Heaps
 
-**Insert = $O(log n), O(h)$** $\newline$ *Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
+**Insert = $O(\log n), O(h)$** $\newline$ *Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
 
-**Delete = $O(log n), O(h)$** $\newline$ *Av samme grunn som **insert**.*
+**Delete = $O(\log n), O(h)$** $\newline$ *Av samme grunn som **insert**.*
 
-**Build = $O(n)$** $\newline$ *Å bygge en heap tar ikke lenger tid enn antallet elementer som skal settes inn. Dette er fordi en heap uten sortering ikke har noen krav til sortering (uten max eller min).*
+**Build = $O(n)$** $\newline$ *Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.*
 
-**Max-heapify = $O(lg n)$** $\newline$ *Max-heapify sammenligner en gitt node med alle barnenodene sine for å sjekke om de er lavere eller høyere. Den er rekursiv og vil kjøre seg selv igjen dersom den ser flere barnenoder som den kan sammenligne noden med. På grunn av høyden på treet blir kjøretiden her $O(\log n)$.*
+**Max-heapify = $O(\log n)$** $\newline$ *Max-heapify tar input-elementene og konstruerer en Max-heap. Den sorterer nodene fra bunn til topp. Dermed er den bundet av høyden til heapen som er $\log n$*.
 
-Build-max-heap = Linear time $\newline$ *Build max heap kjører Max-heapify på alle nodene i treet.*
+**Build-max-heap = Linear time** $\newline$ *Build-max-heap bygger en heap ved å kjøre max-heapify på hver node den legger til. Max-heapify tar $O(\log n)$ tid, men ettersom Build tar lineær tid, overskirver denne Max-heapify. Altså får vi lineær tid.*
 
-Heapsort = $O(n lg (n))$
+**Heapsort = $O(n \log (n))$** $\newline$ *Heapsort bygger først en max-heap ved hjelp av Build-max-heap. Nå er det største elementet på toppen. Dette elementet hentes ut fra heapen. Den flytter så en av de minste elementene helt til toppen før den kjører Max-heapify igjen. Max-heapify garanterer at det største elementet i heapen nok en gang kommer til toppen. Denne prosessen gjør det mulig å hente ut det største elementet i heapen hver gang.* $\newline$
+*$O(n \log (n))$ kommer av at det kjøres Max-heapify for hvert element.*
 
-Max-heap-insert, heap-extract-max, Heap-increase-key, Heap-maximum = $O(lg (n))$
+**Max-heap-insert, heap-extract-max, Heap-increase-key, Heap-maximum = $O(\log (n))$**
 
 ![Illustrasjon heaps](https://i.imgur.com/0yYXmiC.png)
 
