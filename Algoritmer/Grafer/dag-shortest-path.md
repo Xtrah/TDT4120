@@ -30,23 +30,25 @@ Men:
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
-Parametere:
-
-G: Graf
-
-w: Vekting
-
+**Parametere:**  
+G: Graf  
+w: Vekting  
 s: Startnode
 
 ```pseudo
-
 DAG-SHORTEST-PATH(G,w,s)
 1 Topologisk sortering av nodene i G
 2   INITIALIZE-SINGLE-SOURCE(G,s)
-3   for hver node u in G.V
-4     for hver kant (u, v) in G.E
+3   for hver node u i G.V
+4     for hver kant (u, v) i G.E
 5       RELAX(u,v,w)
+```
 
+```pseudo
+RELAX(u,v,w):
+1   if v.d > u.d + w(u,v):
+2     v.d = u.d + w(u,v)
+3     v.𝜋 = u
 ```
 
 1: Topologisk sortering: Gir en lineær sortering av nodene i en DAG slik at for hver kant u,v kommer u før v.

@@ -14,7 +14,7 @@ Transitive-Closure er lik som Floyd-Warshall, men sjekker kun om det finnes en s
 
 Vi kjører en kunstig konstruering av delinstanser: Vi begrenser hvilke noder vi har lov til å gå igjennom.
 
-Vi kan først forsøke å gå gjennom k-1 noder og deretter først kun gå fra i til k-1 noder og k til j.
+Vi kan først forsøke å gå gjennom $k-1$ noder og deretter først kun gå fra $i$ til $k-1$ noder og $k$ til $j$.
 
 ![Notasjon](https://i.imgur.com/jP3joiR.png)
 

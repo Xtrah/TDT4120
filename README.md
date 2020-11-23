@@ -838,7 +838,7 @@ Man har et sett aktiviteter som starter og slutter på forskjellige tider, og ø
 ### Huffmankoder og huffmans algoritme
 <!-- [G4] Forstå Huffman og Huffman-koder -->
 
-Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for  kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
+Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
 
 Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på **frekvensene**.
 
@@ -928,11 +928,16 @@ DFS kan brukes som subrutine, blant annet i Topological sort.
 En måte å tenke på DFS:
 > Besøk oppdagede noder umiddelbart.
 
+#### Parentesteoremet
+
+Noder oppdages _før_ og avsluttes _etter_ sine etterkommere. Hvis de ikke er etterkommere av hverandre, oppdages og avsluttes de før de andre. Finnes dete en sti i mellom dem er det **no prob**.
+
+#### DFS og klassifisering av kanter
 <!-- [H4] Forstå hvordan DFS klassifiserer kanter -->
 Kantklassifiseringer:
 
 - Møter en hvit node: Tre-kant
-- Møter en grå node: Bakoverkant
+- Møter en grå node: Bakoverkant (ikke på en DAG)
 - Møter en svart node: Forover- eller krysskant.
 
 Best case | Worst case
@@ -944,7 +949,7 @@ $\Theta(V+E)$ | $\Theta(V+E)$
 
 ### Topological sort
 <!-- [H5] Forstå Topological-Sort -->
-Når man har en behov for rekkefølge på nodene i en DAG (directed acyclic graph), kan vi utføre topological sort. Sorteringen legger foreldre før barn, evt sorterer alle  slik at de kommer etter sine avhengigheter.
+Når man har en behov for rekkefølge på nodene i en DAG (directed acyclic graph), kan vi utføre topological sort. Sorteringen legger foreldre før barn, evt sorterer alle slik at de kommer etter sine avhengigheter.
 
 Topologisk sortering gir en ordning av nodene, som **respekterer retningen på kantene**. Gir nodene en rekkefølge. Samme som gjøres i delproblemgrafen i dynamisk programmering.
 
@@ -1488,7 +1493,7 @@ Alt i NP kan reduseres til NP hardt. **Reduksjoner skjer til lik eller høyere k
 - **VERTEX-COVER**
   - En urettet graf $G$ og et heltall $k$
   - Har $G$ et nodedekke med $k$ noder? Dvs: $k$ noder som tilsammen ligger inntil alle kantene
-  - Et nodedekke for en graf G har noder som forbinder alle kantene i G.
+  - Et nodedekke for en graf $G$ har noder som forbinder alle kantene i $G$.
 - **HAM-CYCLE**
   - En urettet graf $G$
   - Finnes det en sykel som inneholder alle nodene nøyaktig en gang?
