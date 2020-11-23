@@ -1284,6 +1284,37 @@ Output: En matching $M \subseteq E$ med flest mulig kanter, dvs. der $|M|$ er ma
 
 En matching er altså en delmengde av alle kanter, der her node er tilknyttet maks én kant fra delmengden.
 
+#### Eksempeloppgave
+
+![Max flow with cut](Figurer/max_flow_with_cut_example.png)
+
+Hva er flyten over dette snittet etter at vi har økt flyten ved å sende maksimal flyt gjennom den forøkende stien $s$, $v_2$, $v_4$, $t$?
+
+**Svar:**
+
+Det er to ting som er viktig å forstå her:
+
+1. Hvordan flyt mellom noder fungerer
+2. Hva et kutt er
+
+Når man sender flyt fra en node til en annen, må man sende den flyten videre. Man kan ikke ha en slags "overflow" hvor man sender 4 flyt inn i en node, men bare 2 ut igjen. **Det som går inn må ut.**
+
+Når vi tar et kutt av et flytnett, deler vi nettverket inn i to ikke-overlappende deler, hvor $s$ er i den ene mengden og $t$ er i den andre. **Vi ser bare på flyten over kuttet fra $s$ sin mengde til $t$ sin mengde.** I dette tilfellet betyr det at vi kun ser på flyten fra $s$ til $v_1$ og $v_2$ til $v_4$.
+
+Det er fristende å tenke; Maksflyt? Ja, da sender jeg maksimal mengde gjennom nettet og ser hvor mye som når frem. Problemet er at dette ikke er lov med mindre all flyten når frem (som nevnt i avsnittet over).
+
+Vi ser på den forøkende stien og ser at maksflyt der er 7. Dette er fordi det allerede sendes 12 gjennom $v_4$ og $t$ (dette er flaskehalsen vår).
+Vi regner derfor med at det ikke kan sendes mer enn 19 fra $v_2$ til $v_4$. Sender vi mer, vil flyten bli større enn kapasiteten. Det er ikke lov/mulig.
+
+Vi gjør følgende:
+
+1. Ser at flyten fra $s$ og over snittet til $v_1$ er **14**.
+2. Siden det kommer en flyt på 4 fra $v_1$ til $v_2$, kan vi bare øke flyten fra $s$ til $v_2$ med 7 slik at flyten der blir **15**.
+3. Vi ser nå at det flyter 14 + 15 = 29.
+4. Vi har nå en totalflyt på 29 som går over snittet.
+
+Det man ser her er at flyten over snittet ikke kan overstige 29 ettersom det da vil overfylles med flyt i $v_2$. Ja, vi kan i teorien sende 21 i flyt til $v_1$, men da må det sendes 11 i flyt til $v_2$
+
 ### Heltallsteoremet (integrality theorem)
 <!-- ![L11] Forstå heltallsteoremet (integrality theorem) -->
 
