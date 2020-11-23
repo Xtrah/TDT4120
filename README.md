@@ -842,7 +842,7 @@ Huffmankoder er en måte å kode data som består av tegn på en slik måte at d
 
 Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på **frekvensene**.
 
-> Lage trær ut av Huffman frekvenser: "Stryk ut 2 og legg til en"
+> Lage trær ut av Huffman frekvenser: "Stryk ut 2 og legg til en"  
 > [Eksamensforelesning H19](https://mediasite.ntnu.no/Mediasite/Catalog/catalogs/eksamenskurs_tdt4120_h19), video 5, 6 min inn
 
 ## Traversering av grafer
@@ -1212,6 +1212,15 @@ Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og nod
 
 **Flytverdi**: $|f| = \sum_vf(s,v)-\sum_vf(v,s)$
 
+For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
+
+### Maks-flyt-problemet
+
+- Hvordan finne maksimal flyt: Summen av bottleneck-verdier.
+- Hvordan finne bottleneck-verdiene: Minimum av den resterende kapasiteten på en forøkende sti.
+- Hvordan finne en forøkende sti: Stier med ubrukte kapasiteter fra kilde til sluk.
+  - For hver forøkende sti man finner: Maksimer kapasiteten ved å legge til den minste rest-verdien på alle ledd i den forøkende stien.
+
 ### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
 **Flere kilder og sluk**: En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk.
@@ -1240,6 +1249,17 @@ En **forøkende sti** (eller flytforøkende sti) er en sti av kanter i restnette
 <!-- [L6] Forstå hva snitt, snitt-kapasitet og minimalt snitt er -->
 Et **snitt** er en deling av kanter i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en **snitt-kapasitet**. Det **minimale snittet** er snittet med lavest snitt-kapasitet.
 
+Hvordan regne ut flyten over et snitt:
+
+> NB! Husk at dersom man har beregnet forøkende stier må man maksimere disse som nevnt under "Maks-flyt-problemet" før man regner ut flyten over snittet.
+
+1. Identifiser hvor mye flyt som går gjennom snittet.
+2. Identifiser hvilken flyt som går inn og ut av snittet, altså som går vekk fra kilden og mot kilden.
+3. Summer flyten som går **fra** kilden og trekk fra flyten som går **mot** kilden.
+
+Formel for å regne ut flyten over et snitt $\{s,v_2\},\{v_1,v_3,v_4,t\}$:
+$$f(\{s,v_2\},\{v_1,v_3,v_4,t\}) = f(s,v_1)+f(v_2,v_4)-f(v_1,v_2)-f(v_3,v_2)$$
+
 ### Maks-flyt/min-snitt teoremet
 <!-- ![L7] Forstå maks-flyt/min-snitt-teoremet -->
 Teoremet sier at maks-flyt og min-snittet er det samme.
@@ -1262,6 +1282,8 @@ Ford Fulkerson-metoden finner maks-flyt ved å stadig finne forøkende stier i r
 Input: En bipartitt urettet graf $G=(V,E)$  
 Output: En matching $M \subseteq E$ med flest mulig kanter, dvs. der $|M|$ er maksimal.
 
+En matching er altså en delmengde av alle kanter, der her node er tilknyttet maks én kant fra delmengden.
+
 ### Heltallsteoremet (integrality theorem)
 <!-- ![L11] Forstå heltallsteoremet (integrality theorem) -->
 
@@ -1280,8 +1302,13 @@ Bra intro til hva hele opplegget handler om:
 - **Konkret problem**: input og output er bitstrenger
 - **Verifikasjonsalgoritme**: sjekker (sertifiserer) om en løsning stemmer (true/false) ved å sammenligne sertifikat/vitne og løsning
 - **Sertifikat**: En (bit)streng $y$ som brukes som "bevis" for ja-svar
-- **NP (Non-deterministic Polynomial)**: Ja-svar har vitner som kan sjekkes i polynomisk tid
+- **NP (Non-deterministic Polynomial)**: Ja-svar har vitner (verifikasjon) som kan sjekkes i polynomisk tid
+- **P**: Delmengden av NP som kan løses i polynomisk tid
 - **Co-NP**: Nei-svar som har vitner som kan sjekkes i polynomisk tid
+- **NP-hard** (NPH) er klassen av problemer som har den egenskapen at alle problemer i NP kan _reduseres_ til dem i polynomisk tid.
+- **NPC** er snittet av NP og NPH
+
+Dette er litt kaos til å begynne med, men det blir (litt) bedre.
 
 ### Sammenhengen mellom optimerings- og beslutningsproblemer
 <!-- [M1] Forstå sammenhengen mellom optimerings- og beslutnings-problemer -->
@@ -1301,24 +1328,25 @@ Om en datamaskin skal forstå et problem, må vi representere det binært, alts�
 
 - Enkoding brukes for å mappe abstrakte problemer som konkrete problemer.
 - Et abstrakt beslutningsproblem kan mappes som et av instanser, som et relatert konkret beslutningsproblem.
-- **Polynomisk relaterte instanser**: Hvis to enkodinger $e1$ og $e2$...
+- Polynomisk relaterte instanser: Hvis to enkodinger $e1$ og $e2$...
 
 ### Binære ryggsekkproblemet ikke polynomisk
 <!-- [M3] Forstå hvorfor løsningen vår på det binære ryggsekkproblemet ikke er polynomisk -->
 - Ryggsekkproblemet: Fyll sekken med mest verdi uten å gå over vektgrensen.
-Ryggsekkproblemet kan løses med dynamisk programmering på en kjøretid på O(n*w), så hvorfor omtales ikke det binære ryggsekkproblemet som polynomisk?
+Ryggsekkproblemet kan løses med dynamisk programmering på en kjøretid på $O(n\cdot w)$, så hvorfor omtales ikke det binære ryggsekkproblemet som polynomisk?
 
-Svaret handler om forholdet mellom binærrepresentasjon av input og hvor lang tid programmet faktisk tar å kjøre. Gjerne se video om dette: <https://www.youtube.com/watch?v=9oI7fg-MIpE&ab_channel=AndrewDudley>
+Svaret handler om forholdet mellom binærrepresentasjon av input og hvor lang tid programmet faktisk tar å kjøre. Gjerne se video om dette: <https://www.youtube.com/watch?v=9oI7fg-MIpE>
 
-Et eksempel som kan vise dette forholdet er en enkel for-løkke:
-En for-løkke går fra 1 til n. Datamaskinen forstår binærtall, så n må gjøres om fra tall til binærtall. 4 til 100, 8 til 1000, 16 til 10000. For hver økning av binærtall, dobles det faktiske tallet.
+Et eksempel som kan vise dette forholdet er en enkel for-løkke:  
+En for-løkke går fra $1 \rightarrow n$. Datamaskinen forstår binærtall, så $n$ må gjøres om fra tall til binærtall. 4 til 100, 8 til 1000, 16 til 10000. For hver økning av binærtall, dobles det faktiske tallet.
 
-Så over til det binære ryggsekkproblemet:
-Kjøretiden til ryggsekkproblemet omtales fortsatt som O(nw), selv om det er ubundet, hvor n representerer ting og w representerer kapasitet. n kan representeres som en liste, som stadig får flere ting i seg ettersom input øker. w derimot representeres som et tall, og ettersom w blir større, blir den flere bits lengre:
+Så over til det binære ryggsekkproblemet.
 
-F.eks. om W = 1.000.000.000.000, representeres dette med 40 bits. Inputstørrelsen er 40, men kjøretiden vil være $O(2^{40})$. Dermed blir kjøretiden eksponensiell.
+Kjøretiden til ryggsekkproblemet omtales fortsatt som $O(nw)$, selv om det er ubundet, hvor $n$ representerer ting og $w$ representerer kapasitet. $n$ kan representeres som en liste, som stadig får flere ting i seg ettersom input øker. $w$ derimot representeres som et tall, og ettersom $w$ blir større, blir den flere bits lengre:
 
-Kjøretiden omtales som pseudopolynomisk siden den ser polynomisk ut $O(nw)$, men ikke i virkeligheten er det $O(n * 2^{bits \ i \ w})$.
+F.eks. om $W = 1.000.000.000.000$, representeres dette med 40 bits. Inputstørrelsen er 40, men kjøretiden vil være $O(2^{40})$. Dermed blir kjøretiden eksponensiell.
+
+Kjøretiden omtales som [pseudopolynomisk](#pseudopolynomisk) siden den ser polynomisk ut $O(nw)$, men ikke i virkeligheten er det $O(n \cdot 2^{bits \ i \ w})$.
 
 ### Forskjellen på konkrete og abstrakte problemer
 <!-- [M4] Forstå forskjellen på konkrete og abstrakte problemer -->
@@ -1352,17 +1380,23 @@ Oppsummert, så er da:
 
 #### P vs NP
 
-Om vi kan løse problemet, så kan vi verifsere det med samme algoritme, og bare ignorere sertifikatet. P er en delmengde av både NP og co-NP.
+Vi forholder oss til venstre side av diagrammet. Reduksjon skjer "oppover" i diagrammet.
 
 ![Diagram P vs NP](Figurer/p-np-diagram.svg)
 
 ### Resubilitetsrelasjonen $\leq_P$
 <!-- [M7] Forstå redusibilitets-relasjonen <=_P -->
 
+Se [reduksjon](#reduksjon).
+
 ### NP-hardhet og NP-kompletthet
 <!-- ![M8] Forstå definisjonen av NP-hardhet og NP-kompletthet -->
 <!-- Newsflash: IT IS HARD ):< -->
 NP-harde problemer er minst like vanskelige som alle NP-problemer, men ikke nødvendigvis en del av NP. Er de en del av NP, omtales de som NPC.
+
+**NP-hardhet**: Et problem $Q$ er NP-hardt dersom alle problemer i NP kan reduseres til det.
+
+Et problem er altså NP-komplett dersom det **i)** er NP-hardt, og **ii)** er i NP.
 
 ### Den konvensjonelle hypotesen
 <!-- [M9] Forstå den konvensjonelle hypotesen om forholdet mellom P, NP og NPC -->
@@ -1371,7 +1405,9 @@ NP-harde problemer er minst like vanskelige som alle NP-problemer, men ikke nød
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
 Definisjon **redusibilitet**: Hvis $A$ kan reduseres til $B$ i polynomisk tid, skriver vi $A \leq_P B$.
 
-Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$.
+Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq_P B$.
+
+Om man skal vise at et problem $X$ er vanskelig, redusér fra et vanskelig problem $Y$, dvs. etablér at $X \leq_P Y$.
 
 - **Eksempel 1:**  
   Anta at $B$ inneholder nøkkelen til $A$.  
@@ -1386,8 +1422,17 @@ Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$
   For å vise at P = NP, hva må vi redusere fra og til?  
   $B_{NP}$ -> $A_{P}$.
 
+- **Eksempel 3:**  
+  Problem $A$ er bevist NP og problem $B$ er bevist NP-hardt.  
+  Hvis man finner en polynomisk reduksjon fra $B$ til $A$ har man vist at $A$ er NP-komplett.  
+  B er NP-komplett hvis vi kan verifisere $B$ polynomisk.
+
 > Krokodillemunnen spiser samme vei som pilen  
 > Altså vi må redusere $A \leq$ $\rightarrow B$
+
+Alt i NP kan reduseres til NP hardt. **Reduksjoner skjer til lik eller høyere kompleksitetsklasser**.
+
+![Redusere oppover](https://i.imgur.com/C6m2EXN.png)![Redusere NPC](https://i.imgur.com/Nq3ZPT9.png)
 
 #### Typiske reduksjoner for å bevise NP-kompletthet
 
@@ -1402,14 +1447,14 @@ Problemer $A$ og $B$. $A$ er lettere enn $B$. Reduksjon er å vise at $A \leq B$
 - **SAT**: Satisfiability
   - En logisk formel (typ diskmat: $\wedge \vee \neg \to \iff$)
   - Kan formelen være sann?
-  - Kan reduseres til binære ryggsekkproblemet, hvor i likhet med formelen som tar sannhetsverdier, så kan også om en ting skal legges i ryggsekken representeres som 1 og det å ikk legge til representeres som 0.
+  - Kan reduseres til det binære ryggsekkproblemet, hvor i likhet med formelen som tar sannhetsverdier, så kan også om en ting skal legges i ryggsekken representeres som 1 og det å ikke legge til representeres som 0.
 - **3-CNF-SAT**
   - En logisk formel på 3-CNF-form
   - Kan formelen være sann?
 - **CLIQUE**: "Sosialt nettverk"
   - En urettet graf $G$ og et heltall $k$
   - Har $G$ en komplett delgraf med $k$ noder?
-- **VERTEX-COVER** <!-- TODO -->
+- **VERTEX-COVER**
   - En urettet graf $G$ og et heltall $k$
   - Har $G$ et nodedekke med $k$ noder? Dvs: $k$ noder som tilsammen ligger inntil alle kantene
   - Et nodedekke for en graf G har noder som forbinder alle kantene i G.
@@ -1434,6 +1479,12 @@ Selv om `Shortest-Path` blir løst i polynomisk tid, så er **lengste** vei et N
 
 ### Konstruere enkle NP-kompletthetsbevis
 <!-- [M14] Være i stand til å konstruere enkle NP-kompletthetsbevis -->
+
+1. Vis at $L \in NP$
+2. Velg et kjent NP-komplett språk $L'$ eller et problem
+3. Beskriv en reduksjon/algoritme som beregner en funksjon $$f : \{0,1\}\ast \rightarrow \{0,1\}\ast$$ som mapper instanser av $L'$ til instanser av $L$.
+4. Vis at $x \in L' \longleftrightarrow f(x) \in L$, for alle $x \in \{0,1\}\ast$.
+5. Vis at algoritmen som beregner $f$ har polynomisk kjøretid.
 
 ## Kjøretider fra pensum
 
@@ -1533,6 +1584,10 @@ Generelt hvor mye minne som kreves for å utføre en operasjon. I dette emnet kv
 ### Korrekthet
 
 Å sjekke at løkkeinvarianten er riktig før løkka starter, etter hver iterasjon og når løkka er ferdig. Algoritmen gir korrekt output som følge av input.
+
+### Pseudopolynomisk
+
+Algoritmer med kjøretider som er polynomiske hvis vi lar et tall fra input være med som parameter til kjøretiden (slik som $\Theta(n*W)$, der W er et tall fra input, og ikke direkte en del av problemstørrelsen) kaller vi **pseudopolynomiske**.
 
 ## Problemløsningsguide
 
