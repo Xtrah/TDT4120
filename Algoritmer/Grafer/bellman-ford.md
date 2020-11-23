@@ -52,9 +52,12 @@ Bellman-Ford(G,w,s)
 
 ## Korrekthetsbevis
 
+Korrekthetsbevis for Bellman-Ford er på side 653 i pensumboka.
+
 ## Styrker og svakheter sammenlignet med andre
 
-\+ Kan oppdage negative sykler
+\+ Kan oppdage negative sykler  
+\- Høyere kjøretid enn Dijkstras algoritme
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
@@ -64,10 +67,14 @@ Initialisering | 1 | $\Theta(V)$
 RELAX | V-1 | $\Theta(E)$
 RELAX | 1 | $O(E)$
 
-$\Theta(V*E)$
+Operasjon | Antall | Kjøretid
+---------|----------|----------
+Initialisering | $1$ | $\Theta(V)$
+Relax | $V-1$| $\Theta(1)$
+Relax | $O(V)$ | $\Theta(1)$
 
-Best case | Average case | Worst case | Minne
----------|----------|---------|---------
- TODO | TODO | TODO | TODO
+1. Slakker hver kant $|V|-1$ ganger, $O(E)$.
+2. Initalisering $O(V)$
+3. Total kjøretid på $O(V\cdot E)$.
 
 ## Python kodeeksempel

@@ -10,8 +10,13 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+Generell metode. Ikke egentlig noen bestemt algoritme. Ford-Faulkerson med BFS er Edmonds-Karp algoritmen.
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
+
+Input: Et flytnett $G$  
+Output: En flyt $f$ for $G med maks $|f|$
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->
@@ -27,8 +32,9 @@
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
-Best case | Average case | Worst case | Minne
----------|----------|---------|---------
- TODO | TODO | TODO | TODO
+Algoritme | Info | Best case | Worst case
+---------|----------|---------|---------|---------
+Ford-Fulkerson | TODO | $O(V\cdot E^2)$ | $O(E_f)$
+Edmonds-Karp | Ford-Fulkerson med BFS | $O(V\cdot E^2)$ | $O(V\cdot E^2)$
 
 ## Python kodeeksempel

@@ -1,5 +1,5 @@
-# Edmonds-Karp algoritmen
-<!-- [L9] Vite at Ford-Fulkerson med BFS kalles Edmonds-Karp-algoritmen -->
+# Topological sort
+<!-- [H5] Forstå Topological-Sort -->
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
@@ -9,6 +9,7 @@
 5. Kjenne til eventuelle styrker eller svakheter, sammenlignet med andre
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
+Dersom man har behov for rekkefølge på nodene så gir topologisk sortering en lineær sortering av noder i en DAG slik at for hver kant $u,v$ så kommer $u$ før $v$. Det kan finnes flere topologiske sorteringer for en graf.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -19,6 +20,15 @@
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
+```pseudo
+
+Topological-Sort(G):
+1   kall DFS for å beregne slutt-tid for hver node
+2   for hver node som blir ferdig
+3   insert den foran i en lenket liste
+4 returner den lenkede listen
+
+```
 
 ## Korrekthetsbevis
 
@@ -26,13 +36,15 @@
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
-Finn forøkende sti hender $O(VE)$ ganger om har kjøretid $O(E)$
 
-$O(VE^2)$
+DFS: $\Theta(V+E)$
 
-Algoritme | Info | Best case | Worst case
----------|----------|---------|---------|---------
-Ford-Fulkerson | TODO | $O(V\cdot E^2)$ | $O(E_f)$
-Edmonds-Karp | Ford-Fulkerson med BFS | $O(V\cdot E^2)$ | $O(V\cdot E^2)$
+Insert i listen: $O(1)$
+
+Kjøretid: $\Theta(V+E)$
+
+Best case | Average case | Worst case | Minne
+---------|----------|---------|---------
+ TODO | TODO | TODO | TODO
 
 ## Python kodeeksempel

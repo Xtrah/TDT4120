@@ -33,8 +33,12 @@ Kruskals algoritme legger til alle kanter i en graf i en sortert liste basert p�
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
-Best case | Average case | Worst case | Minne
----------|----------|---------|---------
- TODO | TODO | TODO | TODO
+Kjøretiden til Kruskal er avhengig av hvilken underliggende datastruktur vi velger. Pensum bruker disjoint-set skog da den er asymptotisk den raskeste kjent.
+
+Utdypende kjøretidsanalyse er ganske omfattende og finnes på s. 633 i boka.
+
+Datastruktur | Tidskompleksitet
+---------|----------
+Disjoint-set skog | $O(E\lg V)$
 
 ## Python kodeeksempel

@@ -1193,23 +1193,48 @@ Et stort skritt i retning av generell lineær optimering (såkalt lineær progra
 
 Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og noder imellom som forbindes med kanter. Hver kant har en **kapasitet** som viser hvor mye **flyt** kanten kan motta. Flyt er enheten som blir sendt imellom nodene. **Maks-flyt-problemet** går ut på å sende mest mulig flyt fra S til T. Det fins algoritmer for å løse dette problemet, blant annet **Ford-Fulkerson**.
 
+**Flytnett**: Rettet graf $G=(V,E)$
+
+- med kapasiteter $c(u,v) \ge 0$
+- med en kilde og et sluk/tapp $s,t \in V$
+- antakelse: Alle noder er på en sti fra $s \rightarrow t$  
+  $v \in V \Rightarrow s \rightsquigarrow v \rightsquigarrow t$
+- ingen self-loops (men vi kan ha sykler)
+- tillater ikke antiparallelle kanter  
+  $(u,v)\in E \Rightarrow (v,u) \notin E$
+- ingen kapasitet uten en kant  
+  $(u,v) \notin E \Rightarrow c(u,v) = 0$
+
+**Flyt**: En funksjon $f : V \times V \rightarrow \mathbb{R}$. Vi kan ha flyt fra enhver node til en annen.
+
+- $0 \le f(u,v) \le c(u,v)$
+- Flyt inn = flyt ut
+
+**Flytverdi**: $|f| = \sum_vf(s,v)-\sum_vf(v,s)$
+
 ### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
-En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk.
+**Flere kilder og sluk**: En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk.
+
+**Antiparallelle kanter**: Putt en node i midten av den ene kanten og få heller 3 kanter. Løs oppgaven på samme måte.
 
 ### Restnettet til et flytnett med en gitt flyt
 <!-- ![L3] Kunne definere restnettet til et flytnett med en gitt flyt -->
 Et **residualnettverk** indikerer hvor mye flyt som er tillatt i hver kant i nettverkgrafen.
 
-### Oppheve (cancel) flyt
+Kapasiteten til restnettet: hvor mye vi kan øke flyten fra en node til en annen
+
+### Flyttoppheving - oppheve (cancel) flyt
 <!-- [L4] Forstå hvordan man kan oppheve (cancel) flyt -->
 Når man forøker flyten langs den forøkende stien, må det også minskes flyt langs residualkantene med flaskehalsverdien. Residualkantene fungerer ved at de opphever dårlige forøkende stier som ikke leder til maksflyt.
 
 ### Forøkende sti (augmenting path)
 <!-- [L5] Forstå hva en forøkende sti (augmenting path) er -->
-En **forøkende sti** er en sti av kanter i restnettet med ubrukt kapasitet (mer enn 0) fra kilde s til t. Hvis det ikke er noen forøkende stier fra S til T, så har flyten nådd maksimum.
+En **forøkende sti** (eller flytforøkende sti) er en sti av kanter i restnettet med ubrukt kapasitet (mer enn 0) fra kilde $s$ til sluk $t$. Hvis det ikke er noen forøkende stier fra $s$ til $t$, så har flyten nådd maksimum.
 
 Å forøke flyten betyr å oppdatere flytverdiene på kantene langs den forøkende stien. Dette innebærer å øke flyten med flaskehalsverdien (kanten med minst kapasitet).
+
+> Altså: En sti der den totale flyten kan økes
 
 ### Snitt, snitt-kapasitet og minimalt snitt
 <!-- [L6] Forstå hva snitt, snitt-kapasitet og minimalt snitt er -->
@@ -1234,8 +1259,13 @@ Ford Fulkerson-metoden finner maks-flyt ved å stadig finne forøkende stier i r
 ### Maks-flyt kan finne en maksimum bipartitt matching
 <!-- [L10] Forstå hvordan maks-flyt kan finne en maksimum bipartitt matching -->
 
+Input: En bipartitt urettet graf $G=(V,E)$  
+Output: En matching $M \subseteq E$ med flest mulig kanter, dvs. der $|M|$ er maksimal.
+
 ### Heltallsteoremet (integrality theorem)
 <!-- ![L11] Forstå heltallsteoremet (integrality theorem) -->
+
+Heltallsteoremet (26.10): For heltallskapasiteter gir Ford-Fulkerson heltallsflyt.
 
 ## NP-kompletthet
 
@@ -1404,6 +1434,91 @@ Selv om `Shortest-Path` blir løst i polynomisk tid, så er **lengste** vei et N
 
 ### Konstruere enkle NP-kompletthetsbevis
 <!-- [M14] Være i stand til å konstruere enkle NP-kompletthetsbevis -->
+
+## Kjøretider fra pensum
+
+<!--
+### Grunnleggende datastrukturer
+
+Operasjoner | Best case | Average case | Worst case | Minne
+---------|----------|---------|---------|---------
+TODO | TODO | TODO | TODO | TODO
+TODO | TODO | TODO | TODO | TODO
+TODO | TODO | TODO | TODO | TODO
+-->
+
+### Sorteringsalgoritmer
+
+#### Søking
+
+Algoritme | Best case | Average case | Worst case | Minne
+---------|----------|---------|---------|---------
+Brute force | $O(n)$ | $O(n)$ | $O(n)$ | $O(n)$
+Binary search |$O(1)$ | $O(\log n)$ | $O(\log n)$ | N/A
+
+#### Sammenligningsbaserte sorteringsalgoritmer
+
+Algoritme | Best case | Average case | Worst case | Minne
+---------|----------|---------|---------|---------
+Merge sort | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$
+Quick sort | $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$ | $O(\lg n)$
+Bubble sort | $O(n)$ | $O(n^2)$ | $O(n^2)$ | N/A
+Insertion sort | $\Theta(n)$ | $\Theta(n^2)$ | $O(n^2)$ | $O(1)$
+Selection sort | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$
+
+#### Ikke-sammenligningsbaserte sorteringsalgoritmer
+
+Algoritme | Best case | Average case | Worst case | Minne
+---------|----------|---------|---------|---------
+Heap sort | $O(n \log n)$ | ??? | $O(n \log n)$ | $O(1)$
+Counting sort | $\Omega(n+k)$ | $\Theta(n+k)$ | $O(n+k)$ | $O(n+k)$
+Radix sort | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $O(n+k)$
+Bucket sort | $\Theta(n)$ | $\Theta(n)$ | $\Theta(n^2)$ | $O(n)$
+Topological sort |  $\Theta(V+E)$ |  N/A |  $\Theta(V+E)$ | N/A
+
+### Grafalgoritmer
+
+#### Traversering
+
+Algoritme | Best case | Average case | Worst case | Minne
+---------|----------|---------|---------|---------
+Breadth first search | $\Theta(V)$ | N/A | $\Theta(V+E)$ | N/A
+Depth first search | $\Theta(V+E)$ | N/A | $\Theta(V+E)$ | N/A
+
+#### Minimal spanning tree
+
+Algoritme | Datastruktur | Tidskompleksitet
+---------|----------|---------|---------
+Prim | Binary Min-Heap | $O(E\lg V)$
+Prim | Fibonacci Heaps | $O(E+V\lg V)$ (bedre)
+Kruskal | Disjoint-set skog | $O(E\lg V)$
+
+#### Korteste vei
+
+##### En-til-alle (single source shortest path)
+
+Algoritme | Datastruktur | Tidskompleksitet
+---------|----------|---------|---------
+Dijkstra | Fibonacci heap | $O(V\lg V + E)$
+Dijkstra | Binary min-heap | $O(E\lg V + V\lg V)$
+Dijkstra | Array | $O(V^2)$
+Bellman-Ford | N/A | $O(V\cdot E)$
+
+##### Alle-til-alle (all pairs shortest path)
+
+Algoritme | Best case | Average case | Worst case
+---------|----------|---------|---------|---------
+Johnson's algoritme | $O(V^2 \log V + VE)$ | $O(V^2 \log V + VE)$ | $O(V^2 \log V + VE)$
+Floyd-Warshall | $\Theta(V+E)$ | N/A | $\Theta(V+E)$ | N/A
+
+#### Maks flyt / minimal cut
+
+Gitt en graf $G=(V,E)$ med flyt $f$, ved hver iterasjon finner vi en forøkende sti $p$, og vi bruker $p$ for å endre på $f$.
+
+Algoritme | Info | Best case | Worst case
+---------|----------|---------|---------|---------
+Ford-Fulkerson | TODO | $O(V\cdot E^2)$ | $O(E_f)$
+Edmonds-Karp | Ford-Fulkerson med BFS | $O(V\cdot E^2)$ | $O(V\cdot E^2)$
 
 ## Definisjoner
 

@@ -46,6 +46,8 @@ MST-PRIM(G,w,r)
 
 ## Styrker og svakheter sammenlignet med andre
 
+Prim bruker ideer tilsvarende breadth-first search.
+
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
