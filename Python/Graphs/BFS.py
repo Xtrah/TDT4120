@@ -4,7 +4,7 @@
 # if there are disjoint nodes or if there is no path to some nodes, it won't visit them
 # This is unlike DFS, which will visit all nodes, but won't necessarily find the shortest path
 import queue
-import Algoritmer.Graphs.Vertex as Vertex
+import Vertex as Vertex
 
 # G = A list of lists. G[0] contains for example [1,4,6] meaning that node 0 goes to nodes 1, 4 and 6.
 def BFS(G, start):

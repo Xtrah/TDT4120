@@ -1,4 +1,4 @@
-import Python.Datastrukturer.LinkedList as LL
+import LinkedList as LL
 import random
 import math
 class HashTable:
@@ -44,9 +44,8 @@ class HashTable:
 
 
 
-
 for i in range(3000): # reliability testing
-    ht = HashTable();
+    ht = HashTable()
     for j in range(1000):
         a = LL.Node(random.randint(0,100))
         ht.hash_insert(a)

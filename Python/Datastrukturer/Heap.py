@@ -1,4 +1,5 @@
-from Python.Datastrukturer.HeapList import HeapList as HL
+from HeapList import HeapList as HL
+
 import random
 
 def exchange(A, idx_A, idx_B):

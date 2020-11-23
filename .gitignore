@@ -9,3 +9,6 @@
 
 # Local History for Visual Studio Code
 .history/
+
+# Python cache
+__pycache__
