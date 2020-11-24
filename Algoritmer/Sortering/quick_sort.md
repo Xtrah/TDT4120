@@ -45,7 +45,7 @@ Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------
  $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$ | $O(\lg n)$
 
-Grunnen til at worst-case er at første eller siste element i en sortert liste blir valgt er at man da må sjekke alle elementene. 
+Grunnen til at worst-case er at første eller siste element i en sortert liste blir valgt er at man da må sjekke alle elementene.
 
 Velger man det midterste elementet i den sorterte listen, må man sjekke logaritmisk færre elementer for hver følgende pivot.
 

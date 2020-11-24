@@ -16,7 +16,7 @@ Generell metode. Ikke egentlig noen bestemt algoritme. Ford-Faulkerson med BFS e
 <!-- Et problem er relasjonen mellom input og output -->
 
 Input: Et flytnett $G$  
-Output: En flyt $f$ for $G med maks $|f|$
+Output: En flyt $f$ for $G$ med maks $|f|$
 
 ## Tilleggskrav for korrekthet
 <!-- Korrekhet: algoritmer virker, gir det svaret den skal -->

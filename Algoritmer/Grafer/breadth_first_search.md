@@ -56,7 +56,7 @@ BFS(G,s):
 
 13-17:
 
-- Finner man noder som er hvite (ikke blitt sett) -> Planlegg besøk. 
+- Finner man noder som er hvite (ikke blitt sett) -> Planlegg besøk.
 - Gjør dem grå (sett)
 - Noter avstand som er det den forgjengeren var + 1
 - Sett forgjengeren = u
