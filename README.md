@@ -240,10 +240,23 @@ En node er et datapunkt i en datastruktur som inneholder data.
 <!-- TODO: Sentinels (NIL objekter) -->
 **Sentinels:** NIL-objekter. Et dummy objekt som brukes for å lage avgrensninger, for eksempel i enden av en liste.
 
-![list-search](https://i.imgur.com/1XcFwJT.png)
-![list-search-nil](https://i.imgur.com/ImUvYhu.png)
+```pseudo
+LIST-SEARCH(L, k)
+1   x = L.head
+2   while x =/= NIL and x.key =/= k
+3       x = x.next
+4   return x
+```
 
-> **NB!** Vær bevisst på parameterne metodene får inn. Dersom det er en key (en verdi) vil kjøretiden i dobbelt-lenket lister være $\Theta(n)$ for `List-Delete`. Dersom du får inn en node som paramater vil kjøretiden være $O(1)$.
+```pseudo
+LIST-SEARCH'(L, k)
+1   x = L.nil.next
+2   while x =/= L.nil and x.key =/= k
+3       x = x.next
+4   return x
+```
+
+> **NB!** Vær bevisst på parameterne metodene får inn. Dersom det er en key (en verdi) vil kjøretiden i dobbelt-lenket lister være $\Theta(n)$ for `List-Delete`. Dersom du får inn en node som parameter vil kjøretiden være $O(1)$.
 
 Det finnes varianter av metodene som innebærer disse NIL-objektene. De kan forbedre kjøretiden og gjøre koden mer lesbar, men gir mer [overhead](#Overhead).
 
@@ -265,7 +278,7 @@ En peker peker til en minneadresse. På den minneadressen kan det være et objek
 
 Objekter kan bli representert av flere arrays eller kun et array:
 
-- I en multiple-array situasjon vil de forskjellige arrayene tolkes som for eksempel elementer, pekere fram og tilbake og \ for NIL.
+- I en multiple-array situasjon vil de forskjellige arrayene tolkes som for eksempel elementer, pekere fram og tilbake, og $\backslash$ for NIL.
 - I en enkel array vil posisjonen til elementene relativt til hverandre indikere hvordan objektet skal representeres (igjen med pekere fram og tilbake).
 
 ![array-representasjon](https://i.imgur.com/SM3N6lH.png)  
@@ -299,7 +312,7 @@ Chaining vil si at man legger elementer i en lenket liste på samme nøkkel. Der
 
 Kjøretiden for de ulike operasjonene `Chained-Hash-Insert`, `Chained-Hash-Search` og `Chained-Hash-Delete` vil variere fra hvilken datastruktur som brukes i chainingen. Det kan f.eks. være gunstig å bruke en dobbelt-lenket liste, men vær obs på hva som tas inn som parametere i metodene for å beregne kjøretid (key vs node).
 
-En annen løsning for å løse kollisjoner er å putte verdiene andre steder i tabellen. (Utenfor pensum)
+En annen løsning for å løse kollisjoner er å putte verdiene andre steder i tabellen (utenfor pensum).
 
 #### Grunnleggende hashfunksjoner
 <!-- [B6] Kjenne til grunnleggende hashfunksjoner -->
@@ -322,7 +335,7 @@ Når man har statiske datasett kan man lage en skreddersydd hashfunksjon. Dette 
 <!-- [B8] Kunne definere amortisert analyse -->
 Amortisert analyse er en metode for å kunne analysere en gitt algoritmes kompleksitet.
 
-> *"It gives the average performance (over time) of each operation in the worst-case."*
+> It gives the average performance (over time) of each operation in the worst-case.
 
 - Kjøretid for en enkeloperasjon: ikke alltid informativt
 - Se på gjennomsnitt per operasjon etter mange har blitt utført. Dersom det er noen _få_ "kostbare" operasjoner vil gjennomsnittet fortsatt bli lavt når man ser på helheten.
@@ -344,17 +357,17 @@ Med amortisert arbeid blir kjøretiden akseptabel. Man øker størrelsen med en 
 
 ```pseudo
 TABLE-INSERT(T,x)
-  if T.size == 0
-    allocate T.table with 1 slot
-    T.size = 1
-  if T.num == T.size
-    allocate new-table with 2*T.size slots
-    insert all items in T.table into new-table
-    free T.table
-    T.table = new-table
-    T.size = 2*T.size
-  insert x into T.table
-  T.num = T.num+1
+1     if T.size == 0
+2       allocate T.table with 1 slot
+3       T.size = 1
+4     if T.num == T.size
+5       allocate new-table with 2*T.size slots
+6       insert all items in T.table into new-table
+7       free T.table
+8       T.table = new-table
+9       T.size = 2*T.size
+10    insert x into T.table
+11    T.num = T.num+1
 ```
 
 ## Splitt og hersk
@@ -383,17 +396,16 @@ Quick sort er [in-place](#In-place).
 ### Rekurrenser
 <!-- ![C6] Kunne løse rekurrenser med substitusjon, rekursjonstrær og masterteoremet -->
 
-En type likning - Rekursive likninger
-
+En type likning - Rekursive likninger  
 Eksempel på en rekurrens: $T(n)=4T(^n/_2) + n^2$
 
 De beskriver f.eks. kjøretiden til rekursive algoritmer. Man *trenger* ikke bruke rekurrenser om det ikke er rekursjon!
 
 Metoder for å regne ut rekurrenser:
 
-- Substitusjon:
+- [Substitusjon](#substitusjon):
   - Bytte ut inputargumenter til noe som gjør rekurrensen enklere å løse.
-- Rekursjonstre
+- [Rekursjonstre](#rekursjonstre)
 - [Masterteoremet](#masterteoremet):
   - Rekurrensen må være på formen $T(n)=aT(^n/_b) + f(n)$
 - [Iterasjonsmetoden](#iterasjonsmetoden) (induksjon):
@@ -533,7 +545,7 @@ Vi kan ofte få bedre løsninger ved å styrke kravene til input eller ved å sv
 ### Worst case for sammenligningsbasert sortering (sorteringsgrensen)
 <!-- ![D1] Forstå hvorfor sammenligningsbasert sortering har en worst-case på Ω(n lg n) -->
 
-> **Enhver sammenligningsbasert algoritme krever $\Omega(n\lg n)$ sammenligninger i worst-case.**
+> Enhver sammenligningsbasert algoritme krever $\Omega(n\lg n)$ sammenligninger i worst-case.
 
 Vi må vise at høyden til valgtreet er $n\lg n$. Vi har et valgtre med høyde $h$ og antall blader $l$ som kan nås fra roten. Da det er $n!$ permutasjoner som skal representeres av blad og et binært tre av høyde $h$ kan ikke ha mer enn $2^h$ blad, vil $n! \leq l \leq 2^h$, slik at $n! \leq 2^h$. Ved å ta logaritmen finner vi:
 
@@ -549,7 +561,7 @@ $$[B1, C2, C1, A1]$$
 og sorterer den kun etter bokstaver, vil rekkefølgen for $C$ forbli uforandret:
 $$[A1, B1, C2, C1]$$
 
-Vi sier ofte at _den relative rekkefølgen_ opprettholdes.
+Vi sier ofte at den _relative rekkefølgen_ opprettholdes.
 
 ### Counting sort
 <!-- [D3] Forstå Counting-Sort, og hvorfor den er stabil -->
@@ -601,17 +613,23 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 
 #### Operasjoner på Heaps
 
-**Insert = $O(\log n), O(h)$** $\newline$ *Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
+**Insert = $O(\log n)$, $O(h)$**  
+*Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
 
-**Delete = $O(\log n), O(h)$** $\newline$ *Av samme grunn som **insert**.*
+**Delete = $O(\log n)$, $O(h)$**  
+*Av samme grunn som **insert**.*
 
-**Build = $O(n)$** $\newline$ *Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.*
+**Build = $O(n)$**  
+*Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.*
 
-**Max-heapify = $O(\log n)$** $\newline$ *Max-heapify tar input-elementene og konstruerer en Max-heap. Den sorterer nodene fra bunn til topp. Dermed er den bundet av høyden til heapen som er $\log n$*.
+**Max-heapify = $O(\log n)$**  
+*Max-heapify tar input-elementene og konstruerer en Max-heap. Den sorterer nodene fra bunn til topp. Dermed er den bundet av høyden til heapen som er $\log n$*.
 
-**Build-max-heap = Linear time** $\newline$ *Build-max-heap bygger en heap ved å kjøre max-heapify på hver node den legger til. Max-heapify tar $O(\log n)$ tid, men ettersom Build tar lineær tid, overskirver denne Max-heapify. Altså får vi lineær tid.*
+**Build-max-heap = Linear time**  
+*Build-max-heap bygger en heap ved å kjøre max-heapify på hver node den legger til. Max-heapify tar $O(\log n)$ tid, men ettersom Build tar lineær tid, overskirver denne Max-heapify. Altså får vi lineær tid.*
 
-**Heapsort = $O(n \log (n))$** $\newline$ *Heapsort bygger først en max-heap ved hjelp av Build-max-heap. Nå er det største elementet på toppen. Dette elementet hentes ut fra heapen. Den flytter så en av de minste elementene helt til toppen før den kjører Max-heapify igjen. Max-heapify garanterer at det største elementet i heapen nok en gang kommer til toppen. Denne prosessen gjør det mulig å hente ut det største elementet i heapen hver gang.* $\newline$
+**Heapsort = $O(n \log (n))$**  
+*Heapsort bygger først en max-heap ved hjelp av Build-max-heap. Nå er det største elementet på toppen. Dette elementet hentes ut fra heapen. Den flytter så en av de minste elementene helt til toppen før den kjører Max-heapify igjen. Max-heapify garanterer at det største elementet i heapen nok en gang kommer til toppen. Denne prosessen gjør det mulig å hente ut det største elementet i heapen hver gang.*  
 *$O(n \log (n))$ kommer av at det kjøres Max-heapify for hvert element.*
 
 **Max-heap-insert, heap-extract-max, Heap-increase-key, Heap-maximum = $O(\log (n))$**
@@ -739,7 +757,7 @@ La $n=7$ og $p=[1,4,3,6,8,5,9]$ være en instans av stavkuttingsproblemet. Hva b
 $$4+8 = 12$$
 $$4+4+4+1 = 13 \Rightarrow r_7$$
 
-For å løse dette med dynamisk
+<!-- TODO: løse dette med dynamisk programmering -->
 
 #### Lengste felles subsekvens (LCS)
 
@@ -793,7 +811,7 @@ Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av e
 Øverste rad er vektkapasiteten til ryggsekken.
 
 |       |       |       | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-|:-:    |:-:    |:-:    |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|:-:    |:-:    |:-:    |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 | **$P_i$**| **$W_i$**| # of **Item** | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | **1** | **2** | **1** | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
 | **2** | **3** | **2** | 0 | 1 | 2 | 2 | 3 | 3 | 3 | 3 |
@@ -834,6 +852,8 @@ Man har et sett aktiviteter som starter og slutter på forskjellige tider, og ø
 3. For hver aktivitet gjenstående i den sorterte lista: om start-tid $\geq$ slutt-tid av forrige aktivitet, legg til aktiviteten. (Grådig valg)
 
 #### Ryggsekkproblemet
+
+<!-- TODO -->
 
 ### Huffmankoder og huffmans algoritme
 <!-- [G4] Forstå Huffman og Huffman-koder -->
@@ -1151,7 +1171,7 @@ Der $v.d$ er avstanden til etterfølgere, $u.d$ er avstanden fra forgjenger og $
 
 ### Bellman-Ford
 <!-- [J8] Forstå Bellman-Ford -->
-> Vi slakker alle kantene helt til det må bli rett
+Vi slakker alle kantene helt til det må bli rett
 
 [Link til Bellman-Ford](Algoritmer/Grafer/bellman-ford.md)
 
@@ -1183,7 +1203,7 @@ Vi kan finne de korteste veiene fra hver node etter tur, men mange av delinstans
 
 ### Transitive-Closure
 <!-- [K3] Forstå Transitive-Closure -->
-> Vi får en graf eller en binær relasjon. Hvis det finnes en sti fra $u$ til $v$ vil vi legge inn en kant fra $u$ til $v$ slik at vi kan gå direkte.
+Vi får en graf eller en binær relasjon. Hvis det finnes en sti fra $u$ til $v$ vil vi legge inn en kant fra $u$ til $v$ slik at vi kan gå direkte.
 
 [Link til Transitive-Closure](Algoritmer/Grafer/transitive-closure.md)
 
@@ -1203,7 +1223,7 @@ Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og nod
 - med kapasiteter $c(u,v) \ge 0$
 - med en kilde og et sluk/tapp $s,t \in V$
 - antakelse: Alle noder er på en sti fra $s \rightarrow t$  
-  $v \in V \Rightarrow s \rightsquigarrow v \rightsquigarrow t$
+  $v \in V \Rightarrow s ⇝ v ⇝ t$
 - ingen self-loops (men vi kan ha sykler)
 - tillater ikke antiparallelle kanter  
   $(u,v)\in E \Rightarrow (v,u) \notin E$
@@ -1295,9 +1315,7 @@ En matching er altså en delmengde av alle kanter, der her node er tilknyttet ma
 
 Hva er flyten over dette snittet etter at vi har økt flyten ved å sende maksimal flyt gjennom den forøkende stien $s$, $v_2$, $v_4$, $t$?
 
-**Svar:**
-
-Det er to ting som er viktig å forstå her:
+**Svar:** Det er to ting som er viktig å forstå her.
 
 1. Hvordan flyt mellom noder fungerer
 2. Hva et kutt er
@@ -1332,7 +1350,7 @@ NP er den enorme klassen av ja-nei-problemer der ethvert ja-svar har et bevis so
 > Det kreves ikke grundig forståelse av de ulike NP-kompletthetsbevisene
 
 Bra intro til hva hele opplegget handler om:  
-<https://www.youtube.com/watch?v=EHp4FPyajKQ>
+[P vs. NP - The Biggest Unsolved Problem in Computer Science](https://www.youtube.com/watch?v=EHp4FPyajKQ)
 
 - **Problem**: abstrakt, binær relasjon mellom input og output
 - **Konkret problem**: input og output er bitstrenger
@@ -1371,7 +1389,7 @@ Om en datamaskin skal forstå et problem, må vi representere det binært, alts�
 - Ryggsekkproblemet: Fyll sekken med mest verdi uten å gå over vektgrensen.
 Ryggsekkproblemet kan løses med dynamisk programmering på en kjøretid på $O(n\cdot w)$, så hvorfor omtales ikke det binære ryggsekkproblemet som polynomisk?
 
-Svaret handler om forholdet mellom binærrepresentasjon av input og hvor lang tid programmet faktisk tar å kjøre. Gjerne se video om dette: <https://www.youtube.com/watch?v=9oI7fg-MIpE>
+Svaret handler om forholdet mellom binærrepresentasjon av input og hvor lang tid programmet faktisk tar å kjøre. Lurt å se video om dette: [Why is the knapsack problem pseudo-polynomial?](https://www.youtube.com/watch?v=9oI7fg-MIpE)
 
 Et eksempel som kan vise dette forholdet er en enkel for-løkke:  
 En for-løkke går fra $1 \rightarrow n$. Datamaskinen forstår binærtall, så $n$ må gjøres om fra tall til binærtall. 4 til 100, 8 til 1000, 16 til 10000. For hver økning av binærtall, dobles det faktiske tallet.
@@ -1386,6 +1404,8 @@ Kjøretiden omtales som [pseudopolynomisk](#pseudopolynomisk) siden den ser poly
 
 ### Forskjellen på konkrete og abstrakte problemer
 <!-- [M4] Forstå forskjellen på konkrete og abstrakte problemer -->
+
+Kort: Et konkret problem er representert som en streng av bits som kan løses av en datamaskin. Et abstrakt problem er mer "ideen" av problemet, en binær relasjon mellom input og output.
 
 ### Representasjon av beslutningsproblemer
 <!-- [M5] Forstå representasjonen av beslutningsproblemer som formelle språk -->
@@ -1518,8 +1538,8 @@ Selv om `Shortest-Path` blir løst i polynomisk tid, så er **lengste** vei et N
 
 1. Vis at $L \in NP$
 2. Velg et kjent NP-komplett språk $L'$ eller et problem
-3. Beskriv en reduksjon/algoritme som beregner en funksjon $$f : \{0,1\}\ast \rightarrow \{0,1\}\ast$$ som mapper instanser av $L'$ til instanser av $L$.
-4. Vis at $x \in L' \longleftrightarrow f(x) \in L$, for alle $x \in \{0,1\}\ast$.
+3. Beskriv en reduksjon/algoritme som beregner en funksjon $$f : \lbrace 0,1 \rbrace \ast \rightarrow \lbrace 0,1 \rbrace \ast$$ som mapper instanser av $L'$ til instanser av $L$.
+4. Vis at $x \in L' \longleftrightarrow f(x) \in L$, for alle $x \in \lbrace 0,1 \rbrace \ast$.
 5. Vis at algoritmen som beregner $f$ har polynomisk kjøretid.
 
 ## Kjøretider fra pensum
@@ -1575,7 +1595,7 @@ Depth first search | $\Theta(V+E)$ | N/A | $\Theta(V+E)$ | N/A
 #### Minimal spanning tree
 
 Algoritme | Datastruktur | Tidskompleksitet
----------|----------|---------|---------
+---------|----------|---------
 Prim | Binary Min-Heap | $O(E\lg V)$
 Prim | Fibonacci Heaps | $O(E+V\lg V)$ (bedre)
 Kruskal | Disjoint-set skog | $O(E\lg V)$
@@ -1585,7 +1605,7 @@ Kruskal | Disjoint-set skog | $O(E\lg V)$
 ##### En-til-alle (single source shortest path)
 
 Algoritme | Datastruktur | Tidskompleksitet
----------|----------|---------|---------
+---------|----------|---------
 Dijkstra | Fibonacci heap | $O(V\lg V + E)$
 Dijkstra | Binary min-heap | $O(E\lg V + V\lg V)$
 Dijkstra | Array | $O(V^2)$
@@ -1594,7 +1614,7 @@ Bellman-Ford | N/A | $O(V\cdot E)$
 ##### Alle-til-alle (all pairs shortest path)
 
 Algoritme | Best case | Average case | Worst case
----------|----------|---------|---------|---------
+---------|----------|---------|---------
 Johnson's algoritme | $O(V^2 \log V + VE)$ | $O(V^2 \log V + VE)$ | $O(V^2 \log V + VE)$
 Floyd-Warshall | $\Theta(V+E)$ | N/A | $\Theta(V+E)$ | N/A
 
@@ -1603,7 +1623,7 @@ Floyd-Warshall | $\Theta(V+E)$ | N/A | $\Theta(V+E)$ | N/A
 Gitt en graf $G=(V,E)$ med flyt $f$, ved hver iterasjon finner vi en forøkende sti $p$, og vi bruker $p$ for å endre på $f$.
 
 Algoritme | Info | Best case | Worst case
----------|----------|---------|---------|---------
+---------|----------|---------|---------
 Ford-Fulkerson | TODO | $O(V\cdot E^2)$ | $O(E_f)$
 Edmonds-Karp | Ford-Fulkerson med BFS | $O(V\cdot E^2)$ | $O(V\cdot E^2)$
 
@@ -1639,15 +1659,15 @@ I følgende avsnitt blir disse punktene forklart.
 
 ### Tolkning
 
-**Definer problemet eller problemene du står overfor. Klargjør hva din oppgave er: Hva skal du gjøre med problemene?**
+Definer problemet eller problemene du står overfor. Klargjør hva din oppgave er: Hva skal du gjøre med problemene?
 
 ### Analyse
 
-**Plukk problemet fra hverandre og plasser det i en større kontekst. List opp alt du har av relevant kunnskap og relevante verktøy.**
+Plukk problemet fra hverandre og plasser det i en større kontekst. List opp alt du har av relevant kunnskap og relevante verktøy.
 
 ### Syntese
 
-**Koble sammen bitene og fyll inn det som mangler av transformasjoner, mindre beregningstrinn og eventuelle korrekthetsbevis.**
+Koble sammen bitene og fyll inn det som mangler av transformasjoner, mindre beregningstrinn og eventuelle korrekthetsbevis.
 
 #### Distribuert kognisjon
 
