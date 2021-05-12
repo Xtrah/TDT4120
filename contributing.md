@@ -1,27 +1,27 @@
-# Contributing
+# Bidra
 
-Extensions are required to make sure everything renders properly both in VSC and on GitHub, and later if exporting as HTML.
+Utvidelser er nødvendig for å sikre at alt formateres rett både på GitHub og i Visual Studio Code, og senere om kompendiet skal eksporteres som HTML.
 
-## Visual Studio Code extensions
-
-After cloning the repository, you can install these extensions by searching `@recommended` in VSC Extensions.
-
-Install extensions manually searching the store or by using command line to run: `code --install-extension [extension]`
-
-- `davidanson.vscode-markdownlint` for Markdown linting
-- `goessner.mdmath` for Markdown Math symbols
-- Optional: `mdickin.markdown-shortcuts` for useful right-click shortcuts
-
-## Chrome extensions
+## Utvidelser for å lese LaTeX på GitHub
 
 - MathJax plugin for GitHub
   <https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima>
 
-## How to Markdown with LaTeX
+## Utvidelser for Visual Studio Code
 
-Format inline using dollar signs: $\LaTeX$
+Etter å ha klonet repo, installer utvidelser ved å søke `@recommended` i VSC Extensions, eller installer manuelt ved å bruke kommandolinjen: `code --install-extension [extension]`
 
-Format to blocks using double dollar signs: $$\LaTeX$$
+- `davidanson.vscode-markdownlint` for Markdown linting
+- `goessner.mdmath` for Markdown Math symboler
+- Ekstra: `mdickin.markdown-shortcuts` for nyttige hurtigtaster
+
+## Hvordan Markdown med LaTeX
+
+Inline formatering ved enkelt dollartegn: `$\LaTeX$`  
+$\LaTeX$
+
+Blokkformatering ved dobbel dollartegn: `$$\LaTeX$$`  
+$$\LaTeX$$
 
 - Mastering markdown  
   <https://guides.github.com/features/mastering-markdown/>

@@ -1,5 +1,9 @@
 # TDT4120 Algoritmer og datastrukturer
 
+Dette er et selvskrevet kompendium i [TDT4120 H20 ved NTNU](https://www.ntnu.no/studier/emner/TDT4120/2020). Faget inneholder en del notasjon som er løst ved bruk av LaTeX formatering, som leses ved bruk av en [utvidelse i nettleseren](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima).
+
+For å bidra, les [contributing.md](contributing.md) ❤
+
 - [Algoritmer](Algoritmer/)
 - [Eksterne ressurser](Ressurser/)
 
