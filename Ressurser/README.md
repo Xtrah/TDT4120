@@ -1,5 +1,6 @@
 # Ressurser
 
+- TDT4120 hjemmside - [algdat.idi.ntnu.no](https://algdat.idi.ntnu.no/)
 - [Wikipendium: Runtimes for curriculum algorithms](https://www.wikipendium.no/TDT4120_Algorithms_and_Data_Structures#runtimes-for-curriculum-algorithms)
 - [VisuAlgo - visualising data structures and algorithms through animation](https://visualgo.net/en)
 - [Quizlets](https://quizlet.com/joachim_maksim/folders/algoritmer-og-datastrukturer/sets) av @joachmak

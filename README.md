@@ -1,14 +1,10 @@
 # TDT4120 Algoritmer og datastrukturer
 
-Dette er et selvskrevet kompendium i [TDT4120 H20 ved NTNU](https://www.ntnu.no/studier/emner/TDT4120/2020). Faget inneholder en del notasjon som er løst ved bruk av LaTeX formatering, som leses ved bruk av en [utvidelse i nettleseren](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima).
+Dette er et selvskrevet kompendium i [TDT4120 H20 ved NTNU](https://www.ntnu.no/studier/emner/TDT4120/2020). Faget inneholder en del notasjon som er løst ved bruk av LaTeX formatering, som leses ved bruk av en [utvidelse i nettleseren](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima). Kompendiet er sortert etter [læremålene i pensumheftet](Ressurser/pensumhefte2020.pdf).
 
 For å bidra, les [contributing.md](contributing.md) ❤
 
-- [Algoritmer](Algoritmer/)
-- [Eksterne ressurser](Ressurser/)
-
-<details>
-<summary>Overordnede læringsmål i faget</summary>
+## Overordnede læringsmål i faget
 
 - Ha kunnskap om
   - et bredt spekter av etablerte algoritmer og datastruktuer
@@ -35,18 +31,15 @@ For å bidra, les [contributing.md](contributing.md) ❤
   - angi presist hva input er
   - angi presist hva output er og hvilke egenskaper det må ha
 
-</details>
-
 <!-- [A1] Forstå bokas pseudokode-konvensjoner (den starter på index 1) -->
 
 ## Problemer og algoritmer
 
-- Brute force er ofte helt ubrukelig
-- Dekomponer til mindre instanser og bruk de til å finne en løsning
+Brute force er ofte helt ubrukelig. Dekomponer til mindre instanser og bruk de til å finne en løsning.
 
 En **algoritme** er en tydelig definert fremgangsmåte som kan ta en verdi eller en mengde verdier som **input** og produserer en verdi eller en mengde verdier som **output**. Algoritmen er ofte en sekvens av beregninger, presist beskrevet. Input verdiene kan deles opp i flere **instanser**.
 
-Å **analysere en algoritme** har betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse, i tillegg til å vise **korrekthet**. <!--Link til begrepet korrekthet-->
+Å **analysere en algoritme** har betydningen å "forutse ressurskravene til algoritmen": minne, kommunikasjonsbåndbredde, hardware, beregningstid, og ofte totalkostnaden av disse, i tillegg til å vise [korrekthet](#Korrekthet).
 
 ### Random-access machine modellen (RAM)
 <!-- [A2] Kjenne egenskapene til random-access machine-modellen (RAM) -->
@@ -61,7 +54,7 @@ Alle disse operasjonene tar **konstant** tid. Maskinen modellerer **ikke** minne
 
 ### Kjøretid
 <!-- [A3] Kunne definere problem, instans og problemstørrelse -->
-Et mål på effektiviteten til algoritmen er det viktigste når man skal analysere alle algoritmer. Vi trenger å beregne kjøretider fordi vi har en begrensning på hvor raskt vi kan løse problemer og hvor mye lagringsplass en datamaskin har tilgjengelig. Kjøretiden er det *asymptotiske forholdet mellom størrelsen på problemet og hvor lang tid det vil ta å løse det*.
+Et mål på effektiviteten til algoritmen er det viktigste når man skal analysere alle algoritmer. Vi trenger å beregne kjøretider fordi vi har en begrensning på hvor raskt vi kan løse problemer og hvor mye lagringsplass en datamaskin har tilgjengelig. Kjøretiden er det **asymptotiske forholdet mellom størrelsen på problemet og hvor lang tid det vil ta å løse det**.
 
 - Problem: Relasjon mellom input og output
 - Instans: En bestemt input
@@ -71,7 +64,7 @@ Et mål på effektiviteten til algoritmen er det viktigste når man skal analyse
 
 Vi er interessert i hvor fort kjøretiden **vokser**. Vi er interessert i en grov størrelsesorden.
 
-#### Noen vanlige kjøretider rangert i synkende rekkefølge
+#### Vanlige kjøretider rangert i synkende rekkefølge
 
 Kompleksitet | Navn | Type
 :-----------:|:----:|:-----:
@@ -94,26 +87,24 @@ Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstø
 Asymptotisk notiasjon gir oss ikke en presis beskrivelse av veksten til en funksjon, men den gir oss øvre og nedre grenser. Det gjør det enklere å beskrive og sammenligne ulike algoritmer.
 
 - Dropp konstanter og lavere ordens ledd
-- $\omega$ $\leftrightarrow$ $>$ (lille omega)
-- $\Omega$  $\leftrightarrow$ $\ge$ (store omega, nedre grense)
-- $\Theta$  $\leftrightarrow$ $=$ (store theta, øvre og nedre grense)
-- $O$  $\leftrightarrow$ $\le$ (store o, øvre grense)
-- $o$  $\leftrightarrow$ $<$ (lille o)
+- Notasjonen tilsvarer og kalles:
+  - $\omega$ $\leftrightarrow$ $>$ (lille omega)
+  - $\Omega$  $\leftrightarrow$ $\ge$ (store omega, nedre grense)
+  - $\Theta$  $\leftrightarrow$ $=$ (store theta, øvre og nedre grense)
+  - $O$  $\leftrightarrow$ $\le$ (store o, øvre grense)
+  - $o$  $\leftrightarrow$ $<$ (lille o)
 
 #### Asymptotisk optimal
 
-Den asymtotiske optimale kjøretiden = den beste mulige kjøretiden for det gitte problemet.
-
-OBS: Vanligvis verste tilfelle, men kan variere.
-
-F.eks. sier vi at Merge sort er asymptotisk optimal, fordi den har verste kjøretid $O(n\lg n)$, og vi vet at verste kjøretid for sortering generelt er $\Omega(n\lg n)$. Dermed går det ikke an å bli bedre i verste tilfelle. Men i beste tilfelle er jo f.eks. Insertion sort bedre, så den har en asymptotisk optimal best-case (som ofte ikke er så interessant; det er jo lett å legge til en optimal best-case, f.eks ved å bare sjekke om input allerede er sortert før vi setter igang sorteringen).
+Den asymtotiske optimale kjøretiden = den beste mulige kjøretiden for det gitte problemet. Vanligvis verste tilfelle, men kan variere.
 
 «Optimal» betyr «best» (altså det du kaller «mest optimal»). Om man vil ha mange aktiviteter, så vil de optimale løsningene være de løsningene som har flest aktiviteter. Ingen andre vil være bedre, men det kan være flere optimale løsninger (som altså har nøyaktig like mange aktiviteter/som er nøyaktig like bra).
 
 En optimal løsning er så bra som det er mulig å være – ingen løsninger kan være bedre – men det kan være flere optimale løsninger, som er nøyaktig like bra.
 
-> _[(Piazza H20 @158)](https://piazza.com/class/kdptcutti24r?cid=158)_  
-> _[(Piazza H20 @240)](https://piazza.com/class/kdptcutti24r?cid=240)_
+F.eks. sier vi at Merge sort er asymptotisk optimal, fordi den har verste kjøretid $O(n\lg n)$, og vi vet at verste kjøretid for sortering generelt er $\Omega(n\lg n)$. Dermed går det ikke an å bli bedre i verste tilfelle. Men i beste tilfelle er jo f.eks. Insertion sort bedre, så den har en asymptotisk optimal best-case (som ofte ikke er så interessant; det er jo lett å legge til en optimal best-case, f.eks. ved å bare sjekke om input allerede er sortert før vi setter igang sorteringen).
+
+> Referanser: [Piazza H20 @158](https://piazza.com/class/kdptcutti24r?cid=158), [Piazza H20 @240](https://piazza.com/class/kdptcutti24r?cid=240)
 
 #### Forenkling av asymptotisk notasjon
 
@@ -143,8 +134,7 @@ $$\Theta(n^2) +  O(n^4) + \Omega(\log n) = \Omega(n^2) + O(n^4)$$
 - Best, verst og forventet
 - Kjøretid: Funksjon av problemstørrelse
 - Best-case: Beste mulige kjøretid for en gitt størrelse
-- Average-case: Forventet, gitt en sannsynlighetsfordeling
-  - Har vi ingen sannsynlighetsfordeling antas alle inputs like sannsynlige.
+- Average-case: Forventet, gitt en sannsynlighetsfordeling. Har vi ingen sannsynlighetsfordeling antas alle inputs like sannsynlige.
 - Worst-case: Verste mulige (brukes mest)
 
 ### Dekomponering/rekursiv dekomponering
@@ -190,7 +180,7 @@ For å unngå grunnleggende kjøretidsfeller er det viktig å kunne organisere o
 
 ### Stakker og køer (stacks and queues)
 <!-- [B1] Forstå hvordan stakker og køer fungerer (Stack-Empty, Push, Pop, Enqueue, Dequeue) -->
-Stakker og køer er dynamiske sett med 2 viktige metoder, `PUSH` og `POP`, som hvv. legger til og fjerner elementer.
+Stakker og køer er dynamiske sett med 2 viktige metoder, `PUSH` og `POP`, som hhv. legger til og fjerner elementer.
 
 En **stack** har en "Last In First Out" (LIFO) struktur. En stakk er som en stabel med tallerkener. Man kan kun legge til og fjerne elementer på toppen. For å nå bunnen må man først fjerne alt på toppen. `POP` returnerer elementet som **sist** ble satt inn.
 
@@ -348,9 +338,11 @@ Amortisert analyse ser på gjennomsnittet av worst case tilfellene ved forskjell
 
 Når du har en sekvens med operasjoner, som du kjenner kjøretiden til, så kan man utføre amortisert analyse.
 
-Husk denne - summen av toerpotenser:
+Summen av toerpotenser (husk denne):
+
 $$\sum^{h-1}_{i=0}2^i = 2^h-1$$
 <!-- TODO: Utdyp denne -->
+
 Ved bruk av summen av toerpotenser kan man regne ut den amortiserte kjøretiden for en algoritme som bruker f.eks. fordoblet allokering av plass.
 
 ### Dynamiske tabeller
@@ -591,6 +583,8 @@ Bucket sort er en ikke-sammenligningsbasert sorteringsalgoritme som krever unifo
 <!-- [D6] Forstå Randomized-Select -->
 <!-- [D7] Kjenne til Select - merk: Det kreves ikke grundig forståelse av virkemåten til Select. -->
 
+<!-- TODO -->
+
 ## Rotfaste trestrukturer
 
 Rotfaste trær gjenspeiler rekursiv dekomponering. I binære søketrær er alt i venstre deltre mindre enn rota, mens alt i høyre deltre er større, og det gjelder rekursivt for alle deltrær! Hauger er enklere: Alt er mindre enn rota. Det begrenser funksjonaliteten, men gjør dem billigere å bygge og balansere.
@@ -656,6 +650,7 @@ Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i
 
 ### Implementasjon av rotfaste trær
 <!-- [E3] Forstå hvordan rotfaste trær kan implementeres -->
+
 <!-- TODO -->
 
 ### Binære trær og søketrær
@@ -761,7 +756,7 @@ La $n=7$ og $p=[1,4,3,6,8,5,9]$ være en instans av stavkuttingsproblemet. Hva b
 $$4+8 = 12$$
 $$4+4+4+1 = 13 \Rightarrow r_7$$
 
-<!-- TODO: løse dette med dynamisk programmering -->
+<!-- TODO: løs dette med dynamisk programmering -->
 
 #### Lengste felles subsekvens (LCS)
 
@@ -831,7 +826,7 @@ Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av e
 5a. Vi starter nederst til høyre, og finner maks på 8. Tallet 8 er ikke funnet i andre rader, så ting4 skal være med i maksfunnet.
 5b. Ting4 har verdi på 6. Maksverdi er 8. Det gjenstår å finne ting på verdi 2 (8-6). Første gang verdien 2 vises er i rad 2. Det betyr at ting2 skal være med.
 
-Vi har nå funnet tingene som skal være med i ryggsekken for å gi mest mulig verdi. Løsningen kan representeres som en binærstreng: 0101, hvor ting2 og ting 4 tas med.
+Vi har nå funnet tingene som skal være med i ryggsekken for å gi mest mulig verdi. Løsningen kan representeres som en binærstreng: 0101, hvor ting2 og ting4 tas med.
 
 ## Grådige algoritmer
 <!-- ![G1] Forstå designmetoden grådighet -->
@@ -857,6 +852,7 @@ Man har et sett aktiviteter som starter og slutter på forskjellige tider, og ø
 
 #### Ryggsekkproblemet
 
+Det binære ryggsekkproblemet - The 0-1 knapsack problem
 <!-- TODO -->
 
 ### Huffmankoder og huffmans algoritme
@@ -925,8 +921,7 @@ Godt egnet til traversering, men dårligere til oppslag: For traversering er nab
 
 ### Breadth first search (BFS)
 <!-- [H2] Forstå BFS, også for å finne korteste vei uten vekter -->
-En måte å tenke på BFS:
-> Si ifra til naboer at du kommer på besøk i **størrelsesorden**, besøk i samme rekkefølge som du sa ifra.
+En måte å tenke på BFS: _Si ifra til naboer at du kommer på besøk i **størrelsesorden**, besøk i samme rekkefølge som du sa ifra_.
 
 Svært effektiv når man har en graf med kanter som er like lange.
 
@@ -949,8 +944,7 @@ DFS er ca det samme som BFS, men med en LIFO-kø. (Last in first out). BFS trave
 
 DFS kan brukes som subrutine, blant annet i Topological sort.
 
-En måte å tenke på DFS:
-> Besøk oppdagede noder umiddelbart.
+En måte å tenke på DFS: _Besøk oppdagede noder umiddelbart_.
 
 #### Parentesteoremet
 
@@ -1002,6 +996,7 @@ I tillegg til å lage skogen, lagrer også søket tidsstempler på nodene. Disse
 
 ### Traversering med vilkårlig prioritetskø
 <!-- ![H8] Forstå traversering med vilkårlig prioritetskø -->
+<!-- TODO -->
 
 ## Minimale spenntrær
 
@@ -1141,12 +1136,15 @@ Om det finnes en negativ sykel er **ingen** sti kortest.
 
 ### Negative sykler gir mening for korteste enkle vei
 <!-- [J3] Forstå at negative sykler gir mening for korteste enkle vei (simple path) -->
+<!-- TODO -->
 
 ### Korteste enkle vei kan løses vha. lengste enkle vei og omvendt
 <!-- [J4] Forstå at korteste enkle vei kan løses vha. lengste enkle vei og omvendt -->
+<!-- TODO -->
 
 ### Representasjon av korteste-vei-tre
 <!-- [J5] Forstå hvordan man kan representere et korteste-vei-tre -->
+<!-- TODO -->
 
 ### Kantslakking
 <!-- ![J6] Forstå kant-slakking (edge relaxation) og Relax -->
@@ -1200,6 +1198,7 @@ Vi kan finne de korteste veiene fra hver node etter tur, men mange av delinstans
 
 ### Forgjengerstrukturen for alle-til-alle varianten av korteste vei problemet (Print-All-Pairs-Shortest-Path)
 <!-- [K1] Forstå forgjengerstrukturen for alle-til-alle-varianten av korteste vei-problemet (Print-All-Pairs-Shortest-Path) -->
+<!-- TODO -->
 
 ### Floyd-Warshall algoritmen
 <!-- [K2] Forstå Floyd-Warshall -->
@@ -1388,7 +1387,7 @@ Om en datamaskin skal forstå et problem, må vi representere det binært, alts�
 - Et abstrakt beslutningsproblem kan mappes som et av instanser, som et relatert konkret beslutningsproblem.
 - Polynomisk relaterte instanser: Hvis to enkodinger $e1$ og $e2$...
 
-### Binære ryggsekkproblemet ikke polynomisk
+### Binære ryggsekkproblemet er ikke polynomisk
 <!-- [M3] Forstå hvorfor løsningen vår på det binære ryggsekkproblemet ikke er polynomisk -->
 - Ryggsekkproblemet: Fyll sekken med mest verdi uten å gå over vektgrensen.
 Ryggsekkproblemet kan løses med dynamisk programmering på en kjøretid på $O(n\cdot w)$, så hvorfor omtales ikke det binære ryggsekkproblemet som polynomisk?
@@ -1460,6 +1459,7 @@ Et problem er altså NP-komplett dersom det **i)** er NP-hardt, og **ii)** er i 
 
 ### Den konvensjonelle hypotesen
 <!-- [M9] Forstå den konvensjonelle hypotesen om forholdet mellom P, NP og NPC -->
+<!-- TODO -->
 
 ### Reduksjon
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
@@ -1530,6 +1530,7 @@ Alt i NP kan reduseres til NP hardt. **Reduksjoner skjer til lik eller høyere k
 
 ### Det binære ryggsekkproblemet er NP-hardt
 <!-- [M12] Forstå at det binære ryggsekkproblemet er NP-hardt -->
+<!-- TODO -->
 
 ### Lengste enkle-vei-problemet er NP-hardt
 <!-- [M13] Forstå at lengste enkle-vei-problemet er NP-hardt -->
@@ -1647,13 +1648,13 @@ Generelt hvor mye minne som kreves for å utføre en operasjon. I dette emnet kv
 
 ### Pseudopolynomisk
 
-Algoritmer med kjøretider som er polynomiske hvis vi lar et tall fra input være med som parameter til kjøretiden (slik som $\Theta(n*W)$, der W er et tall fra input, og ikke direkte en del av problemstørrelsen) kaller vi **pseudopolynomiske**.
+Algoritmer med kjøretider som er polynomiske hvis vi lar et tall fra input være med som parameter til kjøretiden (slik som $\Theta(n*W)$, der W er et tall fra input, og ikke direkte en del av problemstørrelsen) kaller vi pseudopolynomiske.
 
 ## Problemløsningsguide
 
-Dette er en oppsummering av problemløsningsguiden fra 2020.
+Dette er en oppsummering av [problemløsningsguiden 2020](Ressurser/problemlosningsguide2020.pdf).
 
-De tre viktigste punktene for en god problemløsnings-strategi er:
+De tre fasene for en god problemløsningsstrategi er:
 
 1. Tolkning
 2. Analyse

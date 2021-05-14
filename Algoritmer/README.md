@@ -1,4 +1,4 @@
-# Navn på algoritme
+# Mal for algoritme
 
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
