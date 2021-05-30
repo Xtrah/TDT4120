@@ -25,8 +25,8 @@ For å bidra, les [contributing.md](contributing.md) ❤
   - kjenne til eventuelle styrker og svakheter sammenlignet med andre
   - kjenne til kjøretiden under ulike omstendigheter, og forstå utregningen
 - Ved hver datastruktur skal man
-  - Forstå algoritmene for de ulike operasjonene på strukturen
-  - Forstå hvordan strukturen representeres i minnet
+  - forstå algoritmene for de ulike operasjonene på strukturen
+  - forstå hvordan strukturen representeres i minnet
 - Ved hvert problem skal man kunne
   - angi presist hva input er
   - angi presist hva output er og hvilke egenskaper det må ha
@@ -416,7 +416,7 @@ Substutisjon innebærer mye manipulering av algebrauttrykk for å oppnå det man
 1. Gjett en løsning.
 2. Anta at det holder for alle $m < n$.
 3. Sett inn og substituer
-4. Vis at det holder for ett grunntilfelle (vilkårlig valgt $n$)
+4. Vis at det holder for ett grunntilfelle for en vilkårlig valgt $n$
 
 #### Rekursjonstre
 
@@ -545,16 +545,20 @@ Vi kan ofte få bedre løsninger ved å styrke kravene til input eller ved å sv
 
 Vi må vise at høyden til valgtreet er $n\lg n$. Vi har et valgtre med høyde $h$ og antall blader $l$ som kan nås fra roten. Da det er $n!$ permutasjoner som skal representeres av blad og et binært tre av høyde $h$ kan ikke ha mer enn $2^h$ blad, vil $n! \leq l \leq 2^h$, slik at $n! \leq 2^h$. Ved å ta logaritmen finner vi:
 
-$$h \geq \lg(n!) =^*\Omega(n \lg n)$$
-$$^*\lg(n!) = \Theta(n\lg n)$$
+$$h\geq \lg(n!) = \Omega(n \lg n)$$
+
+hvor $\lg(n!) = \Theta(n\lg n)$.
 
 Det er umulig å sortere raskere uten å anta egenskaper ved problemet. Dette gjør at heap sort og merge sort er asymptotiske optimale sammenligningsbaserte sorteringsalgoritmer da de har en øvre grense på $O(n\lg n)$, det samme som den nedre grensen for sorteringsalgoritmer.
 
 ### Stabile sorteringsalgoritmer
 <!-- [D2] Vite hva en stabil sorteringsalgoritme er -->
-En sorteringsalgoritme kan sies å være **stabil** om rekkefølgen av like elementer i listen blir bevart etter sortering. For eksempel om vi har lista  
+En sorteringsalgoritme kan sies å være **stabil** om rekkefølgen av like elementer i listen blir bevart etter sortering. For eksempel om vi har lista
+
 $$[B1, C2, C1, A1]$$
+
 og sorterer den kun etter bokstaver, vil rekkefølgen for $C$ forbli uforandret:
+
 $$[A1, B1, C2, C1]$$
 
 Vi sier ofte at den _relative rekkefølgen_ opprettholdes.
