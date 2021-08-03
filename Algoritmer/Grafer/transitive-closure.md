@@ -16,7 +16,7 @@ Vi kjører en kunstig konstruering av delinstanser: Vi begrenser hvilke noder vi
 
 Vi kan først forsøke å gå gjennom $k-1$ noder og deretter først kun gå fra $i$ til $k-1$ noder og $k$ til $j$.
 
-![Notasjon](https://i.imgur.com/jP3joiR.png)
+Notasjon: $t^{(k)}_{ij}$
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->

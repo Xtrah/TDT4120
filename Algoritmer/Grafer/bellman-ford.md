@@ -39,7 +39,6 @@ Bellman-Ford(G,w,s)
 ```
 
 1: Avstand = uendelig, forgjengernoder = NIL, startnode avstand = 0
-
 2: Tell opp til V-1 ganger
 
 3-4: For hver kant, slakk kanten

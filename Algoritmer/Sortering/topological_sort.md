@@ -20,14 +20,13 @@ Dersom man har behov for rekkefølge på nodene så gir topologisk sortering en 
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
-```pseudo
 
+```pseudo
 Topological-Sort(G):
 1   kall DFS for å beregne slutt-tid for hver node
 2   for hver node som blir ferdig
 3   insert den foran i en lenket liste
 4 returner den lenkede listen
-
 ```
 
 ## Korrekthetsbevis

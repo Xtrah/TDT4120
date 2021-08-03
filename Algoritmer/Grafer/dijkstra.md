@@ -35,7 +35,6 @@ Dijkstra er mest effektiv når brukt i en heap. Andre datastrukturer kan gi høy
 Alternativt
 
 ```pseudo
-
 Dijkstra(G,q,s):
 1 INITIALIZE-SINGLE-SOURCE(G,s)
 2 S = ∅
@@ -45,7 +44,6 @@ Dijkstra(G,q,s):
 6   S = S U {u}
 7   for hver node v i G.Adj[u]
 8       RELAX(u,v,w)
-
 ```
 
 1. Setup: Alle avstander = uendelig, alle innkanter = NIL og avstanden til startnoden = 0
