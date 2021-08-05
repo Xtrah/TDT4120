@@ -4,11 +4,13 @@
 <!-- 
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
 2. Kjenne til eventuelle tilleggskrav den stiller for å være korrekt
-3. Vite hvordan den oppfører seg; kunne utføre algoritmen, trinn for trinn!
+3. Vite hvordan den oppfører seg ; kunne utføre algoritmen, trinn for trinn!
 4. Forstå korrekthetsbeviset; hvordan og hvorfor virker algoritmen egentlig?
 5. Kjenne til eventuelle styrker eller svakheter, sammenlignet med andre
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
+
+Transitivitet sier at hvis vi har en sti fra $a \rightarrow b$ og en sti fra $b \rightarrow c$ kan vi lage en sti fra $a \rightarrow c$
 
 Transitive-Closure er lik som Floyd-Warshall, men sjekker kun om det finnes en sti eller ikke, og ignorerer kantvekter.
 
@@ -38,8 +40,10 @@ Output: En rettet graf $G*=(V,E*)$ der $(i,j)\in E*$ hvis og bare hvis det finne
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
+![](/Figurer/trans-close-runtime.png)
+
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------
- TODO | TODO | TODO | TODO
+ $\Theta(V^3)$ | $\Theta(V^3)$ | $\Theta(V^3)$ | $\Theta(V^3)$
 
 ## Python kodeeksempel
