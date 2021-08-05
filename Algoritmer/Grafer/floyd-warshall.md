@@ -15,6 +15,8 @@ Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vek
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
+All pairs shortest path.
+
 Input: En vektet, rettet graf $G=(V,E)$ uten negative sykler, der $V=[1,...,n]$, og vektene er gitt av matrisen $W=(w_{ij})$  
 Output: En $n*n$ matrise $D=(d_{ij})$ med avstander, dvs. $d_{ij}=s(i,j)$
 
