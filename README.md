@@ -1123,6 +1123,10 @@ LF = ${(1,4),(2,5),(3,6),(4,5),(5,6)}$, hvor $(5,6)$ er svaret.
 
 ## Korteste vei fra én til alle
 
+Når er det bra å bruke hvilke SP algoritme?
+
+![](/Figurer/shortest_path_algorithms.png)
+
 Bredde-først-søk kan finne stier med færrest mulig kanter, men hva om kantene har ulik lengde? Det generelle problemet er uløst, men vi kan løse problemet med gradvis bedre kjøretid for grafer (1) uten negative sykler; (2) uten negative kanter; og (3) uten sykler. Og vi bruker samme prinsipp for alle tre!
 
 ### Ulike varianter av korteste-vei- eller korteste-sti-problemet
