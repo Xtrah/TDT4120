@@ -12,6 +12,12 @@
 
 Dijkstras er en grådig korteste vei algoritme som finner distanser til alle noder fra startnoden (single source shortest path). Man holder orden på hvilken node som har det laveste estimatet underveis.
 
+Den eneste forskjellen på DAG-shortest-path og Dijkstra er hvordan vi velger den neste noden.
+
+I DAG-shortest-path kan vi finne rekkefølgen på nodene som skal slakkes i lineær tid $\Theta(V)$ som følge av den topologiske sorteringen mens i Dijkstra må vi finne denne rekkefølgen underveis med f.eks en binær haug som tar logaritmisk tid $\Theta(lgV)$.
+
+
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
