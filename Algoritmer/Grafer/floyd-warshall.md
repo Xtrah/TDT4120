@@ -60,7 +60,14 @@ In-place: Ja, alt skjer inne i matrisen.
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
-pensumvarianten av FW krever $\Theta(n^3)$ minne men kan reduseres til $\Theta(n^2)$ ved å droppe superscriptene:
+Pensumvarianten i CLRS av FW kxsrever $\Theta(n^3)$ minne men kan reduseres til $\Theta(n^2)$ ved å droppe å lage $D^k$ matriser, slik som vi gjør i linje 4 i pseudokoden over. I stedenfor så initieres det to matriser:
+
+$\rightarrow D$ for avstandene
+
+
+$\rightarrow \Pi$ for forgjengerene
+
+Denne endringen resulterer i en forbedret minneallokasjon og vi går fra $\Theta(n^3) \rightarrow \Theta(n^2)$.
 
 ![](/Figurer/floyd-warshal2.png)
 
