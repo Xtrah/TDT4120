@@ -12,9 +12,13 @@
 
 Dijkstras er en grådig korteste vei algoritme som finner distanser til alle noder fra startnoden (single source shortest path). Man holder orden på hvilken node som har det laveste estimatet underveis.
 
+Dijkstra håndterer sykler, men ikke negative sykler, da relax subrutinen kun oppdaterer kanten / "snarveien" om den har en lavere verdi.
+
 Den eneste forskjellen på DAG-shortest-path og Dijkstra er hvordan vi velger den neste noden.
 
-I DAG-shortest-path kan vi finne rekkefølgen på nodene som skal slakkes i lineær tid $\Theta(V)$ som følge av den topologiske sorteringen mens i Dijkstra må vi finne denne rekkefølgen underveis med f.eks en binær haug som tar logaritmisk tid $\Theta(lgV)$.
+I DAG-shortest-path kan vi finne rekkefølgen på nodene som skal slakkes i lineær tid $\Theta(V)$ som følge av den topologiske sorteringen mens i Dijkstra må vi finne denne rekkefølgen underveis med en binær haug som tar logaritmisk tid $\Theta(lgV)$, dette ser vi i linje 5 i pseudokoden til Dijkstra:
+
+![](/Figurer/dijkstra.png)
 
 
 
@@ -71,7 +75,7 @@ Optimal substruktur. Gitt ingen negative kanter vil det umulig kunne være noen 
 ## Styrker og svakheter sammenlignet med andre
 
 - Dijkstra bruker ideer tilsvarende breadth-first search og MST-Prim.
-- Bruker avstandsestimat istedenfor kantlengde
+- Bruker avstandsestimat istedenfor kantlengde(pulling vs reaching)
 - Lavere kjøretid enn Bellman-Ford algoritmen
 - Takler **ikke** negative kantvekter
 
