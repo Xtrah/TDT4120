@@ -12,7 +12,7 @@
 
 Dijkstras er en grådig korteste vei algoritme som finner distanser til alle noder fra startnoden (single source shortest path). Man holder orden på hvilken node som har det laveste estimatet underveis.
 
-Dijkstra håndterer sykler, men ikke negative sykler, da relax subrutinen kun oppdaterer kanten / "snarveien" om den har en lavere verdi.
+Dijkstra håndterer sykler, men negative kanter er **forbudt**.
 
 Den eneste forskjellen på DAG-shortest-path og Dijkstra er hvordan vi velger den neste noden.
 
