@@ -31,7 +31,7 @@ Finn forøkende sti hender $O(VE)$ ganger om har kjøretid $O(E)$
 $O(VE^2)$
 
 Algoritme | Info | Best case | Worst case
----------|----------|---------|---------|---------
+---------|----------|---------|---------
 Ford-Fulkerson | TODO | $O(V\cdot E^2)$ | $O(E_f)$
 Edmonds-Karp | Ford-Fulkerson med BFS | $O(V\cdot E^2)$ | $O(V\cdot E^2)$
 

@@ -66,7 +66,6 @@ DFS-VISIT(G,u)
 8  u.color = svart
 9  time = time + 1
 10  u.f = time
-
 ```
 
 **DFS(G) forklaring:**

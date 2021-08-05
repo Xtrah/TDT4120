@@ -18,7 +18,7 @@ Heapsort henter derette ut roten (det største tallet) og trekker opp en av node
 
 Ved å kjøre max-heapify vil man nok en gang kunne hente opp det største tallet i heapen. Dette tallet kan igjen hentes ut og erstattes med et lavt tall fra bunnen av heapen.
 
-ALgoritmen utnytter altså at max-heapify alltid finner maximum i heapen og bruker dette til å sortere den originale listen.
+Algoritmen utnytter altså at max-heapify alltid finner maximum i heapen og bruker dette til å sortere den originale listen.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->

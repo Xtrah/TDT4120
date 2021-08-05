@@ -399,12 +399,12 @@ De beskriver f.eks. kjøretiden til rekursive algoritmer. Man *trenger* ikke bru
 
 Metoder for å regne ut rekurrenser:
 
-- [Substitusjon](#substitusjon):
+- [Substitusjon](#substitusjon)
   - Bytte ut inputargumenter til noe som gjør rekurrensen enklere å løse.
 - [Rekursjonstre](#rekursjonstre)
-- [Masterteoremet](#masterteoremet):
+- [Masterteoremet](#masterteoremet)
   - Rekurrensen må være på formen $T(n)=aT(^n/_b) + f(n)$
-- [Iterasjonsmetoden](#iterasjonsmetoden) (induksjon):
+- [Iterasjonsmetoden](#iterasjonsmetoden) (induksjon)
   - Gjentatt ekspandering av den rekursive forekomsten av funksjonen - det gir oss en sum som vi kan regne ut
   - Gjør at vi kan "se" et mønster
 - [Variabelskifte](#variabelskifte)
@@ -734,6 +734,7 @@ def fibonacci_bottom_up(n):
 
 ### Konstruere løsning fra lagrede beslutninger
 <!-- [F5] Forstå hvordan man rekonstruerer en løsning fra lagrede beslutninger -->
+<!-- TODO -->
 
 ### Optimal delstruktur og overlappende delinstanser
 <!-- [F6] Forstå hva optimal delstruktur er -->
@@ -1026,6 +1027,7 @@ Samlet kjøretid for disse operasjonene er $O(m \lg n)$, der $m$ er antall `MAKE
 
 ### Spenntrær og minimale spenntrær
 <!-- [I2] Vite hva spenntrær og minimale spenntrær er -->
+<!-- TODO -->
 
 ### Generisk-MST (Generic-MST):
 <!-- ![I3] Forstå Generic-MST -->
@@ -1443,7 +1445,7 @@ Oppsummert, så er da:
 
 #### P vs NP
 
-Vi forholder oss til venstre side av diagrammet. Reduksjon skjer "oppover" i diagrammet.
+Vi forholder oss til venstre side av diagrammet. [Reduksjon](#reduksjon) skjer "oppover" i diagrammet.
 
 ![Diagram P vs NP](Figurer/p-np-diagram.svg)
 
