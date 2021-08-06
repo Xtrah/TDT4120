@@ -1229,18 +1229,18 @@ Vi får en graf eller en binær relasjon. Hvis det finnes en sti fra $u$ til $v$
 
 Et stort skritt i retning av generell lineær optimering (såkalt lineær programmering). Her ser vi på to tilsynelatende forskjellige problemer, som viser seg å være duale av hverandre, noe som hjelper oss med å finne en løsning.
 
-Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og noder imellom som forbindes med kanter. Hver kant har en **kapasitet** som viser hvor mye **flyt** kanten kan motta. Flyt er enheten som blir sendt imellom nodene. **Maks-flyt-problemet** går ut på å sende mest mulig flyt fra S til T. Det fins algoritmer for å løse dette problemet, blant annet **Ford-Fulkerson**.
+Et **flytnett** er en rettet graf som har en kilde **S** og en tapp(sluk) **T** og noder imellom som forbindes med kanter. Hver kant har en **kapasitet** som viser hvor mye **flyt** kanten kan motta. Flyt er enheten som blir sendt imellom nodene. **Maks-flyt-problemet** går ut på å sende mest mulig flyt fra S til T. Det fins algoritmer for å løse dette problemet, blant annet **Ford-Fulkerson**.
 
 **Flytnett**: Rettet graf $G=(V,E)$
 
 - med kapasiteter $c(u,v) \ge 0$
-- med en kilde og et sluk/tapp $s,t \in V$
-- antakelse: Alle noder er på en sti fra $s \rightarrow t$  
+- med en kilde og et tapp(sluk) $s,t \in V$
+- antakelse: Alle noder er på en sti fra $s \rightarrow t$
   $v \in V \Rightarrow s ⇝ v ⇝ t$
-- ingen self-loops (men vi kan ha sykler)
-- tillater ikke antiparallelle kanter  
+- ingen self-loops (men vi kan ha sykler bestående av minimum 3 noder)
+- tillater ikke antiparallelle kanter, det vil si en sykel mellom kun**to** noder
   $(u,v)\in E \Rightarrow (v,u) \notin E$
-- ingen kapasitet uten en kant  
+- ingen kapasitet uten en kant
   $(u,v) \notin E \Rightarrow c(u,v) = 0$
 
 **Flyt**: En funksjon $f : V \times V \rightarrow \mathbb{R}$. Vi kan ha flyt fra enhver node til en annen.
@@ -1249,6 +1249,7 @@ Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og nod
 - Flyt inn = flyt ut
 
 **Flytverdi**: $|f| = \sum_vf(s,v)-\sum_vf(v,s)$
+- Flyt fra kilde til sluk
 
 For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
 
@@ -1259,6 +1260,18 @@ For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
 - Hvordan finne en forøkende sti: Stier med ubrukte kapasiteter fra kilde til sluk.
   - For hver forøkende sti man finner: Maksimer kapasiteten ved å legge til den minste rest-verdien på alle ledd i den forøkende stien.
 
+#### I figuren under ser vi at i Grafen G har vi:
+
+- Fra node $1 \rightarrow 2$
+  - Kapasitet 9
+  - Flyt 5
+  - Restkapasitet 4
+- Fra node $2 \rightarrow 1$
+  - Restkapasitet 5
+
+
+![](Figurer/maksimal-flyt-restkapasitet.png)
+
 ### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
 **Flere kilder og sluk**: En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk.
@@ -1267,13 +1280,33 @@ For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
 
 ### Restnettet til et flytnett med en gitt flyt
 <!-- ![L3] Kunne definere restnettet til et flytnett med en gitt flyt -->
+Et restnett har en fremoverkant ved ledig kapasitet. Hvis vi fyller opp litt av kapasoteten i en kant med flyt kan vi føre noe av den flyten tilbake og oppheve den. da lager vi en bakoverkant der det allerede gårflyt.
+
 Et **residualnettverk** indikerer hvor mye flyt som er tillatt i hver kant i nettverkgrafen.
 
 Kapasiteten til restnettet: hvor mye vi kan øke flyten fra en node til en annen
 
-### Flyttoppheving - oppheve (cancel) flyt
+### Flytoppheving - oppheve (cancel) flyt
 <!-- [L4] Forstå hvordan man kan oppheve (cancel) flyt -->
-Når man forøker flyten langs den forøkende stien, må det også minskes flyt langs residualkantene med flaskehalsverdien. Residualkantene fungerer ved at de opphever dårlige forøkende stier som ikke leder til maksflyt.
+
+- Vi kan "sende" flyt baklengs langs kanter der det allerede går flyt.
+- Vi opphver da flyten, så den kan omdirigeres til et annet sted.
+- For å unngå opphoping av flyt i forgjengernoden må flyten dirigeres videre. Flyten kan ikke "stoppe opp". Vi kan da gjøre:
+
+  - Oppheve flyten videre bakover til enda en forgjengernode
+  - Sende flyten fremover langs en annen kant til en annen nabonode enn der den opprinnelig kom ifra.
+
+Det er dette bakoverkantene representerer i restnettet. Vi kan følge disse bakoverkantene for å oppheve flyten i flytnettet.
+
+Når man forøker flyten langs den forøkende stien, må det også minskes flyt langs residualkantene med flaskehalsverdien. Residualkantene fungerer ved at de opphever dårlige forøkende stier som ikke leder til maksflyt. Bakoverkantene i restnettet er der kun om det går flyt i flytnettet. Vi kan følge disse kantene for å oppheve flyten i flytnettet.
+
+### Restkapasitet
+
+- Fremoverkant:
+  - kan økes med det som gjenstår i $c(u,v)$
+- Bakoverkant:
+  - Kan sende tilbake og omdirigere $f(v,u)$
+  - Å redusere flyten er det samme som å øke den baklengs.
 
 ### Forøkende sti (augmenting path)
 <!-- [L5] Forstå hva en forøkende sti (augmenting path) er -->
@@ -1285,7 +1318,7 @@ En **forøkende sti** (eller flytforøkende sti) er en sti av kanter i restnette
 
 ### Snitt, snitt-kapasitet og minimalt snitt
 <!-- [L6] Forstå hva snitt, snitt-kapasitet og minimalt snitt er -->
-Et **snitt** er en deling av kanter i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en **snitt-kapasitet**. Det **minimale snittet** er snittet med lavest snitt-kapasitet.
+Et **snitt** er en deling av grafen og kantene i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en **snitt-kapasitet**. Det **minimale snittet** er snittet med lavest snitt-kapasitet.
 
 Hvordan regne ut flyten over et snitt:
 
@@ -1320,7 +1353,7 @@ Ford Fulkerson-metoden finner maks-flyt ved å stadig finne forøkende stier i r
 Input: En bipartitt urettet graf $G=(V,E)$  
 Output: En matching $M \subseteq E$ med flest mulig kanter, dvs. der $|M|$ er maksimal.
 
-En matching er altså en delmengde av alle kanter, der her node er tilknyttet maks én kant fra delmengden.
+En matching er altså en delmengde av alle kanter, der hver node er tilknyttet maks én kant fra delmengden.
 
 #### Eksempeloppgave
 

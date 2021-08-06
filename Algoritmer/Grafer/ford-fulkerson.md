@@ -9,11 +9,29 @@
 5. Kjenne til eventuelle styrker eller svakheter, sammenlignet med andre
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
+Baserer seg på restkapasiteten og finner forøkende stier, så lenge det er mulig.
+Når det ikke lenger er mulig er flyten maksimal. Dette er det algoritmen kommer frem til.
 
-Generell metode, ikke egentlig noen bestemt algoritme. Ford-Faulkerson med BFS er Edmonds-Karp algoritmen.
+Ford Fulkerson er en generell metode som kan implementere forskjellige subrutiner:
+
+F.eks om vi bruker BFS får vi algoritmen som heter Edmonds-Karp.
+
+Normal implementasjon:
+
+- Finn forøkende sti først
+- Finn så flaskehalsen i stien(lavest restkapasitet)
+- Oppdaterer flyt langs stien med denne verdien.
+
+Alternativ implementasjon, fletter inn BFS: (denne versjonen står ikke i læreboka)
+
+- Finn flaskehalser underveis
+- Hold styr på hvor mye flyt vi får frem til hver node
+- Traverser bare noder vi ikke har nådd frem til ennå(BFS egenskap)
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
+
+Maksimal flyt
 
 Input: Et flytnett $G$  
 Output: En flyt $f$ for $G$ med maks $|f|$
@@ -24,6 +42,12 @@ Output: En flyt $f$ for $G$ med maks $|f|$
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
+
+![](/Figurer/ford-fulkerson.png)
+
+Operasjon | Antall | Kjøretid | Totalt
+---------|----------|---------| ---------
+Finn forøkende sti | $O(V*E)$ | $O(E)$ | $O(E*f*)$
 
 ## Korrekthetsbevis
 

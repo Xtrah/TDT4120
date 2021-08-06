@@ -10,6 +10,10 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
+Edmonds-Karp er Ford Fulkerson metodikken implementert med BFS. 
+
+Algoritmen vil repetere iterasjonene gjennom rafen helt til det ikke finnes mer flyt å hente ut $t.a==0$
+
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
 
@@ -20,6 +24,13 @@
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
 
+![](/Figurer/edmonds-karp.png)
+
+Operasjon | Antall | Kjøretid | Totalt
+---------|----------|---------| ---------
+Finn forøkende sti | $O(V*E)$ | $O(E)$ | $O(VE^2)$
+
+
 ## Korrekthetsbevis
 
 ## Styrker og svakheter sammenlignet med andre
@@ -29,7 +40,7 @@
 Finn forøkende sti hender $O(VE)$ ganger om har kjøretid $O(E)$
 
 $O(VE^2)$
-
+ 
 Algoritme | Info | Best case | Worst case
 ---------|----------|---------|---------
 Ford-Fulkerson | TODO | $O(V\cdot E^2)$ | $O(E_f)$
