@@ -1260,6 +1260,8 @@ For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
 - Hvordan finne en forøkende sti: Stier med ubrukte kapasiteter fra kilde til sluk.
   - For hver forøkende sti man finner: Maksimer kapasiteten ved å legge til den minste rest-verdien på alle ledd i den forøkende stien.
 
+Maksimal flyt brukes også til å løse matching problemet, f.eks organdonasjon med givere og mottakere.
+
 #### I figuren under ser vi at i Grafen G har vi:
 
 - Fra node $1 \rightarrow 2$
