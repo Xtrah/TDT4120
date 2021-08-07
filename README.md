@@ -82,7 +82,9 @@ Den **gjennomsnittlige kjøretiden** til en algoritme er kjøretiden man i gjenn
 
 ### Asymptotisk notasjon
 <!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
-Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor (tenk grenseverdier). I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
+Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor (tenk grenseverdier og summer). I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
+
+Sjekk ut [denne gode kilden](https://www.bigocheatsheet.com/) for å visuelt forsterke din forståelse av asymptotisk notasjon.
 
 Asymptotisk notiasjon gir oss ikke en presis beskrivelse av veksten til en funksjon, men den gir oss øvre og nedre grenser. Det gjør det enklere å beskrive og sammenligne ulike algoritmer.
 
