@@ -595,6 +595,10 @@ Rotfaste trær gjenspeiler rekursiv dekomponering. I binære søketrær er alt i
 
 Et tre er en begrenset form av en graf. Trær har en retning (forelder-/barn-forhold) og inneholder ikke kretser/sykler.
 
+Kjøretidsoversikt:
+
+![](/Figurer/heaps-runtime.png)
+
 ### Terminologi
 
 **Indekseringen** av elementer går fra topp-til-bunn, fra venstre til høyre. Det betyr at topp-elementet alltid har indeks 0, mens det mest høyrestående elementet på det laveste nivået har høyest indeks.
@@ -1414,6 +1418,9 @@ Dette er litt kaos til å begynne med, men det blir (litt) bedre.
 
 ### Sammenhengen mellom optimerings- og beslutningsproblemer
 <!-- [M1] Forstå sammenhengen mellom optimerings- og beslutnings-problemer -->
+
+Optimeringsproblemer er som regel vanskeligere enn bestemmelsesproblemer.
+
 - Optimaliseringsproblem: finne den mest optimale løsningen, eksempelvis Shortest-Path
   - NP-kompletthet gjelder ikke for optimaliseringsproblemer direkte
   - Ikke nødvendigvis noe vitne
