@@ -1625,16 +1625,18 @@ Binary search |$O(1)$ | $O(\log n)$ | $O(\log n)$ | N/A
 Algoritme | Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------|---------
 Merge sort | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$
-Quick sort | $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$ | $O(\lg n)$
+Quick sort | $O(n\log n)$ | $O(n\log n)*$ | $O(n^2)$ | $O(\lg n)$
 Bubble sort | $O(n)$ | $O(n^2)$ | $O(n^2)$ | N/A
 Insertion sort | $\Theta(n)$ | $\Theta(n^2)$ | $O(n^2)$ | $O(1)$
 Selection sort | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$
+
+\* randomized-quicksort
 
 #### Ikke-sammenligningsbaserte sorteringsalgoritmer
 
 Algoritme | Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------|---------
-Heap sort | $O(n \log n)$ | ??? | $O(n \log n)$ | $O(1)$
+Heap sort | $O(n)$ | ??? | $O(n \log n)$ | $O(1)$
 Counting sort | $\Omega(n+k)$ | $\Theta(n+k)$ | $O(n+k)$ | $O(n+k)$
 Radix sort | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $O(n+k)$
 Bucket sort | $\Theta(n)$ | $\Theta(n)$ | $\Theta(n^2)$ | $O(n)$
