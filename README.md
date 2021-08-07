@@ -1441,10 +1441,10 @@ Dette er litt kaos til å begynne med, men det blir (litt) bedre.
 
 Optimeringsproblemer er som regel vanskeligere enn bestemmelsesproblemer.
 
-- Optimaliseringsproblem: finne den mest optimale løsningen, eksempelvis Shortest-Path
+- **Optimaliseringsproblem**: finne den mest optimale løsningen, eksempelvis Shortest-Path
   - NP-kompletthet gjelder ikke for optimaliseringsproblemer direkte
   - Ikke nødvendigvis noe vitne
-- Beslutningsproblem: ja/nei problemer (1/0)
+- **Beslutningsproblem**: ja/nei problemer (1/0)
   - Finnes det et vitne?
 
 Selv om NP-komplette problemer hovedsakelig gjelder beslutningsproblemer, er det et praktisk forhold mellom optimalisering- og beslutningsproblemer hvor de kan reformuleres som beslutningsproblemer. `Shortest-Path` er vanligvis et optimaliseringsproblem, men reformulert kan vi spørre om det finnes en sti _under_ et gitt antall kanter. Her kan algoritmen svare $1$ dersom det finnes, eller $0$ om det ikke finnes, altså et beslutningsproblem. Ved å svare på beslutningsproblemet om det finnes en sti under et gitt antall kanter gjentatte ganger kan vi til slutt finne den korteste stien.
@@ -1497,6 +1497,7 @@ Kompleksitetsklasser av problemer:
 - **P**: kan løses i polynomisk tid
   - Språkene som kan **avgjøres** i polynomisk tid
 - **NP**: kan løses _ikke-deterministisk_ i polynomisk tid,
+  - 
   - Språkene som kan **verifiseres** i polynomisk tid
   - HAM-Cycle $\in$ NP: språket for hamilton-sykel-problemet.
 - **Co-NP**: Språkene som kan **falsifiseres** i polynomisk tid
@@ -1531,8 +1532,19 @@ Et problem er altså NP-komplett dersom det **i)** er NP-hardt, og **ii)** er i 
 
 ### Den konvensjonelle hypotesen
 <!-- [M9] Forstå den konvensjonelle hypotesen om forholdet mellom P, NP og NPC -->
-<!-- TODO -->
 
+P kan reduseres til alt $\rightarrow$ alt kan reduseres til NPC.
+
+![](/Figurer/np-hypotese.png)
+
+Kompletthet:
+
+- Et problem er _komplett_ for en gitt klasse og en gitt type reduksjoner dersom det er maksimalt for redusibilitetsrelasjonen.
+  - De komplette problemene er de vannskeligste i klassen.
+- Et element er maksimalt dersom alle andre er mindre eller lik. For alle reduksjoner: Q er maksimalt dersom alle problemer i klassen kan reduseres til Q.
+
+NPC:
+De komplette språkene i NP, under polynomiske reduksjoner.
 ### Reduksjon
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
 Definisjon **redusibilitet**: Hvis $A$ kan reduseres til $B$ i polynomisk tid, skriver vi $A \leq_P B$.
@@ -1594,6 +1606,8 @@ Alt i NP kan reduseres til NP hardt. **Reduksjoner skjer til lik eller høyere k
   - En urettet graf $G$
   - Finnes det en sykel som inneholder alle nodene nøyaktig en gang?
 - **TSP**: Traveling Salesman Problem. Totalt korteste reise som er innom hver by
+  - Beslutningsproblemet er NP-komplett
+  - Optimeringsversjonen er NP-Hard
   - En komplett graf med heltallsvekter og et heltall $k$
   - Finnes det en rundtur med kostnad $\leq k$?
 - **SUBSET-SUM**: Delmengde som summerer til en målverdi
