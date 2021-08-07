@@ -669,7 +669,9 @@ Eksempelvis så er INORDER-WALK(x) en simplifisert DFS.
 
 Algiritmene skifter navn når de spesialiseres for en av de mer spesialiserte datastrukturene for eksempel MAX-HEAP og binære søketrær.
 
-TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt. Logaritmisk tid er det samme som $O(h)$ hvor $h$ er høyden på treet. Høyden på treet er lik $log(n)$. Hvis dette ikke gir mening, sjekk ut denne [miniserien på youtube](https://youtu.be/_KhZ7F-jOlI)
+TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt. Logaritmisk tid er det samme som $O(h)$ hvor $h$ er høyden på treet. Høyden på treet er lik $log(n)$. Hvis dette ikke gir mening, sjekk ut denne [miniserien på youtube.](https://youtu.be/_KhZ7F-jOlI)
+
+![](/Figurer/tredybde.png)
 
 
 ### Binære søketrær
