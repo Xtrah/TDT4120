@@ -619,11 +619,13 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 
 #### Operasjoner på Heaps
 
-**Insert = $O(\log n)$, $O(h)$**  
+**Insert = $O(\log n)$**  
 *Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
+En forenklet versjon i en tre-struktur heter TREE-INSERT(), samme kjøretid
 
-**Delete = $O(\log n)$, $O(h)$**  
+**Delete = $O(\log n)$**  
 *Av samme grunn som **insert**.*
+En forenklet versjon i en tre-struktur heter , samme kjøretid
 
 **Build = $O(n)$**  
 *Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.*
@@ -639,6 +641,7 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 *$O(n \log (n))$ kommer av at det kjøres Max-heapify for hvert element.*
 
 **Max-heap-insert, heap-extract-max, Heap-increase-key, Heap-maximum = $O(\log (n))$**
+
 
 ![Illustrasjon heaps](https://i.imgur.com/0yYXmiC.png)
 
@@ -659,7 +662,14 @@ Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i
 ### Implementasjon av rotfaste trær
 <!-- [E3] Forstå hvordan rotfaste trær kan implementeres -->
 
-<!-- TODO -->
+Rotfaste trær er basisvarianten av f.eks heaps og binære søketrær. Et tre kan også ses på som utgangspunktet for en graf. mange av de samme metodene og prinsippene gjelder, bare at vi har rettede og urettede kanter som kanskje har en vekt.
+Eksempelvis så er INORDER-WALK(x) en simplifisert DFS.
+
+Algiritmene skifter navn når de spesialiseres for en av de mer spesialiserte datastrukturene for eksempel MAX-HEAP og binære søketrær.
+
+TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt.
+
+
 
 ### Binære trær og søketrær
 <!-- ![E4] Forstå hvordan binære søketrær fungerer (Inorder-Tree-Walk, Tree-Search, Iterative-Tree-Search, Tree-Minimum, TreeMaximum, Tree-Successor, Tree-Predecessor, Tree-Insert, Transplant, Tree-Delete) - merk: det kreves ikke grundig forståelse av Transplant og Tree-Delete. -->
