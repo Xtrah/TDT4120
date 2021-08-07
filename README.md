@@ -667,22 +667,32 @@ Eksempelvis så er INORDER-WALK(x) en simplifisert DFS.
 
 Algiritmene skifter navn når de spesialiseres for en av de mer spesialiserte datastrukturene for eksempel MAX-HEAP og binære søketrær.
 
-TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt.
+TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt. Logaritmisk tid er det samme som $O(h)$ hvor $h$ er høyden på treet. Høyden på treet er lik $log(n)$. Hvis dette ikke gir mening, sjekk ut denne ![miniserien på youtube](https://youtu.be/_KhZ7F-jOlI)
 
 
-
-### Binære trær og søketrær
+### Binære søketrær
 <!-- ![E4] Forstå hvordan binære søketrær fungerer (Inorder-Tree-Walk, Tree-Search, Iterative-Tree-Search, Tree-Minimum, TreeMaximum, Tree-Successor, Tree-Predecessor, Tree-Insert, Transplant, Tree-Delete) - merk: det kreves ikke grundig forståelse av Transplant og Tree-Delete. -->
 <!-- [E5] Vite at forventet høyde for et tilfeldig binært søketre er Θ(lg n) -->
 <!-- [E6] Vite at det finnes søketrær med garantert høyde på Θ(lg n) -->
 Et tre er et binærtre dersom hver node har 0-2 barn. I et binært søketre har hvert element en spesifikk orden. Barnet til venstre vil alltid være mindre enn rotelementet, og barnet til høyre vil være større.
+
+Det er umulig å bygge et binært søketre i verste tilfelle like raskt som en haug. Hvis vi klarte det, så hadde vi brutt grensen
+for sorteringshastighet! Vi kan redusere sorteringsproblemet til:
+
+1. Bygg binært søketre
+2. Inorder-tree-walk
+
+Siden trinn 2 bare tar lineær tid, så må trinn
+1 overholde sorteringsgrensen!
+
+![](/Figurer/søketrær-kjøretid.png)
 
 #### Søking i et binært søketre i forhold til i en array
 
 ![Illustrasjon søking](https://i.imgur.com/PnplIZP.gif)  
 _Det binære søketreet finner elementet raskere ved at algoritmen kan eliminere elementer som ligger langt unna mål-elementet. Man kan sammenligne denne strategien med binærsøk hvor man halverer antall elementer man vurderer for hver iterasjon._
 
-Denne ordenen gjør traversering/søking svært effektivt.
+Denne ordenen gjør traversering/søking svært effektivt, fordi venstre deltre er mindre enn roten og høyre deltre er større en roten. Slik er hele det binære søketreet strukturert som gjør at vi raskt traverserer treet og slipper å forholde oss til noder som ikke er relevant for ønsket output.
 
 ##### Hvordan en sortert array kan bli omgjort til et søketre
 
