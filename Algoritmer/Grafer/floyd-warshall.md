@@ -10,7 +10,7 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av dynamisk programmering og vektmatriser og kjører i $\Theta(V^3)$ tid.
+Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av **dynamisk programmering** og vektmatriser og kjører i $\Theta(V^3)$ tid.
 
 Vi antar at det **IKKE** er negative sykler derimot er negative **kanter** ok.
 

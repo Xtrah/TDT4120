@@ -891,6 +891,18 @@ Det binære ryggsekkproblemet - The 0-1 knapsack problem
 ### Huffmankoder og huffmans algoritme
 <!-- [G4] Forstå Huffman og Huffman-koder -->
 
+Huffmans grådige algoritme lager prefixer basert på frekvensen av forekomsten av f.eks bokstaver en tekst.
+
+![](/Figurer/huffman-algorithm.png)
+
+Huffman algoritmen konstruerer optimale prefixkoder basert på det grådighetsegenskapen og optimal delstruktur.
+
+Slik ser konstruksjonen av et huffman tre med huffman prefix koder ut. Legg merke til at de bokstavene med lavest forekomst kommer lengst ned og får den lengste bitverdirepresentasjonen. Bokstavene som har hyppigst forekomst i orginalteksten har den korteste veien i treet og forekommer høyere opp. dette gjør akksess av de mest brukte bokstavene raskere.
+
+![](/Figurer/huffman-example.png)
+
+![](/Figurer/huffman-example1.png)
+
 Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
 
 Huffmans algoritme er en grådig algoritme som komprimerer data veldig effektivt, vanligvis mellom 20%-90%. Algoritmen bruker en tabell som teller antall hendelser av hvert tegn i en sekvens med tegn, og bygger et binærtre basert på **frekvensene**.
