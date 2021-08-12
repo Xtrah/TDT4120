@@ -1,7 +1,7 @@
 # Breadth first search (BFS)
 <!-- [H2] Forstå BFS, også for å finne korteste vei uten vekter -->
 
-<!-- 
+<!--
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
 2. Kjenne til eventuelle tilleggskrav den stiller for å være korrekt
 3. Vite hvordan den oppfører seg; kunne utføre algoritmen, trinn for trinn!

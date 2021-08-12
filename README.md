@@ -822,14 +822,14 @@ Ryggsekkproblemet kan løses på lignende måte som LCS-problemet; ved bruk av e
 | **5** | **4** | **3** | 0 | 1 | 2 | 5 | 5 | 6 | 7 | 7 |
 | **6** | **5** | **4** | 0 | 1 | 2 | 5 | 6 | 6 | 7 | 8 |
 
-0. Tabellen initieres med 0 verdier i kolonne 0 og rad 0, siden ingen ting er valgt ennå, og har dermed ingen verdi.
-1. I rad 1 vurderes første ting, som har en vekt på 2. Først ved kolonne 2 legges inn tingen, som har en verdi på 1. Ingen flere ting kan velges for denne kolonnen, siden det for denne raden kun er en ting tilgjengelig.
-2. I rad 2 gjentas gjentas kolonnene man fant frem til første verdi, her 1. Ting 2 kan man først legge inn i kolonne 3 (vekt på 3), og legger inn verdi 2. Med rad 2, har man to ting tilgjengelig og kan også velge å putte inn ting 1. Ting 1 har en vekt på 2, og kan legges inn på 5 (3+2).
-3. I rad 3 har man en ting på vekt 4. Vi legger inn dens verdi på kolonne 4, altså verdien 5. Kolonnene før beholder sin verdi. Ting 3 kan kombineres med ting 1, og får en vekt på 6 med verdi 6. Ting 3 kan kombineres med ting 2 og får en vekt på 7 med verdi 7. Ting 3 kan ikke kombineres med ting 1 og 2 da det overstiger kapasiteten på 8. I vekt 5 legges inn 5; det som er maks av det over og til venstre.
-4. I rad 4 har man ting4 på vekt 5, og verdien 6 legges inn. Ting4 kombineres med ting1 til en vekt på 7 med verdi 7. Ting4 kombineres med ting2 til en vekt på 8 med verdi 8.
-5. Nå er alle tingene gjennomgått, og vi ønsker å finne hvilke ting som ble valgt.
-5a. Vi starter nederst til høyre, og finner maks på 8. Tallet 8 er ikke funnet i andre rader, så ting4 skal være med i maksfunnet.
-5b. Ting4 har verdi på 6. Maksverdi er 8. Det gjenstår å finne ting på verdi 2 (8-6). Første gang verdien 2 vises er i rad 2. Det betyr at ting2 skal være med.
+1. Tabellen initieres med 0 verdier i kolonne 0 og rad 0, siden ingen ting er valgt ennå, og har dermed ingen verdi.
+2. I rad 1 vurderes første ting, som har en vekt på 2. Først ved kolonne 2 legges inn tingen, som har en verdi på 1. Ingen flere ting kan velges for denne kolonnen, siden det for denne raden kun er en ting tilgjengelig.
+3. I rad 2 gjentas gjentas kolonnene man fant frem til første verdi, her 1. Ting 2 kan man først legge inn i kolonne 3 (vekt på 3), og legger inn verdi 2. Med rad 2, har man to ting tilgjengelig og kan også velge å putte inn ting 1. Ting 1 har en vekt på 2, og kan legges inn på 5 (3+2).
+4. I rad 3 har man en ting på vekt 4. Vi legger inn dens verdi på kolonne 4, altså verdien 5. Kolonnene før beholder sin verdi. Ting 3 kan kombineres med ting 1, og får en vekt på 6 med verdi 6. Ting 3 kan kombineres med ting 2 og får en vekt på 7 med verdi 7. Ting 3 kan ikke kombineres med ting 1 og 2 da det overstiger kapasiteten på 8. I vekt 5 legges inn 5; det som er maks av det over og til venstre.
+5. I rad 4 har man ting4 på vekt 5, og verdien 6 legges inn. Ting4 kombineres med ting1 til en vekt på 7 med verdi 7. Ting4 kombineres med ting2 til en vekt på 8 med verdi 8.
+6. Nå er alle tingene gjennomgått, og vi ønsker å finne hvilke ting som ble valgt.
+7. Vi starter nederst til høyre, og finner maks på 8. Tallet 8 er ikke funnet i andre rader, så ting4 skal være med i maksfunnet.
+8. Ting4 har verdi på 6. Maksverdi er 8. Det gjenstår å finne ting på verdi 2 (8-6). Første gang verdien 2 vises er i rad 2. Det betyr at ting2 skal være med.
 
 Vi har nå funnet tingene som skal være med i ryggsekken for å gi mest mulig verdi. Løsningen kan representeres som en binærstreng: 0101, hvor ting2 og ting4 tas med.
 

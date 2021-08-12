@@ -1,7 +1,7 @@
 # Binary search (bisect)
 <!-- [C3] Forstå Bisect og Bisect' (se appendiks C i pensumhefte) -->
 
-<!-- 
+<!--
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
 2. Kjenne til eventuelle tilleggskrav den stiller for å være korrekt
 3. Vite hvordan den oppfører seg; kunne utføre algoritmen, trinn for trinn!
