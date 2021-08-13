@@ -30,11 +30,11 @@ Algoritmen utnytter altså at max-heapify alltid finner maximum i heapen og bruk
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
 
-![](/Figurer/heapsort.png)
+![Heapsort](/Figurer/heapsort.png)
 
-![](/Figurer/Build-max-heap.png)
+![build-max-heap](/Figurer/Build-max-heap.png)
 
-![](/Figurer/max-heapify.png)
+![max-heapify](/Figurer/max-heapify.png)
 
 ## Korrekthetsbevis
 <!-- TBA -->

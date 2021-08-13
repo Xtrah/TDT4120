@@ -40,7 +40,7 @@ Output: En rettet graf $G*=(V,E*)$ der $(i,j)\in E*$ hvis og bare hvis det finne
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
 
-![](/Figurer/trans-close-runtime.png)
+![Transitive-Closure](/Figurer/trans-close-runtime.png)
 
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------

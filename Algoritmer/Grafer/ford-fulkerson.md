@@ -43,7 +43,7 @@ Output: En flyt $f$ for $G$ med maks $|f|$
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
 
-![](/Figurer/ford-fulkerson.png)
+![Ford-Fulkerson](/Figurer/ford-fulkerson.png)
 
 Operasjon | Antall | Kjøretid | Totalt
 ---------|----------|---------| ---------

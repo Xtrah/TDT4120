@@ -22,7 +22,7 @@ Johnsons øker kantvektene, men vi kan ikke øke alle kantvektene med det størs
 Johnsons implementerer løser dette ved å implementere en "teleskopsum". En sum som kollapser som et teleskop. Annenhvert ledd er minus det forrige. Vi ønsker at langs en hver sti skal ha en teleskopsum.
 Algoritmen tilordner hver node verdi og så endrer vi kantvekten med differansen av de to verdiene. Kanten frra $u$ til $v$ oppdateres med differansen $h(u) - h(v)$. Slik vil positive og negative ledd oppheve hverandre:
 
-![](/Figurer/johnsons-sum.png)
+![Johnson sum](/Figurer/johnsons-sum.png)
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
@@ -35,7 +35,8 @@ Algoritmen tilordner hver node verdi og så endrer vi kantvekten med differansen
 <!-- Pseudokode med forklaring -->
 - Trinn 5-6 er der teleskopsummen implementeres
 - Trinn 7-11 er der matrisen med korteste vei fra alle til alle genereres.
-![](/Figurer/johnsons.png)
+![Johnson algorithm](/Figurer/johnsons.png)
+
 ## Korrekthetsbevis
 
 ## Styrker og svakheter sammenlignet med andre
@@ -47,7 +48,7 @@ Relativt få kanter med negative kanter så er johnsons et godt valg.
 
 Med Fibonacci-haug: $O(V^3)$
 
-Med binære min-heap: $O(V*E *lgV)$
+Med binære min-heap: $O(V*E*lgV)$
 
 $O(V^2 \log V + VE)$
 

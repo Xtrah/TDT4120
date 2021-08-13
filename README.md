@@ -599,7 +599,7 @@ Et tre er en begrenset form av en graf. Trær har en retning (forelder-/barn-for
 
 Kjøretidsoversikt:
 
-![](/Figurer/heaps-runtime.png)
+![heaps-runtime](/Figurer/heaps-runtime.png)
 
 ### Terminologi
 
@@ -644,7 +644,6 @@ En forenklet versjon i en tre-struktur heter , samme kjøretid
 
 **Max-heap-insert, heap-extract-max, Heap-increase-key, Heap-maximum = $O(\log (n))$**
 
-
 ![Illustrasjon heaps](https://i.imgur.com/0yYXmiC.png)
 
 En haug er **komplett** dersom alle interne noder har to barn og alle løvnoder er på samme nivå. Om antallet noder er $2^h-1$, for en eller annen høyde $h$, så er treet som haugen representerer komplett.
@@ -671,8 +670,7 @@ Algiritmene skifter navn når de spesialiseres for en av de mer spesialiserte da
 
 TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt. Logaritmisk tid er det samme som $O(h)$ hvor $h$ er høyden på treet. Høyden på treet er lik $log(n)$. Hvis dette ikke gir mening, sjekk ut denne [miniserien på youtube.](https://youtu.be/_KhZ7F-jOlI)
 
-![](/Figurer/tredybde.png)
-
+![tredybde](/Figurer/tredybde.png)
 
 ### Binære søketrær
 <!-- ![E4] Forstå hvordan binære søketrær fungerer (Inorder-Tree-Walk, Tree-Search, Iterative-Tree-Search, Tree-Minimum, TreeMaximum, Tree-Successor, Tree-Predecessor, Tree-Insert, Transplant, Tree-Delete) - merk: det kreves ikke grundig forståelse av Transplant og Tree-Delete. -->
@@ -689,7 +687,7 @@ for sorteringshastighet! Vi kan redusere sorteringsproblemet til:
 Siden trinn 2 bare tar lineær tid, så må trinn
 1 overholde sorteringsgrensen!
 
-![](/Figurer/søketrær-kjøretid.png)
+![søketrær-kjøreetid](/Figurer/søketrær-kjøretid.png)
 
 #### Søking i et binært søketre i forhold til i en array
 
@@ -893,15 +891,15 @@ Det binære ryggsekkproblemet - The 0-1 knapsack problem
 
 Huffmans grådige algoritme lager prefixer basert på frekvensen av forekomsten av f.eks bokstaver en tekst.
 
-![](/Figurer/huffman-algorithm.png)
+![huffman algoritmen](/Figurer/huffman-algorithm.png)
 
 Huffman algoritmen konstruerer optimale prefixkoder basert på det grådighetsegenskapen og optimal delstruktur.
 
 Slik ser konstruksjonen av et huffman tre med huffman prefix koder ut. Legg merke til at de bokstavene med lavest forekomst kommer lengst ned og får den lengste bitverdirepresentasjonen. Bokstavene som har hyppigst forekomst i orginalteksten har den korteste veien i treet og forekommer høyere opp. dette gjør akksess av de mest brukte bokstavene raskere.
 
-![](/Figurer/huffman-example.png)
+![eksempel huffman](/Figurer/huffman-example.png)
 
-![](/Figurer/huffman-example1.png)
+![huffman eksempel](/Figurer/huffman-example1.png)
 
 Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
 
@@ -1165,7 +1163,7 @@ LF = ${(1,4),(2,5),(3,6),(4,5),(5,6)}$, hvor $(5,6)$ er svaret.
 
 Når er det bra å bruke hvilke SP algoritme?
 
-![](/Figurer/shortest_path_algorithms.png)
+![SSSP algoritmer](/Figurer/shortest_path_algorithms.png)
 
 Bredde-først-søk kan finne stier med færrest mulig kanter, men hva om kantene har ulik lengde? Det generelle problemet er uløst, men vi kan løse problemet med gradvis bedre kjøretid for grafer (1) uten negative sykler; (2) uten negative kanter; og (3) uten sykler. Og vi bruker samme prinsipp for alle tre!
 
@@ -1289,6 +1287,7 @@ Et **flytnett** er en rettet graf som har en kilde **S** og en tapp(sluk) **T** 
 - Flyt inn = flyt ut
 
 **Flytverdi**: $|f| = \sum_vf(s,v)-\sum_vf(v,s)$
+
 - Flyt fra kilde til sluk
 
 For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
@@ -1311,8 +1310,7 @@ Maksimal flyt brukes også til å løse matching problemet, f.eks organdonasjon 
 - Fra node $2 \rightarrow 1$
   - Restkapasitet 5
 
-
-![](Figurer/maksimal-flyt-restkapasitet.png)
+![maks flyt restkapasitet](Figurer/maksimal-flyt-restkapasitet.png)
 
 ### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
@@ -1513,7 +1511,6 @@ Kompleksitetsklasser av problemer:
 - **P**: kan løses i polynomisk tid
   - Språkene som kan **avgjøres** i polynomisk tid
 - **NP**: kan løses _ikke-deterministisk_ i polynomisk tid,
-  - 
   - Språkene som kan **verifiseres** i polynomisk tid
   - HAM-Cycle $\in$ NP: språket for hamilton-sykel-problemet.
 - **Co-NP**: Språkene som kan **falsifiseres** i polynomisk tid
@@ -1551,7 +1548,7 @@ Et problem er altså NP-komplett dersom det **i)** er NP-hardt, og **ii)** er i 
 
 P kan reduseres til alt $\rightarrow$ alt kan reduseres til NPC.
 
-![](/Figurer/np-hypotese.png)
+![np hypotese](/Figurer/np-hypotese.png)
 
 Kompletthet:
 
@@ -1561,7 +1558,9 @@ Kompletthet:
 
 NPC:
 De komplette språkene i NP, under polynomiske reduksjoner.
+
 ### Reduksjon
+
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
 Definisjon **redusibilitet**: Hvis $A$ kan reduseres til $B$ i polynomisk tid, skriver vi $A \leq_P B$.
 

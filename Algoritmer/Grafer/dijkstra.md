@@ -18,9 +18,7 @@ Den eneste forskjellen på DAG-shortest-path og Dijkstra er hvordan vi velger de
 
 I DAG-shortest-path kan vi finne rekkefølgen på nodene som skal slakkes i lineær tid $\Theta(V)$ som følge av den topologiske sorteringen mens i Dijkstra må vi finne denne rekkefølgen underveis med en binær haug som tar logaritmisk tid $\Theta(lgV)$, dette ser vi i linje 5 i pseudokoden til Dijkstra:
 
-![](/Figurer/dijkstra.png)
-
-
+![Dijkstra](/Figurer/dijkstra.png)
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
