@@ -32,7 +32,7 @@ $\pi^{(k)}_{ij}$ er forelderen til noden $j$ på den korteste veien (stien) fra 
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
-![Floyd-Warshal](/Figurer/floyd-warshal.png)
+![Floyd-Warshall](/Figurer/floyd-warshall.png)
 
 1. Takes in matrix $W$ ($n \times n$)
 2. For each row $k$ in matrix $W$: Get the matrix $D^{k}$
@@ -68,7 +68,7 @@ $\rightarrow \Pi$ for forgjengerene
 
 Denne endringen resulterer i en forbedret minneallokasjon og vi går fra $\Theta(n^3) \rightarrow \Theta(n^2)$.
 
-![Floyd-Warshal](/Figurer/floyd-warshal2.png)
+![Floyd-Warshall](/Figurer/floyd-warshall2.png)
 
 $\Theta(V^3)$ da det er tre nøstede løkker i algoritmen.
 

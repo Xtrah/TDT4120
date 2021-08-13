@@ -623,11 +623,11 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 
 **Insert = $O(\log n)$**  
 *Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
-En forenklet versjon i en tre-struktur heter TREE-INSERT(), samme kjøretid
+En forenklet versjon i en tre-struktur heter TREE-INSERT med kjøretid $O(h)$.
 
 **Delete = $O(\log n)$**  
 *Av samme grunn som **insert**.*
-En forenklet versjon i en tre-struktur heter , samme kjøretid
+En forenklet versjon i en tre-struktur heter TREE-DELETE med kjøretid $O(h)$.
 
 **Build = $O(n)$**  
 *Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.*
