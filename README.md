@@ -1318,7 +1318,7 @@ Maksimal flyt brukes også til å løse matching problemet, f.eks organdonasjon 
 
 ### Restnettet til et flytnett med en gitt flyt
 <!-- ![L3] Kunne definere restnettet til et flytnett med en gitt flyt -->
-Et restnett har en fremoverkant ved ledig kapasitet. Hvis vi fyller opp litt av kapasoteten i en kant med flyt kan vi føre noe av den flyten tilbake og oppheve den. da lager vi en bakoverkant der det allerede gårflyt.
+Et restnett har en fremoverkant ved ledig kapasitet. Hvis vi fyller opp litt av kapasiteten i en kant med flyt kan vi føre noe av den flyten tilbake og oppheve den. Da lager vi en bakoverkant der det allerede går flyt.
 
 Et **residualnettverk** indikerer hvor mye flyt som er tillatt i hver kant i nettverkgrafen.
 
