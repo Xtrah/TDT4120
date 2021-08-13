@@ -12,7 +12,7 @@
 
 Edmonds-Karp er Ford Fulkerson metodikken implementert med BFS.
 
-Algoritmen vil repetere iterasjonene gjennom rafen helt til det ikke finnes mer flyt å hente ut $t.a==0$
+Algoritmen vil repetere iterasjonene gjennom grafen helt til det ikke finnes mer flyt å hente ut $t.a==0$
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
