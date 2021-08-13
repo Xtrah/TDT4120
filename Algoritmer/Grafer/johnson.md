@@ -12,7 +12,7 @@
 
 Johnsons algoritme kjører en kombinasjon av Bellman-Ford og Dijkstra. Det som er spesielt med denne algoritmen er hvordan den justerer kantvekter, selv når de er negative.
 
-Algoritmen returnerer  enten en matrise for alle korteste vei vektene for alle nodeparrene eller raporterer at det finnes negative sykler i grafen.
+Algoritmen returnerer enten en matrise for alle korteste vei vektene for alle nodeparene eller rapporterer at det finnes negative sykler i grafen.
 
 Hvis vi har få kanter og kun positive kanter lønner det seg å bruke Dijkstras algoritme fra alle nodene.
 Har vi derimot negative kanter og relativt få kanter er Johnsons algoritme løsningen.
