@@ -1,6 +1,6 @@
 # Selection sort
 
-<!-- 
+<!--
 1. Kjenne den formelle definisjonen av det generelle problemet den løser
 2. Kjenne til eventuelle tilleggskrav den stiller for å være korrekt
 3. Vite hvordan den oppfører seg; kunne utføre algoritmen, trinn for trinn!
