@@ -891,7 +891,7 @@ Huffmans grådige algoritme lager prefixer basert på frekvensen av forekomsten 
 
 ![huffman algoritmen](/Figurer/huffman-algorithm.png)
 
-Huffman algoritmen konstruerer optimale prefixkoder basert på det grådighetsegenskapen og optimal delstruktur.
+Huffman algoritmen konstruerer optimale prefixkoder basert på grådighetsegenskapen og optimal delstruktur.
 
 Slik ser konstruksjonen av et huffman tre med huffman prefix koder ut. Legg merke til at de bokstavene med lavest forekomst kommer lengst ned og får den lengste bitverdirepresentasjonen. Bokstavene som har hyppigst forekomst i orginalteksten har den korteste veien i treet og forekommer høyere opp. dette gjør akksess av de mest brukte bokstavene raskere.
 
