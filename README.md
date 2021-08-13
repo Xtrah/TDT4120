@@ -1554,8 +1554,7 @@ Kompletthet:
   - De komplette problemene er de vannskeligste i klassen.
 - Et element er maksimalt dersom alle andre er mindre eller lik. For alle reduksjoner: Q er maksimalt dersom alle problemer i klassen kan reduseres til Q.
 
-NPC:
-De komplette språkene i NP, under polynomiske reduksjoner.
+**NPC**: De komplette språkene i NP, under polynomiske reduksjoner.
 
 ### Reduksjon
 
