@@ -1159,7 +1159,7 @@ LF = ${(1,4),(2,5),(3,6),(4,5),(5,6)}$, hvor $(5,6)$ er svaret.
 
 ## Korteste vei fra én til alle
 
-Når er det bra å bruke hvilke SP algoritme?
+Når er det bra å bruke hvilken SP algoritme?
 
 ![SSSP algoritmer](/Figurer/shortest_path_algorithms.png)
 
