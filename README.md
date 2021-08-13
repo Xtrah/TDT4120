@@ -678,14 +678,12 @@ TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt.
 <!-- [E6] Vite at det finnes søketrær med garantert høyde på Θ(lg n) -->
 Et tre er et binærtre dersom hver node har 0-2 barn. I et binært søketre har hvert element en spesifikk orden. Barnet til venstre vil alltid være mindre enn rotelementet, og barnet til høyre vil være større.
 
-Det er umulig å bygge et binært søketre i verste tilfelle like raskt som en haug. Hvis vi klarte det, så hadde vi brutt grensen
-for sorteringshastighet! Vi kan redusere sorteringsproblemet til:
+Det er umulig å bygge et binært søketre i verste tilfelle like raskt som en haug. Hvis vi klarte det, så hadde vi brutt grensen for sorteringshastighet! Vi kan redusere sorteringsproblemet til:
 
 1. Bygg binært søketre
 2. Inorder-tree-walk
 
-Siden trinn 2 bare tar lineær tid, så må trinn
-1 overholde sorteringsgrensen!
+Siden trinn 2 bare tar lineær tid, så må trinn 1 overholde sorteringsgrensen!
 
 ![søketrær-kjøreetid](/Figurer/søketrær-kjøretid.png)
 
