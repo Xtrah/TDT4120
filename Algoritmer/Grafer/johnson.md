@@ -41,7 +41,7 @@ Algoritmen tilordner hver node verdi og så endrer vi kantvekten med differansen
 
 ## Styrker og svakheter sammenlignet med andre
 
-Relativt få kanter med negative kanter så er johnsons et godt valg.
+Om det er relativt få kanter som er negative så er Johnsons et godt valg.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
