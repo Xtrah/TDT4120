@@ -1620,7 +1620,7 @@ Alt i NP kan reduseres til NP hardt. **Reduksjoner skjer til lik eller høyere k
   - Finnes det en sykel som inneholder alle nodene nøyaktig en gang?
 - **TSP**: Traveling Salesman Problem. Totalt korteste reise som er innom hver by
   - Beslutningsproblemet er NP-komplett
-  - Optimeringsversjonen er NP-Hard
+  - Optimeringsversjonen er NP-hardt
   - En komplett graf med heltallsvekter og et heltall $k$
   - Finnes det en rundtur med kostnad $\leq k$?
 - **SUBSET-SUM**: Delmengde som summerer til en målverdi
