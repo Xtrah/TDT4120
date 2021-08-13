@@ -666,7 +666,7 @@ Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i
 Rotfaste trær er basisvarianten av f.eks heaps og binære søketrær. Et tre kan også ses på som utgangspunktet for en graf. mange av de samme metodene og prinsippene gjelder, bare at vi har rettede og urettede kanter som kanskje har en vekt.
 Eksempelvis så er INORDER-WALK(x) en simplifisert DFS.
 
-Algiritmene skifter navn når de spesialiseres for en av de mer spesialiserte datastrukturene for eksempel MAX-HEAP og binære søketrær.
+Algoritmene skifter navn når de spesialiseres for en av de mer spesialiserte datastrukturene for eksempel MAX-HEAP og binære søketrær.
 
 TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt. Logaritmisk tid er det samme som $O(h)$ hvor $h$ er høyden på treet. Høyden på treet er lik $log(n)$. Hvis dette ikke gir mening, sjekk ut denne [miniserien på youtube.](https://youtu.be/_KhZ7F-jOlI)
 
