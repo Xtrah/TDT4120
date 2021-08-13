@@ -20,7 +20,7 @@ Har vi derimot negative kanter og relativt få kanter er Johnsons algoritme løs
 Johnsons øker kantvektene, men vi kan ikke øke alle kantvektene med det største negative kantens vekt, da blir de nodene med mange kanter urettmessige "dyre". Vi er ikke garantert å bevare rangeringen av stiene om vi øker kantvektene med en konstant.
 
 Johnsons implementerer løser dette ved å implementere en "teleskopsum". En sum som kollapser som et teleskop. Annenhvert ledd er minus det forrige. Vi ønsker at langs en hver sti skal ha en teleskopsum.
-Algoritmen tilordner hver node verdi og så endrer vi kantvekten med differansen av de to verdiene. Kanten frra $u$ til $v$ oppdateres med differansen $h(u) - h(v)$. Slik vil positive og negative ledd oppheve hverandre:
+Algoritmen tilordner hver node en verdi og så endrer vi kantvekten med differansen av de to verdiene. Kanten fra $u$ til $v$ oppdateres med differansen $h(u) - h(v)$. Slik vil positive og negative ledd oppheve hverandre:
 
 ![Johnson sum](/Figurer/johnsons-sum.png)
 
