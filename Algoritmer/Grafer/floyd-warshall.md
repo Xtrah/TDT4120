@@ -10,10 +10,14 @@
 6. Kjenne kjøretidene under ulike omstendigheter, og forstå utregningen
 -->
 
-Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av dynamisk programmering og vektmatriser.
+Floyd-Warshall brukes til å finne den korteste veien mellom alle noder i en vektet rettet graf ved bruk av **dynamisk programmering** og vektmatriser og kjører i $\Theta(V^3)$ tid.
+
+Vi antar at det **IKKE** er negative sykler derimot er negative **kanter** ok.
 
 ## Den formelle definisjonen av det generelle problemet
 <!-- Et problem er relasjonen mellom input og output -->
+
+All pairs shortest path.
 
 Input: En vektet, rettet graf $G=(V,E)$ uten negative sykler, der $V=[1,...,n]$, og vektene er gitt av matrisen $W=(w_{ij})$  
 Output: En $n*n$ matrise $D=(d_{ij})$ med avstander, dvs. $d_{ij}=s(i,j)$
@@ -28,6 +32,7 @@ $\pi^{(k)}_{ij}$ er forelderen til noden $j$ på den korteste veien (stien) fra 
 
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
+![Floyd-Warshall](/Figurer/floyd-warshall.png)
 
 1. Takes in matrix $W$ ($n \times n$)
 2. For each row $k$ in matrix $W$: Get the matrix $D^{k}$
@@ -54,6 +59,16 @@ In-place: Ja, alt skjer inne i matrisen.
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+Pensumvarianten i CLRS av FW kxsrever $\Theta(n^3)$ minne men kan reduseres til $\Theta(n^2)$ ved å droppe å lage $D^k$ matriser, slik som vi gjør i linje 4 i pseudokoden over. I stedenfor så initieres det to matriser:
+
+$\rightarrow D$ for avstandene
+
+$\rightarrow \Pi$ for forgjengerene
+
+Denne endringen resulterer i en forbedret minneallokasjon og vi går fra $\Theta(n^3) \rightarrow \Theta(n^2)$.
+
+![Floyd-Warshall](/Figurer/floyd-warshall2.png)
 
 $\Theta(V^3)$ da det er tre nøstede løkker i algoritmen.
 

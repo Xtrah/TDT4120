@@ -30,6 +30,12 @@ Algoritmen utnytter altså at max-heapify alltid finner maximum i heapen og bruk
 ## Trinn for trinn
 <!-- Pseudokode med forklaring -->
 
+![Heapsort](/Figurer/heapsort.png)
+
+![build-max-heap](/Figurer/Build-max-heap.png)
+
+![max-heapify](/Figurer/max-heapify.png)
+
 ## Korrekthetsbevis
 <!-- TBA -->
 
@@ -40,6 +46,9 @@ Algoritmen utnytter altså at max-heapify alltid finner maximum i heapen og bruk
 
 ## Kjøretid og utregning
 <!-- Under ulike omstendigheter -->
+
+> The HEAPSORT procedure takes time $O(n \log n)$ since the call to BUILD-MAXHEAP takes time $O(n)$ and each of the $n-1$ calls to MAX-HEAPIFY takes time $O(\log n)$
+
 Best case | Average case | Worst case | Minne
 ---------|----------|---------|--------
  $O(n \log n)$ | ??? | $O(n \log n)$ | $O(1)$

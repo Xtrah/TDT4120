@@ -82,7 +82,9 @@ Den **gjennomsnittlige kjøretiden** til en algoritme er kjøretiden man i gjenn
 
 ### Asymptotisk notasjon
 <!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
-Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor (tenk grenseverdier). I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
+Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor (tenk grenseverdier og summer). I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
+
+Sjekk ut [denne gode kilden](https://www.bigocheatsheet.com/) for å visuelt forsterke din forståelse av asymptotisk notasjon.
 
 Asymptotisk notiasjon gir oss ikke en presis beskrivelse av veksten til en funksjon, men den gir oss øvre og nedre grenser. Det gjør det enklere å beskrive og sammenligne ulike algoritmer.
 
@@ -595,6 +597,10 @@ Rotfaste trær gjenspeiler rekursiv dekomponering. I binære søketrær er alt i
 
 Et tre er en begrenset form av en graf. Trær har en retning (forelder-/barn-forhold) og inneholder ikke kretser/sykler.
 
+Kjøretidsoversikt:
+
+![heaps-runtime](/Figurer/heaps-runtime.png)
+
 ### Terminologi
 
 **Indekseringen** av elementer går fra topp-til-bunn, fra venstre til høyre. Det betyr at topp-elementet alltid har indeks 0, mens det mest høyrestående elementet på det laveste nivået har høyest indeks.
@@ -615,11 +621,13 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 
 #### Operasjoner på Heaps
 
-**Insert = $O(\log n)$, $O(h)$**  
+**Insert = $O(\log n)$**  
 *Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
+En forenklet versjon i en tre-struktur heter TREE-INSERT med kjøretid $O(h)$.
 
-**Delete = $O(\log n)$, $O(h)$**  
+**Delete = $O(\log n)$**  
 *Av samme grunn som **insert**.*
+En forenklet versjon i en tre-struktur heter TREE-DELETE med kjøretid $O(h)$.
 
 **Build = $O(n)$**  
 *Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.*
@@ -655,20 +663,36 @@ Bildet under illustrerer sorteringsprosessen etter at et element blir lagt til i
 ### Implementasjon av rotfaste trær
 <!-- [E3] Forstå hvordan rotfaste trær kan implementeres -->
 
-<!-- TODO -->
+Rotfaste trær er basisvarianten av f.eks heaps og binære søketrær. Et tre kan også ses på som utgangspunktet for en graf. mange av de samme metodene og prinsippene gjelder, bare at vi har rettede og urettede kanter som kanskje har en vekt.
+Eksempelvis så er INORDER-WALK(x) en simplifisert DFS.
 
-### Binære trær og søketrær
+Algoritmene skifter navn når de spesialiseres for en av de mer spesialiserte datastrukturene for eksempel MAX-HEAP og binære søketrær.
+
+TREE-INSERT(), TREE-DELETE() og TREE-MAX/MIN tar logaritmisk tid i gjennomsnitt. Logaritmisk tid er det samme som $O(h)$ hvor $h$ er høyden på treet. Høyden på treet er lik $log(n)$. Hvis dette ikke gir mening, sjekk ut denne [miniserien på youtube.](https://youtu.be/_KhZ7F-jOlI)
+
+![tredybde](/Figurer/tredybde.png)
+
+### Binære søketrær
 <!-- ![E4] Forstå hvordan binære søketrær fungerer (Inorder-Tree-Walk, Tree-Search, Iterative-Tree-Search, Tree-Minimum, TreeMaximum, Tree-Successor, Tree-Predecessor, Tree-Insert, Transplant, Tree-Delete) - merk: det kreves ikke grundig forståelse av Transplant og Tree-Delete. -->
 <!-- [E5] Vite at forventet høyde for et tilfeldig binært søketre er Θ(lg n) -->
 <!-- [E6] Vite at det finnes søketrær med garantert høyde på Θ(lg n) -->
 Et tre er et binærtre dersom hver node har 0-2 barn. I et binært søketre har hvert element en spesifikk orden. Barnet til venstre vil alltid være mindre enn rotelementet, og barnet til høyre vil være større.
+
+Det er umulig å bygge et binært søketre i verste tilfelle like raskt som en haug. Hvis vi klarte det, så hadde vi brutt grensen for sorteringshastighet! Vi kan redusere sorteringsproblemet til:
+
+1. Bygg binært søketre
+2. Inorder-tree-walk
+
+Siden trinn 2 bare tar lineær tid, så må trinn 1 overholde sorteringsgrensen!
+
+![søketrær-kjøreetid](/Figurer/søketrær-kjøretid.png)
 
 #### Søking i et binært søketre i forhold til i en array
 
 ![Illustrasjon søking](https://i.imgur.com/PnplIZP.gif)  
 _Det binære søketreet finner elementet raskere ved at algoritmen kan eliminere elementer som ligger langt unna mål-elementet. Man kan sammenligne denne strategien med binærsøk hvor man halverer antall elementer man vurderer for hver iterasjon._
 
-Denne ordenen gjør traversering/søking svært effektivt.
+Denne ordenen gjør traversering/søking svært effektivt, fordi venstre deltre er mindre enn roten og høyre deltre er større en roten. Slik er hele det binære søketreet strukturert som gjør at vi raskt traverserer treet og slipper å forholde oss til noder som ikke er relevant for ønsket output.
 
 ##### Hvordan en sortert array kan bli omgjort til et søketre
 
@@ -862,6 +886,18 @@ Det binære ryggsekkproblemet - The 0-1 knapsack problem
 
 ### Huffmankoder og huffmans algoritme
 <!-- [G4] Forstå Huffman og Huffman-koder -->
+
+Huffmans grådige algoritme lager prefixer basert på frekvensen av forekomsten av f.eks bokstaver en tekst.
+
+![huffman algoritmen](/Figurer/huffman-algorithm.png)
+
+Huffman algoritmen konstruerer optimale prefixkoder basert på grådighetsegenskapen og optimal delstruktur.
+
+Slik ser konstruksjonen av et huffman tre med huffman prefix koder ut. Legg merke til at de bokstavene med lavest forekomst kommer lengst ned og får den lengste bitverdirepresentasjonen. Bokstavene som har hyppigst forekomst i orginalteksten har den korteste veien i treet og forekommer høyere opp. dette gjør akksess av de mest brukte bokstavene raskere.
+
+![eksempel huffman](/Figurer/huffman-example.png)
+
+![huffman eksempel](/Figurer/huffman-example1.png)
 
 Huffmankoder er en måte å kode data som består av tegn på en slik måte at den tar minst mulig plass. Selve kodingen defineres av et Huffman-tre som gir informasjonen som trengs for kode en streng med data, for å dekode den igjen. Selve treet konstrueres grådig basert på frekvensen til hvert tegn i inputdataen.
 
@@ -1123,6 +1159,10 @@ LF = ${(1,4),(2,5),(3,6),(4,5),(5,6)}$, hvor $(5,6)$ er svaret.
 
 ## Korteste vei fra én til alle
 
+Når er det bra å bruke hvilken SP algoritme?
+
+![SSSP algoritmer](/Figurer/shortest_path_algorithms.png)
+
 Bredde-først-søk kan finne stier med færrest mulig kanter, men hva om kantene har ulik lengde? Det generelle problemet er uløst, men vi kan løse problemet med gradvis bedre kjøretid for grafer (1) uten negative sykler; (2) uten negative kanter; og (3) uten sykler. Og vi bruker samme prinsipp for alle tre!
 
 ### Ulike varianter av korteste-vei- eller korteste-sti-problemet
@@ -1225,18 +1265,18 @@ Vi får en graf eller en binær relasjon. Hvis det finnes en sti fra $u$ til $v$
 
 Et stort skritt i retning av generell lineær optimering (såkalt lineær programmering). Her ser vi på to tilsynelatende forskjellige problemer, som viser seg å være duale av hverandre, noe som hjelper oss med å finne en løsning.
 
-Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og noder imellom som forbindes med kanter. Hver kant har en **kapasitet** som viser hvor mye **flyt** kanten kan motta. Flyt er enheten som blir sendt imellom nodene. **Maks-flyt-problemet** går ut på å sende mest mulig flyt fra S til T. Det fins algoritmer for å løse dette problemet, blant annet **Ford-Fulkerson**.
+Et **flytnett** er en rettet graf som har en kilde **S** og en tapp(sluk) **T** og noder imellom som forbindes med kanter. Hver kant har en **kapasitet** som viser hvor mye **flyt** kanten kan motta. Flyt er enheten som blir sendt imellom nodene. **Maks-flyt-problemet** går ut på å sende mest mulig flyt fra S til T. Det fins algoritmer for å løse dette problemet, blant annet **Ford-Fulkerson**.
 
 **Flytnett**: Rettet graf $G=(V,E)$
 
 - med kapasiteter $c(u,v) \ge 0$
-- med en kilde og et sluk/tapp $s,t \in V$
-- antakelse: Alle noder er på en sti fra $s \rightarrow t$  
+- med en kilde og et tapp(sluk) $s,t \in V$
+- antakelse: Alle noder er på en sti fra $s \rightarrow t$
   $v \in V \Rightarrow s ⇝ v ⇝ t$
-- ingen self-loops (men vi kan ha sykler)
-- tillater ikke antiparallelle kanter  
+- ingen self-loops (men vi kan ha sykler bestående av minimum 3 noder)
+- tillater ikke antiparallelle kanter, det vil si en sykel mellom kun**to** noder
   $(u,v)\in E \Rightarrow (v,u) \notin E$
-- ingen kapasitet uten en kant  
+- ingen kapasitet uten en kant
   $(u,v) \notin E \Rightarrow c(u,v) = 0$
 
 **Flyt**: En funksjon $f : V \times V \rightarrow \mathbb{R}$. Vi kan ha flyt fra enhver node til en annen.
@@ -1245,6 +1285,8 @@ Et **flytnett** er en rettet graf som har en kilde **S** og en tapp **T** og nod
 - Flyt inn = flyt ut
 
 **Flytverdi**: $|f| = \sum_vf(s,v)-\sum_vf(v,s)$
+
+- Flyt fra kilde til sluk
 
 For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
 
@@ -1255,6 +1297,19 @@ For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
 - Hvordan finne en forøkende sti: Stier med ubrukte kapasiteter fra kilde til sluk.
   - For hver forøkende sti man finner: Maksimer kapasiteten ved å legge til den minste rest-verdien på alle ledd i den forøkende stien.
 
+Maksimal flyt brukes også til å løse matching problemet, f.eks organdonasjon med givere og mottakere.
+
+#### I figuren under ser vi at i Grafen G har vi:
+
+- Fra node $1 \rightarrow 2$
+  - Kapasitet 9
+  - Flyt 5
+  - Restkapasitet 4
+- Fra node $2 \rightarrow 1$
+  - Restkapasitet 5
+
+![maks flyt restkapasitet](Figurer/maksimal-flyt-restkapasitet.png)
+
 ### Håndtering av antiparallelle kanter og flere kilder og sluk
 <!-- [L2] Kunne håndtere antiparallelle kanter og flere kilder og sluk -->
 **Flere kilder og sluk**: En måte å håndtere flere kilder og sluk er å lage en "master-kilde" og en "master-sluk" og løse oppgaven på samme måte som når det er én kilde og ett sluk.
@@ -1263,13 +1318,33 @@ For å finne flyten i et flytnett kan man summere flyten ut fra kilden.
 
 ### Restnettet til et flytnett med en gitt flyt
 <!-- ![L3] Kunne definere restnettet til et flytnett med en gitt flyt -->
+Et restnett har en fremoverkant ved ledig kapasitet. Hvis vi fyller opp litt av kapasiteten i en kant med flyt kan vi føre noe av den flyten tilbake og oppheve den. Da lager vi en bakoverkant der det allerede går flyt.
+
 Et **residualnettverk** indikerer hvor mye flyt som er tillatt i hver kant i nettverkgrafen.
 
 Kapasiteten til restnettet: hvor mye vi kan øke flyten fra en node til en annen
 
-### Flyttoppheving - oppheve (cancel) flyt
+### Flytoppheving - oppheve (cancel) flyt
 <!-- [L4] Forstå hvordan man kan oppheve (cancel) flyt -->
-Når man forøker flyten langs den forøkende stien, må det også minskes flyt langs residualkantene med flaskehalsverdien. Residualkantene fungerer ved at de opphever dårlige forøkende stier som ikke leder til maksflyt.
+
+- Vi kan "sende" flyt baklengs langs kanter der det allerede går flyt.
+- Vi opphver da flyten, så den kan omdirigeres til et annet sted.
+- For å unngå opphoping av flyt i forgjengernoden må flyten dirigeres videre. Flyten kan ikke "stoppe opp". Vi kan da gjøre:
+
+  - Oppheve flyten videre bakover til enda en forgjengernode
+  - Sende flyten fremover langs en annen kant til en annen nabonode enn der den opprinnelig kom ifra.
+
+Det er dette bakoverkantene representerer i restnettet. Vi kan følge disse bakoverkantene for å oppheve flyten i flytnettet.
+
+Når man forøker flyten langs den forøkende stien, må det også minskes flyt langs residualkantene med flaskehalsverdien. Residualkantene fungerer ved at de opphever dårlige forøkende stier som ikke leder til maksflyt. Bakoverkantene i restnettet er der kun om det går flyt i flytnettet. Vi kan følge disse kantene for å oppheve flyten i flytnettet.
+
+### Restkapasitet
+
+- Fremoverkant:
+  - kan økes med det som gjenstår i $c(u,v)$
+- Bakoverkant:
+  - Kan sende tilbake og omdirigere $f(v,u)$
+  - Å redusere flyten er det samme som å øke den baklengs.
 
 ### Forøkende sti (augmenting path)
 <!-- [L5] Forstå hva en forøkende sti (augmenting path) er -->
@@ -1281,7 +1356,7 @@ En **forøkende sti** (eller flytforøkende sti) er en sti av kanter i restnette
 
 ### Snitt, snitt-kapasitet og minimalt snitt
 <!-- [L6] Forstå hva snitt, snitt-kapasitet og minimalt snitt er -->
-Et **snitt** er en deling av kanter i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en **snitt-kapasitet**. Det **minimale snittet** er snittet med lavest snitt-kapasitet.
+Et **snitt** er en deling av grafen og kantene i flyt-nettverket i to mengder, så S og T er i hver sin mengde. Kantenes flyt summeres opp i en **snitt-kapasitet**. Det **minimale snittet** er snittet med lavest snitt-kapasitet.
 
 Hvordan regne ut flyten over et snitt:
 
@@ -1316,7 +1391,7 @@ Ford Fulkerson-metoden finner maks-flyt ved å stadig finne forøkende stier i r
 Input: En bipartitt urettet graf $G=(V,E)$  
 Output: En matching $M \subseteq E$ med flest mulig kanter, dvs. der $|M|$ er maksimal.
 
-En matching er altså en delmengde av alle kanter, der her node er tilknyttet maks én kant fra delmengden.
+En matching er altså en delmengde av alle kanter, der hver node er tilknyttet maks én kant fra delmengden.
 
 #### Eksempeloppgave
 
@@ -1375,10 +1450,13 @@ Dette er litt kaos til å begynne med, men det blir (litt) bedre.
 
 ### Sammenhengen mellom optimerings- og beslutningsproblemer
 <!-- [M1] Forstå sammenhengen mellom optimerings- og beslutnings-problemer -->
-- Optimaliseringsproblem: finne den mest optimale løsningen, eksempelvis Shortest-Path
+
+Optimeringsproblemer er som regel vanskeligere enn bestemmelsesproblemer.
+
+- **Optimaliseringsproblem**: finne den mest optimale løsningen, eksempelvis Shortest-Path
   - NP-kompletthet gjelder ikke for optimaliseringsproblemer direkte
   - Ikke nødvendigvis noe vitne
-- Beslutningsproblem: ja/nei problemer (1/0)
+- **Beslutningsproblem**: ja/nei problemer (1/0)
   - Finnes det et vitne?
 
 Selv om NP-komplette problemer hovedsakelig gjelder beslutningsproblemer, er det et praktisk forhold mellom optimalisering- og beslutningsproblemer hvor de kan reformuleres som beslutningsproblemer. `Shortest-Path` er vanligvis et optimaliseringsproblem, men reformulert kan vi spørre om det finnes en sti _under_ et gitt antall kanter. Her kan algoritmen svare $1$ dersom det finnes, eller $0$ om det ikke finnes, altså et beslutningsproblem. Ved å svare på beslutningsproblemet om det finnes en sti under et gitt antall kanter gjentatte ganger kan vi til slutt finne den korteste stien.
@@ -1465,9 +1543,21 @@ Et problem er altså NP-komplett dersom det **i)** er NP-hardt, og **ii)** er i 
 
 ### Den konvensjonelle hypotesen
 <!-- [M9] Forstå den konvensjonelle hypotesen om forholdet mellom P, NP og NPC -->
-<!-- TODO -->
+
+P kan reduseres til alt $\rightarrow$ alt kan reduseres til NPC.
+
+![np hypotese](/Figurer/np-hypotese.png)
+
+Kompletthet:
+
+- Et problem er _komplett_ for en gitt klasse og en gitt type reduksjoner dersom det er maksimalt for redusibilitetsrelasjonen.
+  - De komplette problemene er de vannskeligste i klassen.
+- Et element er maksimalt dersom alle andre er mindre eller lik. For alle reduksjoner: Q er maksimalt dersom alle problemer i klassen kan reduseres til Q.
+
+**NPC**: De komplette språkene i NP, under polynomiske reduksjoner.
 
 ### Reduksjon
+
 <!-- ![M10] Forstå hvordan NP-kompletthet kan bevises ved én reduksjon -->
 Definisjon **redusibilitet**: Hvis $A$ kan reduseres til $B$ i polynomisk tid, skriver vi $A \leq_P B$.
 
@@ -1528,6 +1618,8 @@ Alt i NP kan reduseres til NP hardt. **Reduksjoner skjer til lik eller høyere k
   - En urettet graf $G$
   - Finnes det en sykel som inneholder alle nodene nøyaktig en gang?
 - **TSP**: Traveling Salesman Problem. Totalt korteste reise som er innom hver by
+  - Beslutningsproblemet er NP-komplett
+  - Optimeringsversjonen er NP-hardt
   - En komplett graf med heltallsvekter og et heltall $k$
   - Finnes det en rundtur med kostnad $\leq k$?
 - **SUBSET-SUM**: Delmengde som summerer til en målverdi
@@ -1579,16 +1671,18 @@ Binary search |$O(1)$ | $O(\log n)$ | $O(\log n)$ | N/A
 Algoritme | Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------|---------
 Merge sort | $O(n \log n)$ | $O(n \log n)$ | $O(n \log n)$ | $O(n)$
-Quick sort | $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$ | $O(\lg n)$
+Quick sort | $O(n\log n)$ | $O(n\log n)*$ | $O(n^2)$ | $O(\lg n)$
 Bubble sort | $O(n)$ | $O(n^2)$ | $O(n^2)$ | N/A
 Insertion sort | $\Theta(n)$ | $\Theta(n^2)$ | $O(n^2)$ | $O(1)$
 Selection sort | $O(n^2)$ | $O(n^2)$ | $O(n^2)$ | $O(1)$
+
+\* randomized-quicksort
 
 #### Ikke-sammenligningsbaserte sorteringsalgoritmer
 
 Algoritme | Best case | Average case | Worst case | Minne
 ---------|----------|---------|---------|---------
-Heap sort | $O(n \log n)$ | ??? | $O(n \log n)$ | $O(1)$
+Heap sort | $O(n)$ | ??? | $O(n \log n)$ | $O(1)$
 Counting sort | $\Omega(n+k)$ | $\Theta(n+k)$ | $O(n+k)$ | $O(n+k)$
 Radix sort | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $\Theta(d(n+k))$ | $O(n+k)$
 Bucket sort | $\Theta(n)$ | $\Theta(n)$ | $\Theta(n^2)$ | $O(n)$
