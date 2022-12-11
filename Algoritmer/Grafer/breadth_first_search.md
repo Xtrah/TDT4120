@@ -22,7 +22,7 @@
 
 ```pseudo
 BFS(G,s):
-1  for hver node element in G.V:
+1  for hver node element in G.V - {s}:
 2    u.color = white
 3    u.d = ∞
 4    u.𝜋 = NIL
