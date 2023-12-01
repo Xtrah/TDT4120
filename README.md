@@ -127,9 +127,9 @@ Uansett hvilken funksjon vi har fra $O(n)$ og $\Omega(n)$, om vi legger dem samm
 
 ##### Forenkling eksempel 2
 
-$$\Theta(n^2) +  O(n^4) + \Omega(\log n) = \Omega(n^2) + O(n^4)$$
+$$\Theta(n^2) +  O(n^4) + \Omega(\log n) = \Omega(n^2)$$
 
- $\Omega(n^2)+O(n^4)$ vil være en mer generell notasjon og derfor OK. $\omega(n^2)+o(n^4)$ vil være feil fordi lille omega er en strengere notasjon, og utelukker leddet som inneholder $\Theta(n^2)$.
+ $\Omega(n^2)$ vil være en mer generell notasjon og derfor OK. $\omega(n^2)$ vil være feil fordi lille omega er en strengere notasjon, og utelukker leddet som inneholder $\Theta(n^2)$.
 
 ### Klasser av input
 <!-- ![A5] Kunne definere best-case, average-case og worst-case -->
