@@ -1,3 +1,3 @@
 {
-    "recommendations": ["davidanson.vscode-markdownlint", "goessner.mdmath","mdickin.markdown-shortcuts", "ms-python.python", "zhuangtongfa.material-theme"]
+    "recommendations": ["davidanson.vscode-markdownlint", "mdickin.markdown-shortcuts", "ms-python.python"]
   }

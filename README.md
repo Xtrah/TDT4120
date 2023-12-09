@@ -1,8 +1,8 @@
 # TDT4120 Algoritmer og datastrukturer
 
-Dette er et selvskrevet kompendium i [TDT4120 H20 ved NTNU](https://www.ntnu.no/studier/emner/TDT4120/2020). Faget inneholder en del notasjon som er løst ved bruk av LaTeX formatering, som leses ved bruk av en [utvidelse i nettleseren](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima). Kompendiet er sortert etter [læremålene i pensumheftet](Ressurser/pensumhefte2020.pdf).
+Dette er et selvskrevet kompendium i [TDT4120 ved NTNU](https://www.ntnu.no/studier/emner/TDT4120/2020). Kompendiet er strukturert etter [læremålene i pensumheftet 2020](Ressurser/pensumhefte2020.pdf).
 
-For å bidra, les [contributing.md](contributing.md) ❤
+Kompendiet er ikke komplett og definitivt ikke perfekt, så gjerne [bidra](contributing.md)!
 
 ## Overordnede læringsmål i faget
 
@@ -84,7 +84,7 @@ Den **gjennomsnittlige kjøretiden** til en algoritme er kjøretiden man i gjenn
 <!-- ![A4] Kunne definere asymptotisk notasjon, O, Ω, Θ, o og ω. -->
 Asymptotiske notasjon beskriver hvordan en funksjon oppfører seg når inputstørrelsen blir veldig stor (tenk grenseverdier og summer). I algoritmesammenheng er funksjonen ofte tidsbruk gitt en inputstørrelse.
 
-Sjekk ut [denne gode kilden](https://www.bigocheatsheet.com/) for å visuelt forsterke din forståelse av asymptotisk notasjon.
+[Big-O Cheat Sheet](https://www.bigocheatsheet.com/) er bra for å visualisere asymptotisk notasjon.
 
 Asymptotisk notiasjon gir oss ikke en presis beskrivelse av veksten til en funksjon, men den gir oss øvre og nedre grenser. Det gjør det enklere å beskrive og sammenligne ulike algoritmer.
 
@@ -440,7 +440,7 @@ $$a \ge 1,\  b > 1$$
 
 1. Identifiser $a, b, f(n)$
 2. Regn ut $\log_b(a) = d$ og finn graden av $f(n) = c$
-3. Vurder forholdet mellom $c$ og $d$. Hvis $d>c$ gjelder tilfelle 1 med $O$. Hvis $c=d$ gjelder tilfelle 2 med $\Theta$. Hvis $d<c$ gjelder tilfelle 3 med $\Omega$.
+3. Vurder forholdet mellom $c$ og $d$. Hvis $d>c$ gjelder tilfelle 1 med $O$. Hvis $c=d$ gjelder tilfelle 2 med $\Theta$. Hvis $d < c$ gjelder tilfelle 3 med $\Omega$.
 4. Konsulter tabellen under med tilfeller
 
 Tilfelle | Krav | Løsning
@@ -622,25 +622,25 @@ En haug (heap) er en sortert tre-struktur. Elementer som legges til en heap blir
 #### Operasjoner på Heaps
 
 **Insert = $O(\log n)$**  
-*Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
+Fordi man må søke gjennom treet. Ettersom treet er $\log n$-høyt, må dette nødvendigvis bli kjøretiden.*
 En forenklet versjon i en tre-struktur heter TREE-INSERT med kjøretid $O(h)$.
 
 **Delete = $O(\log n)$**  
-*Av samme grunn som **insert**.*
+Av samme grunn som **insert**.
 En forenklet versjon i en tre-struktur heter TREE-DELETE med kjøretid $O(h)$.
 
 **Build = $O(n)$**  
-*Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.*
+Build bygger en heap uten å ta hensyn til sortering. Det vil si at den bare legger til legger til elementer i en trestruktur. Derfor er kjøretiden lineær.
 
 **Max-heapify = $O(\log n)$**  
-*Max-heapify tar input-elementene og konstruerer en Max-heap. Den sorterer nodene fra bunn til topp. Dermed er den bundet av høyden til heapen som er $\log n$*.
+Max-heapify tar input-elementene og konstruerer en Max-heap. Den sorterer nodene fra bunn til topp. Dermed er den bundet av høyden til heapen som er $\log n$.
 
 **Build-max-heap = Linear time**  
-*Build-max-heap bygger en heap ved å kjøre max-heapify på hver node den legger til. Max-heapify tar $O(\log n)$ tid, men ettersom Build tar lineær tid, overskirver denne Max-heapify. Altså får vi lineær tid.*
+Build-max-heap bygger en heap ved å kjøre max-heapify på hver node den legger til. Max-heapify tar $O(\log n)$ tid, men ettersom Build tar lineær tid, overskirver denne Max-heapify. Altså får vi lineær tid.
 
 **Heapsort = $O(n \log (n))$**  
-*Heapsort bygger først en max-heap ved hjelp av Build-max-heap. Nå er det største elementet på toppen. Dette elementet hentes ut fra heapen. Den flytter så en av de minste elementene helt til toppen før den kjører Max-heapify igjen. Max-heapify garanterer at det største elementet i heapen nok en gang kommer til toppen. Denne prosessen gjør det mulig å hente ut det største elementet i heapen hver gang.*  
-*$O(n \log (n))$ kommer av at det kjøres Max-heapify for hvert element.*
+Heapsort bygger først en max-heap ved hjelp av Build-max-heap. Nå er det største elementet på toppen. Dette elementet hentes ut fra heapen. Den flytter så en av de minste elementene helt til toppen før den kjører Max-heapify igjen. Max-heapify garanterer at det største elementet i heapen nok en gang kommer til toppen. Denne prosessen gjør det mulig å hente ut det største elementet i heapen hver gang.*  
+$O(n \log (n))$ kommer av at det kjøres Max-heapify for hvert element.
 
 **Max-heap-insert, heap-extract-max, Heap-increase-key, Heap-maximum = $O(\log (n))$**
 

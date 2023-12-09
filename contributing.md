@@ -1,19 +1,15 @@
 # Bidra
 
-Utvidelser er nødvendig for å sikre at alt formateres riktig både på GitHub og i Visual Studio Code, og senere om kompendiet skal eksporteres i andre formater.
+... ved å lage en PR!
 
-## Utvidelser for å lese LaTeX på GitHub
-
-- MathJax plugin for GitHub
-  <https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima>
+Utvidelser brukes for å sikre at alt formateres riktig på GitHub og i Visual Studio Code, og ved eventuell eksportering til andre formater.
 
 ## Utvidelser for Visual Studio Code
 
 Etter å ha klonet repo, installer utvidelser ved å søke `@recommended` i VSC Extensions, eller installer manuelt ved å bruke kommandolinjen: `code --install-extension [extension]`
 
 - `davidanson.vscode-markdownlint` for Markdown linting
-- `goessner.mdmath` for Markdown Math symboler
-- Ekstra: `mdickin.markdown-shortcuts` for nyttige hurtigtaster
+- Optional: `mdickin.markdown-shortcuts` for nyttige hurtigtaster
 
 ## Hvordan Markdown med LaTeX
 
@@ -23,5 +19,6 @@ Etter å ha klonet repo, installer utvidelser ved å søke `@recommended` i VSC 
   <https://en.wikipedia.org/wiki/Help:Displaying_a_formula#Formatting_using_TeX>
 - Inline formatering ved enkelt dollartegn: `$\LaTeX$`:  
   $\LaTeX$
+- GitHub støtter ikke LaTeX i *kursiv tekst* uten [backticks](https://github.blog/changelog/2023-05-08-new-delimiter-syntax-for-inline-mathematical-expressions/).
 - Blokkformatering ved dobbel dollartegn: `$$\LaTeX$$`:  
   $$\LaTeX$$
